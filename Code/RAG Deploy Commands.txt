@@ -1,0 +1,4 @@
+python populate_database.py --reset
+docker build --platform linux/amd64 -t aws_rag_app .
+docker run --rm -it --entrypoint python --env-file .env aws_rag_app app_work_handler.py
+cdk deploy
