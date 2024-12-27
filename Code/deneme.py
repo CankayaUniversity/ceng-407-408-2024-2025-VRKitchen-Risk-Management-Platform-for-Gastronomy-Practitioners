@@ -3,7 +3,7 @@ import time
 
 # Step 1: Submit a query
 submit_url = "https://lviubjhdkcolf6ihebsg3aohf40ocbxs.lambda-url.eu-central-1.on.aws/submit_query"
-submit_data = {"query_text": "How to use a fire extinguisher step by step?"}
+submit_data = {"query_text": "What are the ingredients of a pancake?"}
 
 submit_response = requests.post(submit_url, json=submit_data)
 
@@ -29,8 +29,20 @@ if submit_response.status_code == 200:
 
                 # Check if processing is complete
                 if query_details.get("is_complete", False):
-                    print("Query processing complete!")
-                    print("Final Response:", query_details)
+                    print("\nQuery processing complete!\n")
+                    print("Step-by-step Breakdown:")
+                    
+                    # Print query details step by step
+                    print(f"1. Query ID: {query_details['query_id']}")
+                    print(f"2. Query Submitted Time: {query_details['create_time']}")
+                    print(f"3. Query Text: {query_details['query_text']}")
+                    print(f"4. Answer Text: \n{query_details['answer_text']}")
+                    
+                    # Display the sources used
+                    print(f"5. Sources: ")
+                    for source in query_details.get('sources', []):
+                        print(f"   - {source}")
+
                     break
             else:
                 print("Failed to fetch query details:", get_response.status_code, get_response.text)
