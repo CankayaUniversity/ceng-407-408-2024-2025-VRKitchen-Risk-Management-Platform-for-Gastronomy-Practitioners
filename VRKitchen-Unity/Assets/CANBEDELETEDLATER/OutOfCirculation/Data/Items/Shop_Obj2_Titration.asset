@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db139cad03beab48b7a6b85161d5511, type: 3}
+  m_Name: Shop_Obj2_Titration
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 1bfc15e0a0e336b44b313baf439cc37e, type: 3}
+  Name: Titration set
+  Usable: 0
+  UseSFX: {fileID: 0}
+  Prefab3D: {fileID: 2888173897810574289, guid: a6641055e2ef1ce46b00440bcdcf35c0, type: 3}
+  Description: Smalt's always working on something or other. Mysterious spellcraft
+    for a mysterious shop proprietor.
+  SFX: {fileID: 0}
+  SFXLoop: 0

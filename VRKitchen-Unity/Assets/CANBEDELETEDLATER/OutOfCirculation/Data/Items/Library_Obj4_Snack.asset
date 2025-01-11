@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db139cad03beab48b7a6b85161d5511, type: 3}
+  m_Name: Library_Obj4_Snack
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 07cd338cabbacab46ba959dc71f2a946, type: 3}
+  Name: Snack stash
+  Usable: 0
+  UseSFX: {fileID: 0}
+  Prefab3D: {fileID: 4595710957011518495, guid: 4128aea89c1d4e04e8d74553f68aad8b, type: 3}
+  Description: Hmm, someone's been fuelling an intense study session with treats.
+  SFX: {fileID: 0}
+  SFXLoop: 0

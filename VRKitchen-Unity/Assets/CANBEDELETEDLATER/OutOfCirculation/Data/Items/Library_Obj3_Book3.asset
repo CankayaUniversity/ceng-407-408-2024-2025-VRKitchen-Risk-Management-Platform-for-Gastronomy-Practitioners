@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db139cad03beab48b7a6b85161d5511, type: 3}
+  m_Name: Library_Obj3_Book3
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 16aec2b0550380b4497ec74295a6611c, type: 3}
+  Name: Production Lock by Consuela Billed
+  Usable: 0
+  UseSFX: {fileID: 0}
+  Prefab3D: {fileID: 919132149155446097, guid: 33ab7f8664321324a9444adcb8691a92, type: 3}
+  Description: "An old Inspector Winne d\u2019Oh adventure. They're pulpy, sure,
+    but very popular if this loan log is anything to go by."
+  SFX: {fileID: 8300000, guid: b5cb4ef18ec5f304d9313e4867679349, type: 3}
+  SFXLoop: 0

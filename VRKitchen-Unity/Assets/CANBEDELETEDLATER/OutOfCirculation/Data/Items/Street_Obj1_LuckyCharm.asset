@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db139cad03beab48b7a6b85161d5511, type: 3}
+  m_Name: Street_Obj1_LuckyCharm
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: d7631395d636b6c459836deaac5bfa84, type: 3}
+  Name: Luck token
+  Usable: 0
+  UseSFX: {fileID: 0}
+  Prefab3D: {fileID: 5990408675138178793, guid: b84530c27ae09da40a8334db275ca9a4, type: 3}
+  Description: "A crafted charm lovingly left for the right person to find \u2014
+    it must be your lucky day!"
+  SFX: {fileID: 8300000, guid: 49d57326d7683064db8c05a4a6e24332, type: 3}
+  SFXLoop: 0

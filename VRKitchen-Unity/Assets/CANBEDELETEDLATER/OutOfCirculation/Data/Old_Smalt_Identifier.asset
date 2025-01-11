@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6519e770edf4dd640bc26b46ab64eff4, type: 3}
+  m_Name: Old_Smalt_Identifier
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: 21300000, guid: bffb0a1042648654a84947e665990be6, type: 3}
+  TextColor: {r: 1, g: 0, b: 0.24095869, a: 1}
+  SpeakerName: Old Smalt
+  TalkingAnimationClip: {fileID: 1827226128182048838, guid: e46cfae122090794ca134c3c8d84c7af, type: 3}

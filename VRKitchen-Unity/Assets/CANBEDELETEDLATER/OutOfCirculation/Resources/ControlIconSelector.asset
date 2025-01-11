@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b682f6687ecff4d9cc9806b726d65f, type: 3}
+  m_Name: ControlIconSelector
+  m_EditorClassIdentifier: 
+  MappingSets:
+  - Name: Default
+    Mappings:
+    - Path: buttonSouth
+      Icone: {fileID: 5511827941926427188, guid: 60e2e5d554311804699da12e3e373671, type: 3}
+      Color: {r: 0, g: 0, b: 0, a: 1}
+    - Path: buttonEast
+      Icone: {fileID: 884888072209951193, guid: 60e2e5d554311804699da12e3e373671, type: 3}
+      Color: {r: 0, g: 0, b: 0, a: 1}
+    - Path: buttonWest
+      Icone: {fileID: -2767878156335923807, guid: 60e2e5d554311804699da12e3e373671, type: 3}
+      Color: {r: 0, g: 0, b: 0, a: 1}
+    - Path: leftShoulder
+      Icone: {fileID: 7853250876845141922, guid: 60e2e5d554311804699da12e3e373671, type: 3}
+      Color: {r: 0, g: 0, b: 0, a: 1}
+    - Path: rightShoulder
+      Icone: {fileID: -8919547584617180429, guid: 60e2e5d554311804699da12e3e373671, type: 3}
+      Color: {r: 0, g: 0, b: 0, a: 1}
+    - Path: leftStick
+      Icone: {fileID: 302012135346176784, guid: 399e076837a175f4292b7049764e9395, type: 3}
+      Color: {r: 0, g: 0, b: 0, a: 1}
+    - Path: rightStick
+      Icone: {fileID: 404337802546053262, guid: 399e076837a175f4292b7049764e9395, type: 3}
+      Color: {r: 0, g: 0, b: 0, a: 1}
+  - Name: Xbox
+    Mappings:
+    - Path: buttonSouth
+      Icone: {fileID: 1722052043102455254, guid: 60e2e5d554311804699da12e3e373671, type: 3}
+      Color: {r: 0.117906675, g: 0.8679245, b: 0.170368, a: 1}
+    - Path: buttonEast
+      Icone: {fileID: -8552159506745533364, guid: 60e2e5d554311804699da12e3e373671, type: 3}
+      Color: {r: 1, g: 0, b: 0, a: 1}
+    - Path: buttonWest
+      Icone: {fileID: 4147495328614927465, guid: 60e2e5d554311804699da12e3e373671, type: 3}
+      Color: {r: 0.193681, g: 0.272796, b: 0.8773585, a: 1}
+    - Path: buttonNorth
+      Icone: {fileID: -6815477925117793086, guid: 60e2e5d554311804699da12e3e373671, type: 3}
+      Color: {r: 0.8831109, g: 0.8962264, b: 0, a: 1}
+    - Path: leftShoulder
+      Icone: {fileID: 7853250876845141922, guid: 60e2e5d554311804699da12e3e373671, type: 3}
+      Color: {r: 0, g: 0, b: 0, a: 1}
+    - Path: rightShoulder
+      Icone: {fileID: -8919547584617180429, guid: 60e2e5d554311804699da12e3e373671, type: 3}
+      Color: {r: 0, g: 0, b: 0, a: 1}
+    - Path: leftStick
+      Icone: {fileID: 302012135346176784, guid: 399e076837a175f4292b7049764e9395, type: 3}
+      Color: {r: 0, g: 0, b: 0, a: 1}
+    - Path: rightStick
+      Icone: {fileID: 404337802546053262, guid: 399e076837a175f4292b7049764e9395, type: 3}
+      Color: {r: 0, g: 0, b: 0, a: 1}
