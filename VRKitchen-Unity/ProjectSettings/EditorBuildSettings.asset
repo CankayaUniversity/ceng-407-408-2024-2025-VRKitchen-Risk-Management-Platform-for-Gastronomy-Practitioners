@@ -6,17 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/CANBEDELETEDLATER/OutOfCirculation/Scene/MainMenu.unity
-    guid: bba08a059b387984999e3bad8a27585a
-  - enabled: 1
-    path: Assets/CANBEDELETEDLATER/OutOfCirculation/Scene/WitchShop.unity
-    guid: ac00d60f25101d2468d45061dee211f7
-  - enabled: 1
-    path: Assets/CANBEDELETEDLATER/OutOfCirculation/Scene/Streets.unity
-    guid: 3d672a40cf56874438b59a2a5392123c
-  - enabled: 1
-    path: Assets/CANBEDELETEDLATER/OutOfCirculation/Scene/Lib.unity
-    guid: a4fc3ce79878d9247ac1ecaf111f9f39
+    path: Assets/Scenes/VRInteractions.unity
+    guid: e199d753ff6c98b4ab728d3b54e53947
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ebbea6fa362cea24c9cb9cff0153c4ce, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 18fef956098486c4ca273b1229f42390, type: 2}
