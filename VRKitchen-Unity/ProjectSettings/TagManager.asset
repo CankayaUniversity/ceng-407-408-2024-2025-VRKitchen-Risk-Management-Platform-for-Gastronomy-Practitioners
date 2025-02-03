@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - BackgroundCamera
+  - Knife
+  - Bread
+  - Cucumber
   layers:
   - Default
   - TransparentFX
