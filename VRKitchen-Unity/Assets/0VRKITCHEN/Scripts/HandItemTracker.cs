@@ -6,7 +6,7 @@ public class HandItemTracker : MonoBehaviour
 {
     private XRDirectInteractor interactor;
     public List<string> heldItemTags = new List<string>();
-
+    [SerializeField] private QuestSystem questSystem;
     private void Awake()
     {
         interactor = GetComponent<XRDirectInteractor>();
@@ -33,6 +33,7 @@ public class HandItemTracker : MonoBehaviour
             {
                 heldItemTags.Add(itemTag);
                 
+                questSystem.OnItemTaken(itemTag); 
             }
         }
     }
