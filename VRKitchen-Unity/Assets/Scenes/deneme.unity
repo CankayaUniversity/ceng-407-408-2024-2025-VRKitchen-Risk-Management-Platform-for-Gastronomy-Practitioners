@@ -3294,6 +3294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchingItemTags: []
+  questSystem: {fileID: 2144135185}
 --- !u!1 &1044445060
 GameObject:
   m_ObjectHideFlags: 0
@@ -8051,6 +8052,7 @@ GameObject:
   - component: {fileID: 2144135182}
   - component: {fileID: 2144135181}
   - component: {fileID: 2144135184}
+  - component: {fileID: 2144135185}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -8142,6 +8144,26 @@ MonoBehaviour:
   leftHandTracker: {fileID: 8880359588601424012}
   rightHandTracker: {fileID: 6441654355377161354}
   itemTracker: {fileID: 1031051944}
+--- !u!114 &2144135185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144135180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20dbbadbed427c34a89e93c4bdeffc19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questSteps:
+  - itemTag: Knife
+    action: Take
+  - itemTag: Cucumber
+    action: Take
+  - itemTag: Knife
+    action: Place
+  itemCheckSystem: {fileID: 2144135184}
 --- !u!4 &4928652255616596
 Transform:
   m_ObjectHideFlags: 0
@@ -20836,6 +20858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heldItemTags: []
+  questSystem: {fileID: 2144135185}
 --- !u!33 &6442400899230403400
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -25727,6 +25750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heldItemTags: []
+  questSystem: {fileID: 2144135185}
 --- !u!1 &8892448157350736985
 GameObject:
   m_ObjectHideFlags: 0
