@@ -43,8 +43,13 @@ public class HandItemTracker : MonoBehaviour
         if (args.interactableObject != null)
         {
             string itemTag = args.interactableObject.transform.tag;
-            heldItemTags.Remove(itemTag);
-            
+            if (heldItemTags.Contains(itemTag))
+            {
+                heldItemTags.Remove(itemTag);
+                
+                questSystem.OnItemReleased(itemTag);  
+            }
+
         }
     }
 

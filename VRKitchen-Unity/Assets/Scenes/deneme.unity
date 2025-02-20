@@ -8051,7 +8051,6 @@ GameObject:
   - component: {fileID: 2144135183}
   - component: {fileID: 2144135182}
   - component: {fileID: 2144135181}
-  - component: {fileID: 2144135184}
   - component: {fileID: 2144135185}
   m_Layer: 0
   m_Name: EventSystem
@@ -8129,21 +8128,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2144135184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2144135180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3f15ed8d0a53724cbd3985174c52d52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHandTracker: {fileID: 8880359588601424012}
-  rightHandTracker: {fileID: 6441654355377161354}
-  itemTracker: {fileID: 1031051944}
 --- !u!114 &2144135185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8159,11 +8143,12 @@ MonoBehaviour:
   questSteps:
   - itemTag: Knife
     action: Take
-  - itemTag: Cucumber
-    action: Take
   - itemTag: Knife
     action: Place
-  itemCheckSystem: {fileID: 2144135184}
+  - itemTag: Cucumber
+    action: Take
+  - itemTag: Cucumber
+    action: Place
 --- !u!4 &4928652255616596
 Transform:
   m_ObjectHideFlags: 0

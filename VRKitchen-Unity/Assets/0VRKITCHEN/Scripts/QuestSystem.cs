@@ -12,15 +12,23 @@ public class QuestSystem : MonoBehaviour
 
     [SerializeField] private List<QuestStep> questSteps;
     private int currentStepIndex = 0;
-    private bool isQuestCompleted = false;  
-
+    private bool isQuestCompleted = false;
     
+
 
     public void OnItemTaken(string itemTag)
     {
-        if (isQuestCompleted) return;  
-
+        if (isQuestCompleted) return;
         
+        if (currentStepIndex > 0 &&
+            questSteps[currentStepIndex - 1].itemTag == itemTag &&
+            questSteps[currentStepIndex - 1].action == "Place")
+        {
+            Debug.Log($"Wrong step:You picked up {itemTag} before completing the next step.");
+            currentStepIndex--;  
+            return;
+        }
+
         if (currentStepIndex < questSteps.Count &&
             questSteps[currentStepIndex].itemTag == itemTag &&
             questSteps[currentStepIndex].action == "Take")
@@ -31,13 +39,15 @@ public class QuestSystem : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Wrong step! You need to {questSteps[currentStepIndex].action} {questSteps[currentStepIndex].itemTag}.");
+           //direkt startta bastýrýyor çöz
+                Debug.Log($"Wrong step! You need to {questSteps[currentStepIndex].action} {questSteps[currentStepIndex].itemTag}.");
+            
         }
     }
 
     public void OnItemPlaced(string itemTag)
     {
-        if (isQuestCompleted) return;  
+        if (isQuestCompleted) return;
 
        
         if (currentStepIndex < questSteps.Count &&
@@ -47,13 +57,26 @@ public class QuestSystem : MonoBehaviour
             Debug.Log($"Step completed: Place {itemTag}");
             currentStepIndex++;
             CheckQuestCompletion();
+            
         }
         else
         {
-            Debug.LogWarning($"Wrong step! You need to {questSteps[currentStepIndex].action} {questSteps[currentStepIndex].itemTag}.");
+            
+                Debug.Log($"Wrong step! You need to {questSteps[currentStepIndex].action} {questSteps[currentStepIndex].itemTag}.");
+            
         }
     }
+    public void OnItemReleased(string itemTag)
+    {
+        if (isQuestCompleted) return;  
 
+        
+        if (currentStepIndex > 0 && questSteps[currentStepIndex - 1].itemTag == itemTag && questSteps[currentStepIndex - 1].action == "Take" && questSteps[currentStepIndex ].action != "Place")
+        {
+            Debug.Log($"Wrong step:You released {itemTag} before completing the next step.");
+            currentStepIndex--;  
+        }
+    }
     private void CheckQuestCompletion()
     {
         if (currentStepIndex >= questSteps.Count)
