@@ -1,3 +1,4 @@
+
 from query_model import QueryModel
 from rag_app.query_rag import query_rag
 

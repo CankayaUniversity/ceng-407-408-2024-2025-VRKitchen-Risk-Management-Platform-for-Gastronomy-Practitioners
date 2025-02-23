@@ -3,7 +3,7 @@ import time
 
 # Step 1: Submit a query
 submit_url = "https://lviubjhdkcolf6ihebsg3aohf40ocbxs.lambda-url.eu-central-1.on.aws/submit_query"
-submit_data = {"query_text": "What are the ingredients of a pancake?"}
+submit_data = {"query_text": "I filled the water, what should I do next?"}
 
 submit_response = requests.post(submit_url, json=submit_data)
 

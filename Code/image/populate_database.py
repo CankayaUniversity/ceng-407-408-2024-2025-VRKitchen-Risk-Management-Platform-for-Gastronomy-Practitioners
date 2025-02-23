@@ -8,7 +8,6 @@ from langchain.vectorstores.chroma import Chroma
 
 from src.rag_app.get_embedding_function import get_embedding_function
 
-
 CHROMA_PATH = "src/data/chroma"
 DATA_SOURCE_PATH = "src/data/source"
 
