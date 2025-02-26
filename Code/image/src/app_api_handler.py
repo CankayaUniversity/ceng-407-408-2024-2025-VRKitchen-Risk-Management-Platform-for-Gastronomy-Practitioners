@@ -1,74 +1,47 @@
 import os
 import uvicorn
-import boto3
-import json
-
 from fastapi import FastAPI
-from mangum import Mangum
 from pydantic import BaseModel
-from query_model import QueryModel
-from rag_app.query_rag import query_rag
-
-WORKER_LAMBDA_NAME = os.environ.get("WORKER_LAMBDA_NAME", None)
+from typing import Optional
+from mangum import Mangum
+from rag_app.query_rag import query_rag_with_session
+from rag_app.session_model import SessionModel
 
 app = FastAPI()
 handler = Mangum(app)  # Entry point for AWS Lambda.
 
+# In-memory session store
+sessions = {}
 
-class SubmitQueryRequest(BaseModel):
+class SessionQueryRequest(BaseModel):
     query_text: str
-
+    session_id: Optional[str] = None
 
 @app.get("/")
 def index():
     return {"Hello": "World"}
 
+@app.post("/query_with_memory")
+def query_with_memory(request: SessionQueryRequest):
+    session_id = request.session_id or "default_session"
 
-@app.get("/get_query")
-def get_query_endpoint(query_id: str) -> QueryModel:
-    query = QueryModel.get_item(query_id)
-    return query
+    # Retrieve or create session
+    if session_id not in sessions:
+        sessions[session_id] = SessionModel(session_id)
 
+    session = sessions[session_id]
 
-@app.post("/submit_query")
-def submit_query_endpoint(request: SubmitQueryRequest) -> QueryModel:
-    # Create the query item, and put it into the data-base.
-    new_query = QueryModel(query_text=request.query_text)
+    # Process query with memory
+    response = query_rag_with_session(request.query_text, session)
 
-    if WORKER_LAMBDA_NAME:
-        # Make an async call to the worker (the RAG/AI app).
-        new_query.put_item()
-        invoke_worker(new_query)
-    else:
-        # Make a synchronous call to the worker (the RAG/AI app).
-        query_response = query_rag(request.query_text)
-        new_query.answer_text = query_response.response_text
-        new_query.sources = query_response.sources
-        new_query.is_complete = True
-        new_query.put_item()
-
-    return new_query
-
-
-def invoke_worker(query: QueryModel):
-    # Initialize the Lambda client
-    lambda_client = boto3.client("lambda")
-
-    # Get the QueryModel as a dictionary.
-    payload = query.model_dump()
-
-    # Invoke another Lambda function asynchronously
-    response = lambda_client.invoke(
-        FunctionName=WORKER_LAMBDA_NAME,
-        InvocationType="Event",
-        Payload=json.dumps(payload),
-    )
-
-    print(f"✅ Worker Lambda invoked: {response}")
-
+    return {
+        "query_text": response.query_text,
+        "response_text": response.response_text,
+        "sources": response.sources,
+        "session_id": session_id,
+    }
 
 if __name__ == "__main__":
-    # Run this as a server directly.
     port = 8000
-    print(f"Running the FastAPI server on port {port}.")
+    print(f"Running FastAPI server on port {port}.")
     uvicorn.run("app_api_handler:app", host="0.0.0.0", port=port)
