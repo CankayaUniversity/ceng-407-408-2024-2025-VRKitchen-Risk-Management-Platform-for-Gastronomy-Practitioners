@@ -14,6 +14,8 @@ public class SpeechRecognitionTest : MonoBehaviour
     [SerializeField] private TextMeshProUGUI apiResponseText; // API-generated answer
     [SerializeField] private TextToSpeech tts; // Reference to TextToSpeech script
 
+
+
     private AudioClip clip;
     private byte[] bytes;
     private bool recording;
@@ -107,19 +109,24 @@ public class SpeechRecognitionTest : MonoBehaviour
         recognizedText.color = Color.red;
         recognizedText.text = "Speech recognition unavailable!";
     }
+    private string sessionId = "user_123"; // Default session ID, can be dynamically generated or user-specific
 
     private IEnumerator SendQueryToAPI(string transcribedText)
     {
         apiResponseText.color = Color.yellow;
         apiResponseText.text = "Sending query...";
 
-        string submitUrl = "https://lviubjhdkcolf6ihebsg3aohf40ocbxs.lambda-url.eu-central-1.on.aws/submit_query";
+        string queryUrl = "https://lviubjhdkcolf6ihebsg3aohf40ocbxs.lambda-url.eu-central-1.on.aws/query_with_memory";
 
-        // ✅ Create an instance of QueryData
-        QueryData data = new QueryData { query_text = transcribedText };
+        // Create an instance of QueryData
+        QueryData data = new QueryData
+        {
+            query_text = transcribedText,
+            session_id = "user_123" // Optional: If your API uses session_id for memory
+        };
         string jsonData = JsonUtility.ToJson(data);
 
-        using (UnityWebRequest request = new UnityWebRequest(submitUrl, "POST"))
+        using (UnityWebRequest request = new UnityWebRequest(queryUrl, "POST"))
         {
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
@@ -130,8 +137,15 @@ public class SpeechRecognitionTest : MonoBehaviour
 
             if (request.result == UnityWebRequest.Result.Success)
             {
+                // Parse the response
                 var result = JsonUtility.FromJson<APIResponse>(request.downloadHandler.text);
-                StartCoroutine(PollForQueryCompletion(result.query_id));
+
+                // Display the response
+                apiResponseText.color = Color.green;
+                apiResponseText.text = "Answer: " + result.response_text;
+
+                // Use Text-to-Speech to speak the response
+                tts.Speak(result.response_text);
             }
             else
             {
@@ -141,46 +155,6 @@ public class SpeechRecognitionTest : MonoBehaviour
             }
         }
     }
-
-    private IEnumerator PollForQueryCompletion(string queryId)
-    {
-        apiResponseText.color = Color.cyan;
-        apiResponseText.text = "Waiting for API response...";
-
-        string queryUrl = "https://lviubjhdkcolf6ihebsg3aohf40ocbxs.lambda-url.eu-central-1.on.aws/get_query";
-
-        while (true)
-        {
-            using (UnityWebRequest request = UnityWebRequest.Get($"{queryUrl}?query_id={queryId}"))
-            {
-                yield return request.SendWebRequest();
-
-                if (request.result == UnityWebRequest.Result.Success)
-                {
-                    var queryDetails = JsonUtility.FromJson<QueryDetails>(request.downloadHandler.text);
-
-                    if (queryDetails.is_complete)
-                    {
-                        apiResponseText.color = Color.green;
-                        apiResponseText.text = "Answer: " + queryDetails.answer_text;
-
-                        tts.Speak(queryDetails.answer_text);
-                        
-                        yield break;
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Query Fetch Failed: " + request.downloadHandler.text);
-                    apiResponseText.color = Color.red;
-                    apiResponseText.text = "Error fetching query result!";
-                    yield break;
-                }
-            }
-            yield return new WaitForSeconds(1); // Poll every 3 seconds
-        }
-    }
-
     private byte[] EncodeAsWAV(float[] samples, int frequency, int channels)
     {
         using (var memoryStream = new MemoryStream(44 + samples.Length * 2))
@@ -213,7 +187,9 @@ public class SpeechRecognitionTest : MonoBehaviour
     [System.Serializable]
     private class APIResponse
     {
-        public string query_id;
+        public string response_text; // The API's response
+        public string[] sources;     // Optional: If the API provides sources
+        public string session_id;    // Optional: If the API returns a session_id
     }
 
     [System.Serializable]
@@ -229,5 +205,7 @@ public class SpeechRecognitionTest : MonoBehaviour
     private class QueryData
     {
         public string query_text;
+        public string session_id; // Optional: Only if your API uses session_id
     }
+
 }
