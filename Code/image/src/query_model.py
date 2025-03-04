@@ -1,4 +1,3 @@
-# query_model.py (Updated)
 import time
 import uuid
 from typing import List, Optional
@@ -8,6 +7,7 @@ import boto3
 import os
 from rag_app.session_model import SessionModel  # Assuming this file exists
 
+# Ensure environment variable TABLE_NAME is set.
 TABLE_NAME = os.environ.get("TABLE_NAME")
 if not TABLE_NAME:
     raise ValueError("TABLE_NAME environment variable is not set")
@@ -23,10 +23,12 @@ class QueryModel(BaseModel):
 
     @classmethod
     def get_table(cls: "QueryModel") -> boto3.resource:
+        """Get DynamoDB Table resource."""
         dynamodb = boto3.resource("dynamodb")
         return dynamodb.Table(TABLE_NAME)
 
     def put_item(self):
+        """Put the QueryModel instance to DynamoDB."""
         item = self.as_ddb_item()
         try:
             response = QueryModel.get_table().put_item(Item=item)
@@ -36,7 +38,7 @@ class QueryModel(BaseModel):
             raise e
 
     def as_ddb_item(self):
-        """Converts QueryModel instance to a DynamoDB item format."""
+        """Converts QueryModel instance to DynamoDB item format."""
         return {k: v for k, v in self.dict().items() if v is not None}
 
     @classmethod
@@ -73,31 +75,3 @@ class QueryModel(BaseModel):
 # In-memory storage for sessions (to be replaced by DynamoDB or another persistent store)
 sessions = {}  # Simulating an in-memory session store
 
-# Example of how to use sessions and queries:
-def example_usage():
-    # Create or get an existing session
-    session_id = "session_123"  # This would be dynamic in practice
-    session = QueryModel.get_session(session_id)
-
-    # Create a new query model
-    query = QueryModel(query_text="What is the capital of France?", session_id=session_id)
-    print(f"Created QueryModel: {query}")
-
-    # Save the query to DynamoDB
-    query.put_item()
-
-    # Simulate getting an answer and updating the query
-    query.update_answer(answer_text="The capital of France is Paris.", sources=["Wikipedia"])
-    print(f"Updated QueryModel: {query}")
-
-    # Retrieve the model from DynamoDB
-    retrieved_query = QueryModel.get_item(query.query_id)
-    if retrieved_query:
-        print(f"Retrieved QueryModel: {retrieved_query}")
-
-    # Add the query and response to the session's history
-    session.add_to_history(query.query_text, query.answer_text)
-    print(f"Session History: {session.get_history()}")
-
-if __name__ == "__main__":
-    example_usage()

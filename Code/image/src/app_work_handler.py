@@ -56,7 +56,7 @@ def main():
 
     # Simulate an initial query and session for local testing
     query_item_1 = QueryModel(
-        query_text="How to make a pancake?",
+        query_text="How to make rice and chicken in the game?",
         session_id="default_session"  # Ensure to use an existing session_id or create one
     )
     
@@ -69,7 +69,7 @@ def main():
 
     # Simulate the second query (continuing the conversation)
     query_item_2 = QueryModel(
-        query_text="Okay, I got the flour, what's next?",
+        query_text="Okay, I boild the water, what's next?",
         session_id="default_session"  # Same session_id for continuation
     )
     
@@ -89,7 +89,7 @@ def main():
 
     # Returning to pancakes
     query_item_4 = QueryModel(
-        query_text="Cool! Back to pancakes, what's after mixing?",
+        query_text="Cool! What's after draining the chicken?",
         session_id="default_session"  # Same session_id for continuity
     )
     

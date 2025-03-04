@@ -1,4 +1,14 @@
+//Populate the database if new files are added
 python populate_database.py --reset
+
+//Build the docker image
 docker build --platform linux/amd64 -t aws_rag_app .
+
+//Run Code
 docker run --rm -it --entrypoint python --env-file .env aws_rag_app app_work_handler.py
+
+//Run Locally
+docker run --rm -p 8000:8000 --entrypoint python --env-file .env aws_rag_app app_api_handler.py
+
+//Deploy it to the AWS
 cdk deploy
