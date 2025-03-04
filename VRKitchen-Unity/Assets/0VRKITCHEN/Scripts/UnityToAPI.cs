@@ -36,7 +36,7 @@ public class UnityToAPI : MonoBehaviour
     }
 
     // Coroutine to submit the query
-    private IEnumerator SubmitQueryCoroutine(string queryText)
+    public IEnumerator SubmitQueryCoroutine(string queryText)
     {
         QueryData queryData = new QueryData { query_text = queryText };
         string jsonData = JsonUtility.ToJson(queryData);
