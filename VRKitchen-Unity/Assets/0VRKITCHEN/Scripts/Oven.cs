@@ -5,22 +5,23 @@ public class OvenInteraction : MonoBehaviour
     [Header("Button Reference")]
     public Transform buttonTransform; // Assign the button (child cube) in the Inspector
 
+    [Header("API Reference")]
+    public UnityToAPI apiScript; // Reference to the UnityToAPI script
+
     private bool isOvenOpen = false; // Track oven state
-    private UnityToAPI apiScript; // Reference to API script
 
     private void Start()
     {
-        //// Find UnityToAPI script in the scene
-        //apiScript = FindObjectOfType<UnityToAPI>();
-        //if (apiScript == null)
-        //{
-        //    Debug.LogError("UnityToAPI script not found in the scene!");
-        //}
+        // Validate references
+        if (buttonTransform == null)
+        {
+            Debug.LogError("Button Transform is not assigned in the Inspector!");
+        }
 
-        //if (buttonTransform == null)
-        //{
-        //    Debug.LogError("Button Transform is not assigned in the Inspector!");
-        //}
+        if (apiScript == null)
+        {
+            Debug.LogError("UnityToAPI script is not assigned in the Inspector!");
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -42,15 +43,27 @@ public class OvenInteraction : MonoBehaviour
     {
         isOvenOpen = !isOvenOpen; // Toggle state
 
-        string query = isOvenOpen ? "oven is open" : "oven is closed";
+        // Only send a query if the oven is opened
+        if (isOvenOpen)
+        {
+            string query = "Stove opened, what's the next step in the game?";
 
-        //// Send query to the API
-        //if (apiScript != null)
-        //{
-        //    apiScript.queryText = query;
-        //    apiScript.SubmitQuery();
-        //}
+            // Send query to the API
+            if (apiScript != null)
+            {
+                apiScript.queryText = query; // Set the query text
+                apiScript.SubmitQuery(); // Submit the query
+            }
+            else
+            {
+                Debug.LogError("UnityToAPI script is not assigned!");
+            }
 
-        Debug.Log($"Oven state changed: {query}");
+            Debug.Log($"Oven state changed: {query}");
+        }
+        else
+        {
+            Debug.Log("Oven closed. No query sent.");
+        }
     }
 }
