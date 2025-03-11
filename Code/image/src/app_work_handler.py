@@ -65,17 +65,25 @@ def main():
     
     # Invoke RAG with the first query and session
     response_1 = invoke_rag(query_item_1, session_1)
-    print(f"Received: {response_1}")
+    print(f"Received: {response_1.query_text}")
+    
+    # Directly print answer with newlines (no reordering)
+    print(f"Answer Text:\n{response_1.answer_text}")
+    print(f"Sources: {response_1.sources}")
 
     # Simulate the second query (continuing the conversation)
     query_item_2 = QueryModel(
-        query_text="Okay, I boild the water, what's next?",
+        query_text="Okay, I boiled the water, what's next in the game?",
         session_id="default_session"  # Same session_id for continuation
     )
     
     # Invoke RAG with the second query and session
     response_2 = invoke_rag(query_item_2, session_1)
-    print(f"Received: {response_2}")
+    print(f"Received: {response_2.query_text}")
+    
+    # Directly print answer with newlines (no reordering)
+    print(f"Answer Text:\n{response_2.answer_text}")
+    print(f"Sources: {response_2.sources}")
 
     # Simulate a topic switch (new question, but same session)
     query_item_3 = QueryModel(
@@ -85,18 +93,23 @@ def main():
     
     # Invoke RAG with the third query and session
     response_3 = invoke_rag(query_item_3, session_1)
-    print(f"Received: {response_3}")
+    print(f"Received: {response_3.query_text}")
+    print(f"Answer Text:\n{response_3.answer_text}")
+    print(f"Sources: {response_3.sources}")
 
     # Returning to pancakes
     query_item_4 = QueryModel(
-        query_text="Cool! What's after draining the chicken?",
+        query_text="Cool! What's after draining the chicken in the game?",
         session_id="default_session"  # Same session_id for continuity
     )
     
     # Invoke RAG with the fourth query and session
     response_4 = invoke_rag(query_item_4, session_1)
-    print(f"Received: {response_4}")
+    print(f"Received: {response_4.query_text}")
+    print(f"Answer Text:\n{response_4.answer_text}")
+    print(f"Sources: {response_4.sources}")
 
 if __name__ == "__main__":
     # For local testing
     main()
+

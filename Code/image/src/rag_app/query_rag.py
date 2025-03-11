@@ -53,6 +53,11 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
     # Collect sources from the documents used in the context
     sources = [doc.metadata.get("id", None) for doc, _ in results]
 
+    # **Modify the response formatting if "in the game" is detected**
+    if "in the game" in query_text.lower():
+        # Extract just the steps (assumes each step is a numbered list)
+        response_text = "\n".join([line for line in response_text.split("\n") if line.strip().startswith(tuple("1234567890"))])
+
     # Update the session with the new query and response
     session.add_to_history(query_text, response_text)
 
