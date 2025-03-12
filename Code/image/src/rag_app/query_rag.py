@@ -4,6 +4,7 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_aws import ChatBedrock
 from .get_chroma_db import get_chroma_db
 from .session_model import SessionModel
+from query_model import QueryModel
 
 # The template for the AI assistant's prompt
 PROMPT_TEMPLATE = """
@@ -60,6 +61,15 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
 
     # Update the session with the new query and response
     session.add_to_history(query_text, response_text)
+
+    query_item = QueryModel(
+        query_text=query_text,
+        answer_text=response_text,
+        sources=sources,
+        session_id=session.session_id,
+        is_complete=True
+    )
+    query_item.put_item()
 
     # Return the query response
     return QueryResponse(
