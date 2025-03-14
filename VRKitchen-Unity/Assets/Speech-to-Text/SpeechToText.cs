@@ -14,6 +14,9 @@ public class SpeechRecognitionTest : MonoBehaviour
     [SerializeField] private TextMeshProUGUI apiResponseText; // API-generated answer
     [SerializeField] private TextToSpeech tts; // Reference to TextToSpeech script
 
+    [SerializeField] private TextMeshPro planeText; // Reference to the TextMeshPro component on the textPlane
+
+
 
 
     private AudioClip clip;
@@ -109,7 +112,7 @@ public class SpeechRecognitionTest : MonoBehaviour
         recognizedText.color = Color.red;
         recognizedText.text = "Speech recognition unavailable!";
     }
-    private string sessionId = "user_123"; // Default session ID, can be dynamically generated or user-specific
+    //private string sessionId = "user_123"; // Default session ID, can be dynamically generated or user-specific
 
     private IEnumerator SendQueryToAPI(string transcribedText)
     {
@@ -124,6 +127,7 @@ public class SpeechRecognitionTest : MonoBehaviour
             query_text = transcribedText,
             session_id = "user_123" // Optional: If your API uses session_id for memory
         };
+
         string jsonData = JsonUtility.ToJson(data);
 
         using (UnityWebRequest request = new UnityWebRequest(queryUrl, "POST"))
@@ -140,9 +144,15 @@ public class SpeechRecognitionTest : MonoBehaviour
                 // Parse the response
                 var result = JsonUtility.FromJson<APIResponse>(request.downloadHandler.text);
 
+                // Display the response on the plane using TextMeshPro
+                if (planeText != null)
+                {
+                    planeText.text = result.response_text; // Update the text on the plane
+                }
+
                 // Display the response
                 apiResponseText.color = Color.green;
-                apiResponseText.text = "Answer: " + result.response_text;
+                //apiResponseText.text = "Answer: " + result.response_text;
 
                 // Use Text-to-Speech to speak the response
                 tts.Speak(result.response_text);
