@@ -134,6 +134,6 @@ public class UnityToAPI : MonoBehaviour
     public class QueryResponseData
     {
         public bool is_complete; // Whether the query is complete
-        public string answer_text; // The response to the query
-    }
+        public string answer_text; // The response to theï¿½query
+    }
 }
