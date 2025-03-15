@@ -5,7 +5,7 @@ public class OvenController : MonoBehaviour
 {
     //public GameObject heatingArea; // Assign the heating area GameObject
     public bool isOvenOn = false;
-
+    
 
    
     public void ToggleOven()
@@ -15,13 +15,13 @@ public class OvenController : MonoBehaviour
 
         if (isOvenOn)
         {
-            Debug.Log("Oven is ON. Heating objects...");
+            Debug.Log("Oven is ON. Heating objects...");//PROMPT ATILCAK YER
             
         }
         else
         {
-            Debug.Log("Oven is OFF.");
-            
+            Debug.Log("Oven is OFF.");//PROMPT ATILCAK YER
+
         }
     }
 

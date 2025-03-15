@@ -12,7 +12,7 @@ public class OvenButton : MonoBehaviour
     interactable = GetComponent<XRSimpleInteractable>();
     if (interactable != null)
     {
-        interactable.selectEntered.AddListener(OnButtonPressed);
+        interactable.hoverEntered.AddListener(OnButtonTouched);
         Debug.Log("Listener added to button.");
     }
     else
@@ -22,7 +22,7 @@ public class OvenButton : MonoBehaviour
 }
    
 
-    private void OnButtonPressed(SelectEnterEventArgs args)
+    private void OnButtonTouched(HoverEnterEventArgs args)
     {
         Debug.Log("aaaaaa");
         if (ovenController != null)
