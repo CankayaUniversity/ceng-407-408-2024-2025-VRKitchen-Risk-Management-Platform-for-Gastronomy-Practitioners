@@ -16,14 +16,14 @@ public class OvenController : MonoBehaviour
         if (isOvenOn)
         {
             Debug.Log("Oven is ON. Heating objects...");//PROMPT ATILCAK YER
-            toAPI.queryText = "oven is open";
+            toAPI.queryText = "Stove is on, what's the next step in the game? Give me one step.";
             toAPI.SubmitQuery();
         }
         else
         {
             Debug.Log("Oven is OFF.");//PROMPT ATILCAK YER
-            toAPI.queryText = "oven is closed";
-            toAPI.SubmitQuery();
+            toAPI.queryText = "Stove is off, what's the next step in the game? ";
+            //toAPI.SubmitQuery();
 
         }
     }
