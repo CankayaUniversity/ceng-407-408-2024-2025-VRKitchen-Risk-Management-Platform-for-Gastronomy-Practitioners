@@ -21,18 +21,10 @@ public class UnityToAPI : MonoBehaviour
     [ContextMenu("Submit Query")] // Adds a right-click option in the Inspector
     public void SubmitQuery()
     {
-        if (!string.IsNullOrEmpty(queryText))
-        {
+        
             StartCoroutine(SubmitQueryCoroutine(queryText));
-        }
-        else
-        {
-            Debug.LogWarning("Query text is empty! Please enter a question in the Inspector.");
-            if (displayText != null)
-            {
-                displayText.text = "Please enter a question in the Inspector.";
-            }
-        }
+        
+       
     }
 
     // Coroutine to submit the query
