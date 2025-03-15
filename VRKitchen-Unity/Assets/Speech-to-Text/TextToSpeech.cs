@@ -7,7 +7,7 @@ using Amazon.Polly.Model;
 using Amazon.Runtime;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI; // Required for Button
+using UnityEngine.UI; 
 
 public class TextToSpeech : MonoBehaviour
 {

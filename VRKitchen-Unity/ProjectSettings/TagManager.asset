@@ -8,6 +8,7 @@ TagManager:
   - Knife
   - Bread
   - Cucumber
+  - RightController
   layers:
   - Default
   - TransparentFX

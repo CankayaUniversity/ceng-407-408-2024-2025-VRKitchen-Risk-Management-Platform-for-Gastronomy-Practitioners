@@ -13,7 +13,7 @@ public class UnityToAPI : MonoBehaviour
     public string queryText; // The question to submit
 
     [Header("UI Elements")]
-    public TMP_Text displayText; // UI Text component to display results
+    public TextMeshPro planeText; // Reference to the TextMeshPro component on the textPlane
 
     private string sessionId; // To maintain context between queries
 
@@ -21,10 +21,15 @@ public class UnityToAPI : MonoBehaviour
     [ContextMenu("Submit Query")] // Adds a right-click option in the Inspector
     public void SubmitQuery()
     {
-        
+        if (!string.IsNullOrEmpty(queryText))
+        {
             StartCoroutine(SubmitQueryCoroutine(queryText));
-        
-       
+        }
+        else
+        {
+            Debug.LogWarning("Query text is empty! Please enter a question in the Inspector.");
+
+        }
     }
 
     // Coroutine to submit the query
@@ -55,12 +60,21 @@ public class UnityToAPI : MonoBehaviour
             // Update the session_id for future queries
             sessionId = response.session_id;
 
-            // Display the response
-            displayText.text = $"Response: {response.response_text}\nSources: {string.Join(", ", response.sources)}";
+            // Display the response on the TextMeshPro component (e.g., on a 3D plane)
+            if (planeText != null)
+            {
+                planeText.text = response.response_text; // Update the text on the plane
+            }
         }
         else
         {
-            displayText.text = "Failed to submit query: " + request.error;
+            string errorMessage = "Failed to submit query: " + request.error;
+
+            // Display the error on the TextMeshPro component (e.g., on a 3D plane)
+            if (planeText != null)
+            {
+                planeText.text = errorMessage;
+            }
         }
     }
 
