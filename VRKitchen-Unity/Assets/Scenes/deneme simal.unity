@@ -5540,8 +5540,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1065747219478192465, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
+      propertyPath: planeText
+      value: 
+      objectReference: {fileID: 1782524807}
+    - target: {fileID: 1065747219478192465, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
       propertyPath: queryText
-      value: '"How to make rice and chicken in the game?"'
+      value: '"How to make steak and fries in the game?"'
       objectReference: {fileID: 0}
     - target: {fileID: 3399871000792488247, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
       propertyPath: m_AnchoredPosition.x
