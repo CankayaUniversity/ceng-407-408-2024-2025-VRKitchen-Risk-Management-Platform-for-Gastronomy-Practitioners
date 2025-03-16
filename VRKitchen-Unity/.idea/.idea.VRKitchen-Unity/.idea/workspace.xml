@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5acc07fd-79b8-43d9-8167-53344560c475" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/UnityToAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/UnityToAPI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/unity mert.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/unity mert.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +14,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Shaders/Particles/ParticlesLit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -96,6 +98,9 @@
       <workItem from="1742073355539" duration="325000" />
       <workItem from="1742073786820" duration="76000" />
       <workItem from="1742075220647" duration="6000" />
+      <workItem from="1742076213123" duration="587000" />
+      <workItem from="1742137268167" duration="697000" />
+      <workItem from="1742137971265" duration="391000" />
     </task>
     <servers />
   </component>
