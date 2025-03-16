@@ -17,6 +17,9 @@ failure, and allergic reactions. By immersing students in a safe but realistic v
 and mitigate risks efficiently. The project will focus on creating scenarios that can be integrated into the curriculum for culinary students, emphasizing
 both safety and the importance of professional standards in risk management.
 
+## Project Webpage
+You can visit the project webpage directly by clicking [here](https://isinsukaragooz.wixsite.com/vrkitchen).
+
 ## Team Members
 
 | Team Members  | Student Numbers | GitHub |
