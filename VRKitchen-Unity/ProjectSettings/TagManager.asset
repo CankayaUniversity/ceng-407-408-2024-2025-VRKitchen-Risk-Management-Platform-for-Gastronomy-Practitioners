@@ -8,6 +8,8 @@ TagManager:
   - Knife
   - Bread
   - Cucumber
+  - Salt
+  - BlackPepper
   layers:
   - Default
   - TransparentFX

@@ -5,23 +5,26 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using Random = UnityEngine.Random;
 
-public class SaltShaker : MonoBehaviour
+public class SeasoningShaker : MonoBehaviour
 {
-    [SerializeField] private GameObject saltPrefab;
+    [SerializeField] private GameObject seasoningPrefab;
     [SerializeField] private Transform sprinklePoint;
     [SerializeField] private int poolSize = 10;
-    private Queue<GameObject> saltPool = new Queue<GameObject>();
+    private Queue<GameObject> seasoningPool = new Queue<GameObject>();
     
+    [SerializeField] private float sprinkleRate = 0.1f;
     private bool isSprinkling = false;
     [SerializeField] private float sprinkleThreshold = -0.7f;
+
+    private float nextSprinkleTime = 0f;
 
     private void Start()
     {
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject salt = Instantiate(saltPrefab);
-            salt.SetActive(false);
-            saltPool.Enqueue(salt);
+            GameObject seasoning = Instantiate(seasoningPrefab);
+            seasoning.SetActive(false);
+            seasoningPool.Enqueue(seasoning);
         }
     }
 
@@ -29,34 +32,36 @@ public class SaltShaker : MonoBehaviour
     {
         if (GetComponent<XRGrabInteractable>().isSelected)
         {
-            // Eğer tuzluk baş aşağıysa tuz dökülmeye başlasın
-            if (transform.up.y < sprinkleThreshold && !isSprinkling)
+            if (transform.up.y < sprinkleThreshold) 
             {
                 isSprinkling = true;
-                InvokeRepeating("SprinkleSalt", 0f, 0.1f);
             }
-            else if (transform.up.y >= sprinkleThreshold && isSprinkling)
+            else
             {
                 isSprinkling = false;
-                CancelInvoke("SprinkleSalt");
+            }
+
+            if (isSprinkling && Time.time >= nextSprinkleTime) // Sprinkle based on time
+            {
+                nextSprinkleTime = Time.time + sprinkleRate;
+                SprinkleSalt();
             }
         }
         else
         {
             isSprinkling = false;
-            CancelInvoke("SprinkleSalt");
         }
     }
     
     private void SprinkleSalt()
     {
-        if (saltPool.Count > 0)
+        if (seasoningPool.Count > 0)
         {
-            GameObject salt = saltPool.Dequeue();
+            GameObject salt = seasoningPool.Dequeue();
             salt.transform.position = sprinklePoint.position + Random.insideUnitSphere * 0.05f;
             salt.SetActive(true);
             
-            Debug.Log($"Salt sprinkled.");
+            //Debug.Log($"Salt sprinkled.");
             
             Rigidbody rb = salt.GetComponent<Rigidbody>();
             rb.velocity = new Vector3(Random.Range(-0.2f, 0.2f), -1f, Random.Range(-0.2f, 0.2f));
@@ -66,10 +71,10 @@ public class SaltShaker : MonoBehaviour
         
     }
     
-    IEnumerator ReturnSaltToPool(GameObject salt, float time)
+    IEnumerator ReturnSaltToPool(GameObject seasoning, float time)
     {
         yield return new WaitForSeconds(time);
-        salt.SetActive(false);
-        saltPool.Enqueue(salt);
+        seasoning.SetActive(false);
+        seasoningPool.Enqueue(seasoning);
     }
 }
