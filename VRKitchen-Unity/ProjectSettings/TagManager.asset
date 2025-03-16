@@ -9,6 +9,7 @@ TagManager:
   - Bread
   - Cucumber
   - RightController
+  - Pan
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - NavMesh
   - BackgroundImage
   - DistantHotspot
-  - 
+  - Pan
   - Sliceable
   - Character
   - CharacterOutline
