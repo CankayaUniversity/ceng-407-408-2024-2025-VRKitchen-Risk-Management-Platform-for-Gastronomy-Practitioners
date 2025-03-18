@@ -59,7 +59,7 @@ public class HeatZone : MonoBehaviour
             Pan pan = obj.GetComponent<Pan>();
             if (pan != null)
             {
-                pan.Cool(10);
+               // pan.Cool(10);
             }
         }
     }

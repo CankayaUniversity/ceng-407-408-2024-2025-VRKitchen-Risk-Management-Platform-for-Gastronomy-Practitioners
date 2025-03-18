@@ -50,35 +50,35 @@ public class OvenController : MonoBehaviour
 
     }
 
-    public void HeatObject(GameObject obj)
-    {
-        if (obj != null && !heatedObjects.Contains(obj))
-        {
-            Debug.Log("Heating object: " + obj.name);
-            heatedObjects.Add(obj);
+    //public void HeatObject(GameObject obj)
+    //{
+    //    if (obj != null && !heatedObjects.Contains(obj))
+    //    {
+    //        Debug.Log("Heating object: " + obj.name);
+    //        heatedObjects.Add(obj);
 
-            Pan pan = obj.GetComponent<Pan>();
-            if (pan != null)
-            {
-                pan.Heat(heatingTemperature);
-            }
-        }
-    }
+    //        Pan pan = obj.GetComponent<Pan>();
+    //        if (pan != null)
+    //        {
+    //            pan.Heat(heatingTemperature);
+    //        }
+    //    }
+    //}
 
-    public void StopHeatingObject(GameObject obj)
-    {
-        if (obj != null && heatedObjects.Contains(obj))
-        {
-            Debug.Log("Stopped heating object: " + obj.name);
-            heatedObjects.Remove(obj);
+    //public void StopHeatingObject(GameObject obj)
+    //{
+    //    if (obj != null && heatedObjects.Contains(obj))
+    //    {
+    //        Debug.Log("Stopped heating object: " + obj.name);
+    //        heatedObjects.Remove(obj);
 
-            Pan pan = obj.GetComponent<Pan>();
-            if (pan != null)
-            {
-                pan.Cool(heatingTemperature);
-            }
-        }
-    }
+    //        Pan pan = obj.GetComponent<Pan>();
+    //        if (pan != null)
+    //        {
+    //            pan.Cool(heatingTemperature);
+    //        }
+    //    }
+    //}
 
 
 }

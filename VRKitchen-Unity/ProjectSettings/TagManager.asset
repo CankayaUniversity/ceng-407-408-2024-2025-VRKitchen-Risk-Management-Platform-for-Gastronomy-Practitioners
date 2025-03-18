@@ -10,6 +10,8 @@ TagManager:
   - Cucumber
   - RightController
   - Pan
+  - Food
+  - PanTop
   layers:
   - Default
   - TransparentFX
