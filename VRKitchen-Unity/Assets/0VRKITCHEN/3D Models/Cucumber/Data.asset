@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabName: Cucumber
   temperature: 0
-  spawnPoints: {fileID: 0}
+  spawnPoints: {fileID: 2100000, guid: f14e3fd80b7725445a2bdeedc5af3168, type: 2}

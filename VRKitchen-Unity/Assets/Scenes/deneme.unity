@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 36215120}
   - component: {fileID: 36215119}
   - component: {fileID: 36215118}
+  - component: {fileID: 36215124}
   m_Layer: 0
   m_Name: Cucumber (2)
   m_TagString: Food
@@ -430,6 +431,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36215116}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &36215124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36215116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5333f120f03a24caa43f8903663606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temperature: 0
+  cookedThreshold: 50
+  overcookedThreshold: 100
 --- !u!1 &63054406
 GameObject:
   m_ObjectHideFlags: 0
@@ -3073,6 +3089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3c360a1429b2f40871ea1ef810cafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  temperature: 10
   foodItems: []
   heatingTemperature: 10
 --- !u!114 &746351633
@@ -7461,6 +7478,7 @@ GameObject:
   - component: {fileID: 1478812510}
   - component: {fileID: 1478812509}
   - component: {fileID: 1478812508}
+  - component: {fileID: 1478812514}
   m_Layer: 0
   m_Name: Cucumber (1)
   m_TagString: Food
@@ -7753,6 +7771,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478812506}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1478812514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478812506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5333f120f03a24caa43f8903663606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temperature: 0
+  cookedThreshold: 50
+  overcookedThreshold: 100
 --- !u!1 &1487651007
 GameObject:
   m_ObjectHideFlags: 0
@@ -11075,6 +11108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3c360a1429b2f40871ea1ef810cafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  temperature: 10
   foodItems: []
   heatingTemperature: 10
 --- !u!1 &1978290755
@@ -13994,6 +14028,7 @@ GameObject:
   - component: {fileID: 2532776324028987669}
   - component: {fileID: 2848115608071456624}
   - component: {fileID: 276492911100722126}
+  - component: {fileID: 7046917000573253886}
   m_Layer: 0
   m_Name: Cucumber
   m_TagString: Food
@@ -25529,6 +25564,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234999256154711976}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &7046917000573253886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234999256154711976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5333f120f03a24caa43f8903663606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temperature: 0
+  cookedThreshold: 50
+  overcookedThreshold: 100
 --- !u!33 &7053038930110097396
 MeshFilter:
   m_ObjectHideFlags: 0
