@@ -8,10 +8,8 @@ TagManager:
   - Knife
   - Bread
   - Cucumber
-  - RightController
-  - Pan
-  - Food
-  - PanTop
+  - Salt
+  - BlackPepper
   layers:
   - Default
   - TransparentFX
@@ -24,7 +22,7 @@ TagManager:
   - NavMesh
   - BackgroundImage
   - DistantHotspot
-  - Pan
+  - 
   - Sliceable
   - Character
   - CharacterOutline
