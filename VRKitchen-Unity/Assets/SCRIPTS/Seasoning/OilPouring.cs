@@ -1,24 +1,41 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OilPouring : MonoBehaviour
 {
-   [SerializeField] private GameObject oilPrefab; 
-    private ParticleSystem oilParticleSystem; 
-    [SerializeField] private Transform pourPoint; 
-    [SerializeField] private LayerMask dishLayer; 
-    [SerializeField] private float oilRate = 0.5f; 
+    [SerializeField] private GameObject oilPrefab; // Prefab containing the particle system
+    private ParticleSystem oilParticleSystem;
+    [SerializeField] private Transform pourPoint; // The point from which the oil is poured
+    [SerializeField] private LayerMask dishLayer; // Layer of dishes where oil should be detected
+    [SerializeField] private float oilRate = 0.5f; // Time interval between oil additions
 
     private bool isPouring = false;
+    private GameObject oilInstance;
 
     private void Start()
     {
-        oilParticleSystem = oilPrefab.GetComponentInChildren<ParticleSystem>();
-
-        if (oilParticleSystem == null)
+        // Instantiate the oil prefab
+        if (oilPrefab != null)
         {
-            Debug.LogError("No Particle System found in the Oil prefab!");
+            oilInstance = Instantiate(oilPrefab, pourPoint.position, Quaternion.identity);
+            oilParticleSystem = oilInstance.GetComponentInChildren<ParticleSystem>();
+
+            if (oilParticleSystem == null)
+            {
+                Debug.LogError("No Particle System found in the Oil prefab!");
+            }
+            else
+            {
+                oilParticleSystem.Stop(); // Ensure it's stopped at the start
+            }
+
+
+            oilInstance.transform.SetParent(pourPoint);
+            oilInstance.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("Oil prefab is not assigned!");
         }
     }
 
@@ -43,20 +60,28 @@ public class OilPouring : MonoBehaviour
     private void StartPouring()
     {
         isPouring = true;
-        if (oilParticleSystem != null)
+        if (oilInstance != null)
+        {
+            oilInstance.SetActive(true); // Make oil visible
+        }
+
+        if (oilParticleSystem != null && !oilParticleSystem.isPlaying)
         {
             oilParticleSystem.Play();
         }
+
         StartCoroutine(PourOil());
     }
 
     private void StopPouring()
     {
         isPouring = false;
-        if (oilParticleSystem != null)
+        if (oilParticleSystem != null && oilParticleSystem.isPlaying)
         {
             oilParticleSystem.Stop();
         }
+
+        StartCoroutine(DisableOilAfterParticles());
     }
 
     private IEnumerator PourOil()
@@ -69,11 +94,20 @@ public class OilPouring : MonoBehaviour
                 Dish dish = hit.collider.GetComponent<Dish>();
                 if (dish != null)
                 {
-                    dish.AddSeasoning("Oil", 1); 
+                    dish.AddSeasoning("Oil", 1);
                 }
             }
 
-            yield return new WaitForSeconds(oilRate); 
+            yield return new WaitForSeconds(oilRate);
+        }
+    }
+
+    private IEnumerator DisableOilAfterParticles()
+    {
+        yield return new WaitForSeconds(1f); // Small delay to allow particles to fade
+        if (!isPouring)
+        {
+            oilInstance.SetActive(false); // Hide oil completely
         }
     }
 }
