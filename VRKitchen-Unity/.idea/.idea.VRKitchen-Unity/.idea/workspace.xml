@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5acc07fd-79b8-43d9-8167-53344560c475" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Salt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Salt.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SCRIPTS/SaltShaker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SCRIPTS/SaltShaker.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Seasoning Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Seasoning Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +109,7 @@
       <workItem from="1742143280455" duration="109000" />
       <workItem from="1742143767472" duration="822000" />
       <workItem from="1742146379446" duration="79000" />
+      <workItem from="1742387629898" duration="586000" />
     </task>
     <servers />
   </component>
