@@ -43,7 +43,7 @@ def main():
             temperature = 0.5,
             max_tokens = 1000,
             messages = [
-                {"role": "system", "content": "You are a helpful travel agent"},
+                {"role": "system", "content": "You are a helpful kitchen agent"},
                 {"role": "user", "content": text}
             ],
             extra_body = extension_config
