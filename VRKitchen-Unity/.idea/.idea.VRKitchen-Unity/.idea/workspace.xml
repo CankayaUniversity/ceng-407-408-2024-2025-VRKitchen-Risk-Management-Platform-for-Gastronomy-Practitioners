@@ -34,7 +34,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;fire-risk-management&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;asıltuna&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -113,6 +113,8 @@
       <workItem from="1742387629898" duration="586000" />
       <workItem from="1742403224401" duration="2114000" />
       <workItem from="1742406738432" duration="804000" />
+      <workItem from="1742676076390" duration="27000" />
+      <workItem from="1742676140031" duration="59000" />
     </task>
     <servers />
   </component>
