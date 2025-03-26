@@ -5,7 +5,7 @@ public class FireExtinguisher : MonoBehaviour
 {
     public ParticleSystem sprayEffect; // Assign the spray particle system
     public XRSimpleInteractable button; // Assign the button interactable
-
+    public OvenController ovenController;
     private bool isSpraying = false;
 
     private void Start()
@@ -52,5 +52,6 @@ public class FireExtinguisher : MonoBehaviour
     {
         Debug.Log("Fire extinguished: " + fire.name);
         fire.SetActive(false); // Disable the fire
+        ovenController.isOvenOn = false;
     }
 }

@@ -18,7 +18,7 @@ public class FireController : SingletonBehaviour<FireController>
 
     public List<FireSource> fireSources = new List<FireSource>(); // List of heating zones
     public float checkInterval = 5f; // Time interval for fire check
-
+    public OvenController ovenController;
     private void Start()
     {
         StartCoroutine(CheckForFireRisk());
@@ -65,6 +65,7 @@ public class FireController : SingletonBehaviour<FireController>
         {
             source.activeFire = Instantiate(source.firePrefab, source.spawnPoint.position, Quaternion.identity);
             Debug.Log($"🔥 Fire instantiated at {source.spawnPoint.name}");
+            
         }
     }
 

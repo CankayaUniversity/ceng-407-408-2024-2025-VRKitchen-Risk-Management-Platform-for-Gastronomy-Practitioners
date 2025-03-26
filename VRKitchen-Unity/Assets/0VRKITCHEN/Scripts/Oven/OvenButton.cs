@@ -3,7 +3,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class OvenButton : MonoBehaviour
 {
-    public OvenController ovenController; // Assign the OvenController script
+    public OvenController ovenController;
 
     private XRSimpleInteractable interactable;
 
