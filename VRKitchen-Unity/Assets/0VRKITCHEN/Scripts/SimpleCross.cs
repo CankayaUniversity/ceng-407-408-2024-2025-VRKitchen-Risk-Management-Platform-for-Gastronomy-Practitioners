@@ -6,11 +6,16 @@ public class SimpleCross : MonoBehaviour
 {
     public List<string> touchingItemName = new List<string>();
     public bool isContamination;
-    //[SerializeField] private QuestSystem questSystem;
+
+    public UnityToAPI toAPI;
+
+    private bool hasSentContaminationQuery = false;
+
     private void Update()
     {
         CheckContamination();
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         string itemName = collision.gameObject.name;
@@ -18,24 +23,27 @@ public class SimpleCross : MonoBehaviour
         {
             touchingItemName.Add(itemName);
         }
-        if (isContamination && itemName!="Meat") 
-        {
-            //RAGA BURDA CONTAMÝNATÝON VAR DÝCEK
-            Debug.Log("contamination var kardeþ");
-        }
     }
+
     void CheckContamination()
     {
-        if (!isContamination && touchingItemName.Contains("Meat"))
+        // Cross-contamination = touching Meat and another object
+        if (!isContamination && touchingItemName.Contains("Meat") && touchingItemName.Count > 1)
         {
-            isContamination=true;
-            
+            isContamination = true;
+            Debug.Log("Cross Contamination Detected!");
+
+            if (!hasSentContaminationQuery && toAPI != null)
+            {
+                toAPI.queryText = "Cross-contamination occurred in the game. What are the next safety steps to take?";
+                toAPI.SubmitQuery();
+                hasSentContaminationQuery = true;
+            }
         }
-       else if (touchingItemName.Count == 0)
+        else if (touchingItemName.Count == 0)
         {
             isContamination = false;
+            hasSentContaminationQuery = false;
         }
-
     }
 }
-
