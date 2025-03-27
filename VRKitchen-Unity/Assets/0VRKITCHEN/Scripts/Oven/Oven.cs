@@ -17,6 +17,7 @@ public class OvenController : MonoBehaviour
         {
             Debug.Log("Oven is ON");
             toAPI.queryText = "Stove is turned on, what are the next steps in the game while making the dish?";
+            Debug.Log("Query Submitted");
             toAPI.SubmitQuery();
 
             if (burnerFireParticles != null)

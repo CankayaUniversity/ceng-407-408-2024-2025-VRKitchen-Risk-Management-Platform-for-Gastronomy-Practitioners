@@ -71,6 +71,7 @@ public class FireController : SingletonBehaviour<FireController>
             // 🔥 Send query to API
             if (toAPI != null)
             {
+                Debug.Log($"🔥 Query submitted!");
                 toAPI.queryText = "A general fire has started in the game. What are the steps to handle this situation?";
                 toAPI.SubmitQuery();
             }
