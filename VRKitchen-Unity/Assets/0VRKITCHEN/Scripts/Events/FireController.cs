@@ -16,8 +16,10 @@ public class FireController : SingletonBehaviour<FireController>
         [HideInInspector] public GameObject activeFire; // Stores fire object
     }
 
+    public UnityToAPI toAPI; // 🔗 API reference for sending queries
     public List<FireSource> fireSources = new List<FireSource>(); // List of heating zones
     public float checkInterval = 5f; // Time interval for fire check
+
     public OvenController ovenController;
     private void Start()
     {
@@ -65,6 +67,13 @@ public class FireController : SingletonBehaviour<FireController>
         {
             source.activeFire = Instantiate(source.firePrefab, source.spawnPoint.position, Quaternion.identity);
             Debug.Log($"🔥 Fire instantiated at {source.spawnPoint.name}");
+
+            // 🔥 Send query to API
+            if (toAPI != null)
+            {
+                toAPI.queryText = "A general fire has started in the game. What are the steps to handle this situation?";
+                toAPI.SubmitQuery();
+            }
             
         }
     }

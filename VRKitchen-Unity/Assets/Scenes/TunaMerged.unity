@@ -1766,9 +1766,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec28345f9782cd40856315f6c602ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOvenOn: 0
+  isOvenOn: 1
   toAPI: {fileID: 503239044}
-  burnerFireParticles: {fileID: 0}
+  burnerFireParticles: {fileID: 595673065}
 --- !u!65 &246499106
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20111,6 +20111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7908a1ae216f444b9aaa85538d96deee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toAPI: {fileID: 0}
   fireSources:
   - spawnPoint: {fileID: 688658283}
     firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
