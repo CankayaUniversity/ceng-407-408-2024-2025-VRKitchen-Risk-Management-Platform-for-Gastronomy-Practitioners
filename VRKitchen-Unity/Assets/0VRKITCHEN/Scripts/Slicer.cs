@@ -10,51 +10,71 @@ public class Slicer : MonoBehaviour
     public bool isTouched;
 
     private void Update()
-    {     
-        if (isTouched == true)
+    {
+        if (isTouched)
         {
             isTouched = false;
-            Collider[] objectsToBeSliced = Physics.OverlapBox(transform.position, new Vector3(1, 0.1f, 0.1f), transform.rotation, sliceMask);
+
+            // OverlapBox ile kesilecek objeleri bul
+            Collider[] objectsToBeSliced = Physics.OverlapBox(
+                transform.position,
+                new Vector3(0.5f, 0.5f, 0.5f), // Genişliği arttırıldı
+                transform.rotation,
+                sliceMask
+            );
+
             foreach (Collider objectToBeSliced in objectsToBeSliced)
             {
-              
+                // Slice işlemini dene
                 SlicedHull slicedObject = SliceObject(objectToBeSliced.gameObject, MaterialAfterSlice);
 
+                if (slicedObject == null)
+                {
+                    Debug.LogWarning("Slice başarısız: " + objectToBeSliced.name);
+                    continue; // Bu objeyi atla
+                }
+
+                // Yeni üst ve alt parçaları oluştur
                 GameObject upperHullGameobject = slicedObject.CreateUpperHull(objectToBeSliced.gameObject, MaterialAfterSlice);
                 GameObject lowerHullGameobject = slicedObject.CreateLowerHull(objectToBeSliced.gameObject, MaterialAfterSlice);
 
-             
                 upperHullGameobject.transform.position = objectToBeSliced.transform.position;
                 lowerHullGameobject.transform.position = objectToBeSliced.transform.position;
-               
 
-                MakeItPhysical(upperHullGameobject, objectToBeSliced.gameObject.GetComponent<Rigidbody>().velocity);
-                MakeItPhysical(lowerHullGameobject, objectToBeSliced.gameObject.GetComponent<Rigidbody>().velocity);
+                // Orijinal objede rigidbody varsa velocity al, yoksa Vector3.zero
+                Rigidbody originalRb = objectToBeSliced.GetComponent<Rigidbody>();
+                Vector3 originalVelocity = originalRb != null ? originalRb.velocity : Vector3.zero;
 
+                // Fiziksel davranışları yeni parçalara uygula
+                MakeItPhysical(upperHullGameobject, originalVelocity);
+                MakeItPhysical(lowerHullGameobject, originalVelocity);
+
+                // Orijinal objeyi yok et
                 Destroy(objectToBeSliced.gameObject);
             }
         }
-
     }
+
     private void MakeItPhysical(GameObject obj, Vector3 _velocity)
     {
-        obj.AddComponent<MeshCollider>().convex = true;
-        obj.AddComponent<Rigidbody>();
-        obj.GetComponent<Rigidbody>().velocity = -_velocity;
-        obj.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Continuous;
-        obj.AddComponent<MeshCollider>();
-        obj.GetComponent<MeshCollider>().convex = true;
+        // MeshCollider ekle (eğer yoksa) ve convex olarak ayarla
+        MeshCollider meshCol;
+        if (!obj.TryGetComponent<MeshCollider>(out meshCol))
+        {
+            meshCol = obj.AddComponent<MeshCollider>();
+        }
+        meshCol.convex = true;
+
+        // Rigidbody ekle ve ayarlarını yap
+        Rigidbody rb = obj.AddComponent<Rigidbody>();
+        rb.velocity = -_velocity;
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+        // Gerekirse layer ayarla (kesilebilir objelerde tekrar kullanılabilsin diye)
         obj.layer = LayerMask.NameToLayer("Sliceable");
 
-        int randomNumberX = Random.Range(0,2);
-        int randomNumberY = Random.Range(0, 2);
-        int randomNumberZ = Random.Range(0, 2);
-
-        //obj.GetComponent<Rigidbody>().AddForce(3*new Vector3(randomNumberX,randomNumberY,randomNumberZ),ForceMode.Impulse);       
-
+        // rb.AddForce(3 * new Vector3(randomNumberX, randomNumberY, randomNumberZ), ForceMode.Impulse);
     }
-
-   
 
     private SlicedHull SliceObject(GameObject obj, Material crossSectionMaterial = null)
     {
