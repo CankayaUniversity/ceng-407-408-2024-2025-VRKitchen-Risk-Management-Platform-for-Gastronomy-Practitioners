@@ -1463,6 +1463,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6633499, y: 1.852503, z: 0.43462375}
   m_Center: {x: 4.389217, y: 0.9859728, z: -0.80592245}
+--- !u!198 &220869126 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8573730031201990558, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+  m_PrefabInstance: {fileID: 1905767461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &231139337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,7 +1910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toAPI: {fileID: 872344535}
-  burnerFireParticles: {fileID: 1141078037}
+  burnerFireParticles: {fileID: 220869126}
   activeZones: 0
 --- !u!65 &246499106
 BoxCollider:
@@ -3474,6 +3479,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoveFirePreset
       objectReference: {fileID: 0}
+    - target: {fileID: 8295591563862043295, guid: 86cf272c329017647a3b0c6c6edcff58, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4373,7 +4382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &821557799
 Transform:
   m_ObjectHideFlags: 0
@@ -20372,28 +20381,28 @@ MonoBehaviour:
     ovenController: {fileID: 246499105}
     heatZone: {fileID: 688658284}
     heatingTime: 0
-    maxHeatingTime: 100
+    maxHeatingTime: 15
     activeFire: {fileID: 0}
   - spawnPoint: {fileID: 1250802983}
     firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
     ovenController: {fileID: 246499105}
     heatZone: {fileID: 1250802984}
     heatingTime: 0
-    maxHeatingTime: 100
+    maxHeatingTime: 15
     activeFire: {fileID: 0}
   - spawnPoint: {fileID: 1613375689}
     firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
     ovenController: {fileID: 246499105}
     heatZone: {fileID: 1613375690}
     heatingTime: 0
-    maxHeatingTime: 100
+    maxHeatingTime: 15
     activeFire: {fileID: 0}
   - spawnPoint: {fileID: 691529786}
     firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
     ovenController: {fileID: 246499105}
     heatZone: {fileID: 691529787}
     heatingTime: 0
-    maxHeatingTime: 100
+    maxHeatingTime: 15
     activeFire: {fileID: 0}
   checkInterval: 5
   ovenController: {fileID: 0}
@@ -23013,6 +23022,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904255022}
   m_Mesh: {fileID: -9163618215148206792, guid: 5a3dbad1a1c36f14da994017b4562ecc, type: 3}
+--- !u!1001 &1905767461
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1133758819948754992, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184940874091666677, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184940874091666677, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -16.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184940874091666677, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184940874091666677, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184940874091666677, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184940874091666677, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184940874091666677, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184940874091666677, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184940874091666677, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184940874091666677, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+      propertyPath: m_Name
+      value: Fire
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
 --- !u!1 &1978290755
 GameObject:
   m_ObjectHideFlags: 0
@@ -41569,3 +41639,4 @@ SceneRoots:
   - {fileID: 2128897499}
   - {fileID: 237386738}
   - {fileID: 623260973}
+  - {fileID: 1905767461}

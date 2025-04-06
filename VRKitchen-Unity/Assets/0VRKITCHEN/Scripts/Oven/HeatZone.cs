@@ -3,9 +3,10 @@ using UnityEngine;
 public class HeatZone : MonoBehaviour
 {
     public OvenController ovenController;
+    private FireController.FireSource myFireSource; //  FireSource referansý
     private GameObject currentPan;
     private bool isZoneOn = false;
-    public FireController.FireSource linkedFireSource;
+
     public void ToggleZone()
     {
         isZoneOn = !isZoneOn;
@@ -18,9 +19,24 @@ public class HeatZone : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        //  Bu HeatZone’a baðlý olan FireSource’u bir kere bul ve sakla
+        foreach (var source in FireController.Instance.fireSources)
+        {
+            if (source.heatZone == this)
+            {
+                myFireSource = source;
+                break;
+            }
+        }
+    }
+
     private void Update()
     {
-        if (isZoneOn || linkedFireSource.activeFire != null)
+        bool fireIsActive = myFireSource != null && myFireSource.activeFire != null;
+
+        if ((isZoneOn || fireIsActive) && currentPan != null)
         {
             HeatObject(currentPan);
         }
