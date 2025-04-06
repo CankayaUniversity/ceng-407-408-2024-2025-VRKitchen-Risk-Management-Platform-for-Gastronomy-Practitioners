@@ -42,7 +42,7 @@ public class FireController : SingletonBehaviour<FireController>
             // Check if oven is ON
             if (source.ovenController != null && source.heatZone != null)
             {
-                if (source.ovenController.isOvenOn && source.heatZone.gameObject.activeSelf)
+                if (source.ovenController.activeZones!=0 && source.heatZone.gameObject.activeSelf)
                 {
                     source.heatingTime += checkInterval;
 
@@ -66,12 +66,12 @@ public class FireController : SingletonBehaviour<FireController>
         if (source.firePrefab != null && source.spawnPoint != null)
         {
             source.activeFire = Instantiate(source.firePrefab, source.spawnPoint.position, Quaternion.identity);
-            Debug.Log($"🔥 Fire instantiated at {source.spawnPoint.name}");
+            Debug.Log($" Fire instantiated at {source.spawnPoint.name}");
 
             // 🔥 Send query to API
             if (toAPI != null)
             {
-                Debug.Log($"🔥 Query submitted!");
+                Debug.Log($" Query submitted!");
                 toAPI.queryText = "A general fire has started in the game. What are the steps to handle this situation?";
                 toAPI.SubmitQuery();
             }
@@ -85,7 +85,7 @@ public class FireController : SingletonBehaviour<FireController>
         {
             Destroy(source.activeFire);
             source.activeFire = null;
-            Debug.Log("🚒 Fire extinguished!");
+            Debug.Log(" Fire extinguished!");
         }
     }
 }

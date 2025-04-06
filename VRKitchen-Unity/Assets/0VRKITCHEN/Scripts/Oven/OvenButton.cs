@@ -3,27 +3,21 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class OvenButton : MonoBehaviour
 {
-    public OvenController ovenController;
+    public HeatZone targetHeatZone; // Baðlý HeatZone
 
     private XRSimpleInteractable interactable;
 
-   private void Start()
-{
-    interactable = GetComponent<XRSimpleInteractable>();
-    
+    private void Start()
+    {
+        interactable = GetComponent<XRSimpleInteractable>();
         interactable.hoverEntered.AddListener(OnButtonTouched);
-       
-    
-}
-   
+    }
 
     private void OnButtonTouched(HoverEnterEventArgs args)
     {
-        
-        if (ovenController != null)
+        if (targetHeatZone != null)
         {
-            ovenController.ToggleOven();
+            targetHeatZone.ToggleZone(); // HeatZone'u aç/kapat
         }
     }
-    
 }

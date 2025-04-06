@@ -6,25 +6,22 @@ public class Pan : MonoBehaviour
     public float temperature = 10f;
     public List<GameObject> foodItems = new List<GameObject>(); // List of food items in the pan
     public float heatingTemperature = 10f; // Temperature increase per second
-   
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Food")) // Check if the object is food
+        if (collision.gameObject.CompareTag("Food")) // Check if the object is food
         {
-            Debug.Log("Food placed in pan: " + other.name);
-            //other.transform.SetParent(transform);
-            AddFood(other.gameObject);
+            Debug.Log("Food collided with pan: " + collision.gameObject.name);
+            AddFood(collision.gameObject);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.CompareTag("Food")) // Check if the object is food
+        if (collision.gameObject.CompareTag("Food")) // Check if the object is food
         {
-            Debug.Log("Food removed from pan: " + other.name);
-           // other.transform.SetParent(null);
-            RemoveFood(other.gameObject);
+            Debug.Log("Food exited pan collision: " + collision.gameObject.name);
+            RemoveFood(collision.gameObject);
         }
     }
 
@@ -44,8 +41,6 @@ public class Pan : MonoBehaviour
         }
     }
 
-   
-
     public void Heat(float amount)
     {
         temperature += amount * Time.deltaTime;
@@ -61,7 +56,4 @@ public class Pan : MonoBehaviour
             }
         }
     }
-
-
-    
 }

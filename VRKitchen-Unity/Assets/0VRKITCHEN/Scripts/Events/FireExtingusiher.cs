@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -51,7 +52,7 @@ public class FireExtinguisher : MonoBehaviour
     private void ExtinguishFire(GameObject fire)
     {
         Debug.Log("Fire extinguished: " + fire.name);
-        fire.SetActive(false); // Disable the fire
-        ovenController.isOvenOn = false;
+        Destroy(fire); 
+        
     }
 }
