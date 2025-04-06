@@ -1,13 +1,13 @@
 import os
 import re
+import time
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from openai import AzureOpenAI
 
-
+# Load env vars
 load_dotenv()
-
 azure_oai_endpoint = os.getenv("AZURE_OAI_ENDPOINT")
 azure_oai_key = os.getenv("AZURE_OAI_KEY")
 azure_oai_deployment = os.getenv("AZURE_OAI_DEPLOYMENT")
@@ -15,146 +15,139 @@ azure_search_endpoint = os.getenv("AZURE_SEARCH_ENDPOINT")
 azure_search_key = os.getenv("AZURE_SEARCH_KEY")
 azure_search_index = os.getenv("AZURE_SEARCH_INDEX")
 
-
-required_env_vars = {
-    "AZURE_OAI_ENDPOINT": azure_oai_endpoint,
-    "AZURE_OAI_KEY": azure_oai_key,
-    "AZURE_OAI_DEPLOYMENT": azure_oai_deployment,
-    "AZURE_SEARCH_ENDPOINT": azure_search_endpoint,
-    "AZURE_SEARCH_KEY": azure_search_key,
-    "AZURE_SEARCH_INDEX": azure_search_index,
-}
-
-for var, value in required_env_vars.items():
-    if not value:
-        print(f"Warning: {var} is not set!")
-
-
-app = FastAPI()
-
-client = AzureOpenAI(
+# OpenAI clients
+rag_client = AzureOpenAI(
     base_url=f"{azure_oai_endpoint}/openai/deployments/{azure_oai_deployment}/extensions",
     api_key=azure_oai_key,
     api_version="2023-09-01-preview"
 )
 
+chat_client = AzureOpenAI(
+    base_url=f"{azure_oai_endpoint}/openai/deployments/{azure_oai_deployment}",
+    api_key=azure_oai_key,
+    api_version="2023-09-01-preview"
+)
+
+# FastAPI app + in-memory tracking
+app = FastAPI()
 user_memory = {}
 
 class QueryRequest(BaseModel):
     user_id: str
     question: str
 
-class SelectRecipeRequest(BaseModel):
-    user_id: str
-    recipe_name: str
-    steps: list[str]
-
-class UpdateActionRequest(BaseModel):
-    user_id: str
-    action: str
-
 @app.get("/")
 async def root():
     return {"message": "VR Kitchen AI is running!"}
 
-@app.post("/select_recipe")
-async def select_recipe(request: SelectRecipeRequest):
-    user_memory[request.user_id] = {
-        "selected_recipe": request.recipe_name,
-        "steps": request.steps,
-        "current_step_index": 0,
-        "completed_steps": []
-    }
-    return {"message": f"Recipe '{request.recipe_name}' selected."}
-
-@app.post("/update_action")
-async def update_action(request: UpdateActionRequest):
-    memory = user_memory.get(request.user_id)
-    if not memory:
-        raise HTTPException(status_code=400, detail="No recipe selected for this user.")
-
-    current_index = memory["current_step_index"]
-    if current_index < len(memory["steps"]):
-        expected_step = memory["steps"][current_index]
-        if request.action.lower() in expected_step.lower():
-            memory["completed_steps"].append(expected_step)
-            memory["current_step_index"] += 1
-            return {"message": f"Step '{expected_step}' marked as completed."}
-        else:
-            return {"message": f"Received action: '{request.action}', but expected: '{expected_step}'"}
-    else:
-        return {"message": "All steps already completed."}
-
-@app.get("/next_step")
-async def get_next_step(user_id: str):
-    memory = user_memory.get(user_id)
-    if not memory:
-        raise HTTPException(status_code=400, detail="No recipe selected for this user.")
-    index = memory["current_step_index"]
-    if index < len(memory["steps"]):
-        return {"next_step": memory["steps"][index]}
-    return {"message": "All steps completed."}
-
 @app.post("/ask")
 async def ask_question(request: QueryRequest):
-    try:
-        memory = user_memory.get(request.user_id)
-        question_lower = request.question.lower()
+    user_id = request.user_id
+    question = request.question.strip()
+    question_lower = question.lower()
+    memory = user_memory.get(user_id)
 
-        if memory:
-            if "what now" in question_lower or "next step" in question_lower:
-                step_index = memory["current_step_index"]
-                if step_index < len(memory["steps"]):
-                    return {"response": f"Next step: {memory['steps'][step_index]}"}
-                else:
-                    return {"response": "You've completed all the steps!"}
+    # --- STEP VALIDATION FLOW ---
+    if memory and question_lower.endswith("what now?"):
+        current_index = memory["current_step_index"]
+        steps = memory["steps"]
 
-        extension_config = {
-            "dataSources": [{
-                "type": "AzureCognitiveSearch",
-                "parameters": {
-                    "endpoint": azure_search_endpoint,
-                    "key": azure_search_key,
-                    "indexName": azure_search_index,
-                }
-            }]
-        }
+        if current_index >= len(steps):
+            return {"response": "✅ You’ve completed all the steps. Great job!"}
 
-        response = client.chat.completions.create(
-            model=azure_oai_deployment,
-            temperature=0.5,
-            max_tokens=1000,
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are a helpful kitchen agent. When asked about a recipe, respond with numbered step-by-step instructions."
-                },
-                {"role": "user", "content": request.question}
-            ],
-            extra_body=extension_config
+        expected_step_raw = steps[current_index]
+        expected_step_clean = re.sub(r"\[.*?\]", "", expected_step_raw).strip()
+        next_step = steps[current_index + 1] if current_index + 1 < len(steps) else None
+        completed = memory["completed_steps"]
+
+        # GPT prompt for validation with improved logic
+        prompt = (
+            "You are a step-following assistant in a VR cooking game.\n"
+            "The player will report actions they have just completed.\n"
+            "Your job is to compare what they said with the expected step.\n\n"
+            "🧠 IMPORTANT:\n"
+            "- Treat the player's input as a completed action.\n"
+            "- Check whether it semantically matches the expected step.\n"
+            "- It's okay if the wording is different as long as the meaning is the same.\n"
+            "- NEVER invent or reword steps yourself.\n"
+            "- Only use the exact next step provided from memory if the player did the right thing.\n\n"
+            "🟢 If the player's action matches the expected step:\n"
+            "- Confirm it kindly (e.g. '✅ Great job!')\n"
+            "- Then say: 'Next step: <next step from memory>'\n\n"
+            "🔴 If the action does NOT match:\n"
+            "- Say something like: '❌ Not quite. You still need to: <expected step>'\n\n"
+            f"✅ Expected step:\n{expected_step_clean}\n"
+            f"{'👉 Next step:\n' + next_step if next_step else 'You’re finished after this!'}\n"
+            f"🗣️ Player said:\n{question}"
         )
 
-        content = response.choices[0].message.content
-        print("Response:\n", content)
+        gpt_response = chat_client.chat.completions.create(
+            model=azure_oai_deployment,
+            temperature=0,
+            max_tokens=300,
+            messages=[
+                {"role": "system", "content": "You are a VR cooking assistant. Only use memory. Never invent steps."},
+                {"role": "user", "content": prompt}
+            ]
+        )
 
-        numbered_steps = re.findall(r"\d+\.\s+(.*)", content)
-        if numbered_steps:
-            steps = [step.strip() for step in numbered_steps]
-        else:
-            steps = [line.strip("-. ").strip() for line in content.split("\n") if line.strip()]
+        message = gpt_response.choices[0].message.content.strip()
 
-        if len(steps) >= 2:
-            user_memory[request.user_id] = {
-                "selected_recipe": request.question,
-                "steps": steps,
-                "current_step_index": 1,
-                "completed_steps": [steps[0]]
+        # Fuzzy match logic for backend tracking
+        player_words = set(question_lower.split())
+        step_words = set(expected_step_clean.lower().split())
+        match_ratio = len(player_words & step_words) / max(len(step_words), 1)
+
+        if match_ratio >= 0.5:
+            memory["completed_steps"].append(expected_step_raw)
+            memory["current_step_index"] += 1
+
+        print(f"[DEBUG] Updated memory for {user_id}:\n", user_memory)
+        return {"response": message}
+
+    # --- RAG: Ask for a recipe or general help ---
+    extension_config = {
+        "dataSources": [{
+            "type": "AzureCognitiveSearch",
+            "parameters": {
+                "endpoint": azure_search_endpoint,
+                "key": azure_search_key,
+                "indexName": azure_search_index,
             }
-            return {
-                "response": f"Got it! Let's start.\nFirst step: {steps[0]}"
-            }
+        }]
+    }
 
-        return {"response": content}
+    rag_response = rag_client.chat.completions.create(
+        model=azure_oai_deployment,
+        temperature=0.5,
+        max_tokens=1000,
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a helpful kitchen assistant. When asked about a recipe, respond with numbered step-by-step instructions."
+            },
+            {"role": "user", "content": question}
+        ],
+        extra_body=extension_config
+    )
 
-    except Exception as ex:
-        raise HTTPException(status_code=500, detail=str(ex))
+    content = rag_response.choices[0].message.content
+    print("RAG Response:\n", content)
+
+    # Extract steps from RAG output
+    steps = re.findall(r"\d+\.\s+(.*)", content)
+    if not steps:
+        steps = [line.strip("-• ").strip() for line in content.split("\n") if line.strip()]
+
+    if len(steps) >= 2:
+        user_memory[user_id] = {
+            "selected_recipe": question,
+            "steps": steps,
+            "current_step_index": 0,
+            "completed_steps": [],
+            "last_active": time.time()
+        }
+        print(f"[DEBUG] Initialized memory for {user_id}:\n", user_memory)
+        return {"response": f"✅ Got it! Let's begin.\nFirst step: {steps[0]}"}
+
+    return {"response": content}
