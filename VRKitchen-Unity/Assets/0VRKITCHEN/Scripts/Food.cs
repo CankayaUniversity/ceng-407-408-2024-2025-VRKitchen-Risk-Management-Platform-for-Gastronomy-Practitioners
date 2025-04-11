@@ -11,7 +11,7 @@ public class Food : MonoBehaviour
 
     private void Start()
     {
-        foodRenderer = transform.GetChild(0).GetComponent<Renderer>();
+        foodRenderer = transform.GetComponent<Renderer>();
         if (foodRenderer != null)
         {
             originalColor = foodRenderer.material.color; // Save the original color
