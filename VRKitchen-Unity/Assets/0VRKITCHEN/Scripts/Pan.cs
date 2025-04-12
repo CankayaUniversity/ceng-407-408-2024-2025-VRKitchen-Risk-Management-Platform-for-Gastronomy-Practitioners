@@ -4,24 +4,27 @@ using UnityEngine;
 public class Pan : MonoBehaviour
 {
     public float temperature = 10f;
-    public List<GameObject> foodItems = new List<GameObject>(); 
-    public float heatingTemperature = 10f; 
+    public List<GameObject> foodItems = new List<GameObject>(); // List of food items in the pan
+    public float heatingTemperature = 10f; // Temperature increase per second
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Food")) 
+        if (other.CompareTag("Food")) // Check if the object is food
         {
-            Debug.Log("Food collided with pan: " + collision.gameObject.name);
-            AddFood(collision.gameObject);
+            Debug.Log("Food placed in pan: " + other.name);
+            //other.transform.SetParent(transform);
+            AddFood(other.gameObject);
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Food")) 
+        if (other.CompareTag("Food")) // Check if the object is food
         {
-            Debug.Log("Food exited pan collision: " + collision.gameObject.name);
-            RemoveFood(collision.gameObject);
+            Debug.Log("Food removed from pan: " + other.name);
+            // other.transform.SetParent(null);
+            RemoveFood(other.gameObject);
         }
     }
 
@@ -29,16 +32,7 @@ public class Pan : MonoBehaviour
     {
         if (!foodItems.Contains(food))
         {
-            Rigidbody foodRb = food.gameObject.GetComponent<Rigidbody>();
-            if (foodRb != null && GetComponent<Rigidbody>() != null)
-            {
-                FixedJoint joint = food.gameObject.AddComponent<FixedJoint>();
-                joint.connectedBody = GetComponent<Rigidbody>(); // tencere ile baðla
-                joint.breakForce = Mathf.Infinity; // Gerekirse kýrýlabilir de ayarlanabilir
-                AddFood(food.gameObject);
-                foodItems.Add(food);
-            }
-            
+            foodItems.Add(food); // Add food to the list
         }
     }
 
@@ -46,21 +40,18 @@ public class Pan : MonoBehaviour
     {
         if (foodItems.Contains(food))
         {
-            FixedJoint joint = food.gameObject.GetComponent<FixedJoint>();
-            if (joint != null)
-            {
-                Destroy(joint);
-            }
-            foodItems.Remove(food); 
+            foodItems.Remove(food); // Remove food from the list
         }
     }
+
+
 
     public void Heat(float amount)
     {
         temperature += amount * Time.deltaTime;
         Debug.Log("Pan temperature: " + temperature);
 
-        
+        // Optionally, apply heat effects to food items
         foreach (var food in foodItems)
         {
             Food foodScript = food.GetComponent<Food>();
@@ -70,4 +61,7 @@ public class Pan : MonoBehaviour
             }
         }
     }
+
+
+
 }
