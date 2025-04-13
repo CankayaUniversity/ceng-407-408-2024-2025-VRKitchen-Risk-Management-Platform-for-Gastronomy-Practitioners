@@ -3,85 +3,64 @@ using UnityEngine;
 
 public class OilPouring : MonoBehaviour
 {
-    [SerializeField] private GameObject oilPrefab; // Prefab containing the particle system
-    private ParticleSystem oilParticleSystem;
-    [SerializeField] private Transform pourPoint; // The point from which the oil is poured
-    [SerializeField] private LayerMask dishLayer; // Layer of dishes where oil should be detected
-    [SerializeField] private float oilRate = 0.5f; // Time interval between oil additions
+    [SerializeField] private GameObject oilStream; // The oil object inside the bottle
+    [SerializeField] private Transform pourPoint;  // The tip of the bottle
+    [SerializeField] private LayerMask dishLayer;  // Layer of dishes
+    [SerializeField] private float oilRate = 0.5f; // Time between oil applications
 
     private bool isPouring = false;
-    private GameObject oilInstance;
+    private Coroutine pourCoroutine;
 
     private void Start()
     {
-        // Instantiate the oil prefab
-        if (oilPrefab != null)
+        if (oilStream != null)
         {
-            oilInstance = Instantiate(oilPrefab, pourPoint.position, Quaternion.identity);
-            oilParticleSystem = oilInstance.GetComponentInChildren<ParticleSystem>();
-
-            if (oilParticleSystem == null)
-            {
-                Debug.LogError("No Particle System found in the Oil prefab!");
-            }
-            else
-            {
-                oilParticleSystem.Stop(); // Ensure it's stopped at the start
-            }
-
-
-            oilInstance.transform.SetParent(pourPoint);
-            oilInstance.SetActive(false);
+            oilStream.SetActive(false);
         }
         else
         {
-            Debug.LogError("Oil prefab is not assigned!");
+            Debug.LogError("Oil stream object not assigned!");
         }
     }
 
     private void Update()
     {
-        if (transform.up.y < -0.7f)
+        // Check if bottle is tilted upside down (or however you want to check pouring state)
+        if (transform.up.y < -0.7f && !isPouring)
         {
-            if (!isPouring)
-            {
-                StartPouring();
-            }
+            StartPouring();
         }
-        else
+        else if (transform.up.y >= -0.7f && isPouring)
         {
-            if (isPouring)
-            {
-                StopPouring();
-            }
+            StopPouring();
         }
     }
 
     private void StartPouring()
     {
         isPouring = true;
-        if (oilInstance != null)
+
+        if (oilStream != null)
         {
-            oilInstance.SetActive(true); // Make oil visible
+            oilStream.SetActive(true); // Show oil stream mesh or object
         }
 
-        if (oilParticleSystem != null && !oilParticleSystem.isPlaying)
-        {
-            oilParticleSystem.Play();
-        }
-
-        StartCoroutine(PourOil());
+        pourCoroutine = StartCoroutine(PourOil());
     }
 
     private void StopPouring()
     {
         isPouring = false;
-        if (oilParticleSystem != null && oilParticleSystem.isPlaying)
+
+        if (oilStream != null)
         {
-            oilParticleSystem.Stop();
+            oilStream.SetActive(false); // Hide oil stream
         }
 
-        StartCoroutine(DisableOilAfterParticles());
+        if (pourCoroutine != null)
+        {
+            StopCoroutine(pourCoroutine);
+        }
     }
 
     private IEnumerator PourOil()
@@ -99,15 +78,6 @@ public class OilPouring : MonoBehaviour
             }
 
             yield return new WaitForSeconds(oilRate);
-        }
-    }
-
-    private IEnumerator DisableOilAfterParticles()
-    {
-        yield return new WaitForSeconds(1f); // Small delay to allow particles to fade
-        if (!isPouring)
-        {
-            oilInstance.SetActive(false); // Hide oil completely
         }
     }
 }

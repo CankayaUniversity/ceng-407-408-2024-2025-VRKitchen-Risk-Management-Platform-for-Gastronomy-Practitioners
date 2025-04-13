@@ -20,7 +20,7 @@ public class FireController : SingletonBehaviour<FireController>
     public List<FireSource> fireSources = new List<FireSource>(); // List of heating zones
     public float checkInterval = 5f; // Time interval for fire check
 
-    public OvenController ovenController;
+    //public OvenController ovenController;
     private void Start()
     {
         StartCoroutine(CheckForFireRisk());

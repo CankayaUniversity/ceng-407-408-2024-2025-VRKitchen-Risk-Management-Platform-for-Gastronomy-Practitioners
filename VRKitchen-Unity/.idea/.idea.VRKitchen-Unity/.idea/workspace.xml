@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5acc07fd-79b8-43d9-8167-53344560c475" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Oil.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Oil.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scenes/408_demo_scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scenes/408_demo_scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Events/FireController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Events/FireController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Seasoning/OilPouring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Seasoning/OilPouring.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,26 +32,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "FoodData",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;updatedbranch&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/Users/sila/Library/Application Support/JetBrains/Rider2024.1/resharper-host/DecompilerCache",
-      "/Users/sila/Library/Application Support/JetBrains/Rider2024.1/resharper-host/SourcesCache",
-      "/Users/sila/Library/Application Support/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/sila/Library/Application Support/JetBrains/Rider2024.1/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/sila/Library/Application Support/JetBrains/Rider2024.1/resharper-host/SourcesCache&quot;,
+      &quot;/Users/sila/Library/Application Support/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.3.7f1/Unity.app/Contents/MacOS/Unity" />
@@ -114,6 +118,10 @@
       <workItem from="1742676140031" duration="59000" />
       <workItem from="1743974666543" duration="23000" />
       <workItem from="1743974710430" duration="1738000" />
+      <workItem from="1744577184824" duration="1159000" />
+      <workItem from="1744578421078" duration="30000" />
+      <workItem from="1744578473748" duration="30000" />
+      <workItem from="1744578938072" duration="504000" />
     </task>
     <servers />
   </component>
