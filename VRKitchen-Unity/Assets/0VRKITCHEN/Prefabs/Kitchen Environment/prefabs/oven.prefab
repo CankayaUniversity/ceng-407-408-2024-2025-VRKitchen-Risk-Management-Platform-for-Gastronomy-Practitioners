@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ovenController: {fileID: 4911758741588168618}
+  isZoneOn: 0
 --- !u!114 &6975499473221092761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ovenController: {fileID: 4911758741588168618}
+  isZoneOn: 0
 --- !u!114 &1333410730590645044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ovenController: {fileID: 4911758741588168618}
+  isZoneOn: 0
 --- !u!114 &5372246978728742845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,6 +789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ovenController: {fileID: 4911758741588168618}
+  isZoneOn: 0
 --- !u!114 &7124090833122030459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1608,4 +1612,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toAPI: {fileID: 0}
   burnerFireParticles: {fileID: 0}
+  heatZone:
+  - {fileID: 7706073158208508811}
+  - {fileID: 3901971490484856606}
+  - {fileID: 5141096169464326225}
+  - {fileID: 4259777063242117377}
   activeZones: 0

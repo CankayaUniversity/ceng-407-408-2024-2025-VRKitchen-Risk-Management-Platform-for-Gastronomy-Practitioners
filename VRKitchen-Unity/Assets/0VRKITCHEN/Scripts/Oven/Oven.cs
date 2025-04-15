@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class OvenController : MonoBehaviour
 {
     public UnityToAPI toAPI;
     public ParticleSystem burnerFireParticles;
-
+    public  List<HeatZone> heatZone;
     public int activeZones = 0;
 
     public void RegisterZoneStateChange(bool isOn)
