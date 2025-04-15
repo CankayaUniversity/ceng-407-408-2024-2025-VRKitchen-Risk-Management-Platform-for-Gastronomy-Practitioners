@@ -3,9 +3,9 @@ using UnityEngine;
 public class HeatZone : MonoBehaviour
 {
     public OvenController ovenController;
-    private FireController.FireSource myFireSource; //  FireSource referansý
+    private FireController.FireSource myFireSource; //  FireSource referansï¿½
     private GameObject currentPan;
-    private bool isZoneOn = false;
+    [SerializeField] private bool isZoneOn = false;
 
     public void ToggleZone()
     {
@@ -21,7 +21,7 @@ public class HeatZone : MonoBehaviour
 
     private void Start()
     {
-        //  Bu HeatZone’a baðlý olan FireSource’u bir kere bul ve sakla
+        //  Bu HeatZoneï¿½a baï¿½lï¿½ olan FireSourceï¿½u bir kere bul ve sakla
         foreach (var source in FireController.Instance.fireSources)
         {
             if (source.heatZone == this)

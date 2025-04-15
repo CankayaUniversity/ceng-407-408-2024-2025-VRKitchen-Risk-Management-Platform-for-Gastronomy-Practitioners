@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class OilPouring : MonoBehaviour
@@ -7,7 +8,8 @@ public class OilPouring : MonoBehaviour
     [SerializeField] private Transform pourPoint;  // The tip of the bottle
     [SerializeField] private LayerMask dishLayer;  // Layer of dishes
     [SerializeField] private float oilRate = 0.5f; // Time between oil applications
-
+    [SerializeField] private float pourTreshold = 0.7f; // angle of bottle
+    
     private bool isPouring = false;
     private Coroutine pourCoroutine;
 
@@ -25,18 +27,28 @@ public class OilPouring : MonoBehaviour
 
     private void Update()
     {
-        // Check if bottle is tilted upside down (or however you want to check pouring state)
-        if (transform.up.y < -0.7f && !isPouring)
+        Vector3 pourDirection = -transform.up;
+        
+        float tiltAmount = Vector3.Dot(Vector3.down, pourDirection);
+        
+        if (tiltAmount > pourTreshold)
         {
-            StartPouring();
+            if (!isPouring)
+            {
+                StartPouring(pourDirection);
+            }
         }
-        else if (transform.up.y >= -0.7f && isPouring)
+        else
         {
-            StopPouring();
+            if (isPouring)
+            {
+                StopPouring();
+            }
         }
+
     }
 
-    private void StartPouring()
+    private void StartPouring(Vector3 direction)
     {
         isPouring = true;
 
@@ -45,7 +57,7 @@ public class OilPouring : MonoBehaviour
             oilStream.SetActive(true); // Show oil stream mesh or object
         }
 
-        pourCoroutine = StartCoroutine(PourOil());
+        pourCoroutine = StartCoroutine(PourOil(direction));
     }
 
     private void StopPouring()
@@ -63,12 +75,14 @@ public class OilPouring : MonoBehaviour
         }
     }
 
-    private IEnumerator PourOil()
+    private IEnumerator PourOil(Vector3 pourDirection)
     {
         while (isPouring)
         {
             RaycastHit hit;
-            if (Physics.Raycast(pourPoint.position, Vector3.down, out hit, 2f, dishLayer))
+
+            // Şişenin ucundan eğildiği yöne doğru bir ray at
+            if (Physics.Raycast(pourPoint.position, pourDirection, out hit, 2f, dishLayer))
             {
                 Dish dish = hit.collider.GetComponent<Dish>();
                 if (dish != null)

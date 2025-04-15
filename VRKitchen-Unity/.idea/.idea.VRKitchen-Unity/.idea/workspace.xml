@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5acc07fd-79b8-43d9-8167-53344560c475" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Oil.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Oil.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scenes/408_demo_scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scenes/408_demo_scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Events/FireController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Events/FireController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Oven/HeatZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Oven/HeatZone.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Seasoning/OilPouring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Seasoning/OilPouring.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,6 +120,9 @@
       <workItem from="1744578421078" duration="30000" />
       <workItem from="1744578473748" duration="30000" />
       <workItem from="1744578938072" duration="504000" />
+      <workItem from="1744742754355" duration="56000" />
+      <workItem from="1744742852399" duration="112000" />
+      <workItem from="1744743027694" duration="944000" />
     </task>
     <servers />
   </component>
