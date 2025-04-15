@@ -3,7 +3,6 @@ using UnityEngine;
 public class HeatZone : MonoBehaviour
 {
     public OvenController ovenController;
-    private FireController.FireSource myFireSource; //  FireSource referans�
     private GameObject currentPan;
     [SerializeField] private bool isZoneOn = false;
 
@@ -19,24 +18,9 @@ public class HeatZone : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        //  Bu HeatZone�a ba�l� olan FireSource�u bir kere bul ve sakla
-        foreach (var source in FireController.Instance.fireSources)
-        {
-            if (source.heatZone == this)
-            {
-                myFireSource = source;
-                break;
-            }
-        }
-    }
-
     private void Update()
     {
-        bool fireIsActive = myFireSource != null && myFireSource.activeFire != null;
-
-        if ((isZoneOn || fireIsActive) && currentPan != null)
+        if (isZoneOn && currentPan != null)
         {
             HeatObject(currentPan);
         }
@@ -65,5 +49,10 @@ public class HeatZone : MonoBehaviour
         {
             pan.Heat(10);
         }
+    }
+
+    public bool IsZoneOn()
+    {
+        return isZoneOn;
     }
 }

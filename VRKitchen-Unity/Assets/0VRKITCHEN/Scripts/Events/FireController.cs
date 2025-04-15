@@ -39,45 +39,55 @@ public class FireController : SingletonBehaviour<FireController>
     {
         foreach (var source in fireSources)
         {
-            // Check if oven is ON
-            if (source.ovenController != null && source.heatZone != null)
+            if (source.heatZone != null)
             {
-                if (source.ovenController.activeZones!=0 && source.heatZone.gameObject.activeSelf)
+                bool isZoneOn = source.heatZone.IsZoneOn(); // bu metodu HeatZone.cs içine ekleyeceğiz
+
+                Debug.Log($"Checking {source.heatZone.name} - IsOn: {isZoneOn}");
+
+                if (isZoneOn)
                 {
                     source.heatingTime += checkInterval;
+                    Debug.Log($"Heating time increased: {source.heatZone.name} = {source.heatingTime}");
 
-                    // Fire appears if heating zone is active too long
                     if (source.heatingTime >= source.maxHeatingTime && source.activeFire == null)
                     {
-                        Debug.Log($"🔥 Fire started at {source.spawnPoint.name} (Heating zone on too long!)");
+                        Debug.Log($"Fire started at {source.spawnPoint.name} (Heating zone on too long!)");
                         SpawnFire(source);
                     }
                 }
                 else
                 {
-                    source.heatingTime = 0f; // Reset timer if oven is off or no pan is present
+                    if (source.heatingTime != 0)
+                        Debug.Log($"Reset heating time for {source.heatZone.name}");
+
+                    source.heatingTime = 0f;
                 }
             }
         }
     }
+
 
     private void SpawnFire(FireSource source)
     {
         if (source.firePrefab != null && source.spawnPoint != null)
         {
             source.activeFire = Instantiate(source.firePrefab, source.spawnPoint.position, Quaternion.identity);
+            
+            FireInstance fireInstance = source.activeFire.AddComponent<FireInstance>();
+            fireInstance.source = source;
+
             Debug.Log($" Fire instantiated at {source.spawnPoint.name}");
 
-            // 🔥 Send query to API
             if (toAPI != null)
             {
                 Debug.Log($" Query submitted!");
                 toAPI.queryText = "A general fire has started in the game. What are the steps to handle this situation?";
                 toAPI.SubmitQuery();
             }
-            
         }
     }
+
 
     public void ExtinguishFire(FireSource source)
     {
@@ -86,6 +96,7 @@ public class FireController : SingletonBehaviour<FireController>
             Destroy(source.activeFire);
             source.activeFire = null;
             Debug.Log(" Fire extinguished!");
+            source.heatingTime = 0f;
         }
     }
 }

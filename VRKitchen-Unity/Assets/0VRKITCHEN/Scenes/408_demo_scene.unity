@@ -9904,7 +9904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: checkInterval
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[0].heatZone
@@ -9972,7 +9972,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853075}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[0].maxHeatingTime
-      value: 1000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[0].ovenController
@@ -9988,7 +9988,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[2].maxHeatingTime
-      value: 1000
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[2].ovenController
@@ -9996,24 +9996,40 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[3].maxHeatingTime
-      value: 1000
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[3].ovenController
       value: 
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
+      propertyPath: fireSources.Array.data[4].maxHeatingTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[4].ovenController
       value: 
       objectReference: {fileID: 1466853081}
+    - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
+      propertyPath: fireSources.Array.data[5].maxHeatingTime
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[5].ovenController
       value: 
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
+      propertyPath: fireSources.Array.data[6].maxHeatingTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[6].ovenController
       value: 
       objectReference: {fileID: 1466853081}
+    - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
+      propertyPath: fireSources.Array.data[7].maxHeatingTime
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[7].ovenController
       value: 

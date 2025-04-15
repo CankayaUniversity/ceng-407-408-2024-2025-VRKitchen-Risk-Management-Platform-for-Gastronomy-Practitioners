@@ -32,13 +32,13 @@ public class OilPouring : MonoBehaviour
     private void Update()
     {
         float tiltAngle = Vector3.Angle(bottleTransform.up, Vector3.up);
-        Debug.Log("Tilt angle: " + tiltAngle + " | Is Pouring: " + isPouring);
+        //Debug.Log("Tilt angle: " + tiltAngle + " | Is Pouring: " + isPouring);
 
         if (tiltAngle > minTiltAngle)
         {
             if (!isPouring)
             {
-                Debug.Log("Starting to pour oil");
+                //Debug.Log("Starting to pour oil");
                 StartPouring(-bottleTransform.up);
             }
         }
@@ -46,7 +46,7 @@ public class OilPouring : MonoBehaviour
         {
             if (isPouring)
             {
-                Debug.Log("Stopping oil pouring");
+                //Debug.Log("Stopping oil pouring");
                 StopPouring();
             }
         }

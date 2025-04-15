@@ -40,7 +40,7 @@ public class FireExtinguisher : MonoBehaviour
             sprayEffect.Stop(); // Stop spraying
         }
     }
-
+    
     private void OnTriggerStay(Collider other)
     {
         if (isSpraying && other.CompareTag("Fire")) // Check if the spray touches a fire
@@ -51,10 +51,18 @@ public class FireExtinguisher : MonoBehaviour
 
     private void ExtinguishFire(GameObject fire)
     {
-        
-        Debug.Log("Fire extinguished: " + fire.name);
-        Destroy(fire);
-        
-        
+        FireInstance fireInstance = fire.GetComponent<FireInstance>();
+
+        if (fireInstance != null && fireInstance.source != null)
+        {
+            Debug.Log("Fire extinguished via FireController: " + fire.name);
+            FireController.Instance.ExtinguishFire(fireInstance.source);
+        }
+        else
+        {
+            Debug.LogWarning("FireInstance component missing on fire object.");
+            Destroy(fire); 
+        }
     }
+
 }
