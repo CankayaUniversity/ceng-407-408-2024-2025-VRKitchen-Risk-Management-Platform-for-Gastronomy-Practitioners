@@ -7,16 +7,18 @@ using Random = UnityEngine.Random;
 
 public class SeasoningShaker : MonoBehaviour
 {
-    [SerializeField] private GameObject seasoningPrefab;
-    [SerializeField] private Transform sprinklePoint;
-    [SerializeField] private int poolSize = 10;
-    private Queue<GameObject> seasoningPool = new Queue<GameObject>();
-    
-    [SerializeField] private float sprinkleRate = 0.1f;
-    private bool isSprinkling = false;
-    [SerializeField] private float sprinkleThreshold = -0.7f;
+    [Header("References")]
+    [SerializeField] private GameObject seasoningPrefab;   
+    [SerializeField] private Transform sprinklePoint;      
 
+    [Header("Sprinkle Settings")]
+    [SerializeField] private int poolSize = 10;            
+    [SerializeField] private float sprinkleRate = 0.1f;    
+    [SerializeField] private float minTiltAngle = 60f;     
+
+    private Queue<GameObject> seasoningPool = new Queue<GameObject>();
     private float nextSprinkleTime = 0f;
+    private bool isSprinkling = false;
 
     private void Start()
     {
@@ -32,7 +34,9 @@ public class SeasoningShaker : MonoBehaviour
     {
         if (GetComponent<XRGrabInteractable>().isSelected)
         {
-            if (transform.up.y < sprinkleThreshold) 
+            float tiltAngle = Vector3.Angle(transform.up, Vector3.up);
+
+            if (tiltAngle > minTiltAngle)
             {
                 isSprinkling = true;
             }
@@ -41,7 +45,8 @@ public class SeasoningShaker : MonoBehaviour
                 isSprinkling = false;
             }
 
-            if (isSprinkling && Time.time >= nextSprinkleTime) // Sprinkle based on time
+            // Sprinkle seasoning at a fixed interval
+            if (isSprinkling && Time.time >= nextSprinkleTime)
             {
                 nextSprinkleTime = Time.time + sprinkleRate;
                 SprinkleSalt();

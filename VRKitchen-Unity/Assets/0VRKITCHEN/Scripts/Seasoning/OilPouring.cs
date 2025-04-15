@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class OilPouring : MonoBehaviour
 {
-    [SerializeField] private GameObject oilStream; // The oil object inside the bottle
-    [SerializeField] private Transform pourPoint;  // The tip of the bottle
-    [SerializeField] private LayerMask dishLayer;  // Layer of dishes
-    [SerializeField] private float oilRate = 0.5f; // Time between oil applications
-    [SerializeField] private float pourTreshold = 0.7f; // angle of bottle
-    
+    [Header("References")]
+    [SerializeField] private GameObject oilStream;     // The oil visual effect or stream object
+    [SerializeField] private Transform pourPoint;      // Tip of the bottle where oil comes out
+    [SerializeField] private LayerMask dishLayer;      // Layer to detect dishes
+
+    [Header("Pouring Settings")]
+    [SerializeField] private float oilRate = 0.5f;      // Time between oil applications
+    [SerializeField] private float minTiltAngle = 60f;  // Minimum tilt angle to start pouring
+
     private bool isPouring = false;
     private Coroutine pourCoroutine;
 
@@ -27,15 +30,13 @@ public class OilPouring : MonoBehaviour
 
     private void Update()
     {
-        Vector3 pourDirection = -transform.up;
-        
-        float tiltAmount = Vector3.Dot(Vector3.down, pourDirection);
-        
-        if (tiltAmount > pourTreshold)
+        float tiltAngle = Vector3.Angle(transform.up, Vector3.up);
+
+        if (tiltAngle > minTiltAngle)
         {
             if (!isPouring)
             {
-                StartPouring(pourDirection);
+                StartPouring(-transform.up);
             }
         }
         else
@@ -80,8 +81,6 @@ public class OilPouring : MonoBehaviour
         while (isPouring)
         {
             RaycastHit hit;
-
-            // Şişenin ucundan eğildiği yöne doğru bir ray at
             if (Physics.Raycast(pourPoint.position, pourDirection, out hit, 2f, dishLayer))
             {
                 Dish dish = hit.collider.GetComponent<Dish>();
