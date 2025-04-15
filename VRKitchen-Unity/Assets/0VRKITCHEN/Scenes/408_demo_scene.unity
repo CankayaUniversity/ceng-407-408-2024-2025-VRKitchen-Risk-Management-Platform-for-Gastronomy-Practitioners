@@ -308,39 +308,39 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1691423107}
     m_Modifications:
     - target: {fileID: 2446909788229807658, guid: 03bc4c89b74558d45a2461abdd817048, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.172
+      value: 0.7572589
       objectReference: {fileID: 0}
     - target: {fileID: 2446909788229807658, guid: 03bc4c89b74558d45a2461abdd817048, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.001
+      value: -0.21733785
       objectReference: {fileID: 0}
     - target: {fileID: 2446909788229807658, guid: 03bc4c89b74558d45a2461abdd817048, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.657
+      value: -0.23495436
       objectReference: {fileID: 0}
     - target: {fileID: 2446909788229807658, guid: 03bc4c89b74558d45a2461abdd817048, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 2446909788229807658, guid: 03bc4c89b74558d45a2461abdd817048, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071069
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 2446909788229807658, guid: 03bc4c89b74558d45a2461abdd817048, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2446909788229807658, guid: 03bc4c89b74558d45a2461abdd817048, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2446909788229807658, guid: 03bc4c89b74558d45a2461abdd817048, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 2446909788229807658, guid: 03bc4c89b74558d45a2461abdd817048, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -397,11 +397,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oilStream: {fileID: 4824402508292480255}
   pourPoint: {fileID: 1641768270}
+  bottleTransform: {fileID: 1691423107}
   dishLayer:
     serializedVersion: 2
     m_Bits: 4294967295
   oilRate: 0.5
-  pourTreshold: -0.7
+  minTiltAngle: 0
 --- !u!1 &71852575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,7 +1043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &481960095
 Transform:
   m_ObjectHideFlags: 0
@@ -1445,6 +1446,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597139754}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &648546419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 648546420}
+  m_Layer: 0
+  m_Name: TomatoPureeBottle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &648546420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648546419}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.172, y: 2.4414997, z: -5.657}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 763506146}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &708674424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1621,19 +1654,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 648546420}
     m_Modifications:
     - target: {fileID: 1256161651468544032, guid: 22fd13ff9a910b4488d0a11fe09ed76f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.774
+      value: -0.398
       objectReference: {fileID: 0}
     - target: {fileID: 1256161651468544032, guid: 22fd13ff9a910b4488d0a11fe09ed76f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.039
+      value: -0.40249968
       objectReference: {fileID: 0}
     - target: {fileID: 1256161651468544032, guid: 22fd13ff9a910b4488d0a11fe09ed76f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.676
+      value: -0.019000053
       objectReference: {fileID: 0}
     - target: {fileID: 1256161651468544032, guid: 22fd13ff9a910b4488d0a11fe09ed76f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1645,7 +1678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1256161651468544032, guid: 22fd13ff9a910b4488d0a11fe09ed76f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1256161651468544032, guid: 22fd13ff9a910b4488d0a11fe09ed76f, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1711,11 +1744,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oilStream: {fileID: 481960094}
   pourPoint: {fileID: 507189064}
+  bottleTransform: {fileID: 648546420}
   dishLayer:
     serializedVersion: 2
     m_Bits: 4294967295
   oilRate: 0.5
-  pourTreshold: 0.7
+  minTiltAngle: 60
 --- !u!65 &763506150
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8452,6 +8486,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7563764606667684894, guid: 09df57225ece3c944942f42429b3bdae, type: 3}
   m_PrefabInstance: {fileID: 1672063353}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1691423106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1691423107}
+  m_Layer: 0
+  m_Name: OilBottle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1691423107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691423106}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.414741, y: 2.2183378, z: -5.4220457}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 65935580}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1853972468
 GameObject:
   m_ObjectHideFlags: 0
@@ -8957,7 +9023,7 @@ MonoBehaviour:
   sprinklePoint: {fileID: 561317341}
   poolSize: 100
   sprinkleRate: 0.1
-  sprinkleThreshold: -0.7
+  minTiltAngle: 60
 --- !u!1001 &1965727180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9714,7 +9780,7 @@ MonoBehaviour:
   sprinklePoint: {fileID: 1853972469}
   poolSize: 100
   sprinkleRate: 0.1
-  sprinkleThreshold: -0.7
+  minTiltAngle: 60
 --- !u!1001 &3804110355845574650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9971,7 +10037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2667261623387497508, guid: ab08950ab3d454232b2b82fd37514ce4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5684546653520137477, guid: ab08950ab3d454232b2b82fd37514ce4, type: 3}
       propertyPath: m_LocalScale.x
@@ -10203,7 +10269,7 @@ SceneRoots:
   - {fileID: 28915484}
   - {fileID: 1459974993}
   - {fileID: 1177611554}
-  - {fileID: 65935578}
+  - {fileID: 1691423107}
   - {fileID: 454537131}
   - {fileID: 838081047}
   - {fileID: 11056747}
@@ -10211,7 +10277,7 @@ SceneRoots:
   - {fileID: 2132453992}
   - {fileID: 836768184}
   - {fileID: 196674351}
-  - {fileID: 763506144}
+  - {fileID: 648546420}
   - {fileID: 398139877}
   - {fileID: 99086480}
   - {fileID: 1575976521}
