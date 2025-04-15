@@ -8,7 +8,7 @@ public class FireExtinguisher : MonoBehaviour
     public XRSimpleInteractable button; // Assign the button interactable
     public OvenController ovenController;
     private bool isSpraying = false;
-
+    private FireController.FireSource myFireSource;
     private void Start()
     {
         if (button != null)
@@ -51,8 +51,10 @@ public class FireExtinguisher : MonoBehaviour
 
     private void ExtinguishFire(GameObject fire)
     {
+        
         Debug.Log("Fire extinguished: " + fire.name);
-        Destroy(fire); 
+        Destroy(fire);
+        
         
     }
 }
