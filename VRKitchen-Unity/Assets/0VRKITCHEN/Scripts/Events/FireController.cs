@@ -41,18 +41,18 @@ public class FireController : SingletonBehaviour<FireController>
         {
             if (source.heatZone != null)
             {
-                bool isZoneOn = source.heatZone.IsZoneOn(); // bu metodu HeatZone.cs içine ekleyeceğiz
+                bool isZoneOn = source.heatZone.IsZoneOn(); 
 
                 //Debug.Log($"Checking {source.heatZone.name} - IsOn: {isZoneOn}");
 
                 if (isZoneOn)
                 {
                     source.heatingTime += checkInterval;
-                    Debug.Log($"Heating time increased: {source.heatZone.name} = {source.heatingTime}");
+                    //Debug.Log($"Heating time increased: {source.heatZone.name} = {source.heatingTime}");
 
                     if (source.heatingTime >= source.maxHeatingTime && source.activeFire == null)
                     {
-                        Debug.Log($"Fire started at {source.spawnPoint.name} (Heating zone on too long!)");
+                        //Debug.Log($"Fire started at {source.spawnPoint.name} (Heating zone on too long!)");
                         SpawnFire(source);
                     }
                 }
@@ -74,10 +74,16 @@ public class FireController : SingletonBehaviour<FireController>
         {
             source.activeFire = Instantiate(source.firePrefab, source.spawnPoint.position, Quaternion.identity);
             
-            FireInstance fireInstance = source.activeFire.AddComponent<FireInstance>();
-            fireInstance.source = source;
+            FireInstance fireInstance = source.activeFire.GetComponent<FireInstance>();
 
-            Debug.Log($" Fire instantiated at {source.spawnPoint.name}");
+            if (fireInstance == null)
+            {
+                fireInstance = source.activeFire.AddComponent<FireInstance>();
+            }
+            
+            fireInstance.source = source; 
+
+            //Debug.Log($" Fire instantiated at {source.spawnPoint.name}");
 
             if (toAPI != null)
             {
