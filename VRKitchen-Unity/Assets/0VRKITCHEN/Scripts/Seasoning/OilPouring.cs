@@ -27,14 +27,11 @@ public class OilPouring : MonoBehaviour
     private void Update()
     {
         Vector3 pourDirection = -bottleTransform.up;
-
-        // 🔍 İlk olarak açıyı hesapla: Z ekseni etrafında ne kadar döneceğiz?
+        
         float angleZ = Vector3.SignedAngle(Vector3.forward, pourDirection, Vector3.forward);
-
-        // 🔁 Sadece Z ekseni etrafında döndür: X ve Y sabit kalır!
+        
         pourPoint.localRotation = Quaternion.AngleAxis(angleZ, Vector3.forward);
-
-        // Yağ dökme kontrolü
+        
         float tiltAngle = Vector3.Angle(bottleTransform.up, Vector3.up);
         if (tiltAngle > minTiltAngle)
         {
