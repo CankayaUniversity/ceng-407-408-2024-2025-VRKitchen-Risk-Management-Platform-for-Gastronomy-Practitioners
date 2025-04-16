@@ -35,7 +35,7 @@ public class SimpleCross : MonoBehaviour
 
             if (!hasSentContaminationQuery && toAPI != null)
             {
-                toAPI.queryText = "Cross-contamination occurred in the game. What are the next safety steps to take?";
+                toAPI.queryText = "Cross-contamination occurred in the game. What is the next safety steps to take in the game?";
                 toAPI.SubmitQuery();
                 hasSentContaminationQuery = true;
             }

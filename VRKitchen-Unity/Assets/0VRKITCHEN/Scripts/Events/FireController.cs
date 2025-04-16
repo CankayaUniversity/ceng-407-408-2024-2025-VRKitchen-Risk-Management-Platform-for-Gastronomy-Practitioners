@@ -43,7 +43,7 @@ public class FireController : SingletonBehaviour<FireController>
             {
                 bool isZoneOn = source.heatZone.IsZoneOn(); // bu metodu HeatZone.cs içine ekleyeceğiz
 
-                Debug.Log($"Checking {source.heatZone.name} - IsOn: {isZoneOn}");
+                //Debug.Log($"Checking {source.heatZone.name} - IsOn: {isZoneOn}");
 
                 if (isZoneOn)
                 {

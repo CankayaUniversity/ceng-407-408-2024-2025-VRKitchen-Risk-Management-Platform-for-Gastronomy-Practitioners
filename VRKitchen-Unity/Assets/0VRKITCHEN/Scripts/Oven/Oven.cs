@@ -16,7 +16,7 @@ public class OvenController : MonoBehaviour
             if (activeZones == 1)
             {
                 Debug.Log(" First heat zone activated. Submitting API query...");
-                toAPI.queryText = "Stove is turned on, what are the next steps in the game while making the dish?";
+                toAPI.queryText = "Stove is turned on, what are the next step in the game while making the dish?";
                 toAPI.SubmitQuery();
 
                 if (burnerFireParticles != null)
@@ -29,7 +29,7 @@ public class OvenController : MonoBehaviour
             if (activeZones == 0)
             {
                 Debug.Log(" All heat zones turned off. Stove is now OFF.");
-                toAPI.queryText = "Stove is off, what's the next step in the game?";
+                toAPI.queryText = "Stove is off, what's the next step in the game? One step.";
                  
                  toAPI.SubmitQuery();
 

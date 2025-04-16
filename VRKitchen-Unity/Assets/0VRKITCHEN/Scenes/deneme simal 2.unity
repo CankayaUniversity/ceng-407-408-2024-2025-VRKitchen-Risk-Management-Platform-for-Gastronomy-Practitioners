@@ -10356,7 +10356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64896bfb2ddec9046b49f0a69d529846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ovenController: {fileID: 8695720818614011897}
+  targetHeatZone: {fileID: 0}
 --- !u!114 &1343137668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11276,6 +11276,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 305414044186680556, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
+      propertyPath: planeText
+      value: 
+      objectReference: {fileID: 1150586506}
     - target: {fileID: 1065747219478192465, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
       propertyPath: planeText
       value: 
@@ -32392,9 +32396,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec28345f9782cd40856315f6c602ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOvenOn: 0
   toAPI: {fileID: 872344535}
   burnerFireParticles: {fileID: 645218999}
+  heatZone: []
+  activeZones: 0
 --- !u!33 &8697662860860745825
 MeshFilter:
   m_ObjectHideFlags: 0
