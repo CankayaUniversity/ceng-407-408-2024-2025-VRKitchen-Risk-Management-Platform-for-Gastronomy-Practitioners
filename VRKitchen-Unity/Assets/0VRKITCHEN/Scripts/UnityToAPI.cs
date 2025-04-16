@@ -15,6 +15,8 @@ public class UnityToAPI : MonoBehaviour
     [Header("UI Elements")]
     public TextMeshPro planeText; // Reference to the TextMeshPro component on the textPlane
 
+    public ClipboardTextDisplay clipboardDisplay; // drag this in Inspector
+
     private string sessionId; // To maintain context between queries
 
     // Trigger query submission from Inspector
@@ -66,6 +68,11 @@ public class UnityToAPI : MonoBehaviour
             {
                 planeText.text = response.response_text; // Update the text on the plane
             }
+
+            if (clipboardDisplay != null)
+            {
+                clipboardDisplay.DisplayResponseText(response.response_text);
+            }
         }
         else
         {
@@ -76,7 +83,13 @@ public class UnityToAPI : MonoBehaviour
             {
                 planeText.text = errorMessage;
             }
+
+            if (clipboardDisplay != null)
+            {
+                clipboardDisplay.DisplayResponseText("Error: " + request.error);
+            }
         }
+
     }
 
     // Classes for JSON serialization
