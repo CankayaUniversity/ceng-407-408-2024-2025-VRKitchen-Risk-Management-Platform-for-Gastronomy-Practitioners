@@ -427,10 +427,9 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  drawerTransform: {fileID: 1530421210169056078}
+  drawerTransform: {fileID: 5526405508772348599}
   keySocket: {fileID: 0}
   isLocked: 0
-  drawerLimitZ: 2.383
   limitDistances: {x: 0.2, y: 0.1, z: 0}
 --- !u!65 &8320511242647875054
 BoxCollider:
@@ -1235,10 +1234,9 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  drawerTransform: {fileID: 1530421210169056078}
+  drawerTransform: {fileID: 1225308931412425176}
   keySocket: {fileID: 0}
   isLocked: 0
-  drawerLimitZ: 2.383
   limitDistances: {x: 0.2, y: 0.1, z: 0}
 --- !u!65 &976322169842978780
 BoxCollider:
@@ -1630,7 +1628,6 @@ MonoBehaviour:
   drawerTransform: {fileID: 1530421210169056078}
   keySocket: {fileID: 0}
   isLocked: 0
-  drawerLimitZ: 2.383
   limitDistances: {x: 0.2, y: 0.1, z: 0}
 --- !u!65 &8745340787326232995
 BoxCollider:

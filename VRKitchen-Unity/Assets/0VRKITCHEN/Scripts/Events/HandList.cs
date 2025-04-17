@@ -4,13 +4,14 @@ using TMPro;
 
 public class HandTextDisplay : MonoBehaviour
 {
-    public GameObject textPlane; // Plane displaying the text
-    public GameObject rightControllerVisual; // Visual representation of the right controller
-    public ActionBasedController rightController; // Reference to the ActionBasedController
+    [Header("References")]
+    [SerializeField] private GameObject clipBoard; // Should be ClipBoardVisual_2
+    [SerializeField] private GameObject textPlane; // Should be HandListText
+    [SerializeField] private GameObject rightControllerVisual;
+    [SerializeField] private ActionBasedController rightController;
 
-    private bool isVisible = false; // Initial state of the text display
-    private TextMeshPro textMeshPro; // Reference to TextMeshPro component on the textPlane
-    private MeshRenderer textRenderer; // To toggle visibility instead of deactivating
+    private bool isVisible = false;
+    private TMP_Text textMeshPro; // Use TMP_Text for compatibility with both TMP types
 
     void Start()
     {
@@ -18,76 +19,68 @@ public class HandTextDisplay : MonoBehaviour
 
         if (rightController == null)
         {
-            Debug.LogError("Right Controller (Action-based) is not assigned!");
+            Debug.LogError("Right Controller is not assigned!");
             return;
         }
 
-        textMeshPro = textPlane.GetComponentInChildren<TextMeshPro>(); // Get TextMeshPro inside the plane
-        textRenderer = textPlane.GetComponent<MeshRenderer>();
+        // Try getting TMP component directly or from children
+        textMeshPro = textPlane.GetComponent<TMP_Text>();
+        if (textMeshPro == null)
+        {
+            textMeshPro = textPlane.GetComponentInChildren<TMP_Text>();
+        }
 
         if (textMeshPro == null)
         {
-            Debug.LogError("TextMeshPro component is missing inside the textPlane!");
+            Debug.LogError("No TextMeshPro or TMP_Text component found on or under textPlane!");
+            return;
         }
 
-        // Set TextMeshPro Background Color
+        // Text settings
+        textMeshPro.enableAutoSizing = true;
         textMeshPro.enableWordWrapping = true;
         textMeshPro.overflowMode = TextOverflowModes.Overflow;
         textMeshPro.fontSizeMin = 10;
         textMeshPro.fontSizeMax = 50;
 
-        // Set text background color (RGBA format)
-        textMeshPro.fontMaterial.SetColor("_FaceColor", new Color(1, 1, 1, 1)); // White text
-        textMeshPro.fontMaterial.SetColor("_OutlineColor", new Color(0, 0, 0, 1)); // Black outline
-        textMeshPro.fontMaterial.SetFloat("_OutlineWidth", 0.2f); // Outline thickness
-        textMeshPro.enableAutoSizing = true;
+        if (textMeshPro.fontMaterial.HasProperty("_FaceColor"))
+            textMeshPro.fontMaterial.SetColor("_FaceColor", Color.white);
 
-        SetVisibility(isVisible);
+        if (textMeshPro.fontMaterial.HasProperty("_OutlineColor"))
+            textMeshPro.fontMaterial.SetColor("_OutlineColor", Color.black);
+
+        if (textMeshPro.fontMaterial.HasProperty("_OutlineWidth"))
+            textMeshPro.fontMaterial.SetFloat("_OutlineWidth", 0.2f);
+
+        // Initially hidden
+        clipBoard.SetActive(isVisible);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F9))
+        // Toggle clipboard with F9
+        if (Input.GetKeyDown(KeyCode.F10))
         {
             isVisible = !isVisible;
-            SetVisibility(isVisible);
+            clipBoard.SetActive(isVisible);
         }
 
+        // Follow hand and face the camera
         if (rightControllerVisual != null)
         {
-            Transform rightHandTransform = rightControllerVisual.transform;
+            Transform hand = rightControllerVisual.transform;
+            textPlane.transform.position = hand.position + hand.up * 0.15f;
 
-            if (rightHandTransform != null)
-            {
-                textPlane.transform.position = rightHandTransform.position + rightHandTransform.up * 0.15f;
-
-                Vector3 cameraPosition = Camera.main.transform.position;
-                Vector3 directionToCamera = (cameraPosition - textPlane.transform.position).normalized;
-
-                textPlane.transform.forward = -directionToCamera; // Face user
-            }
+            Vector3 toCamera = Camera.main.transform.position - textPlane.transform.position;
+            textPlane.transform.forward = -toCamera.normalized;
         }
     }
 
-    void SetVisibility(bool visible)
-    {
-        if (textRenderer != null)
-        {
-            textRenderer.enabled = false; // Always disable the plane's mesh renderer
-        }
-
-        if (textMeshPro != null)
-        {
-            textMeshPro.enabled = visible;
-        }
-    }
-
-    public void DisplayResponseText(string responseText)
+    public void DisplayResponseText(string text)
     {
         if (textMeshPro != null)
         {
-            textMeshPro.text = responseText;
-            textMeshPro.ForceMeshUpdate();
+            textMeshPro.text = text;
         }
     }
 }
