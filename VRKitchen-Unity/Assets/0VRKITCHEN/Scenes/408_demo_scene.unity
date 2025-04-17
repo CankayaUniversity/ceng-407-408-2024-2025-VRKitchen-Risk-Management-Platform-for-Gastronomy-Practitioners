@@ -949,6 +949,22 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1863659528}
   m_SourcePrefab: {fileID: 100100000, guid: b17f18ee1f1ac2243bc74a74e7b2846e, type: 3}
+--- !u!1 &197411162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3220442394710407530, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+  m_PrefabInstance: {fileID: 1717732687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &197411166 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 288535931057059109, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+  m_PrefabInstance: {fileID: 1717732687}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197411162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caff514de9b15ad48ab85dcff5508221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &300103964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,7 +1833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clipboardVisual: {fileID: 678437237}
-  leftControllerVisual: {fileID: 0}
+  leftControllerVisual: {fileID: 641564367}
   textMeshPro: {fileID: 736667784}
   offsetFromHand: {x: 0, y: 0.1, z: 0.25}
 --- !u!1 &496371015
@@ -2157,6 +2173,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597139754}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &641564367 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3020395474708241035, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+  m_PrefabInstance: {fileID: 1717732687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &648546419
 GameObject:
   m_ObjectHideFlags: 0
@@ -4359,8 +4380,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textPlane: {fileID: 1568296578}
-  rightControllerVisual: {fileID: 0}
-  rightController: {fileID: 0}
+  rightControllerVisual: {fileID: 197411162}
+  rightController: {fileID: 197411166}
 --- !u!64 &1568296581
 MeshCollider:
   m_ObjectHideFlags: 0
