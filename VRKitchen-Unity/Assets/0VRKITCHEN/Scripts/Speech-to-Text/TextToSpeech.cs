@@ -7,29 +7,32 @@ using Amazon.Polly.Model;
 using Amazon.Runtime;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class TextToSpeech : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private Button stopButton; // Reference to the stop button
+    [SerializeField] private AudioSource avatarAudioSource;
+    [SerializeField] private Button stopButton;
+    [SerializeField] private ChefPatrol chefPatrol; // Reference to character's animation controller
 
     private void Start()
     {
-        // Ensure the stopButton is assigned
         if (stopButton == null)
         {
             Debug.LogError("Stop Button is not assigned in the TextToSpeech script.");
             return;
         }
 
-        // Link the stop button to the StopSpeaking method
         stopButton.onClick.AddListener(StopSpeaking);
     }
 
     public async void Speak(string text)
     {
-        var credentials = new BasicAWSCredentials(accessKey: "", secretKey: "");
+        var credentials = new BasicAWSCredentials(
+            accessKey: "",
+            secretKey: ""
+        );
         var client = new AmazonPollyClient(credentials, Amazon.RegionEndpoint.EUCentral1);
 
         var request = new SynthesizeSpeechRequest()
@@ -46,33 +49,59 @@ public class TextToSpeech : MonoBehaviour
         using (var www = UnityWebRequestMultimedia.GetAudioClip($"{Application.persistentDataPath}/audio.mp3", AudioType.MPEG))
         {
             var op = www.SendWebRequest();
-
             while (!op.isDone) await Task.Yield();
 
             var clip = DownloadHandlerAudioClip.GetContent(www);
 
-            audioSource.clip = clip;
-            audioSource.Play();
+            // 🔊 Play audio
+            if (audioSource != null)
+            {
+                audioSource.clip = clip;
+                audioSource.Play();
+            }
+
+            if (avatarAudioSource != null)
+            {
+                avatarAudioSource.clip = clip;
+                avatarAudioSource.Play();
+            }
+
+            // 🧑‍🍳 Trigger Talking animation
+            if (chefPatrol != null)
+                chefPatrol.SetTalkingState(true);
+
+            // 🕒 Stop talking after clip ends
+            StartCoroutine(StopTalkingAfter(clip.length));
         }
+    }
+
+    private IEnumerator StopTalkingAfter(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (chefPatrol != null)
+            chefPatrol.SetTalkingState(false);
     }
 
     private void Update()
     {
-        // 🎮 Allow player to press F11 to stop TTS playback
         if (Input.GetKeyDown(KeyCode.F11))
         {
             StopSpeaking();
         }
     }
 
-    // Method to stop speaking
     public void StopSpeaking()
     {
-        if (audioSource.isPlaying)
-        {
-            audioSource.Stop(); // Stop the audio playback
-            Debug.Log("Speech stopped.");
-        }
+        if (audioSource != null && audioSource.isPlaying)
+            audioSource.Stop();
+
+        if (avatarAudioSource != null && avatarAudioSource.isPlaying)
+            avatarAudioSource.Stop();
+
+        if (chefPatrol != null)
+            chefPatrol.SetTalkingState(false);
+
+        Debug.Log("Speech stopped.");
     }
 
     private void WriteIntoFile(Stream stream)
