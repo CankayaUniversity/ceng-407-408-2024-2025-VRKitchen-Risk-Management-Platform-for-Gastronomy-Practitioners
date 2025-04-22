@@ -56,6 +56,15 @@ public class TextToSpeech : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        // 🎮 Allow player to press F11 to stop TTS playback
+        if (Input.GetKeyDown(KeyCode.F11))
+        {
+            StopSpeaking();
+        }
+    }
+
     // Method to stop speaking
     public void StopSpeaking()
     {

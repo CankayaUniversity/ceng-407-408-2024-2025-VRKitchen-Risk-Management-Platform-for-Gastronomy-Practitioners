@@ -17,8 +17,6 @@ public class SpeechRecognitionTest : MonoBehaviour
     [SerializeField] private TextMeshPro planeText; // Reference to the TextMeshPro component on the textPlane
 
 
-
-
     private AudioClip clip;
     private byte[] bytes;
     private bool recording;

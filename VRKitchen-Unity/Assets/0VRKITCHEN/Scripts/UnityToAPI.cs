@@ -9,21 +9,36 @@ public class UnityToAPI : MonoBehaviour
     [TextArea] public string queryText;
 
     public TextMeshPro planeText; // This is still okay if you want to assign it manually
-    public HandTextDisplay textDisplay; // << Assign this in inspector
+    public HandTextDisplay textDisplay; // << Assign this in     
+    public TextToSpeech tts; // Add this and assign it in Inspector
+
+    private bool isQueryInProgress = false;
+    private float cooldownTime = 2f; // ⏳ 2-second cooldown
+    private float lastQueryTime = -10f; // Track last query time
+
+
 
     private string sessionId;
 
     [ContextMenu("Submit Query")]
+    [ContextMenu("Submit Query")]
     public void SubmitQuery()
     {
-        if (!string.IsNullOrEmpty(queryText))
-        {
-            StartCoroutine(SubmitQueryCoroutine(queryText));
-        }
+        // Don’t allow multiple queries or spamming
+        if (isQueryInProgress || Time.time - lastQueryTime < cooldownTime || string.IsNullOrEmpty(queryText))
+            return;
+
+        StartCoroutine(SubmitQueryCoroutine(queryText));
     }
+
 
     IEnumerator SubmitQueryCoroutine(string queryText)
     {
+
+        isQueryInProgress = true;
+        lastQueryTime = Time.time; // Start cooldown timer
+
+
         QueryData query = new QueryData { query_text = queryText, session_id = sessionId };
         string jsonData = JsonUtility.ToJson(query);
 
@@ -40,10 +55,23 @@ public class UnityToAPI : MonoBehaviour
             var response = JsonUtility.FromJson<ResponseData>(req.downloadHandler.text);
             sessionId = response.session_id;
 
+            string reply = response.response_text;
+
+            //Display response
             if (textDisplay != null)
-                textDisplay.DisplayResponseText(response.response_text);
+                textDisplay.DisplayResponseText(reply);
             else if (planeText != null)
-                planeText.text = response.response_text;
+                planeText.text = reply;
+
+            // Stop current speech and speak new response
+            if (tts != null)
+            {
+                tts.StopSpeaking();
+                if (!string.IsNullOrEmpty(reply))
+                    tts.Speak(reply);
+            }
+
+
         }
         else
         {
@@ -52,7 +80,17 @@ public class UnityToAPI : MonoBehaviour
                 textDisplay.DisplayResponseText(err);
             else if (planeText != null)
                 planeText.text = err;
+
+            // Stop & Speak error message
+            if (tts != null)
+            {
+                tts.StopSpeaking();
+                tts.Speak("Sorry, there was an error contacting the assistant.");
+            }
         }
+
+        isQueryInProgress = false; // Unlock after completion
+
     }
 
     [System.Serializable]
