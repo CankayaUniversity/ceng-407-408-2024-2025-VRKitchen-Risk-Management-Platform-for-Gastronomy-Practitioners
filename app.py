@@ -124,7 +124,7 @@ async def ask_question(request: QueryRequest):
         messages=[
             {
                 "role": "system",
-                "content": "You are a helpful kitchen assistant. When asked about a recipe, respond with numbered step-by-step instructions."
+                "content": "You are a helpful kitchen assistant. When asked about a recipe or a risk managment scenario, respond with numbered step-by-step instructions."
             },
             {"role": "user", "content": question}
         ],
