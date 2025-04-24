@@ -34,4 +34,13 @@ public class VisualFeedbackController : MonoBehaviour
             audio.Play();
         }
     }
+
+
+    public void HideExclamation()
+    {
+        if (instance != null)
+        {
+            instance.SetActive(false); // Hides the alert
+        }
+    }
 }

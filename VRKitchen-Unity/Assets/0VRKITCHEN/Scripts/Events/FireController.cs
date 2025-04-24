@@ -101,6 +101,9 @@ public class FireController : SingletonBehaviour<FireController>
             source.activeFire = null;
             source.heatingTime = 0f;
             Debug.Log("✅ Fire extinguished.");
+
+            fireAlertFeedback?.HideExclamation(); // 🔕 Hide the fire alert
+
         }
     }
 }
