@@ -1,38 +1,45 @@
 using UnityEngine;
 
-public class CuttableWater : MonoBehaviour
+public class WaterRaycastCutter : MonoBehaviour
 {
-    public float maxWaterLength = 2f; // Max height of water stream
-    public LayerMask cuttableLayer;   // Layers that can cut the water
+    public Transform waterObject; // "water" objesi (cylinder)
+    public float maxLength = 0.02f; // Maksimum su uzunluðu
+    public LayerMask cuttableLayer;
 
-    private Transform waterMesh;      // Visual part (child cylinder)
     private Vector3 initialScale;
+    private Vector3 initialLocalPosition;
 
     void Start()
     {
-        waterMesh = transform.GetChild(0); // Assume child 0 is the cylinder
-        initialScale = waterMesh.localScale;
+        if (waterObject == null)
+        {
+            Debug.LogError("Water object is not assigned!");
+            return;
+        }
+
+        initialScale = waterObject.localScale;
+        initialLocalPosition = waterObject.localPosition;
     }
 
     void Update()
     {
-        // Raycast from top of the water object downward
         Ray ray = new Ray(transform.position, Vector3.down);
         RaycastHit hit;
 
-        float visibleLength = maxWaterLength;
+        //  Ray'i görünür yap
+        Debug.DrawRay(transform.position, Vector3.down * maxLength, Color.red);
 
-        if (Physics.Raycast(ray, out hit, maxWaterLength, cuttableLayer))
+        float visibleLength = maxLength;
+
+        if (Physics.Raycast(ray, out hit, maxLength, cuttableLayer))
         {
             visibleLength = hit.distance;
         }
 
-        // Scale mesh only on Y
-        float newY = visibleLength / maxWaterLength * initialScale.y;
-        waterMesh.localScale = new Vector3(initialScale.x, newY, initialScale.z);
+        float newYScale = (visibleLength / maxLength) * initialScale.y;
+        waterObject.localScale = new Vector3(initialScale.x, newYScale, initialScale.z);
 
-        // Move mesh so that base stays at the same place
-        float offsetY = (maxWaterLength - visibleLength) / 2;
-        waterMesh.localPosition = new Vector3(0, -offsetY, 0);
+        float yOffset = (initialScale.y - newYScale) * waterObject.GetComponent<MeshFilter>().mesh.bounds.size.y;
+        waterObject.localPosition = new Vector3(initialLocalPosition.x, initialLocalPosition.y + yOffset, initialLocalPosition.z);
     }
 }
