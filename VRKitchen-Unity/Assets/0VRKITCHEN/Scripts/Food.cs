@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Food : MonoBehaviour
 {
@@ -44,4 +45,5 @@ public class Food : MonoBehaviour
             foodRenderer.material.color = Color.red;
         }
     }
+    
 }
