@@ -11,6 +11,9 @@ public class SimpleCross : MonoBehaviour
 
     private bool hasSentContaminationQuery = false;
 
+    public VisualFeedbackController visualFeedback;
+    public Transform contaminationMarkerTransform; // Drag the fixed object in Inspector
+
     private void Update()
     {
         CheckContamination();
@@ -27,15 +30,20 @@ public class SimpleCross : MonoBehaviour
 
     void CheckContamination()
     {
-        // Cross-contamination = touching Meat and another object
         if (!isContamination && touchingItemName.Contains("Meat") && touchingItemName.Count > 1)
         {
             isContamination = true;
             Debug.Log("Cross Contamination Detected!");
 
+            if (visualFeedback != null && contaminationMarkerTransform != null)
+            {
+                // 💥 Spawn exactly above the board, no matter what
+                visualFeedback.ShowExclamation(contaminationMarkerTransform.position);
+            }
+
             if (!hasSentContaminationQuery && toAPI != null)
             {
-                toAPI.queryText = "Cross-contamination occurred in the game. What is the next safety steps to take in the game?";
+                toAPI.queryText = "Cross contamination happened in the game. What are the steps I should follow?";
                 toAPI.SubmitQuery();
                 hasSentContaminationQuery = true;
             }

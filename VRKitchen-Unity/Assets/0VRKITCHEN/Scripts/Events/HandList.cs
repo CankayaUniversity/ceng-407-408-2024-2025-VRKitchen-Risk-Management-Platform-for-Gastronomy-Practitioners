@@ -10,6 +10,11 @@ public class HandTextDisplay : MonoBehaviour
     [SerializeField] private GameObject rightControllerVisual;
     [SerializeField] private ActionBasedController rightController;
 
+    private bool isZoomed = false;
+
+
+    // Zooming Option
+
     private bool isVisible = false;
     private TMP_Text textMeshPro; // Use TMP_Text for compatibility with both TMP types
 
@@ -58,21 +63,35 @@ public class HandTextDisplay : MonoBehaviour
 
     void Update()
     {
-        // Toggle clipboard with F9
+        // Toggle clipboard visibility with F10
         if (Input.GetKeyDown(KeyCode.F10))
         {
             isVisible = !isVisible;
             clipBoard.SetActive(isVisible);
         }
 
-        // Follow hand and face the camera
-        if (rightControllerVisual != null)
-        {
-            Transform hand = rightControllerVisual.transform;
-            textPlane.transform.position = hand.position + hand.up * 0.15f;
+        if (!isVisible || rightControllerVisual == null)
+            return;
 
-            Vector3 toCamera = Camera.main.transform.position - textPlane.transform.position;
-            textPlane.transform.forward = -toCamera.normalized;
+        // Follow hand + face camera
+        Transform hand = rightControllerVisual.transform;
+
+        // Zoom offset
+        float zoomOffset = isZoomed ? -0.4f : 0f;
+
+        // Position slightly above hand and optionally closer to camera when zoomed
+        Vector3 offset = hand.up * 0.15f + hand.forward * (0.1f + zoomOffset);
+        textPlane.transform.position = hand.position + offset;
+
+        // Always face the camera
+        Vector3 toCamera = Camera.main.transform.position - textPlane.transform.position;
+        Quaternion targetRot = Quaternion.LookRotation(-toCamera.normalized);
+        textPlane.transform.rotation = Quaternion.Slerp(textPlane.transform.rotation, targetRot, Time.deltaTime * 10f);
+
+        // Toggle zoom with Z key
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            isZoomed = !isZoomed;
         }
     }
 
@@ -80,7 +99,8 @@ public class HandTextDisplay : MonoBehaviour
     {
         if (textMeshPro != null)
         {
-            textMeshPro.text = text;
+            textMeshPro.text =
+                "<size=130%><b><color=#000000>VRKitchen Guide</color></b></size>\n\n" + text;
         }
     }
 }
