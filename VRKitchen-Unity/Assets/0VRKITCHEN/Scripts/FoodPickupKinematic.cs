@@ -8,12 +8,11 @@ public class FoodPickupKinematic : XRGrabInteractable
     {
         base.OnSelectEntered(args);
 
+        transform.SetParent(null);
         Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            transform.SetParent(null); 
-            rb.isKinematic = false;    
-            
-        }
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.isKinematic = false;
+
     }
 }

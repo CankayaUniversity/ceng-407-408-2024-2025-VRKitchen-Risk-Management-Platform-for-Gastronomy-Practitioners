@@ -5,39 +5,35 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PanKinematicStop : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        foreach (ContactPoint contact in collision.contacts)
+        if (other.CompareTag("Food"))
         {
-            if (contact.thisCollider.name == "PanBottom" && collision.gameObject.CompareTag("Food"))
-            {
-                Rigidbody rb = collision.rigidbody;
-                if (rb != null)
-                {
-                    collision.transform.SetParent(transform);
-                    rb.isKinematic = true;
+            other.transform.SetParent(transform.parent);
 
-                }
+            other.attachedRigidbody.isKinematic = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Food"))
+        {
+            Rigidbody rb = other.attachedRigidbody;
+            if (other.TryGetComponent<XRGrabInteractable>(out var grab) && grab.isSelected)
+            {
+                
+                other.transform.SetParent(null);
+                
+                // Fýrlama engelle
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                
+                rb.isKinematic = false;
+
+               
             }
         }
     }
 
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    foreach (ContactPoint contact in collision.contacts)
-    //    {
-    //        if (contact.thisCollider.name == "PanBottom" && collision.gameObject.CompareTag("Food"))
-    //        {
-    //            Rigidbody rb = collision.rigidbody;
-    //            XRGrabInteractable grab = collision.gameObject.GetComponent<XRGrabInteractable>();
-
-    //            if (rb != null && grab != null && grab.isSelected) // Eðer elde tutuluyorsa
-    //            {
-    //                rb.isKinematic = false;
-    //                collision.transform.SetParent(null); // Artýk tencerenin çocuðu deðil
-                    
-    //            }
-    //        }
-    //    }
-    //}
 }

@@ -23,7 +23,7 @@ public class Pan : MonoBehaviour
         if (other.CompareTag("Food")) 
         {
             Debug.Log("Food removed from pan: " + other.name);
-            
+           
             RemoveFood(other.gameObject);
         }
     }
