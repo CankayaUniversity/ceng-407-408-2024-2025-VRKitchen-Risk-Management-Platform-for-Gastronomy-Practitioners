@@ -3,20 +3,12 @@ using UnityEngine;
 public class VisualFeedbackController : MonoBehaviour
 {
     public GameObject exclamationPrefab;
-    public Transform fixedSpawnPoint; // Drag the ContaminationMarker here!
 
     private GameObject instance;
 
-    public void ShowExclamation(Vector3 ignoredPosition)
+    public void ShowExclamation(Vector3 spawnPosition)
     {
-        if (fixedSpawnPoint == null)
-        {
-            Debug.LogError("❌ No fixedSpawnPoint assigned! Drag the ContaminationMarker in the Inspector.");
-            return;
-        }
-
-        Vector3 spawnPosition = fixedSpawnPoint.position;
-        Debug.Log("📌 Spawning exclamation at marker: " + spawnPosition);
+        Debug.Log("📌 Spawning exclamation at: " + spawnPosition);
 
         if (instance == null)
         {
@@ -32,6 +24,14 @@ public class VisualFeedbackController : MonoBehaviour
         {
             instance.transform.position = spawnPosition;
             instance.SetActive(true);
+        }
+
+        // 🔊 Play the sound
+        AudioSource audio = instance.GetComponent<AudioSource>();
+        if (audio != null)
+        {
+            audio.Stop(); // make sure it's not overlapping
+            audio.Play();
         }
     }
 }

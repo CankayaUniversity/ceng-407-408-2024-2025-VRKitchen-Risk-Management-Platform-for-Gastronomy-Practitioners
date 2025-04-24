@@ -7,20 +7,21 @@ public class FireController : SingletonBehaviour<FireController>
     [System.Serializable]
     public class FireSource
     {
-        public Transform spawnPoint;  // Where fire should appear
-        public GameObject firePrefab; // Fire effect prefab
+        public Transform spawnPoint;          // Where fire should appear
+        public GameObject firePrefab;         // Fire effect prefab
         public OvenController ovenController; // Reference to oven
-        public HeatZone heatZone; // Reference to heating zone
-        public float heatingTime = 0f; // Time heating zone is active
-        public float maxHeatingTime = 600f; // 10 minutes before fire starts
+        public HeatZone heatZone;             // Reference to heating zone
+        public float heatingTime = 0f;        // Time heating zone is active
+        public float maxHeatingTime = 600f;   // 10 minutes before fire starts
         [HideInInspector] public GameObject activeFire; // Stores fire object
     }
 
-    public UnityToAPI toAPI; // 🔗 API reference for sending queries
+    public UnityToAPI toAPI;                            // 🔗 API reference
+    public VisualFeedbackController fireAlertFeedback;  // 🔊👀 Visual alert controller
+    public Transform fireAlertMarkerTransform;          // 📍 Where to spawn the alert icon
     public List<FireSource> fireSources = new List<FireSource>(); // List of heating zones
-    public float checkInterval = 20f; // Time interval for fire check
+    public float checkInterval = 20f;                   // Interval to check heat zones
 
-    //public OvenController ovenController;
     private void Start()
     {
         StartCoroutine(CheckForFireRisk());
@@ -41,18 +42,14 @@ public class FireController : SingletonBehaviour<FireController>
         {
             if (source.heatZone != null)
             {
-                bool isZoneOn = source.heatZone.IsZoneOn(); 
-
-                //Debug.Log($"Checking {source.heatZone.name} - IsOn: {isZoneOn}");
+                bool isZoneOn = source.heatZone.IsZoneOn();
 
                 if (isZoneOn)
                 {
                     source.heatingTime += checkInterval;
-                    //Debug.Log($"Heating time increased: {source.heatZone.name} = {source.heatingTime}");
 
                     if (source.heatingTime >= source.maxHeatingTime && source.activeFire == null)
                     {
-                        //Debug.Log($"Fire started at {source.spawnPoint.name} (Heating zone on too long!)");
                         SpawnFire(source);
                     }
                 }
@@ -67,33 +64,34 @@ public class FireController : SingletonBehaviour<FireController>
         }
     }
 
-
     private void SpawnFire(FireSource source)
     {
         if (source.firePrefab != null && source.spawnPoint != null)
         {
             source.activeFire = Instantiate(source.firePrefab, source.spawnPoint.position, Quaternion.identity);
-            
+
             FireInstance fireInstance = source.activeFire.GetComponent<FireInstance>();
-
             if (fireInstance == null)
-            {
                 fireInstance = source.activeFire.AddComponent<FireInstance>();
-            }
-            
-            fireInstance.source = source; 
 
-            //Debug.Log($" Fire instantiated at {source.spawnPoint.name}");
+            fireInstance.source = source;
 
+            // 🧠 Submit RAG fire query
             if (toAPI != null)
             {
-                Debug.Log($" Query submitted!");
+                Debug.Log("🔥 Fire triggered - sending query to RAG");
                 toAPI.queryText = "A general fire has started in the game. What are the steps to handle this situation? Just give me the steps.";
                 toAPI.SubmitQuery();
             }
+
+            // 🔔 Show visual alert
+            if (fireAlertFeedback != null && fireAlertMarkerTransform != null)
+            {
+                fireAlertFeedback.ShowExclamation(fireAlertMarkerTransform.position);
+                Debug.Log("🚨 Fire alert icon displayed.");
+            }
         }
     }
-
 
     public void ExtinguishFire(FireSource source)
     {
@@ -101,8 +99,8 @@ public class FireController : SingletonBehaviour<FireController>
         {
             Destroy(source.activeFire);
             source.activeFire = null;
-            Debug.Log(" Fire extinguished!");
             source.heatingTime = 0f;
+            Debug.Log("✅ Fire extinguished.");
         }
     }
 }
