@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2829,11 +2829,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b769b99573da540b60af12ced5771a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSourcePrefab: {fileID: 914809945342512434, guid: a758de21bd509894b9a3198803e861ad, type: 3}
+  audioSourcePrefab: {fileID: 2315393427062304543, guid: 05b938e4fe7b5de4da98e9d8869010a4, type: 3}
   musicSource: {fileID: 0}
   audioSources: []
   backgroundMusic: {fileID: 0}
-  walkingSound: {fileID: 8300000, guid: a31fa5d4d403e92439c4b3ef5d94dac6, type: 3}
+  walkingSound: {fileID: 8300000, guid: bb373d1038026fc468e7874b2eb66f9b, type: 3}
 --- !u!4 &725335860
 Transform:
   m_ObjectHideFlags: 0
