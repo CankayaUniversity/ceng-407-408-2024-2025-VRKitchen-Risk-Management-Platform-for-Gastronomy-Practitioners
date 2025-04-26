@@ -6,6 +6,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from openai import AzureOpenAI
 
+# This app2 version has general in chat memeory while the oder had a steps memeory!!
+
 # Load environment variables
 load_dotenv()
 azure_oai_endpoint = os.getenv("AZURE_OAI_ENDPOINT")
@@ -75,7 +77,7 @@ async def ask_question(request: QueryRequest):
     if question_lower.endswith("what now?"):
         active_context = memory["context"]
         if active_context not in ["recipe", "risk"]:
-            return {"response": "❓ You're not following a recipe or scenario right now."}
+            return {"response": "You're not following a recipe or scenario right now."}
 
         flow = memory[f"active_{active_context}"]
         steps = flow["steps"]
@@ -85,9 +87,9 @@ async def ask_question(request: QueryRequest):
             memory[f"active_{active_context}"] = None
             if active_context == "risk" and memory["active_recipe"]:
                 memory["context"] = "recipe"
-                return {"response": "✅ Risk scenario complete. Resuming your recipe...\n" +
+                return {"response": "Risk scenario complete. Resuming your recipe...\n" +
                                     f"Next step: {memory['active_recipe']['steps'][memory['active_recipe']['current_step_index']]}"}            
-            return {"response": "✅ All steps completed. Great job!"}
+            return {"response": "All steps completed. Great job!"}
 
         expected_step = steps[index]
         cleaned_expected = re.sub(r"\[.*?\]", "", expected_step).strip()
@@ -95,9 +97,9 @@ async def ask_question(request: QueryRequest):
 
         prompt = (
             "You are a step-following assistant in a VR kitchen simulation.\n"
-            f"✅ Expected step:\n{cleaned_expected}\n"
-            f"{'👉 Next step:\n' + next_step if next_step else 'This is the final step.'}\n"
-            f"🗣️ Player said:\n{question}\n\n"
+            f"Expected step:\n{cleaned_expected}\n"
+            f"{'Next step:\n' + next_step if next_step else 'This is the final step.'}\n"
+            f"Player said:\n{question}\n\n"
             "Your job is to check if the player did the correct step.\n"
             "- If yes, confirm and provide the next step.\n"
             "- If not, explain what they still need to do.\n"
@@ -176,6 +178,6 @@ async def ask_question(request: QueryRequest):
         }
         memory["context"] = tag
         print(f"[DEBUG] Initialized {tag} memory for {user_id}:\n", user_memory)
-        return {"response": f"✅ Got it! Let's begin.\nFirst step: {steps[0]}"}
+        return {"response": f"Got it! Let's begin.\nFirst step: {steps[0]}"}
 
     return {"response": content}
