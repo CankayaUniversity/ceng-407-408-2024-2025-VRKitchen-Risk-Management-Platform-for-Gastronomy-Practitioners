@@ -2833,7 +2833,7 @@ MonoBehaviour:
   musicSource: {fileID: 0}
   audioSources: []
   backgroundMusic: {fileID: 0}
-  walkingSound: {fileID: 8300000, guid: 4c6c1d82fc8d4bb4fadb8f6aca20c295, type: 3}
+  walkingSound: {fileID: 8300000, guid: a31fa5d4d403e92439c4b3ef5d94dac6, type: 3}
 --- !u!4 &725335860
 Transform:
   m_ObjectHideFlags: 0
@@ -4589,6 +4589,7 @@ Transform:
   m_LocalScale: {x: 0.10376135, y: 0.10376135, z: 0.10376135}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1916968532}
   - {fileID: 953741452}
   m_Father: {fileID: 708674426}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5125,7 +5126,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "- Item 1\r\n- Item 2\r\n- Item 3\r\n- Item 4\r"
+  m_text: "Please choose:\n[1] Steak and Fries\r\n[2] Pasta with Tomato Sauce\r\n[3]
+    Rice and Chicken\r\t\n\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f401626be6721a4ead9500b90863c21, type: 2}
   m_sharedMaterial: {fileID: -3206333616028628862, guid: 1f401626be6721a4ead9500b90863c21, type: 2}
@@ -5730,6 +5732,10 @@ PrefabInstance:
       propertyPath: m_RequestedTrackingOriginMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 288535931057059109, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+      propertyPath: m_IsTrackedAction.m_Action.m_Flags
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 782643509359655730, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -5865,6 +5871,7 @@ MonoBehaviour:
     m_Reference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   minSpeed: 0.15
   stepInterval: 0.5
+  stopGracePeriod: 0.3
 --- !u!1 &1853767839
 GameObject:
   m_ObjectHideFlags: 0
@@ -6448,6 +6455,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1464886652983709964, guid: cba172db31af8bf42879464e1028df92, type: 3}
   m_PrefabInstance: {fileID: 1909060845}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1916968531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1916968532}
+  - component: {fileID: 1916968533}
+  m_Layer: 0
+  m_Name: RecipeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1916968532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916968531}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1568296579}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1916968533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916968531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7eef6375f09e8c40b4afcd7474cb98d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipeListText: {fileID: 1618794441}
+  unityToAPI: {fileID: 708674425}
 --- !u!1 &1938682960
 GameObject:
   m_ObjectHideFlags: 0
