@@ -42,8 +42,7 @@ public class FireController : SingletonBehaviour<FireController>
         {
             if (source.heatZone != null)
             {
-                //bool isZoneOn = source.heatZone.IsZoneOn();
-                bool isZoneOn = true;
+                bool isZoneOn = source.heatZone.IsZoneOn();
 
                 if (isZoneOn)
                 {
