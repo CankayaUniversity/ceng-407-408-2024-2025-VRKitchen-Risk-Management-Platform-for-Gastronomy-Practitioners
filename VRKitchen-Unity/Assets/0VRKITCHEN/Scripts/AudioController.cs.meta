@@ -3,7 +3,11 @@ guid: 90b769b99573da540b60af12ced5771a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - audioSourcePrefab: {instanceID: 0}
+  - musicSource: {instanceID: 0}
+  - backgroundMusic: {instanceID: 0}
+  - walkingSound: {fileID: 8300000, guid: 4c6c1d82fc8d4bb4fadb8f6aca20c295, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
