@@ -2834,7 +2834,7 @@ MonoBehaviour:
   audioSources: []
   backgroundMusic: {fileID: 0}
   walkingSound: {fileID: 8300000, guid: bb373d1038026fc468e7874b2eb66f9b, type: 3}
-  fireSound: {fileID: 8300000, guid: 7f06f4a7dc28fda4fbbcbd9e1893e142, type: 3}
+  fireSound: {fileID: 8300000, guid: a8c7082c3eaf18b4884deaf077bb73c9, type: 3}
   placingMeatSound: {fileID: 8300000, guid: f56df4112590da243af8270eed43bb88, type: 3}
   placingChickenSound: {fileID: 8300000, guid: e9f71aed303787a439be2b421d281673, type: 3}
   fryingSound: {fileID: 8300000, guid: 2b19c20b82acfc7409059d1e581e61b6, type: 3}
