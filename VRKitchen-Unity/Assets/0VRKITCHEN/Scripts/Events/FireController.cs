@@ -42,7 +42,8 @@ public class FireController : SingletonBehaviour<FireController>
         {
             if (source.heatZone != null)
             {
-                bool isZoneOn = source.heatZone.IsZoneOn();
+                //bool isZoneOn = source.heatZone.IsZoneOn();
+                bool isZoneOn = true;
 
                 if (isZoneOn)
                 {
@@ -75,6 +76,7 @@ public class FireController : SingletonBehaviour<FireController>
                 fireInstance = source.activeFire.AddComponent<FireInstance>();
 
             fireInstance.source = source;
+            AudioController.Instance.PlayFireSound();
 
             // 🧠 Submit RAG fire query
             if (toAPI != null)

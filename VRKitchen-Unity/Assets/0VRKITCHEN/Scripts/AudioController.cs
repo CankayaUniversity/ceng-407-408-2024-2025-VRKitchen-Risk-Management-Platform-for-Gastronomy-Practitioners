@@ -13,6 +13,7 @@ public class AudioController : SingletonBehaviour<AudioController>
     [Header("Audio Clip")]
     [SerializeField] private AudioClip backgroundMusic;
     [SerializeField] private AudioClip walkingSound;
+    [SerializeField] private AudioClip fireSound; // <-- Added fire sound
 
     private void Start()
     {
@@ -36,6 +37,12 @@ public class AudioController : SingletonBehaviour<AudioController>
     public void PlayWalkingSound()
     {
         PlaySound(walkingSound);
+    }
+
+    // Special method just for fire sound
+    public void PlayFireSound() // <-- Added this
+    {
+        PlaySound(fireSound);
     }
 
     private AudioSource GetOrCreateAudioSource()
