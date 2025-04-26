@@ -14,6 +14,7 @@ public class FireController : SingletonBehaviour<FireController>
         public float heatingTime = 0f;        // Time heating zone is active
         public float maxHeatingTime = 600f;   // 10 minutes before fire starts
         [HideInInspector] public GameObject activeFire; // Stores fire object
+        [HideInInspector] public AudioSource fireAudioSource; // Track the fire looping sound
     }
 
     public UnityToAPI toAPI;                            // 🔗 API reference
@@ -75,7 +76,8 @@ public class FireController : SingletonBehaviour<FireController>
                 fireInstance = source.activeFire.AddComponent<FireInstance>();
 
             fireInstance.source = source;
-            AudioController.Instance.PlayFireSound();
+            source.fireAudioSource = AudioController.Instance.PlayLoopingSound(AudioController.Instance.GetFireClip(), source.spawnPoint.position);
+
 
             // 🧠 Submit RAG fire query
             if (toAPI != null)
@@ -101,6 +103,13 @@ public class FireController : SingletonBehaviour<FireController>
             Destroy(source.activeFire);
             source.activeFire = null;
             source.heatingTime = 0f;
+
+            if (source.fireAudioSource != null)
+            {
+                AudioController.Instance.StopLoopingSound(source.fireAudioSource);
+                source.fireAudioSource = null;
+            }
+
             Debug.Log("✅ Fire extinguished.");
 
             fireAlertFeedback?.HideExclamation(); // 🔕 Hide the fire alert

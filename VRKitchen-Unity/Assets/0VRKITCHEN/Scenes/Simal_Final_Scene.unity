@@ -2834,6 +2834,17 @@ MonoBehaviour:
   audioSources: []
   backgroundMusic: {fileID: 0}
   walkingSound: {fileID: 8300000, guid: bb373d1038026fc468e7874b2eb66f9b, type: 3}
+  fireSound: {fileID: 8300000, guid: 7f06f4a7dc28fda4fbbcbd9e1893e142, type: 3}
+  placingMeatSound: {fileID: 8300000, guid: f56df4112590da243af8270eed43bb88, type: 3}
+  placingChickenSound: {fileID: 8300000, guid: e9f71aed303787a439be2b421d281673, type: 3}
+  fryingSound: {fileID: 8300000, guid: 2b19c20b82acfc7409059d1e581e61b6, type: 3}
+  cuttingSound: {fileID: 8300000, guid: f5a2e627ac3248448b9c5bc01e2d9af6, type: 3}
+  boilingSound: {fileID: 8300000, guid: 5ff3df54798c7b14da181eebf2492dad, type: 3}
+  placingPlateSound: {fileID: 8300000, guid: 766d05a3014b770418f09f064bf68ecb, type: 3}
+  closingPanSound: {fileID: 8300000, guid: 9b78e588f7a0e9040924982d23ecdcd3, type: 3}
+  choppingMeatSound: {fileID: 8300000, guid: ac9fe3cd8a473284a9a00516379d6024, type: 3}
+  fireExtinguisherSound: {fileID: 8300000, guid: e816787a15aec754cb26f2112c5b4cf5, type: 3}
+  fireSoundVolume: 0.1
 --- !u!4 &725335860
 Transform:
   m_ObjectHideFlags: 0

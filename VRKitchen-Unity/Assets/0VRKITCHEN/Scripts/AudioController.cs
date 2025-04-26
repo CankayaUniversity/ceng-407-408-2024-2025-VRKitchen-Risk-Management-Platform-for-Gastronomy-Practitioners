@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +14,20 @@ public class AudioController : SingletonBehaviour<AudioController>
     [Header("Audio Clip")]
     [SerializeField] private AudioClip backgroundMusic;
     [SerializeField] private AudioClip walkingSound;
-    [SerializeField] private AudioClip fireSound; // <-- Added fire sound
+    [SerializeField] private AudioClip fireSound;
+    [SerializeField] private AudioClip placingMeatSound;
+    [SerializeField] private AudioClip placingChickenSound;
+    [SerializeField] private AudioClip fryingSound;
+    [SerializeField] private AudioClip cuttingSound;
+    [SerializeField] private AudioClip boilingSound;
+    [SerializeField] private AudioClip placingPlateSound;
+    [SerializeField] private AudioClip closingPanSound;
+    [SerializeField] private AudioClip choppingMeatSound;
+    [SerializeField] private AudioClip fireExtinguisherSound;
+
+    [Header("Volume Settings")]
+    [SerializeField] private float fireSoundVolume = 0.5f; 
+
 
     private void Start()
     {
@@ -32,17 +46,73 @@ public class AudioController : SingletonBehaviour<AudioController>
             source.PlayOneShot(clip);
         }
     }
-
-    // Special method just for walking sound
     public void PlayWalkingSound()
     {
         PlaySound(walkingSound);
     }
 
-    // Special method just for fire sound
-    public void PlayFireSound() // <-- Added this
+    public void PlayFireSound()
     {
-        PlaySound(fireSound);
+        AudioSource source = GetOrCreateAudioSource();
+        if (source != null && fireSound != null)
+        {
+            source.clip = fireSound;
+            source.loop = true;
+            source.volume = fireSoundVolume; 
+            source.Play();
+        }
+    }
+
+
+    public AudioClip GetFireClip()
+    {
+        return fireSound;
+    }
+
+
+    public void PlayCuttingSound()
+    {
+        PlaySound(cuttingSound);
+    }
+
+    public void PlayPlacingMeatSound()
+    {
+        PlaySound(placingMeatSound);
+    }
+
+    public void PlayPlacingChickenSound()
+    {
+        PlaySound(placingChickenSound);
+    }
+
+    public void PlayBoilingSound()
+    {
+        PlaySound(boilingSound);
+    }
+
+    public void PlayFryingSound()
+    {
+        PlaySound(fryingSound);
+    }
+
+    public void PlayPlacingPlateSound()
+    {
+        PlaySound(placingPlateSound);
+    }
+
+    public void PlayClosingPanSound()
+    {
+        PlaySound(closingPanSound);
+    }
+
+    public void PlayChoppingMeatSound()
+    {
+        PlaySound(choppingMeatSound);
+    }
+
+    public void PlayFireExtinguisherSound()
+    {
+        PlaySound(fireExtinguisherSound);
     }
 
     private AudioSource GetOrCreateAudioSource()
@@ -57,4 +127,50 @@ public class AudioController : SingletonBehaviour<AudioController>
         audioSources.Add(newSource);
         return newSource;
     }
+
+    public AudioSource PlayLoopingSound(AudioClip clip, Vector3 position)
+    {
+        if (clip == null) return null;
+
+        AudioSource source = GetOrCreateAudioSource();
+        if (source != null)
+        {
+            source.transform.position = position;
+            source.clip = clip;
+            source.loop = true;
+            source.Play();
+        }
+        return source;
+    }
+
+    public void StopLoopingSound(AudioSource source, float fadeDuration = 0.5f)
+    {
+        if (source != null)
+        {
+            StartCoroutine(FadeOutAndStop(source, fadeDuration));
+        }
+    }
+
+
+    private IEnumerator FadeOutAndStop(AudioSource source, float duration)
+    {
+        if (source == null) yield break;
+
+        float startVolume = source.volume;
+
+        float time = 0f;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            source.volume = Mathf.Lerp(startVolume, 0f, time / duration);
+            yield return null;
+        }
+
+        source.Stop();
+        source.clip = null;
+        source.loop = false;
+        source.volume = startVolume; // Reset volume for future use
+    }
+
+
 }
