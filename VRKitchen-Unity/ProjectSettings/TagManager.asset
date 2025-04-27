@@ -8,6 +8,12 @@ TagManager:
   - Knife
   - Bread
   - Cucumber
+  - Salt
+  - BlackPepper
+  - Food
+  - PanTop
+  - Pan
+  - Fire
   layers:
   - Default
   - TransparentFX

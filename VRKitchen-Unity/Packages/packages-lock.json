@@ -1,5 +1,22 @@
 {
   "dependencies": {
+    "com.endel.nativewebsocket": {
+      "version": "https://github.com/endel/NativeWebSocket.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "1d8b49b3fee41c09a98141f1f1a5e4db47e14229"
+    },
+    "com.huggingface.api": {
+      "version": "https://github.com/huggingface/unity-api.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.textmeshpro": "3.0.6",
+        "com.unity.nuget.newtonsoft-json": "3.0.1"
+      },
+      "hash": "8d0231780ead66aba3ad5ad3373158d5de0bc533"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -7,7 +24,7 @@
       "dependencies": {}
     },
     "com.unity.ai.navigation": {
-      "version": "1.1.4",
+      "version": "1.1.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -83,6 +100,13 @@
     },
     "com.unity.mathematics": {
       "version": "1.2.6",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},

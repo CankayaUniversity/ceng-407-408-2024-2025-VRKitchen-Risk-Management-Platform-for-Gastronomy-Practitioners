@@ -4,7 +4,7 @@ using UnityEngine;
 public class ItemTracker : MonoBehaviour
 {
     public List<string> touchingItemTags = new List<string>();
-    [SerializeField] private QuestSystem questSystem;
+    //[SerializeField] private QuestSystem questSystem;
     private void OnCollisionEnter(Collision collision)
     {
         string itemTag = collision.gameObject.tag;
@@ -12,7 +12,7 @@ public class ItemTracker : MonoBehaviour
         {
             touchingItemTags.Add(itemTag);
             
-            questSystem.OnItemPlaced(itemTag);
+           // questSystem.OnItemPlaced(itemTag);
         }
     }
 
