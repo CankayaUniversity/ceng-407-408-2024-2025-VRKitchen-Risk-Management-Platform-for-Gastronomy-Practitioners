@@ -10,7 +10,6 @@ public class XRSliceObject : MonoBehaviour
     public VelocityEstimator velocityEstimator;
     public InteractionLayerMask sliceableLayer;
 
-    public Material crossSectionMaterial;
     public float cutForce = 1.0f;
     public float minSliceVelocity = 1.0f;
 
@@ -45,12 +44,19 @@ public class XRSliceObject : MonoBehaviour
         Vector3 planeNormal = Vector3.Cross(endSlicePoint.position - startSlicePoint.position, velocity);
         planeNormal.Normalize();
 
-        SlicedHull hull = target.Slice(endSlicePoint.position, planeNormal);
+        Material originalMaterial = null;
+        MeshRenderer renderer = target.GetComponent<MeshRenderer>();
+        if (renderer != null && renderer.material != null)
+        {
+            originalMaterial = renderer.material;
+        }
+
+        SlicedHull hull = target.Slice(endSlicePoint.position, planeNormal, originalMaterial);
 
         if (hull != null)
         {
-            GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
-            GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
+            GameObject upperHull = hull.CreateUpperHull(target, originalMaterial);
+            GameObject lowerHull = hull.CreateLowerHull(target, originalMaterial);
 
             CopyComponentsFromOriginal(target, upperHull);
             CopyComponentsFromOriginal(target, lowerHull);
