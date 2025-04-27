@@ -24,9 +24,10 @@ public class AudioController : SingletonBehaviour<AudioController>
     [SerializeField] private AudioClip closingPanSound;
     [SerializeField] private AudioClip choppingMeatSound;
     [SerializeField] private AudioClip fireExtinguisherSound;
+    [SerializeField] private AudioClip exclamationSound;
 
     [Header("Volume Settings")]
-    [SerializeField] private float fireSoundVolume = 0.5f; 
+    [SerializeField] private float fireSoundVolume = 0.5f;
 
 
     private void Start()
@@ -51,6 +52,12 @@ public class AudioController : SingletonBehaviour<AudioController>
         PlaySound(walkingSound);
     }
 
+    public void PlayExclamationSound()
+    {
+        PlaySound(exclamationSound);
+    }
+
+
     public void PlayFireSound()
     {
         AudioSource source = GetOrCreateAudioSource();
@@ -58,7 +65,7 @@ public class AudioController : SingletonBehaviour<AudioController>
         {
             source.clip = fireSound;
             source.loop = true;
-            source.volume = fireSoundVolume; 
+            source.volume = fireSoundVolume;
             source.Play();
         }
     }
@@ -171,6 +178,4 @@ public class AudioController : SingletonBehaviour<AudioController>
         source.loop = false;
         source.volume = startVolume; // Reset volume for future use
     }
-
-
 }

@@ -26,15 +26,9 @@ public class VisualFeedbackController : MonoBehaviour
             instance.SetActive(true);
         }
 
-        // 🔊 Play the sound
-        AudioSource audio = instance.GetComponent<AudioSource>();
-        if (audio != null)
-        {
-            audio.Stop(); // make sure it's not overlapping
-            audio.Play();
-        }
+        // Play exclamation sound using AudioController
+        AudioController.Instance.PlayExclamationSound();
     }
-
 
     public void HideExclamation()
     {
