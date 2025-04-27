@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 27aef089846d9de45b72d4633763278c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -0.471
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27aef089846d9de45b72d4633763278c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.137
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27aef089846d9de45b72d4633763278c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -6.316
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27aef089846d9de45b72d4633763278c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 27aef089846d9de45b72d4633763278c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 58571b2f744b2d44eaaba3dc29758713, type: 2}
     - target: {fileID: 919132149155446097, guid: 27aef089846d9de45b72d4633763278c, type: 3}
       propertyPath: m_Name
       value: pan
@@ -223,7 +227,7 @@ MonoBehaviour:
       m_Calls: []
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
+  m_UseDynamicAttach: 1
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
