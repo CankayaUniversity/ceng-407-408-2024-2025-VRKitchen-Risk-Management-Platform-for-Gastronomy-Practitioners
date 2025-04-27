@@ -63,8 +63,8 @@ public class HandTextDisplay : MonoBehaviour
 
     void Update()
     {
-        // Toggle clipboard visibility with F10
-        if (Input.GetKeyDown(KeyCode.F10))
+        // Toggle clipboard visibility with
+        if (Input.GetKeyDown(KeyCode.L))
         {
             isVisible = !isVisible;
             clipBoard.SetActive(isVisible);

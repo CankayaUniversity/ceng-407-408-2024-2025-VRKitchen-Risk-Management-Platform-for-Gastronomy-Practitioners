@@ -31,7 +31,7 @@ public class SpeechRecognitionTest : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F12))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             if (recording)
             {
@@ -122,7 +122,7 @@ public class SpeechRecognitionTest : MonoBehaviour
         // Create an instance of QueryData
         QueryData data = new QueryData
         {
-            query_text = transcribedText,
+            query_text = transcribedText + "without extra explanation. Just give me the answer.",
             session_id = "user_123" // Optional: If your API uses session_id for memory
         };
 
