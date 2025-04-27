@@ -84,7 +84,7 @@ public class TextToSpeech : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F11))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             StopSpeaking();
         }
