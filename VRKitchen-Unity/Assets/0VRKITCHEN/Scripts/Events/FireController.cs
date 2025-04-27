@@ -23,9 +23,27 @@ public class FireController : SingletonBehaviour<FireController>
     public List<FireSource> fireSources = new List<FireSource>(); // List of heating zones
     public float checkInterval = 20f;                   // Interval to check heat zones
 
+    [Header("Random Fire Settings")]
+    public bool enableRandomFires = true;
+    public float randomFireInterval = 60f; // every 60 seconds try spawning a random fire
+    [Range(0f, 1f)]
+    public float randomFireChance = 0.1f; // 10% chance each interval
+
+    [Header("Difficulty Scaling Settings")]
+    public float chanceIncreaseRate = 0.01f;   // +1% every 30 seconds
+    public float intervalDecreaseRate = 1f;    // -1 second every 30 seconds
+    public float minimumFireInterval = 10f;    // minimum 10 seconds between random fires
+    public float maxRandomFireChance = 0.5f;   // max 50% chance
+
     private void Start()
     {
         StartCoroutine(CheckForFireRisk());
+
+        if (enableRandomFires)
+        {
+            StartCoroutine(RandomFireSpawner());
+            StartCoroutine(IncreaseFireDifficultyOverTime());
+        }
     }
 
     private IEnumerator CheckForFireRisk()
@@ -65,6 +83,58 @@ public class FireController : SingletonBehaviour<FireController>
         }
     }
 
+    private IEnumerator RandomFireSpawner()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(randomFireInterval);
+
+            if (Random.value <= randomFireChance)
+            {
+                FireSource randomSource = GetRandomAvailableSource();
+                if (randomSource != null && randomSource.activeFire == null)
+                {
+                    Debug.Log("🔥 Random fire triggered!");
+                    SpawnFire(randomSource);
+                }
+            }
+        }
+    }
+
+    private IEnumerator IncreaseFireDifficultyOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(30f);
+
+            // Increase random fire chance
+            randomFireChance = Mathf.Min(maxRandomFireChance, randomFireChance + chanceIncreaseRate);
+
+            // Decrease random fire interval
+            randomFireInterval = Mathf.Max(minimumFireInterval, randomFireInterval - intervalDecreaseRate);
+
+            Debug.Log($"🔥 Fire difficulty increased: Chance={randomFireChance * 100f}%, Interval={randomFireInterval} seconds");
+        }
+    }
+
+    private FireSource GetRandomAvailableSource()
+    {
+        List<FireSource> availableSources = new List<FireSource>();
+
+        foreach (var source in fireSources)
+        {
+            if (source.firePrefab != null && source.spawnPoint != null && source.activeFire == null)
+            {
+                availableSources.Add(source);
+            }
+        }
+
+        if (availableSources.Count == 0)
+            return null;
+
+        return availableSources[Random.Range(0, availableSources.Count)];
+    }
+
     private void SpawnFire(FireSource source)
     {
         if (source.firePrefab != null && source.spawnPoint != null)
@@ -77,7 +147,6 @@ public class FireController : SingletonBehaviour<FireController>
 
             fireInstance.source = source;
             source.fireAudioSource = AudioController.Instance.PlayLoopingSound(AudioController.Instance.GetFireClip(), source.spawnPoint.position);
-
 
             // 🧠 Submit RAG fire query
             if (toAPI != null)
@@ -113,7 +182,6 @@ public class FireController : SingletonBehaviour<FireController>
             Debug.Log("✅ Fire extinguished.");
 
             fireAlertFeedback?.HideExclamation(); // 🔕 Hide the fire alert
-
         }
     }
 }

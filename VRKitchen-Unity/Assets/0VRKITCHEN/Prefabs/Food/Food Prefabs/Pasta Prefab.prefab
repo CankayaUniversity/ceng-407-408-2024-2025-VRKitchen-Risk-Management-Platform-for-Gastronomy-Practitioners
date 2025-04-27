@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7371927175007084752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0044326186
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.012642495
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5921641
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.59216416
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.38644743
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.3864475
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      propertyPath: m_Name
+      value: pasta
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9035715627777091366}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -927330085141403967}
+  m_SourcePrefab: {fileID: 100100000, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+--- !u!1 &7678410198550420865 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+  m_PrefabInstance: {fileID: 7371927175007084752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9035715627777091366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678410198550420865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5333f120f03a24caa43f8903663606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temperature: 0
+  cookedThreshold: 50
+  overcookedThreshold: 100
+--- !u!114 &-927330085141403967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678410198550420865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c58f5becc70944b58859309e1522780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodData: {fileID: 11400000, guid: 38cd9968d5eec47de8d65558a6734e89, type: 2}
+  currentState: 0
+  rawMaterial: {fileID: 5863650252929523565, guid: 9c0b39d13645d9640bb9122d6f7c6d56, type: 3}
+  cookedMaterial: {fileID: -7309649336560996874, guid: 709484a18005a6343ae4817f43238eb6, type: 3}
+  overcookedMaterial: {fileID: 0}
+  burntMaterial: {fileID: 0}

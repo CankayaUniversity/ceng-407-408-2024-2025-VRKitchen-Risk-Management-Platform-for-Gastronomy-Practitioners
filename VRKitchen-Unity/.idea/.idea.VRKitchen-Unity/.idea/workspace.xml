@@ -6,7 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="5acc07fd-79b8-43d9-8167-53344560c475" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Seasoning/OilPouring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Seasoning/OilPouring.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Chicken.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Chicken.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Deneme Prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Deneme Prefab/chicken_raw Deneme.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Deneme Prefab/chicken_raw Deneme.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scenes/Simal_Final_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scenes/Simal_Final_Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Events/FireController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Events/FireController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/FoodData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/FoodData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/FoodInstance.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/FoodInstance.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/FoodPickupKinematic.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/FoodPickupKinematic.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/kitchenprops_ilkyaz.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/kitchenprops_ilkyaz_2.unitypackage.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +34,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/FireInstance.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/FoodInstance.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.huggingface.api@8d0231780e/Editor/HuggingFaceAPIWizard.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Shaders/Particles/ParticlesLit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -34,7 +50,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;updatedbranch&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -129,6 +145,8 @@
       <workItem from="1744750714077" duration="3127000" />
       <workItem from="1744753895205" duration="359000" />
       <workItem from="1744828631501" duration="7753000" />
+      <workItem from="1745770419230" duration="2965000" />
+      <workItem from="1745774723746" duration="671000" />
     </task>
     <servers />
   </component>

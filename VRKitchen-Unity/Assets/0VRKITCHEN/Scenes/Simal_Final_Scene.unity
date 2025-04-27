@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657886, g: 0.49641275, b: 0.5748176, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -587,7 +587,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5070482299081614716, guid: b0f7fcd43a79d844d80d45796f9bbec5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 944871003}
   m_SourcePrefab: {fileID: 100100000, guid: b0f7fcd43a79d844d80d45796f9bbec5, type: 3}
 --- !u!1001 &99086480
 PrefabInstance:
@@ -776,6 +779,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6272646013269940144, guid: b17f18ee1f1ac2243bc74a74e7b2846e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1863659528}
+    - targetCorrespondingSourceObject: {fileID: 6272646013269940144, guid: b17f18ee1f1ac2243bc74a74e7b2846e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1863659532}
   m_SourcePrefab: {fileID: 100100000, guid: b17f18ee1f1ac2243bc74a74e7b2846e, type: 3}
 --- !u!1 &197411162 stripped
 GameObject:
@@ -3282,6 +3288,24 @@ MonoBehaviour:
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
+--- !u!1 &944871002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5070482299081614716, guid: b0f7fcd43a79d844d80d45796f9bbec5, type: 3}
+  m_PrefabInstance: {fileID: 84006151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &944871003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944871002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8127f74d229974751a552daca87fbf6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodData: {fileID: 11400000, guid: ba3bea0e8de5c40849013521523e3a99, type: 2}
 --- !u!1 &953741451
 GameObject:
   m_ObjectHideFlags: 0
@@ -5968,7 +5992,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863659527}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce5333f120f03a24caa43f8903663606, type: 3}
   m_Name: 
@@ -5976,6 +6000,19 @@ MonoBehaviour:
   temperature: 0
   cookedThreshold: 50
   overcookedThreshold: 100
+--- !u!114 &1863659532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863659527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8127f74d229974751a552daca87fbf6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodData: {fileID: 11400000, guid: bcc212ae673f04e0e8eb46e5cf69fc37, type: 2}
 --- !u!1001 &1891472351
 PrefabInstance:
   m_ObjectHideFlags: 0

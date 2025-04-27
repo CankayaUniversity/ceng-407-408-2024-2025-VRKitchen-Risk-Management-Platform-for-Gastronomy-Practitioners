@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1afde7d219658bd4bb8dc1fad2b71970, type: 3}
       propertyPath: m_Name
-      value: chicken_raw Deneme
+      value: Chicken Prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -285,6 +285,6 @@ MonoBehaviour:
   foodData: {fileID: 11400000, guid: ba3bea0e8de5c40849013521523e3a99, type: 2}
   currentState: 0
   rawMaterial: {fileID: 5863650252929523565, guid: 1afde7d219658bd4bb8dc1fad2b71970, type: 3}
-  cookedMaterial: {fileID: 0}
+  cookedMaterial: {fileID: -7309649336560996874, guid: 803ba7253d574554ba904a356b43ca5e, type: 3}
   overcookedMaterial: {fileID: 0}
   burntMaterial: {fileID: 0}
