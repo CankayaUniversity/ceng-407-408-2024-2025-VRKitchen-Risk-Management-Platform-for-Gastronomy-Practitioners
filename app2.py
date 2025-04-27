@@ -1,12 +1,12 @@
 import os
 import re
-from datetime import datetime, timedelta
+from datetime import datetime
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel
 from openai import AzureOpenAI
 
-# This app2 version has general in chat memeory while the oder had a steps memeory!!
+# This version uses memory for both LLM models rag and regular
 
 # Load environment variables
 load_dotenv()
@@ -51,7 +51,6 @@ async def ask_question(request: QueryRequest):
     # Clean up expired sessions
     now = datetime.utcnow()
     timeout_seconds = 600  # 10 minutes
-
     expired_users = [
         uid for uid, mem in user_memory.items()
         if "last_active" in mem and (now - mem["last_active"]).total_seconds() > timeout_seconds
@@ -71,13 +70,13 @@ async def ask_question(request: QueryRequest):
         }
 
     memory = user_memory[user_id]
-    memory["last_active"] = now  # update activity timestamp
+    memory["last_active"] = now
 
-    # STEP VALIDATION MODE ("what now?")
+    # STEP VALIDATION ("what now?" flow)
     if question_lower.endswith("what now?"):
         active_context = memory["context"]
         if active_context not in ["recipe", "risk"]:
-            return {"response": "You're not following a recipe or scenario right now."}
+            return {"response": "You are not following a recipe or scenario right now."}
 
         flow = memory[f"active_{active_context}"]
         steps = flow["steps"]
@@ -87,7 +86,7 @@ async def ask_question(request: QueryRequest):
             memory[f"active_{active_context}"] = None
             if active_context == "risk" and memory["active_recipe"]:
                 memory["context"] = "recipe"
-                return {"response": "Risk scenario complete. Resuming your recipe...\n" +
+                return {"response": "Risk scenario complete. Resuming your recipe.\n" +
                                     f"Next step: {memory['active_recipe']['steps'][memory['active_recipe']['current_step_index']]}"}            
             return {"response": "All steps completed. Great job!"}
 
@@ -103,7 +102,7 @@ async def ask_question(request: QueryRequest):
             "Your job is to check if the player did the correct step.\n"
             "- If yes, confirm and provide the next step.\n"
             "- If not, explain what they still need to do.\n"
-            "DO NOT invent or reword steps."
+            "Do not invent or reword steps."
         )
 
         gpt_response = chat_client.chat.completions.create(
@@ -118,7 +117,7 @@ async def ask_question(request: QueryRequest):
 
         reply = gpt_response.choices[0].message.content.strip()
 
-        # Fuzzy match for backend validation
+        # Fuzzy match validation
         q_words = set(question_lower.split())
         e_words = set(cleaned_expected.lower().split())
         match_ratio = len(q_words & e_words) / max(len(e_words), 1)
@@ -127,10 +126,10 @@ async def ask_question(request: QueryRequest):
             flow["completed_steps"].append(expected_step)
             flow["current_step_index"] += 1
 
-        print(f"[DEBUG] Memory for {user_id}:\n{user_memory}")
+        print(f"[DEBUG] Updated Memory for {user_id}:\n", user_memory)
         return {"response": reply}
 
-    # RAG MODE for knowledge or starting new recipe/risk
+    # RAG MODE (General Questions / New Recipe or Risk)
     extension_config = {
         "dataSources": [{
             "type": "AzureCognitiveSearch",
@@ -168,8 +167,11 @@ async def ask_question(request: QueryRequest):
     if not steps:
         steps = [line.strip("-• ").strip() for line in content.split("\n") if line.strip()]
 
-    if len(steps) >= 2:
-        tag = "risk" if any(word in question_lower for word in ["fire", "spill", "emergency", "contamination"]) else "recipe"
+    if len(steps) >= 2 and (
+        "recipe" in question_lower or "start" in question_lower or
+        "fire" in question_lower or "spill" in question_lower or "emergency" in question_lower or "risk" in question_lower
+    ):
+        tag = "risk" if any(word in question_lower for word in ["fire", "spill", "emergency", "contamination", "risk"]) else "recipe"
         memory[f"active_{tag}"] = {
             "title": question,
             "steps": steps,
@@ -178,6 +180,6 @@ async def ask_question(request: QueryRequest):
         }
         memory["context"] = tag
         print(f"[DEBUG] Initialized {tag} memory for {user_id}:\n", user_memory)
-        return {"response": f"Got it! Let's begin.\nFirst step: {steps[0]}"}
 
+    # Always return full RAG answer to user
     return {"response": content}
