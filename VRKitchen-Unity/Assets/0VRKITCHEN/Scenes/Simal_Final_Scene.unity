@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -603,6 +603,10 @@ PrefabInstance:
     - target: {fileID: 5070482299081614716, guid: b0f7fcd43a79d844d80d45796f9bbec5, type: 3}
       propertyPath: m_Name
       value: chicken_raw
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070482299081614716, guid: b0f7fcd43a79d844d80d45796f9bbec5, type: 3}
+      propertyPath: m_TagString
+      value: Trash
       objectReference: {fileID: 0}
     - target: {fileID: 5554671608122720198, guid: b0f7fcd43a79d844d80d45796f9bbec5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2392,6 +2396,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597139754}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &614630333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 614630335}
+  - component: {fileID: 614630334}
+  m_Layer: 0
+  m_Name: FirePoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &614630334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614630333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f144ecd50dae34418a4dfb731930a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
+  poolSize: 10
+--- !u!4 &614630335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614630333}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2068862, y: 1.5423307, z: -2.924868}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &648546419
 GameObject:
   m_ObjectHideFlags: 0
@@ -5766,7 +5816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f9fc76634b2eaf849a40557b5ff89bde, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.877
+      value: 9.04
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f9fc76634b2eaf849a40557b5ff89bde, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7818,7 +7868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6fcafa61a7276459c5ffeedb537292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchingItemName: []
+  touchingItems: []
   isContamination: 0
   toAPI: {fileID: 708674425}
   visualFeedback: {fileID: 436857204}
@@ -8469,29 +8519,57 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1466853080}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
+      propertyPath: fireSources.Array.data[1].firePool
+      value: 
+      objectReference: {fileID: 614630334}
+    - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[1].heatZone
       value: 
       objectReference: {fileID: 1466853078}
+    - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
+      propertyPath: fireSources.Array.data[2].firePool
+      value: 
+      objectReference: {fileID: 614630334}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[2].heatZone
       value: 
       objectReference: {fileID: 1466853076}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
+      propertyPath: fireSources.Array.data[3].firePool
+      value: 
+      objectReference: {fileID: 614630334}
+    - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[3].heatZone
       value: 
       objectReference: {fileID: 1466853074}
+    - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
+      propertyPath: fireSources.Array.data[4].firePool
+      value: 
+      objectReference: {fileID: 614630334}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[4].heatZone
       value: 
       objectReference: {fileID: 1466853080}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
+      propertyPath: fireSources.Array.data[5].firePool
+      value: 
+      objectReference: {fileID: 614630334}
+    - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[5].heatZone
       value: 
       objectReference: {fileID: 1466853078}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
+      propertyPath: fireSources.Array.data[6].firePool
+      value: 
+      objectReference: {fileID: 614630334}
+    - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[6].heatZone
       value: 
       objectReference: {fileID: 1466853076}
+    - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
+      propertyPath: fireSources.Array.data[7].firePool
+      value: 
+      objectReference: {fileID: 614630334}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[7].heatZone
       value: 
@@ -8877,3 +8955,4 @@ SceneRoots:
   - {fileID: 229078060}
   - {fileID: 903518799}
   - {fileID: 1679288769}
+  - {fileID: 614630335}
