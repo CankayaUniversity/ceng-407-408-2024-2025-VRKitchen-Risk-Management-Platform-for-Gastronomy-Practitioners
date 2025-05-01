@@ -68,7 +68,7 @@ public class SimpleCross : MonoBehaviour
                 hasSentContaminationQuery = true;
             }
         }
-        else if (isContamination && (!containsMeat || touchingItems.Count <= 1))
+        else if (isContamination && (!containsMeat || touchingItems.Count == 0))
         {
             isContamination = false;
             hasSentContaminationQuery = false;
