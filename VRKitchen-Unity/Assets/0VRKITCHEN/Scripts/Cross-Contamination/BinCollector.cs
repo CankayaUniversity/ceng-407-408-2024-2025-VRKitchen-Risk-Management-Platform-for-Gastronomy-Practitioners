@@ -7,7 +7,7 @@ public class BinCollector : MonoBehaviour
         if (other.CompareTag("Trash"))
         {
             Debug.Log("Trash collected: " + other.name);
-            Destroy(other.gameObject); // You can also disable it instead
+            Destroy(other.gameObject); 
         }
     }
 }

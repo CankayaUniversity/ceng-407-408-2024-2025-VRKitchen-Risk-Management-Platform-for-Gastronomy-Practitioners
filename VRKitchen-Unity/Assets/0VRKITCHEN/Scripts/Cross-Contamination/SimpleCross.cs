@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleCross : MonoBehaviour
 {
-    public List<string> touchingItemName = new List<string>();
+    public List<GameObject> touchingItems = new List<GameObject>();
     public bool isContamination;
 
     public UnityToAPI toAPI;
@@ -12,46 +11,74 @@ public class SimpleCross : MonoBehaviour
     private bool hasSentContaminationQuery = false;
 
     public VisualFeedbackController visualFeedback;
-    public Transform contaminationMarkerTransform; // Drag the fixed object in Inspector
+    public Transform contaminationMarkerTransform;
 
     private void Update()
     {
+        CleanDestroyedItems();
         CheckContamination();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        string itemName = collision.gameObject.name;
-        if (!touchingItemName.Contains(itemName))
+        GameObject item = collision.gameObject;
+
+        if (!touchingItems.Contains(item))
         {
-            touchingItemName.Add(itemName);
+            touchingItems.Add(item);
         }
     }
 
-    void CheckContamination()
+    private void OnCollisionExit(Collision collision)
     {
-        if (!isContamination && touchingItemName.Contains("Meat") && touchingItemName.Count > 1)
+        GameObject item = collision.gameObject;
+
+        if (touchingItems.Contains(item))
+        {
+            touchingItems.Remove(item);
+        }
+    }
+
+    private void CleanDestroyedItems()
+    {
+        touchingItems.RemoveAll(item => item == null);
+    }
+
+    private void CheckContamination()
+    {
+        bool wasContaminated = isContamination;
+
+        bool containsMeat = touchingItems.Exists(obj => obj != null && obj.name.Contains("Meat"));
+        bool moreThanOneItem = touchingItems.Count > 1;
+
+        if (!isContamination && containsMeat && moreThanOneItem)
         {
             isContamination = true;
             Debug.Log("Cross Contamination Detected!");
 
             if (visualFeedback != null && contaminationMarkerTransform != null)
             {
-                // 💥 Spawn exactly above the board, no matter what
                 visualFeedback.ShowExclamation(contaminationMarkerTransform.position);
             }
 
             if (!hasSentContaminationQuery && toAPI != null)
             {
-                toAPI.queryText = "Cross contamination happened in the game. What are the steps I should follow in the game only? Dont provide any other explanation";
+                toAPI.queryText = "Cross contamination happened in the game. What are the steps I should follow in the game only? Don't provide any other explanation";
                 toAPI.SubmitQuery();
                 hasSentContaminationQuery = true;
             }
         }
-        else if (touchingItemName.Count == 0)
+        else if (isContamination && (!containsMeat || touchingItems.Count <= 1))
         {
             isContamination = false;
             hasSentContaminationQuery = false;
+
+            if (visualFeedback != null)
+            {
+                visualFeedback.HideExclamation();
+            }
+
+            Debug.Log("Contamination resolved.");
         }
     }
 }
