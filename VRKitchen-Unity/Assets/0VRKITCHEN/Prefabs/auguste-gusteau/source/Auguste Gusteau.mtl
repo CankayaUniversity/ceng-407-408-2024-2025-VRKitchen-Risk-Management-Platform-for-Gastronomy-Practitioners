@@ -1,0 +1,142 @@
+# Blender 3.3.21 MTL File: 'None'
+# www.blender.org
+
+newmtl mat0
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Mesh_0200out0_tex00.png
+
+newmtl mat0.001
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Mesh_0201out0_tex00.png
+
+newmtl mat0.002
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Mesh_0202out0_tex00.png
+
+newmtl mat0.003
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Mesh_0278out0_tex00.png
+map_d C:/Mesh_0278out0_tex00.png
+
+newmtl mat0.004
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Mesh_0279out0_tex00.jpg
+map_d C:/Mesh_0279out0_tex00.jpg
+
+newmtl mat0.005
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Mesh_0280out0_tex00.jpg
+map_d C:/Mesh_0280out0_tex00.jpg
+
+newmtl mat0.006
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Mesh_0281out0_tex00.jpg
+map_d C:/Mesh_0281out0_tex00.jpg
+
+newmtl mat0.007
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Mesh_0282out0_tex00.jpg
+map_d C:/Mesh_0282out0_tex00.jpg
+
+newmtl mat0.008
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Mesh_0283out0_tex00.jpg
+map_d C:/Mesh_0283out0_tex00.jpg
+
+newmtl mat0.009
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Mesh_0284out0_tex00.png
+map_d C:/Mesh_0284out0_tex00.png
+
+newmtl mat0.010
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Mesh_0285out0_tex00.jpg
+map_d C:/Mesh_0285out0_tex00.jpg
+
+newmtl mat0.011
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Mesh_0286out0_tex00.jpg
+map_d C:/Mesh_0286out0_tex00.jpg
+
+newmtl mat0.012
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Mesh_0287out0_tex00.jpg
+map_d C:/Mesh_0287out0_tex00.jpg
+
+newmtl mat0.013
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Mesh_0288out0_tex00.jpg
+map_d C:/Mesh_0288out0_tex00.jpg
