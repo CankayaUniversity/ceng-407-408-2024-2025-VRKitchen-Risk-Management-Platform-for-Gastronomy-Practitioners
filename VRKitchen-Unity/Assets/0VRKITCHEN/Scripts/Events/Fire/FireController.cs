@@ -92,8 +92,8 @@ public class FireController : SingletonBehaviour<FireController>
                 }
                 else
                 {
-                    if (source.heatingTime != 0)
-                        Debug.Log($"Reset heating time for {source.heatZone.name}");
+                    //if (source.heatingTime != 0)
+                        //Debug.Log($"Reset heating time for {source.heatZone.name}");
 
                     source.heatingTime = 0f;
                 }
@@ -112,7 +112,7 @@ public class FireController : SingletonBehaviour<FireController>
                 FireSource randomSource = GetRandomAvailableSource();
                 if (randomSource != null && randomSource.activeFire == null)
                 {
-                    Debug.Log("🔥 Random fire triggered!");
+                    //Debug.Log("Random fire triggered!");
                     SpawnFire(randomSource);
                 }
             }
@@ -131,7 +131,7 @@ public class FireController : SingletonBehaviour<FireController>
             // Decrease random fire interval
             randomFireInterval = Mathf.Max(minimumFireInterval, randomFireInterval - intervalDecreaseRate);
 
-            Debug.Log($"🔥 Fire difficulty increased: Chance={randomFireChance * 100f}%, Interval={randomFireInterval} seconds");
+            //Debug.Log($"Fire difficulty increased: Chance={randomFireChance * 100f}%, Interval={randomFireInterval} seconds");
         }
     }
 
@@ -158,7 +158,7 @@ public class FireController : SingletonBehaviour<FireController>
 
         if (GetActiveFireCount() >= maxSimultaneousFires)
         {
-            Debug.Log("Fire limit reached — skipping spawn.");
+            //Debug.Log("Fire limit reached — skipping spawn.");
             return;
         }
         
@@ -177,7 +177,7 @@ public class FireController : SingletonBehaviour<FireController>
 
         if (toAPI != null)
         {
-            Debug.Log("🔥 Fire triggered - sending query to RAG");
+            //Debug.Log("Fire triggered - sending query to RAG");
             toAPI.queryText = "A general fire has started in the game. What are the steps to handle this situation? Just give me the steps.";
             toAPI.SubmitQuery();
         }
@@ -185,7 +185,7 @@ public class FireController : SingletonBehaviour<FireController>
         if (fireAlertFeedback != null && fireAlertMarkerTransform != null)
         {
             fireAlertFeedback.ShowExclamation(fireAlertMarkerTransform.position);
-            Debug.Log("🚨 Fire alert icon displayed.");
+            //Debug.Log("Fire alert icon displayed.");
         }
     }
 
@@ -206,7 +206,7 @@ public class FireController : SingletonBehaviour<FireController>
                 source.fireAudioSource = null;
             }
 
-            Debug.Log("✅ Fire extinguished.");
+            //Debug.Log("Fire extinguished.");
 
             fireAlertFeedback?.HideExclamation();
         }

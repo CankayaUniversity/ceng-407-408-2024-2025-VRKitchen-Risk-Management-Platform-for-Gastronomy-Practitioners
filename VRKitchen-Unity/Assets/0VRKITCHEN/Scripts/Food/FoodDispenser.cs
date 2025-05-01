@@ -5,42 +5,50 @@ public class FoodDispenser : MonoBehaviour
 {
     public FoodData foodData;
 
-    private XRGrabInteractable grabInteractable;
+    private XRBaseInteractable dispenserInteractable;
 
     private void Awake()
     {
-        grabInteractable = GetComponent<XRGrabInteractable>();
+        dispenserInteractable = GetComponent<XRBaseInteractable>();
     }
 
     private void OnEnable()
     {
-        if (grabInteractable != null)
-            grabInteractable.selectEntered.AddListener(OnGrabbed);
+        if (dispenserInteractable != null)
+            dispenserInteractable.selectEntered.AddListener(OnGrabAttempted);
     }
 
     private void OnDisable()
     {
-        if (grabInteractable != null)
-            grabInteractable.selectEntered.RemoveListener(OnGrabbed);
+        if (dispenserInteractable != null)
+            dispenserInteractable.selectEntered.RemoveListener(OnGrabAttempted);
     }
 
-    private void OnGrabbed(SelectEnterEventArgs args)
+    private void OnGrabAttempted(SelectEnterEventArgs args)
     {
-        if (foodData != null)
-        {
-            GameObject spawnedFood = Instantiate(foodData.foodPrefab, transform.position, transform.rotation);
+        if (foodData == null || foodData.foodPrefab == null)
+            return;
 
-            var spawnedInteractable = spawnedFood.GetComponent<XRGrabInteractable>();
+        // Get the interactor (left or right hand)
+        if (args.interactorObject is XRDirectInteractor directInteractor)
+        {
+            // Use the hand's position and rotation to spawn the food
+            Transform handTransform = directInteractor.transform;
+            GameObject spawnedFood = Instantiate(
+                foodData.foodPrefab,
+                handTransform.position,
+                handTransform.rotation
+            );
+
+            XRGrabInteractable spawnedInteractable = spawnedFood.GetComponent<XRGrabInteractable>();
+
             if (spawnedInteractable != null)
             {
-                var interactor = args.interactorObject;
-                interactor.transform.TryGetComponent(out XRDirectInteractor directInteractor);
+                spawnedInteractable.interactionManager = dispenserInteractable.interactionManager;
 
-                if (directInteractor != null)
-                {
-                    spawnedInteractable.interactionManager = grabInteractable.interactionManager;
-                    directInteractor.interactionManager.SelectEnter(directInteractor, spawnedInteractable);
-                }
+                // Force the hand to release dispenser and grab the new food
+                directInteractor.interactionManager.SelectExit(directInteractor, dispenserInteractable);
+                directInteractor.interactionManager.SelectEnter(directInteractor, spawnedInteractable);
             }
         }
     }
