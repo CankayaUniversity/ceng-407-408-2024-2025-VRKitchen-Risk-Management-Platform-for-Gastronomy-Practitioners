@@ -15,6 +15,7 @@ TagManager:
   - Pan
   - Fire
   - Trash
+  - WaterParticle
   layers:
   - Default
   - TransparentFX
