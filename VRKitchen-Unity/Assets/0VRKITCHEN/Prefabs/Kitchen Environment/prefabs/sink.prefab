@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2132531349069253017}
   - component: {fileID: 6809209700170272759}
   - component: {fileID: 2063569527292572417}
+  - component: {fileID: 1134762988024713201}
   m_Layer: 0
   m_Name: Particle System
-  m_TagString: Untagged
+  m_TagString: WaterSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5057,6 +5058,29 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!136 &1134762988024713201
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792478184012083468}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.00055
+  m_Height: 0.012
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.0062}
 --- !u!1 &8456193788903687467
 GameObject:
   m_ObjectHideFlags: 0
