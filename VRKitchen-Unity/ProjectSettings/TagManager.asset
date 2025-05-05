@@ -15,6 +15,9 @@ TagManager:
   - Pan
   - Fire
   - Trash
+  - Sponge
+  - Board
+  - WaterSource
   layers:
   - Default
   - TransparentFX

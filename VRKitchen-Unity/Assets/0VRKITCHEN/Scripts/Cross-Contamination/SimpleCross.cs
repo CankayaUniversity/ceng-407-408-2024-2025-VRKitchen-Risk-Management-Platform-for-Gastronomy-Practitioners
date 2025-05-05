@@ -81,4 +81,15 @@ public class SimpleCross : MonoBehaviour
             Debug.Log("Contamination resolved.");
         }
     }
+
+    public void ResetContamination()
+    {
+        isContamination = false;
+        hasSentContaminationQuery = false;
+
+        if (visualFeedback != null)
+            visualFeedback.HideExclamation();
+
+        Debug.Log("Board contamination manually cleared.");
+    }
 }
