@@ -15,7 +15,7 @@ public class FoodInstance : MonoBehaviour
 {
     public FoodData foodData;
     public CookingState currentState = CookingState.Raw;
-    
+    public float temperature = 0f;
     public Material rawMaterial;
     public Material cookedMaterial;
     public Material overcookedMaterial;
@@ -38,7 +38,7 @@ public class FoodInstance : MonoBehaviour
     public void StartCooking()
     {
         if (!foodData.isCookable) return;
-
+        
         isCooking = true;
         currentState = CookingState.Cooking;
     }
@@ -53,6 +53,7 @@ public class FoodInstance : MonoBehaviour
         if (!isCooking || !foodData.isCookable) return;
 
         cookingTimer += Time.deltaTime;
+        Debug.Log(cookingTimer);
         UpdateCookingState();
     }
 
