@@ -531,7 +531,6 @@ MonoBehaviour:
     m_Bits: 4294967295
   oilRate: 0.5
   minTiltAngle: 40
-  curveIntensity: 0.5
 --- !u!1 &71852575
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,7 +2908,7 @@ MonoBehaviour:
   musicSource: {fileID: 0}
   audioSources: []
   backgroundMusic: {fileID: 0}
-  walkingSound: {fileID: 8300000, guid: ac9fe3cd8a473284a9a00516379d6024, type: 3}
+  walkingSound: {fileID: 8300000, guid: 626065a80ed3e3741af1bec16f1cf9a8, type: 3}
   fireSound: {fileID: 8300000, guid: a8c7082c3eaf18b4884deaf077bb73c9, type: 3}
   placingMeatSound: {fileID: 8300000, guid: f56df4112590da243af8270eed43bb88, type: 3}
   placingChickenSound: {fileID: 8300000, guid: e9f71aed303787a439be2b421d281673, type: 3}
@@ -3039,7 +3038,6 @@ MonoBehaviour:
     m_Bits: 4294967295
   oilRate: 0.5
   minTiltAngle: 60
-  curveIntensity: 0.5
 --- !u!65 &763506150
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6647,7 +6645,7 @@ Transform:
   m_GameObject: {fileID: 1691423106}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3487506, y: 2.573, z: -5.4919505}
+  m_LocalPosition: {x: 3.332, y: 2.174, z: -5.499}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

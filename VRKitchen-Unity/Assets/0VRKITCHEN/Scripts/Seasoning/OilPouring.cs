@@ -4,15 +4,14 @@ using UnityEngine;
 public class OilPouring : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject oilStream;           // Yellow curved oil mesh
-    [SerializeField] private Transform pourPoint;            // Spout or intersection point
-    [SerializeField] private Transform bottleTransform;      // Bottle reference
-    [SerializeField] private LayerMask dishLayer;            // Raycast target layer
+    [SerializeField] private GameObject oilStream;
+    [SerializeField] private Transform pourPoint;
+    [SerializeField] private Transform bottleTransform;
+    [SerializeField] private LayerMask dishLayer;
 
     [Header("Pouring Settings")]
     [SerializeField] private float oilRate = 0.5f;
     [SerializeField] private float minTiltAngle = 60f;
-    [SerializeField] private float curveIntensity = 0.5f;    // How much the oil curves when tilted
 
     private bool isPouring = false;
     private Coroutine pourCoroutine;
@@ -36,7 +35,7 @@ public class OilPouring : MonoBehaviour
                 StartPouring();
             }
 
-            UpdateOilDirection(tiltAngle);
+            UpdateOilDirection();
         }
         else
         {
@@ -61,32 +60,38 @@ public class OilPouring : MonoBehaviour
         if (pourCoroutine != null) StopCoroutine(pourCoroutine);
     }
 
-    private void UpdateOilDirection(float tiltAngle)
+    private void UpdateOilDirection()
     {
         if (pourPoint == null || bottleTransform == null)
             return;
 
-        // Value from -1 (left tilt) to +1 (right tilt)
-        float sideTilt = Vector3.Dot(bottleTransform.right, Vector3.down);
+        Vector3 sideVector = bottleTransform.right; // Sideways in world
+        float dot = Vector3.Dot(sideVector.normalized, Vector3.down);
 
-        // Clamp rotation angle
-        float zRotation = -sideTilt * minTiltAngle;
+        float zRotation;
 
-        // Apply to sprinkle point Z-axis
-        Vector3 currentEuler = pourPoint.localEulerAngles;
-        pourPoint.localRotation = Quaternion.Euler(currentEuler.x, currentEuler.y, zRotation);
+        if (dot > 0.5f)
+        {
+            zRotation = 107.9f;  // Tilted left (pouring left)
+        }
+        else if (dot < -0.5f)
+        {
+            zRotation = -17.2f; // Tilted right (pouring right)
+        }
+        else
+        {
+            zRotation = 17.2f; // Default forward pour or upright
+        }
+
+        pourPoint.localRotation = Quaternion.Euler(0f, 0f, zRotation);
     }
-
-
     private IEnumerator PourOil()
     {
         while (isPouring)
         {
-            // Base direction
             Vector3 pourDirection = -bottleTransform.up;
 
-            RaycastHit hit;
-            if (Physics.Raycast(pourPoint.position, pourDirection, out hit, 2f, dishLayer))
+            if (Physics.Raycast(pourPoint.position, pourDirection, out RaycastHit hit, 2f, dishLayer))
             {
                 Dish dish = hit.collider.GetComponent<Dish>();
                 if (dish != null)
