@@ -50,7 +50,7 @@ public class PanKinematicStop : MonoBehaviour
             Transform food = stuckFoods[i];
             if (food != null)
             {
-                Vector3 basePos = transform.position + Vector3.up * (0.01f + i * verticalSpacing);
+                Vector3 basePos = transform.position + Vector3.up * (0.1f + i * verticalSpacing);
                 food.position = basePos;
                 food.rotation = Quaternion.identity;
             }

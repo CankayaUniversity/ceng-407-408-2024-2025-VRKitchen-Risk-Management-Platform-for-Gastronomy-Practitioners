@@ -21,8 +21,8 @@ public class WaterFillTrigger : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-
-        if (other.CompareTag("Water"))
+        Debug.Log("aaaaaaa");
+        if (other.CompareTag("WaterParticle"))
         {
             
             isFilling = true;

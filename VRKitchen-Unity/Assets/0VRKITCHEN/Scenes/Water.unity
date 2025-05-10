@@ -296,8 +296,12 @@ PrefabInstance:
       value: 0.00289
       objectReference: {fileID: 0}
     - target: {fileID: 9008992443327992788, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.00002
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008992443327992788, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.000654
+      value: 0.00287
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -832,12 +836,16 @@ PrefabInstance:
       value: sink (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2132531349069253017, guid: 85823fbf6029cd44b8618d381334d365, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132531349069253017, guid: 85823fbf6029cd44b8618d381334d365, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.01658
+      value: -0.0789
       objectReference: {fileID: 0}
     - target: {fileID: 2132531349069253017, guid: 85823fbf6029cd44b8618d381334d365, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.03195
+      value: 0.032
       objectReference: {fileID: 0}
     - target: {fileID: 6792478184012083468, guid: 85823fbf6029cd44b8618d381334d365, type: 3}
       propertyPath: m_TagString
@@ -4587,6 +4595,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2622022540350212538, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622022540350212538, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
+      propertyPath: m_UseDynamicAttach
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2622022540350212538, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       propertyPath: m_InteractionManager
       value: 
