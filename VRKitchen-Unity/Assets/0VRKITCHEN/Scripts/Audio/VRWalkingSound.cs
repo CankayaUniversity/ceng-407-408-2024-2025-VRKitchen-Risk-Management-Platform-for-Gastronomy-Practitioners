@@ -47,13 +47,13 @@ public class VRWalkingSound : MonoBehaviour
             if (!isWalking)
             {
                 isWalking = true;
-                Debug.Log("Walking started");
+               // Debug.Log("Walking started");
             }
 
             if (stepTimer <= 0f)
             {
                 AudioController.Instance.PlayWalkingSound();
-                Debug.Log("Step played: walking actively");
+                //Debug.Log("Step played: walking actively");
                 stepTimer = stepInterval;
             }
         }
@@ -63,7 +63,7 @@ public class VRWalkingSound : MonoBehaviour
         {
             isWalking = false;
             stepTimer = 0f;
-            Debug.Log(" Walking stopped (joystick released)");
+           // Debug.Log(" Walking stopped (joystick released)");
         }
     }
 }
