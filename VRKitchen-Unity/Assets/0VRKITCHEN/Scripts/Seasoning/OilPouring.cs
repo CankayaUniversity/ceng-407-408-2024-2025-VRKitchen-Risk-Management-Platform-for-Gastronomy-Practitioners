@@ -5,13 +5,14 @@ public class OilPouring : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject oilStream;           // Yellow curved oil mesh
-    [SerializeField] private Transform pourPoint;            // Mesh origin (bottle mouth)
+    [SerializeField] private Transform pourPoint;            // Spout or intersection point
     [SerializeField] private Transform bottleTransform;      // Bottle reference
     [SerializeField] private LayerMask dishLayer;            // Raycast target layer
 
     [Header("Pouring Settings")]
     [SerializeField] private float oilRate = 0.5f;
     [SerializeField] private float minTiltAngle = 60f;
+    [SerializeField] private float curveIntensity = 0.5f;    // How much the oil curves when tilted
 
     private bool isPouring = false;
     private Coroutine pourCoroutine;
@@ -26,19 +27,16 @@ public class OilPouring : MonoBehaviour
 
     private void Update()
     {
-        Vector3 pourDirection = -bottleTransform.up;
-        
-        float angleZ = Vector3.SignedAngle(Vector3.forward, pourDirection, Vector3.forward);
-        
-        pourPoint.localRotation = Quaternion.AngleAxis(angleZ, Vector3.forward);
-        
         float tiltAngle = Vector3.Angle(bottleTransform.up, Vector3.up);
+
         if (tiltAngle > minTiltAngle)
         {
             if (!isPouring)
             {
-                StartPouring(pourDirection);
+                StartPouring();
             }
+
+            UpdateOilDirection(tiltAngle);
         }
         else
         {
@@ -49,12 +47,11 @@ public class OilPouring : MonoBehaviour
         }
     }
 
-    
-    private void StartPouring(Vector3 direction)
+    private void StartPouring()
     {
         isPouring = true;
         if (oilStream != null) oilStream.SetActive(true);
-        pourCoroutine = StartCoroutine(PourOil(direction));
+        pourCoroutine = StartCoroutine(PourOil());
     }
 
     private void StopPouring()
@@ -64,10 +61,30 @@ public class OilPouring : MonoBehaviour
         if (pourCoroutine != null) StopCoroutine(pourCoroutine);
     }
 
-    private IEnumerator PourOil(Vector3 pourDirection)
+    private void UpdateOilDirection(float tiltAngle)
+    {
+        if (pourPoint == null || bottleTransform == null)
+            return;
+
+        // Value from -1 (left tilt) to +1 (right tilt)
+        float sideTilt = Vector3.Dot(bottleTransform.right, Vector3.down);
+
+        // Clamp rotation angle
+        float zRotation = -sideTilt * minTiltAngle;
+
+        // Apply to sprinkle point Z-axis
+        Vector3 currentEuler = pourPoint.localEulerAngles;
+        pourPoint.localRotation = Quaternion.Euler(currentEuler.x, currentEuler.y, zRotation);
+    }
+
+
+    private IEnumerator PourOil()
     {
         while (isPouring)
         {
+            // Base direction
+            Vector3 pourDirection = -bottleTransform.up;
+
             RaycastHit hit;
             if (Physics.Raycast(pourPoint.position, pourDirection, out hit, 2f, dishLayer))
             {
