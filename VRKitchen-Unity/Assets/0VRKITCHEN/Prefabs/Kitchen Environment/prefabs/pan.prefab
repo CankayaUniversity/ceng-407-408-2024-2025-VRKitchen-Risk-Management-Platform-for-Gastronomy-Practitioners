@@ -69,6 +69,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 27aef089846d9de45b72d4633763278c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1290759340001438882}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 27aef089846d9de45b72d4633763278c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3513106661387088771}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 27aef089846d9de45b72d4633763278c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3223039220711736338}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 27aef089846d9de45b72d4633763278c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1554387625097529739}
   m_SourcePrefab: {fileID: 100100000, guid: 27aef089846d9de45b72d4633763278c, type: 3}
 --- !u!1 &7460516180365407682 stripped
 GameObject:
@@ -92,7 +101,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.009501854, y: 0.017253842, z: 0.0016071885}
   m_Center: {x: -0.000066334615, y: 0.0012549248, z: 0.0005473668}
@@ -271,3 +280,52 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!64 &3513106661387088771
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460516180365407682}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 199119489288638387, guid: 27aef089846d9de45b72d4633763278c, type: 3}
+--- !u!114 &3223039220711736338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460516180365407682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3c360a1429b2f40871ea1ef810cafc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temperature: 10
+  foodItems: []
+  heatingTemperature: 10
+--- !u!114 &1554387625097529739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460516180365407682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a25b2a8d3ae9e44903113b579bfe91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

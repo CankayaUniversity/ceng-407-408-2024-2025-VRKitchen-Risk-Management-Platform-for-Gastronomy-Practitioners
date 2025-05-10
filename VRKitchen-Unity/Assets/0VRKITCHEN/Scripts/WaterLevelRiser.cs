@@ -21,16 +21,17 @@ public class WaterFillTrigger : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("aaaaaaa");
+       
         if (other.CompareTag("WaterParticle"))
         {
-            
+           
             isFilling = true;
 
             if (!hasActivatedWater && potWaterObject != null)
             {
+                
                 potWaterObject.SetActive(true);
-                hasActivatedWater = true;
+                //hasActivatedWater = true;
 
                 // Aktif hale gelince Animation component'ine eriþ
                 waterAnimation = potWaterObject.GetComponent<Animation>();
