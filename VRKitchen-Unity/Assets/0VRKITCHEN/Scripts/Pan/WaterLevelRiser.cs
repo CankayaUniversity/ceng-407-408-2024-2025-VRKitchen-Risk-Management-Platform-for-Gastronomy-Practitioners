@@ -48,6 +48,33 @@ public class WaterFillTrigger : MonoBehaviour
                 }
             }
         }
+        else if (other.CompareTag("Oil"))
+        {
+
+            isFilling = true;
+
+            if (!hasActivatedWater && potWaterObject != null)
+            {
+
+                potWaterObject.SetActive(true);
+                potWaterObject.transform.GetComponent<Renderer>().material.color=Color.yellow;
+                //hasActivatedWater = true;
+
+                // Aktif hale gelince Animation component'ine eriþ
+                waterAnimation = potWaterObject.GetComponent<Animation>();
+
+                if (waterAnimation != null && waterAnimation.GetClip("water_rise") != null)
+                {
+                    waterAnimation.Play("water_rise");
+                    waterAnimation["water_rise"].speed = 0f;
+                    waterAnimation["water_rise"].normalizedTime = 0f;
+                }
+                else
+                {
+                    Debug.LogWarning("Potwater objesinde 'water_rise' animasyonu bulunamadý.");
+                }
+            }
+        }
     }
 
     private void Update()

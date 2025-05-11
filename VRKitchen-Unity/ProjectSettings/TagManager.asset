@@ -16,6 +16,8 @@ TagManager:
   - Fire
   - Trash
   - WaterParticle
+  - WaterSource
+  - Oil
   layers:
   - Default
   - TransparentFX
@@ -28,7 +30,7 @@ TagManager:
   - NavMesh
   - BackgroundImage
   - DistantHotspot
-  - 
+  - Pan
   - Sliceable
   - Character
   - CharacterOutline
