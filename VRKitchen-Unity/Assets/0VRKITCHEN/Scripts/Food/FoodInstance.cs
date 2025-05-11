@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 
-// we are gonna add this script to the food prefabs
 public enum CookingState
 {
     Raw,
@@ -15,79 +13,77 @@ public class FoodInstance : MonoBehaviour
 {
     public FoodData foodData;
     public CookingState currentState = CookingState.Raw;
+
     public float temperature = 0f;
+
     public Material rawMaterial;
     public Material cookedMaterial;
     public Material overcookedMaterial;
     public Material burntMaterial;
 
     private Renderer foodRenderer;
-
-    private float cookingTimer = 0f;
-    private bool isCooking = false;
+    private Color originalColor;
 
     private void Awake()
     {
         foodRenderer = GetComponent<Renderer>();
-        if(foodRenderer != null && rawMaterial != null)
+        if (foodRenderer != null)
         {
-            foodRenderer.material = rawMaterial;
+            originalColor = foodRenderer.material.color;
+            if (rawMaterial != null)
+                foodRenderer.material = rawMaterial;
         }
-    }
-
-    public void StartCooking()
-    {
-        if (!foodData.isCookable) return;
-        
-        isCooking = true;
-        currentState = CookingState.Cooking;
-    }
-
-    public void StopCooking()
-    {
-        isCooking = false;
     }
 
     private void Update()
     {
-        if (!isCooking || !foodData.isCookable) return;
+        if (!foodData.isCookable) return;
 
-        cookingTimer += Time.deltaTime;
-        Debug.Log(cookingTimer);
         UpdateCookingState();
+    }
+
+    public void Heat(float amount)
+    {
+        if (!foodData.isCookable) return;
+
+        temperature += amount * Time.deltaTime;
     }
 
     private void UpdateCookingState()
     {
-        if (cookingTimer < foodData.idealCookingTime)
+        // You can either use materials (realistic) or just color change (simplified)
+        if (temperature < foodData.requiredTemperature)
         {
             currentState = CookingState.Cooking;
-            if (foodRenderer.material != rawMaterial)
-                foodRenderer.material = rawMaterial;
+            SetMaterial(rawMaterial);
         }
-        else if (cookingTimer < foodData.burnThresholdTime)
+        else if (temperature < foodData.burnThresholdTime)
         {
             currentState = CookingState.Cooked;
-            if (foodRenderer.material != cookedMaterial)
-                foodRenderer.material = cookedMaterial;
+            SetMaterial(cookedMaterial);
         }
-        else if (cookingTimer < foodData.burnThresholdTime + 5f)
+        else if (temperature < foodData.burnThresholdTime + 20f)
         {
             currentState = CookingState.Overcooked;
-            if (foodRenderer.material != overcookedMaterial)
-                foodRenderer.material = overcookedMaterial;
+            SetMaterial(overcookedMaterial);
         }
         else
         {
             currentState = CookingState.Burnt;
-            if (foodRenderer.material != burntMaterial)
-                foodRenderer.material = burntMaterial;
+            SetMaterial(burntMaterial);
         }
     }
 
+    private void SetMaterial(Material mat)
+    {
+        if (foodRenderer != null && mat != null && foodRenderer.material != mat)
+        {
+            foodRenderer.material = mat;
+        }
+    }
 
     public float GetCookingProgress()
     {
-        return Mathf.Clamp01(cookingTimer / foodData.burnThresholdTime);
+        return Mathf.Clamp01(temperature / foodData.burnThresholdTime);
     }
 }

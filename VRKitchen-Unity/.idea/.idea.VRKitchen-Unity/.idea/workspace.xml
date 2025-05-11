@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5acc07fd-79b8-43d9-8167-53344560c475" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Events/Fire/FireController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Events/Fire/FireController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodDispenser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodDispenser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/kitchenprops_ilkyaz.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/kitchenprops_ilkyaz_2.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodInstance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Pan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Pan.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,6 +132,7 @@
       <workItem from="1745770419230" duration="2965000" />
       <workItem from="1745774723746" duration="671000" />
       <workItem from="1746105596862" duration="741000" />
+      <workItem from="1746903154835" duration="440000" />
     </task>
     <servers />
   </component>

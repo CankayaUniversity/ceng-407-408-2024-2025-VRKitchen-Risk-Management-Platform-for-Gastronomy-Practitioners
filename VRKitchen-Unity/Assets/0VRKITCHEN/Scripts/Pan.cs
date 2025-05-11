@@ -13,7 +13,6 @@ public class Pan : MonoBehaviour
         if (other.CompareTag("Food")) 
         {
             Debug.Log("Food placed in pan: " + other.name);
-            
             AddFood(other.gameObject);
         }
     }
@@ -23,7 +22,6 @@ public class Pan : MonoBehaviour
         if (other.CompareTag("Food")) 
         {
             Debug.Log("Food removed from pan: " + other.name);
-           
             RemoveFood(other.gameObject);
         }
     }
@@ -51,16 +49,16 @@ public class Pan : MonoBehaviour
         temperature += amount * Time.deltaTime;
         Debug.Log("Pan temperature: " + temperature);
 
-        
         foreach (var food in foodItems)
         {
-            Food foodScript = food.GetComponent<Food>();
+            FoodInstance foodScript = food.GetComponent<FoodInstance>();
             if (foodScript != null)
             {
-                foodScript.Heat(heatingTemperature * Time.deltaTime);
+                foodScript.Heat(heatingTemperature); 
             }
         }
     }
+
 
 
 

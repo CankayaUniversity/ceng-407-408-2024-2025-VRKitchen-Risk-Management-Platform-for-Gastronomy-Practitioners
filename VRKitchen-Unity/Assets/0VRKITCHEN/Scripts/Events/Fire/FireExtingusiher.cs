@@ -28,6 +28,7 @@ public class FireExtinguisher : MonoBehaviour
         isSpraying = true;
         if (sprayEffect != null)
         {
+            AudioController.Instance.PlayFireExtinguisherSound();
             sprayEffect.Play(); // Start spraying
         }
     }

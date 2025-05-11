@@ -4,10 +4,10 @@ using UnityEngine;
 public class OilPouring : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject oilStream;           // Yellow curved oil mesh
-    [SerializeField] private Transform pourPoint;            // Mesh origin (bottle mouth)
-    [SerializeField] private Transform bottleTransform;      // Bottle reference
-    [SerializeField] private LayerMask dishLayer;            // Raycast target layer
+    [SerializeField] private GameObject oilStream;
+    [SerializeField] private Transform pourPoint;
+    [SerializeField] private Transform bottleTransform;
+    [SerializeField] private LayerMask dishLayer;
 
     [Header("Pouring Settings")]
     [SerializeField] private float oilRate = 0.5f;
@@ -26,19 +26,16 @@ public class OilPouring : MonoBehaviour
 
     private void Update()
     {
-        Vector3 pourDirection = -bottleTransform.up;
-        
-        float angleZ = Vector3.SignedAngle(Vector3.forward, pourDirection, Vector3.forward);
-        
-        pourPoint.localRotation = Quaternion.AngleAxis(angleZ, Vector3.forward);
-        
         float tiltAngle = Vector3.Angle(bottleTransform.up, Vector3.up);
+
         if (tiltAngle > minTiltAngle)
         {
             if (!isPouring)
             {
-                StartPouring(pourDirection);
+                StartPouring();
             }
+
+            UpdateOilDirection();
         }
         else
         {
@@ -49,12 +46,11 @@ public class OilPouring : MonoBehaviour
         }
     }
 
-    
-    private void StartPouring(Vector3 direction)
+    private void StartPouring()
     {
         isPouring = true;
         if (oilStream != null) oilStream.SetActive(true);
-        pourCoroutine = StartCoroutine(PourOil(direction));
+        pourCoroutine = StartCoroutine(PourOil());
     }
 
     private void StopPouring()
@@ -64,12 +60,38 @@ public class OilPouring : MonoBehaviour
         if (pourCoroutine != null) StopCoroutine(pourCoroutine);
     }
 
-    private IEnumerator PourOil(Vector3 pourDirection)
+    private void UpdateOilDirection()
+    {
+        if (pourPoint == null || bottleTransform == null)
+            return;
+
+        Vector3 sideVector = bottleTransform.right; // Sideways in world
+        float dot = Vector3.Dot(sideVector.normalized, Vector3.down);
+
+        float zRotation;
+
+        if (dot > 0.5f)
+        {
+            zRotation = 107.9f;  // Tilted left (pouring left)
+        }
+        else if (dot < -0.5f)
+        {
+            zRotation = -17.2f; // Tilted right (pouring right)
+        }
+        else
+        {
+            zRotation = 17.2f; // Default forward pour or upright
+        }
+
+        pourPoint.localRotation = Quaternion.Euler(0f, 0f, zRotation);
+    }
+    private IEnumerator PourOil()
     {
         while (isPouring)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(pourPoint.position, pourDirection, out hit, 2f, dishLayer))
+            Vector3 pourDirection = -bottleTransform.up;
+
+            if (Physics.Raycast(pourPoint.position, pourDirection, out RaycastHit hit, 2f, dishLayer))
             {
                 Dish dish = hit.collider.GetComponent<Dish>();
                 if (dish != null)
