@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1134762988024713201}
   m_Layer: 0
   m_Name: Particle System
-  m_TagString: WaterSource
+  m_TagString: WaterParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6792478184012083468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00585, y: 0.00588, z: 0.02568}
+  m_LocalPosition: {x: -0.0625, y: -0.0789, z: 0.032}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4019,7 +4019,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -5122,7 +5122,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: dce04211110ea2943933db70f4b40ab9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.71
+      value: -6.1829996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dce04211110ea2943933db70f4b40ab9, type: 3}
       propertyPath: m_LocalPosition.y
