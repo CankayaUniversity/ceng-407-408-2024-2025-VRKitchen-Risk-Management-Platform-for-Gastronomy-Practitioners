@@ -54,10 +54,10 @@ public class Pan : MonoBehaviour
         
         foreach (var food in foodItems)
         {
-            FoodInstance foodScript = food.GetComponent<FoodInstance>();
+            Food foodScript = food.GetComponent<Food>();
             if (foodScript != null)
             {
-                foodScript.StartCooking();
+                foodScript.Heat(heatingTemperature * Time.deltaTime);
             }
         }
     }
