@@ -10,30 +10,34 @@ public class WaterFillTrigger : MonoBehaviour
     private bool isFilling = false;
     private bool hasActivatedWater = false;
 
+    public UnityToAPI toAPI; // Add to inspector
+    private bool hasSentQuery = false;
+
+
     private void Start()
     {
-        // Baþta potwater'ý kapalý býrak
+        // Baï¿½ta potwater'ï¿½ kapalï¿½ bï¿½rak
         if (potWaterObject != null)
         {
-            potWaterObject.SetActive(false); // güvenlik için yine de
+            potWaterObject.SetActive(false); // gï¿½venlik iï¿½in yine de
         }
     }
 
     private void OnParticleCollision(GameObject other)
     {
-       
+
         if (other.CompareTag("WaterParticle"))
         {
-           
+
             isFilling = true;
 
             if (!hasActivatedWater && potWaterObject != null)
             {
-                
+
                 potWaterObject.SetActive(true);
                 //hasActivatedWater = true;
 
-                // Aktif hale gelince Animation component'ine eriþ
+                // Aktif hale gelince Animation component'ine eriï¿½
                 waterAnimation = potWaterObject.GetComponent<Animation>();
 
                 if (waterAnimation != null && waterAnimation.GetClip("water_rise") != null)
@@ -44,7 +48,7 @@ public class WaterFillTrigger : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("Potwater objesinde 'water_rise' animasyonu bulunamadý.");
+                    Debug.LogWarning("Potwater objesinde 'water_rise' animasyonu bulunamadï¿½.");
                 }
             }
         }
@@ -57,10 +61,10 @@ public class WaterFillTrigger : MonoBehaviour
             {
 
                 potWaterObject.SetActive(true);
-                potWaterObject.transform.GetComponent<Renderer>().material.color=Color.yellow;
+                potWaterObject.transform.GetComponent<Renderer>().material.color = Color.yellow;
                 //hasActivatedWater = true;
 
-                // Aktif hale gelince Animation component'ine eriþ
+                // Aktif hale gelince Animation component'ine eriï¿½
                 waterAnimation = potWaterObject.GetComponent<Animation>();
 
                 if (waterAnimation != null && waterAnimation.GetClip("water_rise") != null)
@@ -71,7 +75,7 @@ public class WaterFillTrigger : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("Potwater objesinde 'water_rise' animasyonu bulunamadý.");
+                    Debug.LogWarning("Potwater objesinde 'water_rise' animasyonu bulunamadï¿½.");
                 }
             }
         }
@@ -87,8 +91,17 @@ public class WaterFillTrigger : MonoBehaviour
 
             waterAnimation["water_rise"].normalizedTime = progress;
             waterAnimation["water_rise"].speed = 0f;
+
+            // âœ… Check if filling is complete and query hasn't been sent
+            if (fillTime >= fillDuration && !hasSentQuery && toAPI != null)
+            {
+                toAPI.queryText = "The pot has been filled with water. What is the next step in the game? Provide only the next in-game step.";
+                toAPI.SubmitQuery();
+                hasSentQuery = true;
+            }
         }
 
-        isFilling = false; // her frame sýfýrlanmalý
+        isFilling = false; // reset each frame
     }
+
 }

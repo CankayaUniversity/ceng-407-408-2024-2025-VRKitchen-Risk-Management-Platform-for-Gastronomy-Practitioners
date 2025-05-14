@@ -21,8 +21,11 @@ public class FoodInstance : MonoBehaviour
     public Material overcookedMaterial;
     public Material burntMaterial;
 
+    public UnityToAPI toAPI; // ✅ Add this to link RAG query system
+
     private Renderer foodRenderer;
     private Color originalColor;
+    private bool hasSentCookedQuery = false; // ✅ Track query sent state
 
     private void Awake()
     {
@@ -51,7 +54,6 @@ public class FoodInstance : MonoBehaviour
 
     private void UpdateCookingState()
     {
-        // You can either use materials (realistic) or just color change (simplified)
         if (temperature < foodData.requiredTemperature)
         {
             currentState = CookingState.Cooking;
@@ -59,8 +61,19 @@ public class FoodInstance : MonoBehaviour
         }
         else if (temperature < foodData.burnThresholdTime)
         {
-            currentState = CookingState.Cooked;
-            SetMaterial(cookedMaterial);
+            if (currentState != CookingState.Cooked)
+            {
+                currentState = CookingState.Cooked;
+                SetMaterial(cookedMaterial);
+
+                // ✅ Send RAG query when first cooked
+                if (!hasSentCookedQuery && toAPI != null)
+                {
+                    toAPI.queryText = "The chicken has been cooked. What is the next step in the game? Provide only the next in-game step.";
+                    toAPI.SubmitQuery();
+                    hasSentCookedQuery = true;
+                }
+            }
         }
         else if (temperature < foodData.burnThresholdTime + 20f)
         {
