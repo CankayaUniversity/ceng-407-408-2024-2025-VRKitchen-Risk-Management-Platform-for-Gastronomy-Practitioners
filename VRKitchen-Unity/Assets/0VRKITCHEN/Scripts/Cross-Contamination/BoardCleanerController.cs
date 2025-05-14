@@ -5,8 +5,10 @@ public class BoardCleanerController : MonoBehaviour
     public float scrubDuration = 2f;
     public SimpleCross crossController;
     public VisualFeedbackController visualFeedback;
+    public UnityToAPI toAPI;
 
     private float scrubTimer;
+    private bool hasSentQuery = false;
 
     private void OnCollisionStay(Collision collision)
     {
@@ -19,10 +21,24 @@ public class BoardCleanerController : MonoBehaviour
 
             if (scrubTimer >= scrubDuration)
             {
-                crossController?.ResetContamination();
+                if (crossController != null && crossController.isContamination)
+                {
+                    crossController.ResetContamination();
+
+                    if (visualFeedback != null)
+                        visualFeedback.HideExclamation(); // Hide exclamation after successful scrub
+                }
+
                 scrubTimer = 0f;
                 sponge.isWet = false;
                 Debug.Log("Board cleaned with sponge.");
+
+                if (!hasSentQuery && toAPI != null)
+                {
+                    toAPI.queryText = "The contaminated board has been cleaned. What is the next step in the game to handle cross contamination? Provide only the next in-game step.";
+                    toAPI.SubmitQuery();
+                    hasSentQuery = true;
+                }
             }
         }
     }
@@ -30,6 +46,9 @@ public class BoardCleanerController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Sponge"))
+        {
             scrubTimer = 0f;
+            hasSentQuery = false;
+        }
     }
 }

@@ -73,12 +73,8 @@ public class SimpleCross : MonoBehaviour
             isContamination = false;
             hasSentContaminationQuery = false;
 
-            if (visualFeedback != null)
-            {
-                visualFeedback.HideExclamation();
-            }
-
-            Debug.Log("Contamination resolved.");
+            // Removed HideExclamation from here
+            Debug.Log("Contamination state cleared (but visuals managed elsewhere).");
         }
     }
 
@@ -87,9 +83,7 @@ public class SimpleCross : MonoBehaviour
         isContamination = false;
         hasSentContaminationQuery = false;
 
-        if (visualFeedback != null)
-            visualFeedback.HideExclamation();
-
+        // Removed HideExclamation from here too
         Debug.Log("Board contamination manually cleared.");
     }
 }

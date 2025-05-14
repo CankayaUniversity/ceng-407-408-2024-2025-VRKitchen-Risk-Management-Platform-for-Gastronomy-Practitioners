@@ -6,6 +6,9 @@ public class SpongeWetnessController : MonoBehaviour
     [HideInInspector] public bool isWet;
 
     private float wetTimer;
+    private bool hasSentQuery = false;
+
+    public UnityToAPI toAPI; // Used to send query to RAG system
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,7 +16,17 @@ public class SpongeWetnessController : MonoBehaviour
         {
             isWet = true;
             wetTimer = wetDuration;
+            hasSentQuery = false;
+
             Debug.Log("Sponge is now wet.");
+
+            // Trigger query to RAG for next contamination cleanup step
+            if (toAPI != null && !hasSentQuery)
+            {
+                toAPI.queryText = "The sponge is wet now. What is the next step in the game to handle cross contamination? Please provide only the next in-game step.";
+                toAPI.SubmitQuery();
+                hasSentQuery = true;
+            }
         }
     }
 
@@ -25,6 +38,7 @@ public class SpongeWetnessController : MonoBehaviour
         if (wetTimer <= 0f)
         {
             isWet = false;
+            hasSentQuery = false;
             Debug.Log("Sponge has dried.");
         }
     }
