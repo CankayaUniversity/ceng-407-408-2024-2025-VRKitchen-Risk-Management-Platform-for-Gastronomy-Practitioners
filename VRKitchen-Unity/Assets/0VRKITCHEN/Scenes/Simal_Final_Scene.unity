@@ -872,6 +872,11 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 6224614406870880918, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
   m_PrefabInstance: {fileID: 1717732687}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &207958898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 493505802120896778, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
+  m_PrefabInstance: {fileID: 708674424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &249117585
 GameObject:
   m_ObjectHideFlags: 0
@@ -3087,14 +3092,17 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4770666379794277523, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1568296579}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 493505802120896778, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 708674431}
   m_SourcePrefab: {fileID: 100100000, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
 --- !u!114 &708674425 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1065747219478192465, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
   m_PrefabInstance: {fileID: 708674424}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 207958898}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7b8c84c7bde2cb4e818a497c9b3c2e8, type: 3}
@@ -3110,12 +3118,27 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3613230465055452165, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
   m_PrefabInstance: {fileID: 708674424}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 207958898}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a1d0711e00aaa641979fdddcdff9ac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &708674431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207958898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8715c6296a3762543b87b34b8b166390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearMemoryUrl: https://lviubjhdkcolf6ihebsg3aohf40ocbxs.lambda-url.eu-central-1.on.aws/clear_memory
+  ButtonA: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  ButtonB: {fileID: 2855161651175683556, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1001 &711926601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7139,7 +7162,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1964838095100366845, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5759023290510550228, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_Enabled
