@@ -21,6 +21,12 @@ class SessionQueryRequest(BaseModel):
 def index():
     return {"Hello": "World"}
 
+@app.get("/clear_memory")
+def clear_sessions():
+    sessions.clear()
+    return {"message": "All session's memories have been cleared."}
+
+
 @app.post("/query_with_memory")
 def query_with_memory(request: SessionQueryRequest):
     session_id = request.session_id or "default_session"
