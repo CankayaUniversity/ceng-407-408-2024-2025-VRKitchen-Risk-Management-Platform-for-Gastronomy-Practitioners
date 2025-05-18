@@ -1486,6 +1486,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SpeechRecord",
+                    "type": "Button",
+                    "id": "3276c051-8382-4b48-b638-5c00248c454a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1640,6 +1649,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "ToggleTimer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a0f049b-cd4d-449a-a022-e848d3978970",
+                    "path": "<XRController>{RightHand}/joystickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "SpeechRecord",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

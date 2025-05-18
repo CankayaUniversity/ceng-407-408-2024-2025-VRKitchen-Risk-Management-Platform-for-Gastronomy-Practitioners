@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // ✅ Required for InputActionReference
+using UnityEngine.InputSystem;
 
 
 public class TimerActivator : MonoBehaviour

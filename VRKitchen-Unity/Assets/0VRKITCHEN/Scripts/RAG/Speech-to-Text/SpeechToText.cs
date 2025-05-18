@@ -5,6 +5,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 
 public class SpeechRecognitionTest : MonoBehaviour
 {
@@ -21,6 +23,8 @@ public class SpeechRecognitionTest : MonoBehaviour
     private byte[] bytes;
     private bool recording;
 
+    public InputActionReference RecordSpeech;
+
     private void Start()
     {
         startButton.onClick.AddListener(StartRecording);
@@ -31,7 +35,7 @@ public class SpeechRecognitionTest : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) || RecordSpeech.action.triggered)
         {
             if (recording)
             {
