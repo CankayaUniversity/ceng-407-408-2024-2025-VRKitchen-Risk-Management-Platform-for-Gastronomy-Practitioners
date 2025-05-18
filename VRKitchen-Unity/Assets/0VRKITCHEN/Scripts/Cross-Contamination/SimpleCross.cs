@@ -12,6 +12,7 @@ public class SimpleCross : MonoBehaviour
 
     public VisualFeedbackController visualFeedback;
     public Transform contaminationMarkerTransform;
+    
 
     private void Update()
     {

@@ -12,6 +12,7 @@ public class TimerPanel : MonoBehaviour
     private int minutes = 0;
     private float remainingTime;
     private bool isCountingDown = false;
+    public UnityToAPI toAPI;  // Assign this from the inspector
 
     void Start()
     {
@@ -40,6 +41,14 @@ public class TimerPanel : MonoBehaviour
                 remainingTime = 0f; // ✅ Clamp at zero
                 isCountingDown = false;
                 AudioController.Instance.PlayKitchenTimerSound();
+
+                if (toAPI != null)
+                {
+                    int waitedMinutes = Mathf.FloorToInt(minutes); // Store the selected time
+                    toAPI.queryText = $"I waited {waitedMinutes} minutes, what's the next step I should follow? Just give me the step with the step number without any explanation.";
+                    toAPI.SubmitQuery();
+                }
+
                 startButton.interactable = true;
             }
 
