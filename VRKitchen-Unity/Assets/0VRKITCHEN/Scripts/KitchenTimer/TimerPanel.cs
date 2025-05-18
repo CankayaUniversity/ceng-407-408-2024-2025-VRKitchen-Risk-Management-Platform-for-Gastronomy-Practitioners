@@ -9,8 +9,6 @@ public class TimerPanel : MonoBehaviour
     public Button plusButton;
     public Button minusButton;
     public Button startButton;
-    public AudioSource alarmSound;
-
     private int minutes = 0;
     private float remainingTime;
     private bool isCountingDown = false;
@@ -18,19 +16,49 @@ public class TimerPanel : MonoBehaviour
     void Start()
     {
         panel.SetActive(false);
-        plusButton.onClick.AddListener(() => { minutes++; UpdateTimerDisplay(); });
-        minusButton.onClick.AddListener(() => { if (minutes > 0) minutes--; UpdateTimerDisplay(); });
+        plusButton.onClick.AddListener(Increment);
+        minusButton.onClick.AddListener(Decrement);
         startButton.onClick.AddListener(StartTimer);
     }
 
-    public void TogglePanel()
+    void Update()
     {
-        panel.SetActive(!panel.activeSelf);
+        // ⌨️ Keyboard shortcuts
+        if (Input.GetKeyDown(KeyCode.Equals) || Input.GetKeyDown(KeyCode.KeypadPlus)) // '+'
+            Increment();
+        if (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus)) // '-'
+            Decrement();
+        if (Input.GetKeyDown(KeyCode.K))
+            StartTimer();
+
+        if (isCountingDown)
+        {
+            remainingTime -= Time.deltaTime;
+
+            if (remainingTime <= 0f)
+            {
+                remainingTime = 0f; // ✅ Clamp at zero
+                isCountingDown = false;
+                AudioController.Instance.PlayKitchenTimerSound();
+                startButton.interactable = true;
+            }
+
+            int mins = Mathf.FloorToInt(remainingTime / 60);
+            int secs = Mathf.FloorToInt(remainingTime % 60);
+            timerText.text = $"{mins:00}:{secs:00}";
+        }
     }
 
-    void UpdateTimerDisplay()
+    void Increment()
     {
-        timerText.text = $"{minutes:00}:00";
+        minutes++;
+        UpdateTimerDisplay();
+    }
+
+    void Decrement()
+    {
+        if (minutes > 0) minutes--;
+        UpdateTimerDisplay();
     }
 
     void StartTimer()
@@ -40,21 +68,17 @@ public class TimerPanel : MonoBehaviour
         startButton.interactable = false;
     }
 
-    void Update()
+    void UpdateTimerDisplay()
+    {
+        timerText.text = $"{minutes:00}:00";
+    }
+
+    public void TogglePanel()
     {
         if (isCountingDown)
-        {
-            remainingTime -= Time.deltaTime;
-            int mins = Mathf.FloorToInt(remainingTime / 60);
-            int secs = Mathf.FloorToInt(remainingTime % 60);
-            timerText.text = $"{mins:00}:{secs:00}";
+            return; // ❌ Block toggling during countdown
 
-            if (remainingTime <= 0)
-            {
-                isCountingDown = false;
-                alarmSound.Play();
-                startButton.interactable = true;
-            }
-        }
+        panel.SetActive(!panel.activeSelf);
     }
+
 }

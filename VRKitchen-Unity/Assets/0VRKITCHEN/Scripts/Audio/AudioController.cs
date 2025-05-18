@@ -25,6 +25,8 @@ public class AudioController : SingletonBehaviour<AudioController>
     [SerializeField] private AudioClip choppingMeatSound;
     [SerializeField] private AudioClip fireExtinguisherSound;
     [SerializeField] private AudioClip exclamationSound;
+    [SerializeField] private AudioClip kitchenTimer;
+
 
     [Header("Volume Settings")]
     [SerializeField] private float fireSoundVolume = 0.5f;
@@ -115,6 +117,11 @@ public class AudioController : SingletonBehaviour<AudioController>
     public void PlayChoppingMeatSound()
     {
         PlaySound(choppingMeatSound);
+    }
+
+    public void PlayKitchenTimerSound()
+    {
+        PlaySound(kitchenTimer);
     }
 
     public void PlayFireExtinguisherSound()
