@@ -2956,6 +2956,10 @@ PrefabInstance:
       propertyPath: planeText
       value: 
       objectReference: {fileID: 1618794441}
+    - target: {fileID: 305414044186680556, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
+      propertyPath: RecordSpeech
+      value: 
+      objectReference: {fileID: -9097799237047943242, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 1065747219478192465, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
       propertyPath: tts
       value: 
