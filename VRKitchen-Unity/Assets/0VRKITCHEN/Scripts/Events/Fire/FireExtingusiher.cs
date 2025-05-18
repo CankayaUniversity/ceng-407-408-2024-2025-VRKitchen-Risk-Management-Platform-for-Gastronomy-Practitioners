@@ -6,8 +6,13 @@ public class FireExtinguisher : MonoBehaviour
 {
     public ParticleSystem sprayEffect; // Assign the spray particle system
     public XRSimpleInteractable button; // Assign the button interactable
+    public XRGrabInteractable extinguisherGrab;
+    public UnityToAPI toAPI; // Assign the RAG interface script
+
     public OvenController ovenController;
     private bool isSpraying = false;
+    private bool hasSentGrabQuery = false;
+
     private FireController.FireSource myFireSource;
     private void Start()
     {
@@ -17,9 +22,26 @@ public class FireExtinguisher : MonoBehaviour
             button.selectExited.AddListener(OnButtonReleased);
         }
 
+        if (extinguisherGrab != null)
+        {
+            extinguisherGrab.selectEntered.AddListener(OnGrabbed);
+        }
+
+
         if (sprayEffect != null)
         {
             sprayEffect.Stop(); // Ensure the spray is off initially
+        }
+    }
+
+    private void OnGrabbed(SelectEnterEventArgs args)
+    {
+        if (!hasSentGrabQuery && toAPI != null)
+        {
+            Debug.Log("Grabbed");
+            toAPI.queryText = "I have grabbed the fire extinguisher. What is the next step to put out a general fire in the kitchen? Provide only the next in-game step.";
+            toAPI.SubmitQuery();
+            hasSentGrabQuery = true;
         }
     }
 
@@ -41,7 +63,7 @@ public class FireExtinguisher : MonoBehaviour
             sprayEffect.Stop(); // Stop spraying
         }
     }
-    
+
     private void OnTriggerStay(Collider other)
     {
         if (isSpraying && other.CompareTag("Fire")) // Check if the spray touches a fire
@@ -62,7 +84,7 @@ public class FireExtinguisher : MonoBehaviour
         else
         {
             Debug.LogWarning("FireInstance component missing on fire object.");
-            Destroy(fire); 
+            Destroy(fire);
         }
     }
 

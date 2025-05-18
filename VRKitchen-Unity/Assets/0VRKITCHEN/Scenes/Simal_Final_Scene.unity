@@ -2924,6 +2924,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &701193847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4852628529829512370, guid: 5d37fc83359acee499217c93f21db735, type: 3}
+  m_PrefabInstance: {fileID: 803844021}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &701456292 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8114532319337558926, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
@@ -3775,6 +3780,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3786161285735841674, guid: 5d37fc83359acee499217c93f21db735, type: 3}
+      propertyPath: toAPI
+      value: 
+      objectReference: {fileID: 708674425}
+    - target: {fileID: 3786161285735841674, guid: 5d37fc83359acee499217c93f21db735, type: 3}
+      propertyPath: extinguisherGrab
+      value: 
+      objectReference: {fileID: 1671296325}
     - target: {fileID: 4852628529829512370, guid: 5d37fc83359acee499217c93f21db735, type: 3}
       propertyPath: m_Name
       value: FireExtinguisher (1)
@@ -3785,7 +3798,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2526440635715814355, guid: 5d37fc83359acee499217c93f21db735, type: 3}
       insertIndex: 0
       addedObject: {fileID: 6691877369139611277}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4852628529829512370, guid: 5d37fc83359acee499217c93f21db735, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1671296325}
   m_SourcePrefab: {fileID: 100100000, guid: 5d37fc83359acee499217c93f21db735, type: 3}
 --- !u!1001 &836768184
 PrefabInstance:
@@ -7123,7 +7139,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1964838095100366845, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5759023290510550228, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_Enabled
@@ -7776,6 +7792,108 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2526440635715814355, guid: 5d37fc83359acee499217c93f21db735, type: 3}
   m_PrefabInstance: {fileID: 803844021}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1671296325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701193847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1672063353
 PrefabInstance:
   m_ObjectHideFlags: 0
