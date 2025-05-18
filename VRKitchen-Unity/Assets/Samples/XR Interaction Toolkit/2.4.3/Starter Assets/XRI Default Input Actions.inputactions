@@ -701,6 +701,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Timer Start",
+                    "type": "Button",
+                    "id": "3b40802c-39fb-4b21-9c32-d444c1330ebf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Timer Minus",
+                    "type": "Button",
+                    "id": "c4cd1ecc-48ed-4e61-afb0-1ab83e32ee9f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Timer Plus",
+                    "type": "Button",
+                    "id": "f3fdffc7-e35d-43ef-ad68-ae0539779f65",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -844,6 +871,39 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "UI Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b94d3ca1-b67f-4d1a-8f3e-8b1e4fef68ae",
+                    "path": "<XRController>{LeftHand}/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Timer Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "65b23f41-b282-4b72-bce3-0a51d828cd96",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Timer Minus",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b7fc2a4-518f-4a0b-b374-6d9ee904748f",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Timer Plus",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 
 public class TimerPanel : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class TimerPanel : MonoBehaviour
     private float remainingTime;
     private bool isCountingDown = false;
     public UnityToAPI toAPI;  // Assign this from the inspector
+    public InputActionReference TimerPlus;
+    public InputActionReference TimerMinus;
+    public InputActionReference TimerStart;
+
 
     void Start()
     {
@@ -25,11 +31,11 @@ public class TimerPanel : MonoBehaviour
     void Update()
     {
         // ⌨️ Keyboard shortcuts
-        if (Input.GetKeyDown(KeyCode.Equals) || Input.GetKeyDown(KeyCode.KeypadPlus)) // '+'
+        if (Input.GetKeyDown(KeyCode.Equals) || Input.GetKeyDown(KeyCode.KeypadPlus) || TimerPlus.action.triggered) // '+'
             Increment();
-        if (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus)) // '-'
+        if (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus) || TimerMinus.action.triggered) // '-'
             Decrement();
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K) || TimerStart.action.triggered)
             StartTimer();
 
         if (isCountingDown)

@@ -1592,6 +1592,9 @@ MonoBehaviour:
   minusButton: {fileID: 1784912121}
   startButton: {fileID: 1685978185}
   toAPI: {fileID: 708674425}
+  TimerPlus: {fileID: 2980315316864245202, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  TimerMinus: {fileID: 2855161651175683556, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  TimerStart: {fileID: -5186639160721769682, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &393592341
 GameObject:
   m_ObjectHideFlags: 0
@@ -7116,7 +7119,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1964838095100366845, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5759023290510550228, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_Enabled
