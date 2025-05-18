@@ -1655,7 +1655,7 @@
                 {
                     "name": "",
                     "id": "1a0f049b-cd4d-449a-a022-e848d3978970",
-                    "path": "<XRController>{RightHand}/joystickClicked",
+                    "path": "<XRController>{RightHand}/thumbstickClicked",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
