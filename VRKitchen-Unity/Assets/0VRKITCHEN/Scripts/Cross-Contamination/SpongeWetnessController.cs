@@ -23,7 +23,7 @@ public class SpongeWetnessController : MonoBehaviour
             // Trigger query to RAG for next contamination cleanup step
             if (toAPI != null && !hasSentQuery)
             {
-                toAPI.queryText = "The sponge is wet now. What is the next step in the game to handle cross contamination? Please provide only the next in-game step.";
+                toAPI.queryText = "The sponge is wet now. What is the next step to handle cross contamination? Please provide only the next in-game step.";
                 toAPI.SubmitQuery();
                 hasSentQuery = true;
             }
