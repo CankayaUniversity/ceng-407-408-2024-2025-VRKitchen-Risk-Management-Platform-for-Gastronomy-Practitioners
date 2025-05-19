@@ -8435,7 +8435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3ed913aeb09c73448bcbf3f49314b3b0, type: 3}
       propertyPath: m_Name
-      value: Look Around
+      value: WomanChef
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
