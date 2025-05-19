@@ -74,14 +74,14 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
         else:
             return QueryResponse(
                 query_text=query_text,
-                response_text="❌ You are not following any recipe or risk scenario right now.",
+                response_text="You are not following any recipe or risk scenario right now.",
                 sources=[]
             )
 
         if not flow or not flow["steps"]:
             return QueryResponse(
                 query_text=query_text,
-                response_text="❌ There are no steps in your current flow.",
+                response_text="There are no steps in your current flow.",
                 sources=[]
             )
 
@@ -95,32 +95,31 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
                     session.active_context = "recipe"
                     session.save()
                     next_step = session.active_recipe_flow["steps"][session.active_recipe_flow["current_step_index"]]
-                    session.add_to_history(query_text, f"✅ Step complete. Next: {next_step}")
+                    session.add_to_history(query_text, f"Step complete. Next: {next_step}")
                     return QueryResponse(
                         query_text=query_text,
-                        response_text=f"✅ Step complete. Next: {next_step}",
+                        response_text=f"Step complete. Next: {next_step}",
                         sources=[]
                     )
-            # All flows complete
             session.active_context = None
             session.save()
             return QueryResponse(
                 query_text=query_text,
-                response_text="🎉 All steps completed. Great job!",
+                response_text="All steps completed. Great job!",
                 sources=[]
             )
 
         expected_step = steps[index]
         cleaned_expected = re.sub(r"\[.*?\]", "", expected_step).strip()
-        next_step = steps[index + 1] if index + 1 < len(steps) else "✅ All steps complete."
+        next_step = steps[index + 1] if index + 1 < len(steps) else "All steps complete."
 
         validation_prompt = (
             "You are an AI assistant in a VR kitchen simulation. Your task is to check if the player followed the step exactly.\n\n"
             f"Expected step:\n{cleaned_expected}\n\n"
             f"Player said:\n{query_text}\n\n"
             "Only respond in one of the following formats:\n"
-            "✅ Step complete.\n Next: [next step]\n"
-            "❌ Incorrect.\n Current step: [expected step]\n\n"
+            "Step complete.\n Next: [next step]\n"
+            "Incorrect.\n Current step: [expected step]\n\n"
             "Do NOT rephrase or summarize. Do NOT include any extra text. Respond with a single line."
         )
 
@@ -132,18 +131,17 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
         e_words = set(cleaned_expected.lower().split())
         match_ratio = len(q_words & e_words) / max(len(e_words), 1)
 
-        if "✅" in reply or match_ratio >= 0.5:
+        if "Step complete" in reply or match_ratio >= 0.5:
             flow["completed_steps"].append(expected_step)
             flow["current_step_index"] += 1
 
-        # Check if next step is a recipe reset signal
-        if "restart the recipe" in next_step.lower():
-            session.active_context = None
-            session.active_recipe_flow = session._empty_flow()
+            if "restart the recipe" in next_step.lower():
+                session.active_context = None
+                session.active_recipe_flow = session._empty_flow()
 
-            session.add_to_history(query_text, f"✅ Step complete. Next: {next_step}")
+            session.add_to_history(query_text, f"Step complete. Next: {next_step}")
             session.save()
-            return QueryResponse(query_text=query_text, response_text=f"✅ Step complete. Next: {next_step}", sources=[])
+            return QueryResponse(query_text=query_text, response_text=f"Step complete. Next: {next_step}", sources=[])
 
         session.add_to_history(query_text, reply)
         session.save()
@@ -222,3 +220,4 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
     ).put_item()
 
     return QueryResponse(query_text=query_text, response_text=response_text, sources=sources)
+
