@@ -30,6 +30,7 @@ PDF_SOURCES = {
     "Steak and Fries in the Game.pdf",
     "Rice and Chicken in the Game.pdf",
     "Pasta with Tomato Sauce In the Game.pdf"
+    "Water Spill In the Game.pdf"
 }
 
 RECIPE_KEYWORDS = {
@@ -39,7 +40,8 @@ RECIPE_KEYWORDS = {
     "chicken": "Rice and Chicken in the Game.pdf",
     "rice": "Rice and Chicken in the Game.pdf",
     "contamination": "Cross contamination in the game.pdf",
-    "fire": "General Fire In The Game.pdf"
+    "fire": "General Fire In The Game.pdf",
+    "spill" : "Water Spill In the Game.pdf"
 }
 
 @dataclass
