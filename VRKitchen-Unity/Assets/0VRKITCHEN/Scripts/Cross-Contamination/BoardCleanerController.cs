@@ -10,15 +10,11 @@ public class BoardCleanerController : MonoBehaviour
     private float scrubTimer;
     private bool hasSentQuery = false;
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (!collision.gameObject.CompareTag("Sponge")) return;
+        if (!other.CompareTag("Sponge")) return;
 
-        collision.rigidbody?.WakeUp();
-
-        var sponge = collision.gameObject.GetComponent<SpongeWetnessController>();
-
-        //Debug.Log($"Scrubbing... Time: {scrubTimer:F2}, Sponge Wet: {sponge.isWet}");
+        var sponge = other.GetComponent<SpongeWetnessController>();
 
         if (sponge != null && sponge.isWet)
         {
@@ -29,29 +25,26 @@ public class BoardCleanerController : MonoBehaviour
                 if (crossController != null && crossController.isContamination)
                 {
                     crossController.ResetContamination();
-
-                    if (visualFeedback != null)
-                        visualFeedback.HideExclamation(); // Hide exclamation after successful scrub
+                    visualFeedback?.HideExclamation();
                 }
 
                 scrubTimer = 0f;
                 sponge.isWet = false;
                 Debug.Log("Board cleaned with sponge.");
 
-                if ( toAPI != null)
+                if (!hasSentQuery && toAPI != null)
                 {
                     toAPI.queryText = "The contaminated board has been cleaned. What is the next step in the game to handle cross contamination? Provide only the next in-game step.";
                     toAPI.SubmitQuery();
-                    Debug.Log(toAPI.queryText);
                     hasSentQuery = true;
                 }
             }
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Sponge"))
+        if (other.CompareTag("Sponge"))
         {
             scrubTimer = 0f;
             hasSentQuery = false;
