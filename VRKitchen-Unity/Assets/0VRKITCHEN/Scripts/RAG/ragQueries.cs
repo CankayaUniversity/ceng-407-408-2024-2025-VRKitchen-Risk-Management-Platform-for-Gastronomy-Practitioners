@@ -24,9 +24,5 @@ public static class GameQueries
     public static readonly string WashHand =
         "I washed my hands in the game. What now?";
 
-        // Turn on the stove inside oven.cs
-    public static readonly string turnOnStove=
-        "I turned on the stove in the game. What now?";
-
 }
 
