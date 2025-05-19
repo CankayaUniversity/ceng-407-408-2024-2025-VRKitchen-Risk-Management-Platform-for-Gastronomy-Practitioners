@@ -9147,7 +9147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f9fc0cb6336234aa8d458cf8fea98d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wetDuration: 1000
+  wetDuration: 80
   isWet: 0
   toAPI: {fileID: 708674425}
 --- !u!1 &1853767839

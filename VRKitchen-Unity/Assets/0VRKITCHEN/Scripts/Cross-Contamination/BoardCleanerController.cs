@@ -14,7 +14,12 @@ public class BoardCleanerController : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Sponge")) return;
 
+        collision.rigidbody?.WakeUp();
+
         var sponge = collision.gameObject.GetComponent<SpongeWetnessController>();
+
+        //Debug.Log($"Scrubbing... Time: {scrubTimer:F2}, Sponge Wet: {sponge.isWet}");
+
         if (sponge != null && sponge.isWet)
         {
             scrubTimer += Time.deltaTime;
