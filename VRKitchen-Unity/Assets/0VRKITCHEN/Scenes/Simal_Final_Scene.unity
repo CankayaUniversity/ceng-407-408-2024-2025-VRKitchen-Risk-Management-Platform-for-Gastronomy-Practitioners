@@ -4341,7 +4341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 843f08397b5b50444ba83607cf8d046a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.959
+      value: 2.069
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 843f08397b5b50444ba83607cf8d046a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4872,7 +4872,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!4 &1009146325
 Transform:
@@ -4883,7 +4883,7 @@ Transform:
   m_GameObject: {fileID: 1009146323}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.13, y: 0.141, z: -3.627}
+  m_LocalPosition: {x: -4.13, y: 0.48, z: -3.627}
   m_LocalScale: {x: 1.4898179, y: 1.4898179, z: 1.4898179}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5632,6 +5632,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1585096858}
+    - target: {fileID: 2622022540350212538, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 66
+      objectReference: {fileID: 0}
     - target: {fileID: 5782955536536150447, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       propertyPath: m_Interpolate
       value: 1
@@ -5643,6 +5647,10 @@ PrefabInstance:
     - target: {fileID: 5954220443531763919, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       propertyPath: m_Name
       value: potato
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954220443531763919, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
+      propertyPath: m_TagString
+      value: Food
       objectReference: {fileID: 0}
     - target: {fileID: 6479117864872983157, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5727,7 +5735,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1611692023
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -6470,7 +6478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7129d84953ee4741bca20cae58a423a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.92
+      value: 0.008
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7129d84953ee4741bca20cae58a423a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6478,7 +6486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7129d84953ee4741bca20cae58a423a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.43
+      value: -0.094
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7129d84953ee4741bca20cae58a423a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10511,8 +10519,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 25.879776, y: 1, z: 35.821655}
-  m_Center: {x: -12.439879, y: 0, z: -17.410772}
+  m_Size: {x: 25.879776, y: 1.6050798, z: 35.821655}
+  m_Center: {x: -12.439879, y: 0.30253977, z: -17.410772}
 --- !u!114 &2062121232
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 public class SpongeWetnessController : MonoBehaviour
 {
     public float wetDuration = 5f;
-    [HideInInspector] public bool isWet;
+    public bool isWet;
 
     private float wetTimer;
     private bool hasSentQuery = false;
