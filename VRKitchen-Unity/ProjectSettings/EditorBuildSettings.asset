@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/0VRKITCHEN/Scenes/MainMenu.unity
+    path: Assets/0VRKITCHEN/Scenes/Menu UI Scenes/MainMenu.unity
     guid: 1276a5347271c8645b4cf369544f2930
   - enabled: 1
     path: Assets/0VRKITCHEN/Scenes/Simal_Final_Scene.unity
@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/0VRKITCHEN/Scenes/VRInteractions.unity
     guid: e199d753ff6c98b4ab728d3b54e53947
+  - enabled: 1
+    path: Assets/0VRKITCHEN/Scenes/Menu UI Scenes/SoundSettings.unity
+    guid: 7f51835cdd0e355428d3d4f952f5d169
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ebbea6fa362cea24c9cb9cff0153c4ce, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 2868365655f41114fb1a49ff03195476, type: 2}
