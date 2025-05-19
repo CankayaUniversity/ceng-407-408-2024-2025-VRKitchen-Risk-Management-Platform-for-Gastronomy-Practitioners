@@ -81,8 +81,6 @@ public class SimpleCross : MonoBehaviour
             isContamination = false;
             hasSentContaminationQuery = false;
 
-            // Removed HideExclamation from here
-            Debug.Log("Contamination state cleared (but visuals managed elsewhere).");
         }
     }
 

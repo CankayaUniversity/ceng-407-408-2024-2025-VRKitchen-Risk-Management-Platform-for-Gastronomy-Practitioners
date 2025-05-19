@@ -10,7 +10,7 @@ public static class GameQueries
 
     // Cross cont. step 2
     public static readonly string ThowTheMeat =
-        "The contaminated food has been thrown away in the trash in the game. What now?";
+        "I removed contaminated food and throwed it in the trash in the game. What now?";
 
     // Cross cont step 3
     public static readonly string SpongeWetness =
@@ -24,7 +24,7 @@ public static class GameQueries
     public static readonly string WashHand =
         "I washed my hands in the game. What now?";
 
-        // Turn on the stove
+        // Turn on the stove inside oven.cs
     public static readonly string turnOnStove=
         "I turned on the stove in the game. What now?";
 
