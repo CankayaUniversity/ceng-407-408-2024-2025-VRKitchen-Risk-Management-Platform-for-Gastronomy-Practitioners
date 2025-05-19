@@ -7,6 +7,7 @@ public class SimpleCross : MonoBehaviour
     public bool isContamination;
 
     public UnityToAPI toAPI;
+    
 
     private bool hasSentContaminationQuery = false;
 
@@ -68,7 +69,7 @@ public class SimpleCross : MonoBehaviour
 
             if (!hasSentContaminationQuery && toAPI != null)
             {
-                toAPI.queryText = "Cross contamination happened in the game. What are the steps I should follow in the game only? Don't provide any other explanation";
+                toAPI.queryText = GameQueries.CrossContaminationQuery;
 
                 toAPI.SubmitQuery();
                 Debug.Log(toAPI.queryText);
