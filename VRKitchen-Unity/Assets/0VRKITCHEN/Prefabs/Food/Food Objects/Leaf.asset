@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e5468047dbaa4711a96b88aeb0e5252, type: 3}
-  m_Name: Potato
+  m_Name: Leaf
   m_EditorClassIdentifier: 
   foodName: 
   foodImage: {fileID: 0}
-  foodPrefab: {fileID: 5954220443531763919, guid: 7a0b6fba083ad42438619206e7d016bf, type: 3}
+  foodPrefab: {fileID: 5415083994033805510, guid: a0d8f39709b504406aa79ec9fafd1d9c, type: 3}
   calories: 0
   isHazardous: 0
   foodCategory: 

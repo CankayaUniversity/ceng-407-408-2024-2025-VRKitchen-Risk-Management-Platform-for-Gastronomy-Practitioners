@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodName: 
   foodImage: {fileID: 0}
-  foodPrefab: {fileID: 0}
+  foodPrefab: {fileID: 52388244678240042, guid: 1b97e89b88ee64eab9d4c9807c9dc936, type: 3}
   calories: 0
   isHazardous: 0
   foodCategory: 

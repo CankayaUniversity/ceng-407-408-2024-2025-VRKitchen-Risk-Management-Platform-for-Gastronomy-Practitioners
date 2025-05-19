@@ -18,6 +18,15 @@ TagManager:
   - WaterParticle
   - WaterSource
   - Oil
+  - Board
+  - Sponge
+  - HamburgerBottom
+  - HamburgerTop
+  - Tomato
+  - Cheese
+  - Onion
+  - Slice
+  - HamburgerSteak
   layers:
   - Default
   - TransparentFX

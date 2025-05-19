@@ -1,0 +1,28 @@
+
+This is a low polygon model of stylized burger with hand painted textures.
+
+Available in three different formats.
+
+Blender.blend, FBX and OBJ.
+
+Clean topology.
+
+Software used: Blender 4.3 and Krita
+
+Texture  2048x2048 PNG - Diffuse Map only
+
+Polygon Count: 
+
+Faces - 1148	Vertices - 1009	    Triangles - 1953
+ 
+Rendered in Blender Cycles
+
+HDRI image was used for the rendered images which is not included in the package. 
+
+This is a model from my collection of stylized food models on my website.
+
+Can be used commercially if you give credits to my site Animated Heaven 
+
+www.animatedheaven.weebly.com
+.................................................................
+

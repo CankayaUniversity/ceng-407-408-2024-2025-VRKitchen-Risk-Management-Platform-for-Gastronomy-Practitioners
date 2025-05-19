@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657886, g: 0.49641275, b: 0.5748176, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4495,7 +4495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &953741452
 Transform:
   m_ObjectHideFlags: 0
@@ -9494,6 +9494,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodData: {fileID: 11400000, guid: bcc212ae673f04e0e8eb46e5cf69fc37, type: 2}
+--- !u!1 &1877127008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1877127010}
+  - component: {fileID: 1877127009}
+  m_Layer: 0
+  m_Name: RecipeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1877127009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877127008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6a406b087f04a8a82f33c5f56f61ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toAPI: {fileID: 708674425}
+  recipeSelector: {fileID: 1916968533}
+--- !u!4 &1877127010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877127008}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.0038075, y: 2.1824048, z: -7.8466544}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1891472351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9757,7 +9803,7 @@ GameObject:
   - component: {fileID: 1916968532}
   - component: {fileID: 1916968533}
   m_Layer: 0
-  m_Name: RecipeManager
+  m_Name: RecipeSelector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9792,6 +9838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeListText: {fileID: 1618794441}
   unityToAPI: {fileID: 708674425}
+  recipeManager: {fileID: 1877127009}
 --- !u!1 &1938682960
 GameObject:
   m_ObjectHideFlags: 0
@@ -11582,3 +11629,4 @@ SceneRoots:
   - {fileID: 1009146325}
   - {fileID: 387957187}
   - {fileID: 1386266072}
+  - {fileID: 1877127010}

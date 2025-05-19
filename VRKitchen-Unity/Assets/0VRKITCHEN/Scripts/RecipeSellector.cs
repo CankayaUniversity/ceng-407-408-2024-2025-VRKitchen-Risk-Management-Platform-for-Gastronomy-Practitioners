@@ -1,10 +1,12 @@
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class RecipeSelector : MonoBehaviour
 {
-    public TextMeshPro recipeListText; // <-- change this line to TextMeshPro (not TextMeshProUGUI)
-    public UnityToAPI unityToAPI;
+    public TextMeshPro recipeListText;  
+    public UnityToAPI unityToAPI;       
+    public RecipeManager recipeManager; 
 
     private void Start()
     {
@@ -30,8 +32,13 @@ public class RecipeSelector : MonoBehaviour
     public void SelectRecipe(string recipeName)
     {
         Debug.Log($"Selected Recipe: {recipeName}");
-        string query = $"How to make {recipeName} in the game?";
 
+        // Reset any previous recipe
+        if (recipeManager != null)
+            recipeManager.ResetRecipe();
+
+        // Send the structured query to RAG
+        string query = $"Give me the JSON for how to make {recipeName} in a cooking game. Return fields: recipe_name, ingredients[], steps[].";
         unityToAPI.queryText = query;
         unityToAPI.SubmitQuery();
 
@@ -41,5 +48,22 @@ public class RecipeSelector : MonoBehaviour
     public void UpdateText(string newText)
     {
         recipeListText.text = newText;
+    }
+
+    public void DisplaySteps(List<string> steps, int currentStepIndex)
+    {
+        if (recipeListText == null || steps == null) return;
+
+        recipeListText.text = "Steps:\n";
+
+        for (int i = 0; i < steps.Count; i++)
+        {
+            if (i == currentStepIndex)
+                recipeListText.text += $"<color=yellow>→ {steps[i]}</color>\n";
+            else if (i < currentStepIndex)
+                recipeListText.text += $"<color=green><s>{steps[i]}</s></color>\n";
+            else
+                recipeListText.text += $"{i + 1}. {steps[i]}\n";
+        }
     }
 }
