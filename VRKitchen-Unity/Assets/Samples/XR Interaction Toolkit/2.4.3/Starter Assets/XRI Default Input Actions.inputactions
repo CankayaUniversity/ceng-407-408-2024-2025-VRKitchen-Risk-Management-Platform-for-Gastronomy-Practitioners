@@ -728,6 +728,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GripPresL",
+                    "type": "Button",
+                    "id": "75565d70-919a-4f3a-a0db-7b56a92bdbf2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -904,6 +913,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Timer Plus",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f938a783-761d-461a-a255-cc2fb2050b94",
+                    "path": "<XRController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "GripPresL",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

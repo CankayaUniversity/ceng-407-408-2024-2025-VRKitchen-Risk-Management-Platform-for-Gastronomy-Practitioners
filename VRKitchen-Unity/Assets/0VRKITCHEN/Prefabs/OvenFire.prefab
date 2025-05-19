@@ -4857,7 +4857,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.46249232, y: -0.47268906, z: -0.52459383, w: 0.53615975}
   m_LocalPosition: {x: 0.169, y: -0.044, z: 0.054}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1700917064669934856}
@@ -9757,7 +9757,7 @@ Light:
   m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -1.9125841e+29, z: 9.44e-43, w: NaN}
+  m_BoundingSphereOverride: {x: 6.737841e+22, y: 2.7561478e+23, z: 1.0505626e-38, w: 7.0975523e+22}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -9795,9 +9795,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6184940874091666677}
   - component: {fileID: 7632615602915651461}
-  - component: {fileID: 1546749656933985940}
   m_Layer: 0
-  m_Name: Fire
+  m_Name: OvenFire
   m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9840,25 +9839,3 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1546749656933985940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8357041032763676828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfd74ebd12392405591c4f16386a310a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source:
-    spawnPoint: {fileID: 0}
-    firePrefab: {fileID: 0}
-    ovenController: {fileID: 0}
-    heatZone: {fileID: 0}
-    firePool: {fileID: 0}
-    heatingTime: 0
-    maxHeatingTime: 600
-    activeFire: {fileID: 0}
-    fireAudioSource: {fileID: 0}

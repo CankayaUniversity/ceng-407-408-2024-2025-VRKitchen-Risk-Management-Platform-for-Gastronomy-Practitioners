@@ -12,7 +12,7 @@ public class SpongeWetnessController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("WaterSource"))
+        if (other.CompareTag("WaterParticle"))
         {
             isWet = true;
             wetTimer = wetDuration;
@@ -25,6 +25,7 @@ public class SpongeWetnessController : MonoBehaviour
             {
                 toAPI.queryText = "The sponge is wet now. What is the next step to handle cross contamination? Please provide only the next in-game step.";
                 toAPI.SubmitQuery();
+                Debug.Log(toAPI.queryText);
                 hasSentQuery = true;
             }
         }

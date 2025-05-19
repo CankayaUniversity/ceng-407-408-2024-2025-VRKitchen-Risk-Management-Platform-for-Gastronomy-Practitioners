@@ -179,7 +179,9 @@ public class FireController : SingletonBehaviour<FireController>
         {
             //Debug.Log("Fire triggered - sending query to RAG");
             toAPI.queryText = "A general fire has started in the game. What are the steps to handle this situation? Just give me the steps.";
+            
             toAPI.SubmitQuery();
+            Debug.Log(toAPI.queryText);
         }
 
         if (fireAlertFeedback != null && fireAlertMarkerTransform != null)

@@ -7,7 +7,7 @@ public class OvenController : MonoBehaviour
     public ParticleSystem burnerFireParticles;
     public  List<HeatZone> heatZone;
     public int activeZones = 0;
-
+    public bool ovenOff;
     public void RegisterZoneStateChange(bool isOn)
     {
         if (isOn)
@@ -17,7 +17,9 @@ public class OvenController : MonoBehaviour
             {
                 Debug.Log(" First heat zone activated. Submitting API query...");
                 toAPI.queryText = "I turned on the stove, What's the next step I should follow? Just give me the step with the step number without any explanation.";
+                
                 toAPI.SubmitQuery();
+                Debug.Log(toAPI.queryText);
 
                 if (burnerFireParticles != null)
                     burnerFireParticles.Play();
@@ -32,7 +34,7 @@ public class OvenController : MonoBehaviour
                 toAPI.queryText = "I turned off the stove, what's the next step in the game? Just tell me what I should do without any explanation.";
                  
                  toAPI.SubmitQuery();
-
+                Debug.Log(toAPI.queryText);
                 if (burnerFireParticles != null)
                     burnerFireParticles.Stop();
             }

@@ -33,10 +33,11 @@ public class BoardCleanerController : MonoBehaviour
                 sponge.isWet = false;
                 Debug.Log("Board cleaned with sponge.");
 
-                if (!hasSentQuery && toAPI != null)
+                if ( toAPI != null)
                 {
                     toAPI.queryText = "The contaminated board has been cleaned. What is the next step in the game to handle cross contamination? Provide only the next in-game step.";
                     toAPI.SubmitQuery();
+                    Debug.Log(toAPI.queryText);
                     hasSentQuery = true;
                 }
             }

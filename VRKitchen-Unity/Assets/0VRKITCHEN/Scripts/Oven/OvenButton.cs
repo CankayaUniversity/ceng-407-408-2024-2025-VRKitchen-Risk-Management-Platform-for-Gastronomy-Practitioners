@@ -1,23 +1,25 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class OvenButton : MonoBehaviour
 {
-    public HeatZone targetHeatZone; // Ba�l� HeatZone
+    public HeatZone targetHeatZone;
 
-    private XRSimpleInteractable interactable;
+    private XRBaseInteractable interactable;
 
     private void Start()
     {
-        interactable = GetComponent<XRSimpleInteractable>();
-        interactable.hoverEntered.AddListener(OnButtonTouched);
+        interactable = GetComponent<XRBaseInteractable>();
+
+        // Artık hover yerine select (trigger basılması) kullanılıyor
+        interactable.selectEntered.AddListener(OnButtonPressed);
     }
 
-    private void OnButtonTouched(HoverEnterEventArgs args)
+    private void OnButtonPressed(SelectEnterEventArgs args)
     {
         if (targetHeatZone != null)
         {
-            targetHeatZone.ToggleZone(); // HeatZone'u a�/kapat
+            targetHeatZone.ToggleZone(); // HeatZone'u aç/kapat
         }
     }
 }

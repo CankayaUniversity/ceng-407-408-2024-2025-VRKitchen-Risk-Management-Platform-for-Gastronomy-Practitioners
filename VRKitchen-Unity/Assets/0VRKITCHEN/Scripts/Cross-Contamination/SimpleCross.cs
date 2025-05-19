@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleCross : MonoBehaviour
@@ -49,12 +49,16 @@ public class SimpleCross : MonoBehaviour
     {
         bool wasContaminated = isContamination;
 
-        bool containsMeat = touchingItems.Exists(obj => obj != null && obj.name.Contains("Meat"));
+        bool containsMeat = touchingItems.Exists(obj => obj != null && obj.name.Contains("Steak Prefab(Clone)"));
         bool moreThanOneItem = touchingItems.Count > 1;
 
         if (!isContamination && containsMeat && moreThanOneItem)
         {
             isContamination = true;
+            foreach(var ıtems  in touchingItems)
+            {
+                ıtems.gameObject.tag = "Trash";
+            }
             Debug.Log("Cross Contamination Detected!");
 
             if (visualFeedback != null && contaminationMarkerTransform != null)
@@ -65,7 +69,9 @@ public class SimpleCross : MonoBehaviour
             if (!hasSentContaminationQuery && toAPI != null)
             {
                 toAPI.queryText = "Cross contamination happened in the game. What are the steps I should follow in the game only? Don't provide any other explanation";
+
                 toAPI.SubmitQuery();
+                Debug.Log(toAPI.queryText);
                 hasSentContaminationQuery = true;
             }
         }
