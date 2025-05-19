@@ -16,7 +16,7 @@ public class OvenController : MonoBehaviour
             if (activeZones == 1)
             {
                 Debug.Log(" First heat zone activated. Submitting API query...");
-                toAPI.queryText = "I turned on the stove, What's the next step I should follow? Just give me the step with the step number without any explanation.";
+                toAPI.queryText = GameQueries.turnOnStove;
                 
                 toAPI.SubmitQuery();
                 Debug.Log(toAPI.queryText);
