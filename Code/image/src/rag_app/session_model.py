@@ -2,9 +2,8 @@ import os
 import time
 import boto3
 from botocore.exceptions import ClientError
-from typing import List, Dict, Optional
+from typing import List, Dict
 from decimal import Decimal
-from query_model import QueryModel
 import uuid
 
 TABLE_NAME = os.environ.get("TABLE_NAME")
@@ -14,64 +13,73 @@ if not TABLE_NAME:
 class SessionModel:
     def __init__(self, session_id: str, query_id: str = None):
         self.session_id = session_id
-        self.history = []  # Stores conversation history as a list of dictionaries
-        self.last_activity = time.time()  # Track last activity for session expiration
-        self.query_id = query_id or str(uuid.uuid4())  # Generate a unique query_id if not provided
+        self.query_id = query_id or str(uuid.uuid4())
+        self.history: List[Dict[str, str]] = []
+        self.last_activity = time.time()
 
+        self.active_context = None  # "recipe", "risk", or None
+        self.active_recipe_flow = self._empty_flow()
+        self.active_risk_flow = self._empty_flow()
+
+    def _empty_flow(self):
+        return {
+            "title": None,
+            "steps": [],
+            "current_step_index": 0,
+            "completed_steps": [],
+        }
 
     @classmethod
     def get_table(cls):
-        """Get DynamoDB Table resource."""
-        dynamodb = boto3.resource("dynamodb")
-        return dynamodb.Table(TABLE_NAME)
+        return boto3.resource("dynamodb").Table(TABLE_NAME)
 
     def add_to_history(self, user_query: str, bot_response: str):
-        """Add a user query and bot response to the session history."""
         self.history.append({"user": user_query, "bot": bot_response})
-        self.last_activity = time.time()  # Update last activity time
-        self.save()  # Save session data to DynamoDB after adding to history
+        self.last_activity = time.time()
+        self.save()
 
     def get_conversation_context(self) -> str:
-        """Retrieve the conversation history as a formatted string for context."""
-        return "\n".join([f"User: {entry['user']}\nBot: {entry['bot']}" for entry in self.history])
+        return "\n".join(
+            [f"User: {entry['user']}\nBot: {entry['bot']}" for entry in self.history]
+        )
 
     def get_history(self) -> List[Dict[str, str]]:
-        """Return the full conversation history."""
         return self.history
 
     def is_expired(self, timeout: int = 3600) -> bool:
-        """Check if the session has expired due to inactivity."""
         return (time.time() - self.last_activity) > timeout
 
     def save(self):
-        """Save session data to DynamoDB."""
         item = {
             "session_id": self.session_id,
-            "query_id": self.query_id,  # Ensure query_id is included
+            "query_id": self.query_id,
             "history": self.history,
-            "last_activity": Decimal(str(self.last_activity)),  # Convert float to Decimal
+            "last_activity": Decimal(str(self.last_activity)),
+            "active_context": self.active_context,
+            "active_recipe_flow": self.active_recipe_flow,
+            "active_risk_flow": self.active_risk_flow,
         }
         try:
-            response = self.get_table().put_item(Item=item)
-            print(f"Session saved to DynamoDB: {response}")
+            self.get_table().put_item(Item=item)
         except ClientError as e:
             print(f"Error saving session: {e.response['Error']['Message']}")
             raise e
 
     @classmethod
     def get(cls, session_id: str):
-        """Retrieve a session from DynamoDB."""
         try:
             response = cls.get_table().get_item(Key={"session_id": session_id})
             if "Item" in response:
                 item = response["Item"]
                 session = SessionModel(session_id=item["session_id"])
-                session.history = item["history"]
-                session.last_activity = item["last_activity"]
+                session.history = item.get("history", [])
+                session.last_activity = float(item.get("last_activity", time.time()))
+                session.active_context = item.get("active_context")
+
+                session.active_recipe_flow = item.get("active_recipe_flow", session._empty_flow())
+                session.active_risk_flow = item.get("active_risk_flow", session._empty_flow())
                 return session
-            else:
-                print(f"Session not found with ID: {session_id}")
-                return None
+            return None
         except ClientError as e:
             print(f"Error retrieving session: {e.response['Error']['Message']}")
             return None
