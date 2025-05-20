@@ -7,7 +7,6 @@ public class SimpleCross : MonoBehaviour
     public bool isContamination;
 
     public UnityToAPI toAPI;
-    
 
     private bool hasSentContaminationQuery = false;
 

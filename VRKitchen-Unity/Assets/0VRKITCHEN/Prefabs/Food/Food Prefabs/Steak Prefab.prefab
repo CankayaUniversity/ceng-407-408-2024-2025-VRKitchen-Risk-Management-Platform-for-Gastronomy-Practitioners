@@ -313,7 +313,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodData: {fileID: 11400000, guid: bcc212ae673f04e0e8eb46e5cf69fc37, type: 2}
   currentState: 0
+  temperature: 0
   rawMaterial: {fileID: 5863650252929523565, guid: d5fcf459f29167e448aef31d5e93b3d8, type: 3}
   cookedMaterial: {fileID: -7309649336560996874, guid: 8433548d41f066049a0673c1b5c52600, type: 3}
   overcookedMaterial: {fileID: 0}
   burntMaterial: {fileID: 0}
+  toAPI: {fileID: 315764526617685752, guid: 54b20fec541d4544e846bfbcd43dfe97, type: 3}

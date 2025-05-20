@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5468047dbaa4711a96b88aeb0e5252, type: 3}
+  m_Name: Tomato
+  m_EditorClassIdentifier: 
+  foodName: Tomato
+  foodImage: {fileID: 0}
+  foodPrefab: {fileID: 5016149187090504973, guid: 55c0b05259c4440439d58dae2a0ce612, type: 3}
+  calories: 0
+  isHazardous: 0
+  foodCategory: 
+  foodDescription: 
+  isCookable: 0
+  idealCookingTime: 0
+  burnThresholdTime: 0
+  requiredTemperature: 0

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5468047dbaa4711a96b88aeb0e5252, type: 3}
+  m_Name: HamburgerBread_Top
+  m_EditorClassIdentifier: 
+  foodName: Hamburger Bread Top
+  foodImage: {fileID: 0}
+  foodPrefab: {fileID: 3641544844496178977, guid: bef99dbc78c134f549646804c0d80f7c, type: 3}
+  calories: 0
+  isHazardous: 0
+  foodCategory: 
+  foodDescription: 
+  isCookable: 0
+  idealCookingTime: 0
+  burnThresholdTime: 0
+  requiredTemperature: 0

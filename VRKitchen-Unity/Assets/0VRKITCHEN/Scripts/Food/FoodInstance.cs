@@ -66,10 +66,10 @@ public class FoodInstance : MonoBehaviour
                 currentState = CookingState.Cooked;
                 SetMaterial(cookedMaterial);
 
-                // ✅ Send RAG query when first cooked
+                // Send RAG query when first cooked
                 if (!hasSentCookedQuery && toAPI != null)
                 {
-                    toAPI.queryText = "The chicken has been cooked. What is the next step in the game? Provide only the next in-game step.";
+                    toAPI.queryText = "The chicken has been cooked. What now?";
                     toAPI.SubmitQuery();
                     hasSentCookedQuery = true;
                 }

@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5acc07fd-79b8-43d9-8167-53344560c475" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodInstance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Pan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Pan.cs" afterDir="false" />
-    </list>
+    <list default="true" id="5acc07fd-79b8-43d9-8167-53344560c475" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +15,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodSpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/HandTracker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.huggingface.api@8d0231780e/Editor/HuggingFaceAPIWizard.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Shaders/Particles/ParticlesLit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -34,7 +31,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;game-action-manager&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -133,6 +130,7 @@
       <workItem from="1745774723746" duration="671000" />
       <workItem from="1746105596862" duration="741000" />
       <workItem from="1746903154835" duration="440000" />
+      <workItem from="1747750328230" duration="4116000" />
     </task>
     <servers />
   </component>
