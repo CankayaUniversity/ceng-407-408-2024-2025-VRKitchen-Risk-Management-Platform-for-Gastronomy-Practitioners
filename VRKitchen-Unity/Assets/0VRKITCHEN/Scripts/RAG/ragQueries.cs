@@ -24,5 +24,6 @@ public static class GameQueries
     public static readonly string WashHand =
         "I washed my hands in the game. What now?";
 
+
 }
 
