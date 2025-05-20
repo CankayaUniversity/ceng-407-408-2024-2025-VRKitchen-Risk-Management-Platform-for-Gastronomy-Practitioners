@@ -4,7 +4,8 @@ public class WaterFillTrigger : MonoBehaviour
 {
     public GameObject potWaterObject;
     public float fillDuration = 5f;
-
+    public Material waterMaterial; // Inspector'dan atanacak
+    public Material oilMaterial;
     private Animation waterAnimation;
     private float fillTime = 0f;
     private bool isFilling = false;
@@ -26,7 +27,7 @@ public class WaterFillTrigger : MonoBehaviour
     private void OnParticleCollision(GameObject other)
     {
 
-        if (other.CompareTag("WaterParticle"))
+        if (other.CompareTag("WaterParticle") || other.CompareTag("Oil"))
         {
 
             isFilling = true;
@@ -36,7 +37,15 @@ public class WaterFillTrigger : MonoBehaviour
 
                 potWaterObject.SetActive(true);
                 //hasActivatedWater = true;
+                Renderer potRenderer = potWaterObject.GetComponent<Renderer>();
+                if (potRenderer != null)
+                {
+                    if (other.CompareTag("WaterParticle") && waterMaterial != null)
+                        potRenderer.material = waterMaterial;
 
+                    else if (other.CompareTag("Oil") && oilMaterial != null)
+                        potRenderer.material = oilMaterial;
+                }
                 // Aktif hale gelince Animation component'ine eri�
                 waterAnimation = potWaterObject.GetComponent<Animation>();
 
@@ -52,33 +61,7 @@ public class WaterFillTrigger : MonoBehaviour
                 }
             }
         }
-        else if (other.CompareTag("Oil"))
-        {
-
-            isFilling = true;
-
-            if (!hasActivatedWater && potWaterObject != null)
-            {
-
-                potWaterObject.SetActive(true);
-                potWaterObject.transform.GetComponent<Renderer>().material.color = Color.yellow;
-                //hasActivatedWater = true;
-
-                // Aktif hale gelince Animation component'ine eri�
-                waterAnimation = potWaterObject.GetComponent<Animation>();
-
-                if (waterAnimation != null && waterAnimation.GetClip("water_rise") != null)
-                {
-                    waterAnimation.Play("water_rise");
-                    waterAnimation["water_rise"].speed = 0f;
-                    waterAnimation["water_rise"].normalizedTime = 0f;
-                }
-                else
-                {
-                    Debug.LogWarning("Potwater objesinde 'water_rise' animasyonu bulunamad�.");
-                }
-            }
-        }
+        
     }
 
     private void Update()
