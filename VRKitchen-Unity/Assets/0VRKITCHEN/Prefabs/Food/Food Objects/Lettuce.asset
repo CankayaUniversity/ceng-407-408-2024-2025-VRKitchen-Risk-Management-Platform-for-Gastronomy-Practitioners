@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5468047dbaa4711a96b88aeb0e5252, type: 3}
   m_Name: Lettuce
   m_EditorClassIdentifier: 
-  foodName: 
+  foodName: Lettuce
   foodImage: {fileID: 0}
   foodPrefab: {fileID: 438730324684949759, guid: a0d8f39709b504406aa79ec9fafd1d9c, type: 3}
   calories: 0

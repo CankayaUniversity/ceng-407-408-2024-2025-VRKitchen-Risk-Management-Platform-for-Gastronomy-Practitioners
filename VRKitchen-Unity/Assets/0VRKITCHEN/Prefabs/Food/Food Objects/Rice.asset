@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5468047dbaa4711a96b88aeb0e5252, type: 3}
   m_Name: Rice
   m_EditorClassIdentifier: 
-  foodName: 
+  foodName: Rice
   foodImage: {fileID: 0}
   foodPrefab: {fileID: 52388244678240042, guid: 1b97e89b88ee64eab9d4c9807c9dc936, type: 3}
   calories: 0

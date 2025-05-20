@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5468047dbaa4711a96b88aeb0e5252, type: 3}
   m_Name: HamburgerBread_Bottom
   m_EditorClassIdentifier: 
-  foodName: 
+  foodName: Hamburger Bread Bottom
   foodImage: {fileID: 0}
   foodPrefab: {fileID: 1325716889873655095, guid: 9e127a527fc7c4c879b85b7c3be9217c, type: 3}
   calories: 0

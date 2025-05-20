@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5468047dbaa4711a96b88aeb0e5252, type: 3}
   m_Name: Meat
   m_EditorClassIdentifier: 
-  foodName: 
+  foodName: Meat
   foodImage: {fileID: 0}
   foodPrefab: {fileID: 481019810170003477, guid: 87058938a97574abb833047816c8c3af, type: 3}
   calories: 0

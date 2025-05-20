@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5468047dbaa4711a96b88aeb0e5252, type: 3}
   m_Name: Potato
   m_EditorClassIdentifier: 
-  foodName: 
+  foodName: Potato
   foodImage: {fileID: 0}
   foodPrefab: {fileID: 5954220443531763919, guid: 7a0b6fba083ad42438619206e7d016bf, type: 3}
   calories: 0

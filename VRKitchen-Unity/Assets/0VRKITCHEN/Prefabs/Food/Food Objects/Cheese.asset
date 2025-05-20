@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5468047dbaa4711a96b88aeb0e5252, type: 3}
   m_Name: Cheese
   m_EditorClassIdentifier: 
-  foodName: 
+  foodName: Cheese
   foodImage: {fileID: 0}
   foodPrefab: {fileID: 8150334156787222130, guid: ee3e3b407000841259ce01b35503539f, type: 3}
   calories: 0
