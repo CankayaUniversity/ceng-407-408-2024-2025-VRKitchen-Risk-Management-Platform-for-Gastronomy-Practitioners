@@ -29,7 +29,7 @@ PDF_SOURCES = {
     "General Fire In The Game.pdf",
     "Steak and Fries in the Game.pdf",
     "Hamburger In The Game.pdf",
-    "Chicken and Potato In  The Game.pdf"
+    "Chicken and Potato In  The Game.pdf",
     "Water Spill In the Game.pdf"
 }
 
@@ -41,7 +41,7 @@ RECIPE_KEYWORDS = {
     "potato": "Chicken and Potato In  The Game.pdf",
     "contamination": "Cross contamination in the game.pdf",
     "fire": "General Fire In The Game.pdf",
-    "spill" : "Water Spill In the Game.pdf"
+    "spill": "Water Spill In the Game.pdf"
 }
 
 @dataclass
@@ -90,7 +90,6 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
         index = flow["current_step_index"]
         steps = flow["steps"]
 
-        # === AUTO-RESUME RECIPE IF RISK COMPLETES ===
         if index >= len(steps):
             if flow == session.active_risk_flow and session.active_recipe_flow:
                 recipe_flow = session.active_recipe_flow
@@ -107,7 +106,6 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
                         response_text=f"All risk management steps completed. Great job!\nNext step in your recipe: {next_step}",
                         sources=[]
                     )
-
             session.active_context = None
             session.save()
             return QueryResponse(
@@ -134,22 +132,15 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
         validation_response = model.invoke(validation_prompt)
         reply = validation_response.content.strip()
 
-        q_words = set(lower_q.split())
-        e_words = set(cleaned_expected.lower().split())
-        match_ratio = len(q_words & e_words) / max(len(e_words), 1)
-
-        if "Step complete" in reply or match_ratio >= 0.5:
+        if "Step complete" in reply and "Incorrect" not in reply:
             flow["completed_steps"].append(expected_step)
             flow["current_step_index"] += 1
 
             is_last_step = flow["current_step_index"] >= len(flow["steps"])
 
             if flow == session.active_risk_flow and is_last_step:
-                # Determine if the risk flow was "Cross Contamination"
                 risk_title = (session.active_risk_flow.get("title") or "").lower()
-
                 if "contamination" in risk_title and session.active_recipe_flow:
-                    # Restart recipe flow
                     session.active_context = "recipe"
                     session.active_recipe_flow["current_step_index"] = 0
                     session.active_recipe_flow["completed_steps"] = []
@@ -158,9 +149,7 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
                         "All risk management steps completed.\n"
                         f"Restarting the recipe process: {next_recipe_step}"
                     )
-
                 elif session.active_recipe_flow and session.active_recipe_flow["current_step_index"] < len(session.active_recipe_flow["steps"]):
-                    # Resume recipe normally
                     session.active_context = "recipe"
                     next_recipe_step = session.active_recipe_flow["steps"][session.active_recipe_flow["current_step_index"]]
                     response_text = (
@@ -175,15 +164,17 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
                 session.add_to_history(query_text, response_text)
                 return QueryResponse(query_text=query_text, response_text=response_text, sources=[])
 
-
-            # Normal (not-final) step
             next_step = steps[flow["current_step_index"]] if flow["current_step_index"] < len(steps) else "All steps complete."
             response_text = f"Step completed.\nNext: {next_step}"
-
             session.add_to_history(query_text, response_text)
             session.save()
             return QueryResponse(query_text=query_text, response_text=response_text, sources=[])
 
+        # Validation failed
+        response_text = f"❌ Incorrect.\nCurrent step: {cleaned_expected}"
+        session.add_to_history(query_text, response_text)
+        session.save()
+        return QueryResponse(query_text=query_text, response_text=response_text, sources=[])
 
     # === GENERAL QUERY HANDLING ===
     prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE).format(
@@ -193,7 +184,6 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
     response = model.invoke(prompt)
     response_text = response.content
 
-    # === STRICT STEP FLOW FROM PDFS ONLY ===
     verified_docs = [
         doc for doc, _ in results
         if doc.metadata.get("source", "").split("/")[-1] in PDF_SOURCES
@@ -201,7 +191,6 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
     verified_context = "\n\n---\n\n".join(doc.page_content for doc in verified_docs)
     verified_steps = extract_steps(verified_context)
 
-    # === FALLBACK: MATCH BY KEYWORD IF CHROMA FAILS ===
     fallback_file = None
     for keyword, filename in RECIPE_KEYWORDS.items():
         if keyword in lower_q:
@@ -241,7 +230,6 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
             sources=[getattr(doc, "metadata", {}).get("id", None) for doc, _ in results]
         )
 
-    # === NON-FLOW RESPONSE ===
     if "in the game" in lower_q:
         response_text = "\n".join(extract_steps(response_text))
 
@@ -258,4 +246,3 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
     ).put_item()
 
     return QueryResponse(query_text=query_text, response_text=response_text, sources=sources)
-
