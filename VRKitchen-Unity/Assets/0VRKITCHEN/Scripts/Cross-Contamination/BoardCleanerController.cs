@@ -34,7 +34,7 @@ public class BoardCleanerController : MonoBehaviour
 
                 if (!hasSentQuery && toAPI != null)
                 {
-                    toAPI.queryText = "The contaminated board has been cleaned. What is the next step in the game to handle cross contamination? Provide only the next in-game step.";
+                    toAPI.queryText = RagCommands.CleanTheBoard; // bura
                     toAPI.SubmitQuery();
                     hasSentQuery = true;
                 }

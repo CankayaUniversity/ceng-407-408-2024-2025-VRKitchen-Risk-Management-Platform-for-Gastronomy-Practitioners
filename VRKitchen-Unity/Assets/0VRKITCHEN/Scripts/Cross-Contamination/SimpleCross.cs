@@ -74,7 +74,7 @@ public class SimpleCross : MonoBehaviour
 
             if (!hasSentContaminationQuery && toAPI != null)
             {
-                toAPI.queryText = GameQueries.CrossContaminationQuery;
+                toAPI.queryText = RagCommands.CrossContaminationQuery; // bura
                 toAPI.SubmitQuery();
                 Debug.Log(toAPI.queryText);
                 hasSentContaminationQuery = true;
