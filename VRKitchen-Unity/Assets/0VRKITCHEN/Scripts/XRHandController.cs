@@ -40,6 +40,7 @@ public class XRHandController : MonoBehaviour
 
         if (handType == HandType.Left)
         {
+            Debug.LogWarning("aa");
             controllerCharacteristic = controllerCharacteristic | InputDeviceCharacteristics.Left;
         }
         else
