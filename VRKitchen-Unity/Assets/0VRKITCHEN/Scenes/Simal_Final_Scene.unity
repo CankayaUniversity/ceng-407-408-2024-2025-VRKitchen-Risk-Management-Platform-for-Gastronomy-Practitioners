@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657886, g: 0.49641275, b: 0.5748176, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1444,6 +1444,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8455980746522495513, guid: 515be89b0b97384448d86c9ee78430ad, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 515be89b0b97384448d86c9ee78430ad, type: 3}
       propertyPath: m_Name
       value: object_5
@@ -1470,6 +1474,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 515be89b0b97384448d86c9ee78430ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2062121230}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 515be89b0b97384448d86c9ee78430ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2062121234}
   m_SourcePrefab: {fileID: 100100000, guid: 515be89b0b97384448d86c9ee78430ad, type: 3}
 --- !u!1 &387957183
 GameObject:
@@ -6667,6 +6674,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerPanel: {fileID: 387957188}
   toggleTimerAction: {fileID: -354192941123740653, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!1 &1414133670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1414133672}
+  - component: {fileID: 1414133671}
+  m_Layer: 0
+  m_Name: GameActionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1414133671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414133670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f919137fd6dee4444b483a2e9229863e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unityToAPI: {fileID: 708674425}
+--- !u!4 &1414133672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414133670}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 8.466, y: 0.014, z: 2.995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1428795628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11220,6 +11272,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 515be89b0b97384448d86c9ee78430ad, type: 3}
   m_PrefabInstance: {fileID: 327940505}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2062121234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062121229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8cf2d2e16db436fae0deabbc6e26d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2071249739
 GameObject:
   m_ObjectHideFlags: 0
@@ -12280,3 +12344,4 @@ SceneRoots:
   - {fileID: 1386266072}
   - {fileID: 1570430965}
   - {fileID: 556604324}
+  - {fileID: 1414133672}

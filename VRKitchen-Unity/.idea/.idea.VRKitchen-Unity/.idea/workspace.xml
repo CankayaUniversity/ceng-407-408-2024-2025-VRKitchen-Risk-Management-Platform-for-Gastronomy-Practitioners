@@ -6,8 +6,30 @@
   <component name="ChangeListManager">
     <list default="true" id="5acc07fd-79b8-43d9-8167-53344560c475" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Objects/Meat.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Objects/Meat.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Objects/Pasta.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Objects/Pasta.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Objects/Potato.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Objects/Potato.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Objects/Rice.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Objects/Rice.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Chicken Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Chicken Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Pasta Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Pasta Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Potato Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Potato Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Rice Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Rice Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Steak Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Steak Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/fritoz.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/fritoz.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/oven.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/oven.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/pan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/pan.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/plate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/plate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/pot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/pot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/sink.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/sink.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/table.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/table.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/tablewithshelves.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Kitchen Environment/prefabs/tablewithshelves.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scenes/Simal_Final_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scenes/Simal_Final_Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Cross-Contamination/SimpleCross.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Cross-Contamination/SimpleCross.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodDispenser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodDispenser.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodInstance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Pan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Pan.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Pan/Pan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Pan/Pan.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/RAG/UnityToAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/RAG/UnityToAPI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Seasoning/Seasoning.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Seasoning/Seasoning.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +155,7 @@
       <workItem from="1745774723746" duration="671000" />
       <workItem from="1746105596862" duration="741000" />
       <workItem from="1746903154835" duration="440000" />
+      <workItem from="1747750328230" duration="1420000" />
     </task>
     <servers />
   </component>

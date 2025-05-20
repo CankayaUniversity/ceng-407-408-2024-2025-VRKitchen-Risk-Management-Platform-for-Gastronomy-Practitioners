@@ -19,7 +19,7 @@ MonoBehaviour:
   isHazardous: 0
   foodCategory: 
   foodDescription: 
-  isCookable: 0
+  isCookable: 1
   idealCookingTime: 0
   burnThresholdTime: 0
   requiredTemperature: 0

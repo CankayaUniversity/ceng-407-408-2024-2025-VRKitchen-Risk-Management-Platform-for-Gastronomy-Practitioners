@@ -29,10 +29,8 @@ public class FoodDispenser : MonoBehaviour
         if (foodData == null || foodData.foodPrefab == null)
             return;
 
-        // Get the interactor (left or right hand)
         if (args.interactorObject is XRDirectInteractor directInteractor)
         {
-            // Use the hand's position and rotation to spawn the food
             Transform handTransform = directInteractor.transform;
             GameObject spawnedFood = Instantiate(
                 foodData.foodPrefab,
@@ -50,6 +48,15 @@ public class FoodDispenser : MonoBehaviour
                 directInteractor.interactionManager.SelectExit(directInteractor, dispenserInteractable);
                 directInteractor.interactionManager.SelectEnter(directInteractor, spawnedInteractable);
             }
+
+            // 🔽 Send RAG query here
+            GameActionManager actionManager = FindObjectOfType<GameActionManager>();
+            if (actionManager != null)
+            {
+                string actionText = $"I picked up a {foodData.foodName}";
+                actionManager.RegisterAction(actionText);
+            }
         }
     }
+
 }

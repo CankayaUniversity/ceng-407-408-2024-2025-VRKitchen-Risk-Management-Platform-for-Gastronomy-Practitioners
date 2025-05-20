@@ -78,6 +78,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 27aef089846d9de45b72d4633763278c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1554387625097529739}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 27aef089846d9de45b72d4633763278c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2688430366877980846}
   m_SourcePrefab: {fileID: 100100000, guid: 27aef089846d9de45b72d4633763278c, type: 3}
 --- !u!1 &7460516180365407682 stripped
 GameObject:
@@ -314,8 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3c360a1429b2f40871ea1ef810cafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  temperature: 10
-  foodItems: []
   heatingTemperature: 10
 --- !u!114 &1554387625097529739
 MonoBehaviour:
@@ -327,5 +328,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90a25b2a8d3ae9e44903113b579bfe91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2688430366877980846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460516180365407682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8cf2d2e16db436fae0deabbc6e26d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
