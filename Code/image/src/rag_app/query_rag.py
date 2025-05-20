@@ -93,21 +93,26 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
         # === AUTO-RESUME RECIPE IF RISK COMPLETES ===
         if index >= len(steps):
             if flow == session.active_risk_flow and session.active_recipe_flow:
-                if session.active_recipe_flow["current_step_index"] < len(session.active_recipe_flow["steps"]):
+                recipe_flow = session.active_recipe_flow
+                if recipe_flow["current_step_index"] < len(recipe_flow["steps"]):
                     session.active_context = "recipe"
                     session.save()
-                    next_step = session.active_recipe_flow["steps"][session.active_recipe_flow["current_step_index"]]
-                    session.add_to_history(query_text, f"Step complete. Next: {next_step}")
+                    next_step = recipe_flow["steps"][recipe_flow["current_step_index"]]
+                    session.add_to_history(
+                        query_text,
+                        f"All risk management steps completed. Great job!\nNext step in your recipe: {next_step}"
+                    )
                     return QueryResponse(
                         query_text=query_text,
-                        response_text=f"Step complete. Next: {next_step}",
+                        response_text=f"All risk management steps completed. Great job!\nNext step in your recipe: {next_step}",
                         sources=[]
                     )
+
             session.active_context = None
             session.save()
             return QueryResponse(
                 query_text=query_text,
-                response_text="All steps completed. Great job!",
+                response_text="All risk management steps completed. Great job! No further recipe steps found.",
                 sources=[]
             )
 
@@ -137,17 +142,48 @@ def query_rag_with_session(query_text: str, session: SessionModel) -> QueryRespo
             flow["completed_steps"].append(expected_step)
             flow["current_step_index"] += 1
 
-            if "restart the recipe" in next_step.lower():
-                session.active_context = None
-                session.active_recipe_flow = session._empty_flow()
+            is_last_step = flow["current_step_index"] >= len(flow["steps"])
 
-            session.add_to_history(query_text, f"Step complete. Next: {next_step}")
+            if flow == session.active_risk_flow and is_last_step:
+                # Determine if the risk flow was "Cross Contamination"
+                risk_title = (session.active_risk_flow.get("title") or "").lower()
+
+                if "contamination" in risk_title and session.active_recipe_flow:
+                    # Restart recipe flow
+                    session.active_context = "recipe"
+                    session.active_recipe_flow["current_step_index"] = 0
+                    session.active_recipe_flow["completed_steps"] = []
+                    next_recipe_step = session.active_recipe_flow["steps"][0]
+                    response_text = (
+                        "All risk management steps completed.\n"
+                        f"Restarting the recipe process: {next_recipe_step}"
+                    )
+
+                elif session.active_recipe_flow and session.active_recipe_flow["current_step_index"] < len(session.active_recipe_flow["steps"]):
+                    # Resume recipe normally
+                    session.active_context = "recipe"
+                    next_recipe_step = session.active_recipe_flow["steps"][session.active_recipe_flow["current_step_index"]]
+                    response_text = (
+                        "All risk management steps completed. Great job!\n"
+                        f"Now back to your recipe. Next step: {next_recipe_step}"
+                    )
+                else:
+                    session.active_context = None
+                    response_text = "All risk management steps completed. Great job! No recipe steps remaining."
+
+                session.save()
+                session.add_to_history(query_text, response_text)
+                return QueryResponse(query_text=query_text, response_text=response_text, sources=[])
+
+
+            # Normal (not-final) step
+            next_step = steps[flow["current_step_index"]] if flow["current_step_index"] < len(steps) else "All steps complete."
+            response_text = f"Step completed.\nNext: {next_step}"
+
+            session.add_to_history(query_text, response_text)
             session.save()
-            return QueryResponse(query_text=query_text, response_text=f"Step complete. Next: {next_step}", sources=[])
+            return QueryResponse(query_text=query_text, response_text=response_text, sources=[])
 
-        session.add_to_history(query_text, reply)
-        session.save()
-        return QueryResponse(query_text=query_text, response_text=reply, sources=[])
 
     # === GENERAL QUERY HANDLING ===
     prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE).format(
