@@ -22,6 +22,12 @@ public class MenuController : MonoBehaviour
     {
         SceneManager.LoadScene("Credits");
     }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quitting the game...");

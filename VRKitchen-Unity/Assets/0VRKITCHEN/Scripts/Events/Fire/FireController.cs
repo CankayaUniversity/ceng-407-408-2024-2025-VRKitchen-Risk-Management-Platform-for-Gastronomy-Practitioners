@@ -178,7 +178,7 @@ public class FireController : SingletonBehaviour<FireController>
         if (toAPI != null)
         {
             //Debug.Log("Fire triggered - sending query to RAG");
-            toAPI.queryText = "A general fire has started in the game. What are the steps to handle this situation? Just give me the steps.";
+            toAPI.queryText = "A general fire has started in the game. What are the steps to handle this situation?";
             
             toAPI.SubmitQuery();
             Debug.Log(toAPI.queryText);
@@ -207,7 +207,12 @@ public class FireController : SingletonBehaviour<FireController>
                 AudioController.Instance.StopLoopingSound(source.fireAudioSource);
                 source.fireAudioSource = null;
             }
-
+            
+            if (toAPI != null)
+            {
+                toAPI.queryText = "I squeezed the handle and spray in a sweeping motion at the fire in the game. What now?";
+                toAPI.SubmitQuery();
+            }
             //Debug.Log("Fire extinguished.");
 
             fireAlertFeedback?.HideExclamation();
