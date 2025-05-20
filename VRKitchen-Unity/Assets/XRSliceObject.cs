@@ -61,6 +61,15 @@ public class XRSliceObject : MonoBehaviour
             CopyComponentsFromOriginal(target, upperHull);
             CopyComponentsFromOriginal(target, lowerHull);
 
+            string objectName = target.name.ToLower().Replace("(clone)", "").Trim();
+            string action = $"I sliced the {objectName}. What is the next step?";
+
+            GameActionManager manager = FindObjectOfType<GameActionManager>();
+            if (manager != null)
+            {
+                manager.RegisterAction(action);
+            }
+
             Destroy(target);
         }
     }
