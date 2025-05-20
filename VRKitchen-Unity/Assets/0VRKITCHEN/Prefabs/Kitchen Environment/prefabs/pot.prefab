@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 5190903634404185056}
   - component: {fileID: 4464010116159417107}
   - component: {fileID: 1483237428986864479}
+  - component: {fileID: 7645133192709125118}
   m_Layer: 0
   m_Name: PanBottom
   m_TagString: Untagged
@@ -331,6 +332,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potWaterObject: {fileID: 3037204704616966768}
   fillDuration: 5
+  waterMaterial: {fileID: 2100000, guid: c32804d4e544dd34282b8c7283835898, type: 2}
+  oilMaterial: {fileID: -876546973899608171, guid: bab1705d16b85994393f7d3559600dd9, type: 3}
   toAPI: {fileID: 0}
 --- !u!54 &1483237428986864479
 Rigidbody:
@@ -359,6 +362,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7645133192709125118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114532319337558926}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a25b2a8d3ae9e44903113b579bfe91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8418199998176342802
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,15 +704,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4542731ce27c69549a9bcda31ee6b705, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.241
+      value: 0.83
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4542731ce27c69549a9bcda31ee6b705, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.075
+      value: 2.013
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4542731ce27c69549a9bcda31ee6b705, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.339
+      value: -1.288
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4542731ce27c69549a9bcda31ee6b705, type: 3}
       propertyPath: m_LocalRotation.w
