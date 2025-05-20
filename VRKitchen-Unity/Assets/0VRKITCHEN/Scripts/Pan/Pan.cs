@@ -3,63 +3,49 @@ using UnityEngine;
 
 public class Pan : MonoBehaviour
 {
-    public float temperature = 10f;
-    public List<GameObject> foodItems = new List<GameObject>(); 
-    public float heatingTemperature = 10f; 
+    public float heatingTemperature = 10f;
 
+    private List<FoodInstance> foodItems = new List<FoodInstance>();
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Food")) 
+        if (other.CompareTag("Food"))
         {
-            Debug.Log("Food placed in pan: " + other.name);
-            AddFood(other.gameObject);
+            FoodInstance food = other.GetComponent<FoodInstance>();
+            if (food != null && !foodItems.Contains(food))
+            {
+                foodItems.Add(food);
+                Debug.Log("Food placed in pan: " + food.name);
+
+                // ✅ Send RAG query
+                var manager = FindObjectOfType<GameActionManager>();
+                if (manager != null && food.foodData != null)
+                {
+                    string name = food.foodData.foodName.ToLower();
+                    manager.RegisterAction($"I placed the {name} in the pan");
+                }
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Food")) 
+        if (other.CompareTag("Food"))
         {
-            Debug.Log("Food removed from pan: " + other.name);
-            RemoveFood(other.gameObject);
-        }
-    }
-
-    private void AddFood(GameObject food)
-    {
-        if (!foodItems.Contains(food))
-        {
-            foodItems.Add(food); 
-        }
-    }
-
-    private void RemoveFood(GameObject food)
-    {
-        if (foodItems.Contains(food))
-        {
-            foodItems.Remove(food); 
-        }
-    }
-
-
-
-    public void Heat(float amount)
-    {
-        temperature += amount * Time.deltaTime;
-        Debug.Log("Pan temperature: " + temperature);
-
-        foreach (var food in foodItems)
-        {
-            FoodInstance foodScript = food.GetComponent<FoodInstance>();
-            if (foodScript != null)
+            FoodInstance food = other.GetComponent<FoodInstance>();
+            if (food != null && foodItems.Contains(food))
             {
-                foodScript.Heat(heatingTemperature); 
+                foodItems.Remove(food);
+                Debug.Log("Food removed from pan: " + food.name);
             }
         }
     }
 
-
-
-
+    public void Heat(float amount)
+    {
+        foreach (var food in foodItems)
+        {
+            food.Heat(amount); // Applies heat directly to each FoodInstance
+        }
+    }
 }
