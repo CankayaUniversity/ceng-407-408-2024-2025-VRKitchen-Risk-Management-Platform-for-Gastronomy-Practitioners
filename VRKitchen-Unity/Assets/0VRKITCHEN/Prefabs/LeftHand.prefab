@@ -820,7 +820,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e662eaffdf7e50a4aa66cb2662510bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handType: 0
+  triggerAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 16bfe9da-cfe8-4e16-8349-a8e2cc954a74
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  gripAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grip
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3c677e22-2c23-4fcd-a798-2d9d5a81c29e
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  primaryTouchAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Primary Touch
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 15e1a9b1-e6df-4b30-b137-45d62a6d40e0
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  secondaryTouchAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Secondary Touch
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: b86c11a9-4607-4a2b-b233-9328708fadcf
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   thumbMoveSpeed: 0.1
 --- !u!1 &4644664685856577443
 GameObject:
