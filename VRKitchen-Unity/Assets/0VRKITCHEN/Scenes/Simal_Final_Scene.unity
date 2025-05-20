@@ -2360,11 +2360,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1938682961}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3ed913aeb09c73448bcbf3f49314b3b0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.1729674
+      value: 2.1729681
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ed913aeb09c73448bcbf3f49314b3b0, type: 3}
       propertyPath: m_LocalScale.y
@@ -2372,7 +2372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ed913aeb09c73448bcbf3f49314b3b0, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.1729674
+      value: 2.1729681
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ed913aeb09c73448bcbf3f49314b3b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2426,11 +2426,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 426100859}
   m_SourcePrefab: {fileID: 100100000, guid: 3ed913aeb09c73448bcbf3f49314b3b0, type: 3}
---- !u!4 &426100857 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3ed913aeb09c73448bcbf3f49314b3b0, type: 3}
-  m_PrefabInstance: {fileID: 426100856}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &426100858 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ed913aeb09c73448bcbf3f49314b3b0, type: 3}
@@ -9116,8 +9111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipBoard: {fileID: 953741451}
   textPlane: {fileID: 1568296578}
-  rightControllerVisual: {fileID: 0}
-  rightController: {fileID: 0}
+  rightControllerVisual: {fileID: 1876281262579031704}
+  rightController: {fileID: 5644227122341553503}
 --- !u!64 &1568296581
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11315,15 +11310,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6435029146839007301, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6435029146839007301, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6435029146839007301, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6435029146839007301, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13170,7 +13165,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 597139755}
-  - {fileID: 426100857}
   - {fileID: 1339536564}
   - {fileID: 1657158034}
   - {fileID: 2130013548}
@@ -17842,6 +17836,7 @@ SceneRoots:
   - {fileID: 1717732687}
   - {fileID: 708674424}
   - {fileID: 878623437}
+  - {fileID: 426100856}
   - {fileID: 1938682961}
   - {fileID: 71852576}
   - {fileID: 849347980}
