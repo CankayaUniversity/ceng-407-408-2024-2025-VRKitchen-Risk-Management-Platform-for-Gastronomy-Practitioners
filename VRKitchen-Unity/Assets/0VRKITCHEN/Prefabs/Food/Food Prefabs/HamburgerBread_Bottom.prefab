@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4409391055460353131}
   - component: {fileID: 3279909280201966214}
   - component: {fileID: 7069071210808127076}
-  - component: {fileID: 3947278593910151545}
   - component: {fileID: -2765842755855862153}
+  - component: {fileID: 3702053348315230379}
+  - component: {fileID: -4179219701403562123}
   m_Layer: 0
   m_Name: HamburgerBread_Bottom
   m_TagString: Untagged
@@ -85,26 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3947278593910151545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325716889873655095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c58f5becc70944b58859309e1522780, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foodData: {fileID: 11400000, guid: 87b1e4ff2555647ad828d147d1008d3d, type: 2}
-  currentState: 0
-  temperature: 0
-  rawMaterial: {fileID: 0}
-  cookedMaterial: {fileID: 2100000, guid: f1ae0786d2ee54a09ab74079b7bf1afe, type: 2}
-  overcookedMaterial: {fileID: 0}
-  burntMaterial: {fileID: 0}
-  toAPI: {fileID: 0}
 --- !u!114 &-2765842755855862153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,3 +101,28 @@ MonoBehaviour:
   temperature: 0
   cookedThreshold: 50
   overcookedThreshold: 100
+--- !u!114 &3702053348315230379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325716889873655095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b3dd7bcba264436bedb50c2899d0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodData: {fileID: 11400000, guid: 87b1e4ff2555647ad828d147d1008d3d, type: 2}
+--- !u!114 &-4179219701403562123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325716889873655095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e13dbe9838845d996cc15bcc569358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

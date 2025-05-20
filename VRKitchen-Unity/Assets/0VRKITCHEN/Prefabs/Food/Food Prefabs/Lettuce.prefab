@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5356091128895320668}
   - component: {fileID: 3584800844993572248}
   - component: {fileID: 8332536938216500680}
-  - component: {fileID: 1878322388857205548}
   - component: {fileID: -2639412618721821767}
+  - component: {fileID: -3251049293257924396}
+  - component: {fileID: -5907716142658321954}
   m_Layer: 0
   m_Name: Lettuce
   m_TagString: Untagged
@@ -85,26 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1878322388857205548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 438730324684949759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c58f5becc70944b58859309e1522780, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foodData: {fileID: 11400000, guid: ac8b6db9a3d5343c6aa658151fe6f9a8, type: 2}
-  currentState: 0
-  temperature: 0
-  rawMaterial: {fileID: 0}
-  cookedMaterial: {fileID: 2100000, guid: f1ae0786d2ee54a09ab74079b7bf1afe, type: 2}
-  overcookedMaterial: {fileID: 0}
-  burntMaterial: {fileID: 0}
-  toAPI: {fileID: 0}
 --- !u!114 &-2639412618721821767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,3 +101,28 @@ MonoBehaviour:
   temperature: 0
   cookedThreshold: 50
   overcookedThreshold: 100
+--- !u!114 &-3251049293257924396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438730324684949759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b3dd7bcba264436bedb50c2899d0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodData: {fileID: 11400000, guid: ac8b6db9a3d5343c6aa658151fe6f9a8, type: 2}
+--- !u!114 &-5907716142658321954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438730324684949759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e13dbe9838845d996cc15bcc569358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
