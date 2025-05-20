@@ -20,6 +20,6 @@ MonoBehaviour:
   foodCategory: 
   foodDescription: 
   isCookable: 1
-  idealCookingTime: 0
-  burnThresholdTime: 0
-  requiredTemperature: 0
+  idealCookingTime: 70
+  burnThresholdTime: 100
+  requiredTemperature: 50
