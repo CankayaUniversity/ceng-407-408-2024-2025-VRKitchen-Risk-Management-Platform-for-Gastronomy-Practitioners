@@ -53,6 +53,7 @@ public class HandTracker : MonoBehaviour
         if (manager != null)
         {
             manager.RegisterAction($"I'm holding the {itemName} in my {handName}. What’s the next step?");
+            Debug.Log($"I'm holding the {itemName} in my {handName}. What’s the next step?");
         }
     }
 
@@ -62,6 +63,7 @@ public class HandTracker : MonoBehaviour
         if (manager != null)
         {
             manager.RegisterAction($"I released the item from my {handName}.");
+            Debug.Log($"I released the item from my {handName}.");
         }
     }
 }

@@ -16,6 +16,7 @@ public class FoodPlacementZone : MonoBehaviour
                 if (manager != null && food.foodData != null)
                 {
                     string action = $"I placed the {food.foodData.foodName.ToLower()} on the {zoneName} What is the next step?";
+                    Debug.Log("" + action);
                     manager.RegisterAction(action);
                 }
             }
@@ -35,6 +36,7 @@ public class FoodPlacementZone : MonoBehaviour
                 if (manager != null && food.foodData != null)
                 {
                     string action = $"I removed the {food.foodData.foodName.ToLower()} from the {zoneName} What is the next step?";
+                    Debug.Log("" + action);
                     manager.RegisterAction(action);
                 }
             }

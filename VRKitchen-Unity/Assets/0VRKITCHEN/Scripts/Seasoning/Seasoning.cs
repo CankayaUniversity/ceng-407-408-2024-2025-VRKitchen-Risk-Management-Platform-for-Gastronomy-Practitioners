@@ -11,7 +11,7 @@ public class Seasoning : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Dish"))
+        if (other.CompareTag("Food"))
         {
             Dish dish = other.GetComponent<Dish>();
             if (dish != null)
@@ -23,6 +23,7 @@ public class Seasoning : MonoBehaviour
                 if (manager != null)
                 {
                     string action = $"I added {seasoningType.ToLower()} to the dish";
+                    Debug.Log("" + action);
                     manager.RegisterAction(action);
                 }
             }
