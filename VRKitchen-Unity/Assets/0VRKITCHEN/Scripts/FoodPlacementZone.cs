@@ -2,43 +2,38 @@ using UnityEngine;
 
 public class FoodPlacementZone : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Food"))
+        FoodInstance food = collision.gameObject.GetComponent<FoodInstance>();
+        if (food != null && food.foodData != null)
         {
-            FoodInstance food = other.GetComponent<FoodInstance>();
-            if (food != null)
-            {
-                // Use the name of this GameObject (e.g. Pan, CuttingBoard, Plate)
-                string zoneName = gameObject.name.ToLower().Replace("(clone)", "").Trim();
+            string zoneName = gameObject.name.ToLower().Replace("(clone)", "").Trim();
+            string action = $"I placed the {food.foodData.foodName.ToLower()} on the {zoneName}. What is the next step?";
 
-                GameActionManager manager = FindObjectOfType<GameActionManager>();
-                if (manager != null && food.foodData != null)
-                {
-                    string action = $"I placed the {food.foodData.foodName.ToLower()} on the {zoneName} What is the next step?";
-                    Debug.Log("" + action);
-                    manager.RegisterAction(action);
-                }
+            Debug.Log(action);
+
+            GameActionManager manager = FindObjectOfType<GameActionManager>();
+            if (manager != null)
+            {
+                manager.RegisterAction(action);
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.CompareTag("Food"))
+        FoodInstance food = collision.gameObject.GetComponent<FoodInstance>();
+        if (food != null && food.foodData != null)
         {
-            FoodInstance food = other.GetComponent<FoodInstance>();
-            if (food != null)
-            {
-                string zoneName = gameObject.name.ToLower().Replace("(clone)", "").Trim();
+            string zoneName = gameObject.name.ToLower().Replace("(clone)", "").Trim();
+            string action = $"I removed the {food.foodData.foodName.ToLower()} from the {zoneName}. What is the next step?";
 
-                GameActionManager manager = FindObjectOfType<GameActionManager>();
-                if (manager != null && food.foodData != null)
-                {
-                    string action = $"I removed the {food.foodData.foodName.ToLower()} from the {zoneName} What is the next step?";
-                    Debug.Log("" + action);
-                    manager.RegisterAction(action);
-                }
+            Debug.Log(action);
+
+            GameActionManager manager = FindObjectOfType<GameActionManager>();
+            if (manager != null)
+            {
+                manager.RegisterAction(action);
             }
         }
     }
