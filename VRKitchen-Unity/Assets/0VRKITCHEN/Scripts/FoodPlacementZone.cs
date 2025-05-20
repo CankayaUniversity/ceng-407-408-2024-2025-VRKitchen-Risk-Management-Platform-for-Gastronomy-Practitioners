@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class FoodPlacementZone : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class FoodPlacementZone : MonoBehaviour
         if (food != null && food.foodData != null)
         {
             string zoneName = gameObject.name.ToLower().Replace("(clone)", "").Trim();
-            string action = $"I placed the {food.foodData.foodName.ToLower()} on the {zoneName}.What now?";
+            string action = $"I placed the {food.currentState} {food.foodData.foodName.ToLower()} on the {zoneName}. What is the next step?";
 
             Debug.Log(action);
 
@@ -26,7 +27,7 @@ public class FoodPlacementZone : MonoBehaviour
         if (food != null && food.foodData != null)
         {
             string zoneName = gameObject.name.ToLower().Replace("(clone)", "").Trim();
-            string action = $"I removed the {food.foodData.foodName.ToLower()} from the {zoneName}.What now?";
+            string action = $"I removed the {food.currentState} {food.foodData.foodName.ToLower()} from the {zoneName}. What is the next step?";
 
             Debug.Log(action);
 
