@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="5acc07fd-79b8-43d9-8167-53344560c475" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/FoodPlacementZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/FoodPlacementZone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Objects/Meat.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Objects/Meat.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Potato Prefab.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Potato Prefab.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scenes/Simal_Final_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scenes/Simal_Final_Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodDispenser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodDispenser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/FoodInstance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Oven/HeatZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Oven/HeatZone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Pan/Pan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Pan/Pan.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

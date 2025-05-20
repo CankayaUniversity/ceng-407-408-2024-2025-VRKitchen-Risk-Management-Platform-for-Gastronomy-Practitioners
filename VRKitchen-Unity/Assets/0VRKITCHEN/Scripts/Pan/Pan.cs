@@ -17,7 +17,7 @@ public class Pan : MonoBehaviour
                 foodItems.Add(food);
                 Debug.Log("Food placed in pan: " + food.name);
 
-                // ✅ Send RAG query
+                // Send RAG query
                 var manager = FindObjectOfType<GameActionManager>();
                 if (manager != null && food.foodData != null)
                 {

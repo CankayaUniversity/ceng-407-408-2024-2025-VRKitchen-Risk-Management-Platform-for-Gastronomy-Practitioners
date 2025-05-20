@@ -3,10 +3,7 @@ using UnityEngine;
 public enum CookingState
 {
     Raw,
-    Cooking,
-    Cooked,
-    Overcooked,
-    Burnt
+    Cooked
 }
 
 public class FoodInstance : MonoBehaviour
@@ -18,30 +15,31 @@ public class FoodInstance : MonoBehaviour
 
     public Material rawMaterial;
     public Material cookedMaterial;
-    public Material overcookedMaterial;
-    public Material burntMaterial;
 
-    public UnityToAPI toAPI; // ✅ Add this to link RAG query system
+    public UnityToAPI toAPI;
 
     private Renderer foodRenderer;
-    private Color originalColor;
-    private bool hasSentCookedQuery = false; // ✅ Track query sent state
+    private bool hasSentCookedQuery = false;
 
     private void Awake()
     {
         foodRenderer = GetComponent<Renderer>();
-        if (foodRenderer != null)
-        {
-            originalColor = foodRenderer.material.color;
-            if (rawMaterial != null)
-                foodRenderer.material = rawMaterial;
-        }
+        ResetCookingState();
+    }
+
+    public void ResetCookingState()
+    {
+        temperature = 0f;
+        currentState = CookingState.Raw;
+        hasSentCookedQuery = false;
+        SetMaterial(rawMaterial);
+
+        Debug.Log($"[ResetCookingState] {name} → State: {currentState}, Temp: {temperature}");
     }
 
     private void Update()
     {
         if (!foodData.isCookable) return;
-
         UpdateCookingState();
     }
 
@@ -49,41 +47,27 @@ public class FoodInstance : MonoBehaviour
     {
         if (!foodData.isCookable) return;
 
-        temperature += amount * Time.deltaTime;
+        temperature += amount;
+
+        // Optional: log temperature in editor
+        // Debug.Log($"{name} Temp: {temperature}");
     }
 
     private void UpdateCookingState()
     {
-        if (temperature < foodData.requiredTemperature)
+        if (currentState == CookingState.Raw && temperature >= foodData.requiredTemperature)
         {
-            currentState = CookingState.Cooking;
-            SetMaterial(rawMaterial);
-        }
-        else if (temperature < foodData.burnThresholdTime)
-        {
-            if (currentState != CookingState.Cooked)
-            {
-                currentState = CookingState.Cooked;
-                SetMaterial(cookedMaterial);
+            currentState = CookingState.Cooked;
+            SetMaterial(cookedMaterial);
 
-                // Send RAG query when first cooked
-                if (!hasSentCookedQuery && toAPI != null)
-                {
-                    toAPI.queryText = "The chicken has been cooked. What now?";
-                    toAPI.SubmitQuery();
-                    hasSentCookedQuery = true;
-                }
+            if (!hasSentCookedQuery && toAPI != null)
+            {
+                toAPI.queryText = $"The {foodData.foodName.ToLower()} has been cooked. What now?";
+                toAPI.SubmitQuery();
+                hasSentCookedQuery = true;
             }
-        }
-        else if (temperature < foodData.burnThresholdTime + 20f)
-        {
-            currentState = CookingState.Overcooked;
-            SetMaterial(overcookedMaterial);
-        }
-        else
-        {
-            currentState = CookingState.Burnt;
-            SetMaterial(burntMaterial);
+
+            Debug.Log($"[COOKED] {name} → Temp: {temperature}");
         }
     }
 
@@ -97,6 +81,6 @@ public class FoodInstance : MonoBehaviour
 
     public float GetCookingProgress()
     {
-        return Mathf.Clamp01(temperature / foodData.burnThresholdTime);
+        return Mathf.Clamp01(temperature / foodData.requiredTemperature);
     }
 }
