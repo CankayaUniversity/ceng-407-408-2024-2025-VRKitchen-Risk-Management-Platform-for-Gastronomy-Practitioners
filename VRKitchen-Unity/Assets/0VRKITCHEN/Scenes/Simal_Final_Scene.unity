@@ -606,7 +606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5070482299081614716, guid: b0f7fcd43a79d844d80d45796f9bbec5, type: 3}
       propertyPath: m_TagString
-      value: Trash
+      value: Food
       objectReference: {fileID: 0}
     - target: {fileID: 5554671608122720198, guid: b0f7fcd43a79d844d80d45796f9bbec5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -789,7 +789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6272646013269940144, guid: b17f18ee1f1ac2243bc74a74e7b2846e, type: 3}
       propertyPath: m_TagString
-      value: Trash
+      value: Food
       objectReference: {fileID: 0}
     - target: {fileID: 6649348229715053834, guid: b17f18ee1f1ac2243bc74a74e7b2846e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1470,9 +1470,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 515be89b0b97384448d86c9ee78430ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2062121230}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 515be89b0b97384448d86c9ee78430ad, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2062121232}
   m_SourcePrefab: {fileID: 100100000, guid: 515be89b0b97384448d86c9ee78430ad, type: 3}
 --- !u!1 &387957183
 GameObject:
@@ -7752,7 +7749,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1964838095100366845, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5759023290510550228, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_Enabled
@@ -9635,7 +9632,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -10996,6 +10993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2002169991}
   - component: {fileID: 2002169992}
+  - component: {fileID: 2002169993}
   m_Layer: 0
   m_Name: CleaningTrigger
   m_TagString: Untagged
@@ -11039,6 +11037,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2002169993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002169990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40ac2db04b74e14e83ee0d03faa982b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrubDuration: 2
+  crossController: {fileID: 2062121230}
+  visualFeedback: {fileID: 436857204}
+  toAPI: {fileID: 708674425}
 --- !u!1 &2028364084
 GameObject:
   m_ObjectHideFlags: 0
@@ -11201,22 +11215,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 25.879776, y: 1.6050798, z: 35.821655}
   m_Center: {x: -12.439879, y: 0.30253977, z: -17.410772}
---- !u!114 &2062121232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062121229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c40ac2db04b74e14e83ee0d03faa982b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrubDuration: 2
-  crossController: {fileID: 2062121230}
-  visualFeedback: {fileID: 436857204}
-  toAPI: {fileID: 708674425}
 --- !u!4 &2062121233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 515be89b0b97384448d86c9ee78430ad, type: 3}
