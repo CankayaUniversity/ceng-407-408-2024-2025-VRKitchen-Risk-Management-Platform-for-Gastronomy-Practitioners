@@ -39,7 +39,7 @@ public class FireExtinguisher : MonoBehaviour
         if (!hasSentGrabQuery && toAPI != null)
         {
             Debug.Log("Grabbed");
-            toAPI.queryText = "I have grabbed the fire extinguisher. What is the next step to put out a general fire in the kitchen? Provide only the next in-game step.";
+            toAPI.queryText = "I grabbed the fire extinguisher from the cupboard in the game. What now?";
             toAPI.SubmitQuery();
             hasSentGrabQuery = true;
         }

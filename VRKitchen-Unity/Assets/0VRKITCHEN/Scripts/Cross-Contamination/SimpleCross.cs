@@ -50,16 +50,22 @@ public class SimpleCross : MonoBehaviour
     {
         bool wasContaminated = isContamination;
 
-        bool containsMeat = touchingItems.Exists(obj => obj != null && obj.name.Contains("Steak Prefab(Clone)"));
-        bool moreThanOneItem = touchingItems.Count > 1;
+        bool hasChicken = touchingItems.Exists(obj =>
+            obj != null && obj.name.Contains("Chicken Prefab(Clone)"));
 
-        if (!isContamination && containsMeat && moreThanOneItem)
+        bool hasSteak = touchingItems.Exists(obj =>
+            obj != null && obj.name.Contains("Steak Prefab(Clone)"));
+
+        // Only set contamination if both chicken and steak are present
+        if (!isContamination && hasChicken && hasSteak)
         {
             isContamination = true;
-            foreach(var ıtems  in touchingItems)
+
+            foreach (var item in touchingItems)
             {
-                ıtems.gameObject.tag = "Trash";
+                item.tag = "Trash";
             }
+
             Debug.Log("Cross Contamination Detected!");
 
             if (visualFeedback != null && contaminationMarkerTransform != null)
@@ -70,19 +76,19 @@ public class SimpleCross : MonoBehaviour
             if (!hasSentContaminationQuery && toAPI != null)
             {
                 toAPI.queryText = GameQueries.CrossContaminationQuery;
-
                 toAPI.SubmitQuery();
                 Debug.Log(toAPI.queryText);
                 hasSentContaminationQuery = true;
             }
         }
-        else if (isContamination && (!containsMeat || touchingItems.Count == 0))
+        else if (isContamination && (!hasChicken || !hasSteak || touchingItems.Count == 0))
         {
             isContamination = false;
             hasSentContaminationQuery = false;
-
         }
     }
+
+
 
     public void ResetContamination()
     {
