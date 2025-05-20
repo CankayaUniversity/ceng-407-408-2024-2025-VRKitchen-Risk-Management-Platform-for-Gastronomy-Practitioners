@@ -28,17 +28,17 @@ PDF_SOURCES = {
     "Cross contamination in the game.pdf",
     "General Fire In The Game.pdf",
     "Steak and Fries in the Game.pdf",
-    "Rice and Chicken in the Game.pdf",
-    "Pasta with Tomato Sauce In the Game.pdf"
+    "Hamburger In The Game.pdf",
+    "Chicken and Potato In  The Game.pdf"
     "Water Spill In the Game.pdf"
 }
 
 RECIPE_KEYWORDS = {
     "steak": "Steak and Fries in the Game.pdf",
     "fries": "Steak and Fries in the Game.pdf",
-    "pasta": "Pasta with Tomato Sauce In the Game.pdf",
-    "chicken": "Rice and Chicken in the Game.pdf",
-    "rice": "Rice and Chicken in the Game.pdf",
+    "hamburger": "Hamburger In The Game.pdf",
+    "chicken": "Chicken and Potato In  The Game.pdf",
+    "potato": "Chicken and Potato In  The Game.pdf",
     "contamination": "Cross contamination in the game.pdf",
     "fire": "General Fire In The Game.pdf",
     "spill" : "Water Spill In the Game.pdf"
