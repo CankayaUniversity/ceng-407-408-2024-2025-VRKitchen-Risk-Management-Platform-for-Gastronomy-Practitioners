@@ -4,64 +4,95 @@ public class WaterFillTrigger : MonoBehaviour
 {
     public GameObject potWaterObject;
     public float fillDuration = 5f;
-    public Material waterMaterial; // Inspector'dan atanacak
+    public Material waterMaterial;
     public Material oilMaterial;
+    public UnityToAPI toAPI;
+
     private Animation waterAnimation;
     private float fillTime = 0f;
     private bool isFilling = false;
     private bool hasActivatedWater = false;
-
-    public UnityToAPI toAPI; // Add to inspector
     private bool hasSentQuery = false;
-
 
     private void Start()
     {
-        // Ba�ta potwater'� kapal� b�rak
         if (potWaterObject != null)
         {
-            potWaterObject.SetActive(false); // g�venlik i�in yine de
+            potWaterObject.SetActive(false);
         }
     }
 
+    // ✅ SU için (Particle)
     private void OnParticleCollision(GameObject other)
     {
-
-        if (other.CompareTag("WaterParticle") || other.CompareTag("Oil"))
+        if (other.CompareTag("WaterParticle"))
         {
+            HandleLiquidActivation(waterMaterial);
+        }
+    }
 
-            isFilling = true;
+    // ✅ YAĞ için (Obje ile fiziksel temas)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Oil"))
+        {
+            StartCoroutine(HandleOilTrigger());
+        }
+    }
+    private System.Collections.IEnumerator HandleOilTrigger()
+    {
+        potWaterObject.SetActive(true);
+        yield return null; // bir frame bekle ki Unity potWater'ı tam aktif etsin
 
-            if (!hasActivatedWater && potWaterObject != null)
+        isFilling = true;
+        hasActivatedWater = true;
+
+        Renderer potRenderer = potWaterObject.GetComponent<Renderer>();
+        if (potRenderer != null && oilMaterial != null)
+        {
+            potRenderer.material = oilMaterial;
+        }
+
+        waterAnimation = potWaterObject.GetComponent<Animation>();
+        if (waterAnimation != null && waterAnimation.GetClip("water_rise") != null)
+        {
+            waterAnimation.Play("water_rise");
+            waterAnimation["water_rise"].speed = 0f;
+            waterAnimation["water_rise"].normalizedTime = 0f;
+        }
+        else
+        {
+            Debug.LogWarning("⚠ Animation or 'water_rise' clip not found on potWaterObject.");
+        }
+    }
+
+    private void HandleLiquidActivation(Material mat)
+    {
+        isFilling = true;
+
+        if (potWaterObject != null)
+        {
+            potWaterObject.SetActive(true);
+            hasActivatedWater = true;
+
+            Renderer potRenderer = potWaterObject.GetComponent<Renderer>();
+            if (potRenderer != null && mat != null)
             {
+                potRenderer.material = mat;
+            }
 
-                potWaterObject.SetActive(true);
-                //hasActivatedWater = true;
-                Renderer potRenderer = potWaterObject.GetComponent<Renderer>();
-                if (potRenderer != null)
-                {
-                    if (other.CompareTag("WaterParticle") && waterMaterial != null)
-                        potRenderer.material = waterMaterial;
-
-                    else if (other.CompareTag("Oil") && oilMaterial != null)
-                        potRenderer.material = oilMaterial;
-                }
-                // Aktif hale gelince Animation component'ine eri�
-                waterAnimation = potWaterObject.GetComponent<Animation>();
-
-                if (waterAnimation != null && waterAnimation.GetClip("water_rise") != null)
-                {
-                    waterAnimation.Play("water_rise");
-                    waterAnimation["water_rise"].speed = 0f;
-                    waterAnimation["water_rise"].normalizedTime = 0f;
-                }
-                else
-                {
-                    Debug.LogWarning("Potwater objesinde 'water_rise' animasyonu bulunamad�.");
-                }
+            waterAnimation = potWaterObject.GetComponent<Animation>();
+            if (waterAnimation != null && waterAnimation.GetClip("water_rise") != null)
+            {
+                waterAnimation.Play("water_rise");
+                waterAnimation["water_rise"].speed = 0f;
+                waterAnimation["water_rise"].normalizedTime = 0f;
+            }
+            else
+            {
+                Debug.LogWarning("Potwater objesinde 'water_rise' animasyonu bulunamadı.");
             }
         }
-        
     }
 
     private void Update()
@@ -75,7 +106,6 @@ public class WaterFillTrigger : MonoBehaviour
             waterAnimation["water_rise"].normalizedTime = progress;
             waterAnimation["water_rise"].speed = 0f;
 
-            // ✅ Check if filling is complete and query hasn't been sent
             if (fillTime >= fillDuration && !hasSentQuery && toAPI != null)
             {
                 toAPI.queryText = "The pot has been filled with water. What is the next step in the game? Provide only the next in-game step.";
@@ -84,7 +114,6 @@ public class WaterFillTrigger : MonoBehaviour
             }
         }
 
-        isFilling = false; // reset each frame
+        isFilling = false;
     }
-
 }
