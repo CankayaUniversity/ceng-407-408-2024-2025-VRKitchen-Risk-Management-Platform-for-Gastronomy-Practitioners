@@ -1,10 +1,11 @@
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 
-[RequireComponent(typeof(Rigidbody))]
-public class PotGrabFollower : MonoBehaviour
+public class PanFollowHand : MonoBehaviour
 {
-    public XRBaseInteractor interactor; // Tutulan el
+    public Transform followTarget; // Referans nokta (el üzerindeki bir boþ GameObject)
+    public float followSpeed = 15f;
+    public float rotateSpeed = 10f;
+
     private Rigidbody rb;
     private bool isHeld = false;
 
@@ -13,27 +14,32 @@ public class PotGrabFollower : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public void OnGrab(XRBaseInteractor interactor)
+    void FixedUpdate()
     {
-        this.interactor = interactor;
+        if (isHeld)
+        {
+            Vector3 posDelta = followTarget.position - rb.position;
+            rb.velocity = posDelta * followSpeed;
+
+            Quaternion rotDelta = followTarget.rotation * Quaternion.Inverse(rb.rotation);
+            rotDelta.ToAngleAxis(out float angle, out Vector3 axis);
+            if (angle > 180) angle -= 360;
+            rb.angularVelocity = axis * angle * Mathf.Deg2Rad * rotateSpeed;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+    }
+
+    public void GrabPan()
+    {
         isHeld = true;
     }
 
-    public void OnRelease(XRBaseInteractor interactor)
+    public void ReleasePan()
     {
-        if (this.interactor == interactor)
-        {
-            this.interactor = null;
-            isHeld = false;
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (isHeld && interactor != null)
-        {
-            rb.MovePosition(interactor.transform.position);
-            rb.MoveRotation(interactor.transform.rotation);
-        }
+        isHeld = false;
     }
 }
