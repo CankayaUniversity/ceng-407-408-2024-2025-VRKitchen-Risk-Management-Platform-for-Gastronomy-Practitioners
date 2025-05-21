@@ -107,15 +107,4 @@ public class UnityToAPI : MonoBehaviour
         public string response_text;
         public string[] sources;
     }
-    
-    public void SubmitDynamicAction(string action)
-    {
-        if (isQueryInProgress || Time.time - lastQueryTime < cooldownTime || string.IsNullOrEmpty(action))
-            return;
-
-        // You can modify the prompt style here if needed
-        string fullQuery = action.Trim() + ". What is the next step?";
-        StartCoroutine(SubmitQueryCoroutine(fullQuery));
-    }
-
 }
