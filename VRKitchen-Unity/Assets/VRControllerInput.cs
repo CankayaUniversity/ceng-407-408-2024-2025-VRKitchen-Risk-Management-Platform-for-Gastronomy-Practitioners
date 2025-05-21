@@ -7,6 +7,12 @@ public class VRControllerInput : MonoBehaviour
     private InputDevice leftController;
     private InputDevice rightController;
 
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     void OnEnable()
     {
         InputDevices.deviceConnected += OnDeviceConnected;
@@ -56,32 +62,42 @@ public class VRControllerInput : MonoBehaviour
 
     void Update()
     {
-        // Check if devices are still valid (can disconnect/reconnect)
-        if (!leftController.isValid || !rightController.isValid)
+        // Make sure the controller is still valid
+        if (!rightController.isValid)
         {
             TryInitializeControllers();
+            return;
         }
 
-        // Trigger values
-        if (rightController.TryGetFeatureValue(CommonUsages.trigger, out float rightTriggerValue))
+        // Trigger and grip values
+        float indexValue = 0f;
+        float threeFingersValue = 0f;
+        float thumbValue = 0f;
+
+        // Trigger = Index Finger
+        if (rightController.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
         {
-            Debug.Log($"Right Trigger: {rightTriggerValue}");
+            indexValue = triggerValue;
         }
 
-        if (leftController.TryGetFeatureValue(CommonUsages.trigger, out float leftTriggerValue))
+        // Grip = Middle/Ring/Pinky (Three Fingers)
+        if (rightController.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
         {
-            Debug.Log($"Left Trigger: {leftTriggerValue}");
+            threeFingersValue = gripValue;
         }
 
-        // Grip (grab) values
-        if (rightController.TryGetFeatureValue(CommonUsages.grip, out float rightGripValue))
+        // Thumb (typically primaryButton or secondaryButton — boolean, convert to float)
+        if (rightController.TryGetFeatureValue(CommonUsages.primaryButton, out bool thumbPressed))
         {
-            Debug.Log($"Right Grip: {rightGripValue}");
+            thumbValue = thumbPressed ? 1f : 0f;
         }
 
-        if (leftController.TryGetFeatureValue(CommonUsages.grip, out float leftGripValue))
+        // Update animator
+        if (animator != null)
         {
-            Debug.Log($"Left Grip: {leftGripValue}");
+            animator.SetFloat("Index", indexValue);
+            animator.SetFloat("ThreeFingers", threeFingersValue);
+            animator.SetFloat("Thumb", thumbValue);
         }
     }
 }
