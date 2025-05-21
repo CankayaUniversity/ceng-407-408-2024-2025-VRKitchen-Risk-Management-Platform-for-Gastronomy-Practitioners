@@ -56,12 +56,12 @@ public class FoodDispenser : MonoBehaviour
             }
 
             // Send RAG query here
-            GameActionManager actionManager = FindObjectOfType<GameActionManager>();
-            if (actionManager != null)
-            {
-                string actionText = $"I picked up a {foodData.foodName}";
-                actionManager.RegisterAction(actionText);
-            }
+            //GameActionManager actionManager = FindObjectOfType<GameActionManager>();
+            //if (actionManager != null)
+            //{
+                //string actionText = $"I picked up a {foodData.foodName}";
+                //actionManager.RegisterAction(actionText);
+            //}
         }
     }
 
