@@ -68,16 +68,15 @@ public class FoodInstance : MonoBehaviour
 
         // Track salt and pepper flags
         if (seasoningType == "Salt") saltAdded = true;
-        if (seasoningType == "Pepper") pepperAdded = true;
+        if (seasoningType == "BlackPepper") pepperAdded = true;
 
         CheckSeasoning(seasoningType);
-
+        GameActionManager manager = FindObjectOfType<GameActionManager>();
         // Send query ONCE when both salt and pepper are added
         if (toAPI != null && saltAdded && pepperAdded && !seasoningQuerySent)
         {
             string query = $"I added salt and pepper to the {foodData.foodName.ToLower()}. What now?";
-            toAPI.queryText = query;
-            toAPI.SubmitQuery();
+            manager.RegisterAction(query);
 
             seasoningQuerySent = true;
             Debug.Log("[RAG] Sent seasoning query (salt + pepper)");
