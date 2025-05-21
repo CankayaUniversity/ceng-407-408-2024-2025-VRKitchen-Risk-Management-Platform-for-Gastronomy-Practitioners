@@ -17,7 +17,11 @@ public class UnityToAPI : MonoBehaviour
     private float lastQueryTime = -10f; // Track last query time
 
 
-
+    void Start()
+    {
+        sessionId = System.Guid.NewGuid().ToString(); // 💡 Reset session per launch
+        Debug.Log("New session ID: " + sessionId);
+    }
     private string sessionId;
 
     [ContextMenu("Submit Query")]
