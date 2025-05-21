@@ -173,7 +173,6 @@ GameObject:
   - component: {fileID: 4493289792214205552}
   - component: {fileID: 890107551526517166}
   - component: {fileID: 4676024178521931231}
-  - component: {fileID: 7425129998577050914}
   - component: {fileID: 3229479194045344631}
   m_Layer: 0
   m_Name: Sliceable Knife
@@ -219,8 +218,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0008215662, y: 0.0057874485, z: 0.0001227535}
-  m_Center: {x: -0.0001407936, y: 0.00287696, z: 0.00012058605}
+  m_Size: {x: 0.05, y: 0.01, z: 0.6}
+  m_Center: {x: 0, y: 0.01, z: -0.29}
 --- !u!54 &890107551526517166
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -352,7 +351,7 @@ MonoBehaviour:
       m_Calls: []
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
+  m_UseDynamicAttach: 1
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
@@ -396,26 +395,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!114 &7425129998577050914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8467129168621902176}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e0fe83c713488144ad73d556471cac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startSlicePoint: {fileID: 1983373952153846505}
-  endSlicePoint: {fileID: 4649834216563062438}
-  velocityEstimator: {fileID: 5343596842968626448}
-  sliceableLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  crossSectionMaterial: {fileID: 2100000, guid: db6363842fc844b4dbdafd3527baaaf8, type: 2}
-  cutForce: 1
 --- !u!114 &3229479194045344631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,6 +412,5 @@ MonoBehaviour:
   velocityEstimator: {fileID: 5343596842968626448}
   sliceableLayer:
     m_Bits: 64
-  crossSectionMaterial: {fileID: 2100000, guid: db6363842fc844b4dbdafd3527baaaf8, type: 2}
   cutForce: 1
   minSliceVelocity: 1
