@@ -4,19 +4,21 @@ using UnityEngine.XR;
 
 public class VRControllerInput : MonoBehaviour
 {
-    private InputDevice leftController;
-    private InputDevice rightController;
+    public XRNode handType = XRNode.RightHand; // Set in Inspector (LeftHand or RightHand)
+    private InputDevice controller;
 
     private Animator animator;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        TryInitializeController();
     }
+
     void OnEnable()
     {
         InputDevices.deviceConnected += OnDeviceConnected;
-        TryInitializeControllers();
+        TryInitializeController();
     }
 
     void OnDisable()
@@ -26,73 +28,48 @@ public class VRControllerInput : MonoBehaviour
 
     void OnDeviceConnected(InputDevice device)
     {
-        if (!leftController.isValid || !rightController.isValid)
+        if (!controller.isValid)
         {
-            TryInitializeControllers();
+            TryInitializeController();
         }
     }
 
-    void TryInitializeControllers()
+    void TryInitializeController()
     {
         List<InputDevice> devices = new List<InputDevice>();
-
-        InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, devices);
+        InputDevices.GetDevicesAtXRNode(handType, devices);
         if (devices.Count > 0)
         {
-            leftController = devices[0];
-            Debug.Log("Left controller initialized: " + leftController.name);
+            controller = devices[0];
+            Debug.Log($"{handType} controller initialized: {controller.name}");
         }
         else
         {
-            Debug.LogWarning("No Device found for left controller");
-        }
-
-        devices.Clear();
-        InputDevices.GetDevicesAtXRNode(XRNode.RightHand, devices);
-        if (devices.Count > 0)
-        {
-            rightController = devices[0];
-            Debug.Log("Right controller initialized: " + rightController.name);
-        }
-        else
-        {
-            Debug.LogWarning("No Device found for right controller");
+            Debug.LogWarning($"No Device found for {handType}");
         }
     }
 
     void Update()
     {
-        // Make sure the controller is still valid
-        if (!rightController.isValid)
+        if (!controller.isValid)
         {
-            TryInitializeControllers();
+            TryInitializeController();
             return;
         }
 
-        // Trigger and grip values
         float indexValue = 0f;
         float threeFingersValue = 0f;
         float thumbValue = 0f;
 
-        // Trigger = Index Finger
-        if (rightController.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
-        {
-            indexValue = triggerValue;
-        }
+        controller.TryGetFeatureValue(CommonUsages.trigger, out indexValue);
+        controller.TryGetFeatureValue(CommonUsages.grip, out threeFingersValue);
 
-        // Grip = Middle/Ring/Pinky (Three Fingers)
-        if (rightController.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
-        {
-            threeFingersValue = gripValue;
-        }
-
-        // Thumb (typically primaryButton or secondaryButton — boolean, convert to float)
-        if (rightController.TryGetFeatureValue(CommonUsages.primaryButton, out bool thumbPressed))
-        {
+        // Try to use primaryTouch for thumb, fallback to primaryButton
+        if (controller.TryGetFeatureValue(CommonUsages.primaryTouch, out bool thumbTouch))
+            thumbValue = thumbTouch ? 1f : 0f;
+        else if (controller.TryGetFeatureValue(CommonUsages.primaryButton, out bool thumbPressed))
             thumbValue = thumbPressed ? 1f : 0f;
-        }
 
-        // Update animator
         if (animator != null)
         {
             animator.SetFloat("Index", indexValue);
