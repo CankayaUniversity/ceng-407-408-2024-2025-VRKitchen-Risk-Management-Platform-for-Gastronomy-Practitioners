@@ -38,7 +38,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -63,7 +63,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -88,7 +88,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -101,7 +101,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1461458678
+      path: 1602167166
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -110,7 +110,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 4179611308
+      path: 3380135648
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -119,7 +119,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2238042102
+      path: 1287738193
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -175,7 +175,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -205,7 +205,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -235,7 +235,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -265,7 +265,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -295,7 +295,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -325,7 +325,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -355,7 +355,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -385,7 +385,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -415,7 +415,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -427,8 +427,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
+    attribute: m_LocalEulerAngles.x
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -440,19 +440,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -464,55 +452,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -524,7 +464,67 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2/hands:b_l_index3
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Hand/hands:l_hand_world/hands:b_l_hand/hands:b_l_index1/hands:b_l_index2
     classID: 4
     script: {fileID: 0}
     flags: 0

@@ -17,21 +17,45 @@ public class XRHandController : MonoBehaviour
     private Animator animator;
     private InputDevice inputDevice;
 
+    public UnityEngine.InputSystem.InputActionProperty handTriggerValue;
+    public UnityEngine.InputSystem.InputActionProperty handGrapValue;
+
     private float indexValue;
     private float thumbValue;
     private float threeFingersValue;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         inputDevice = GetInputDevice();
+        print("Input Device: " + inputDevice.name);
+    
+        List<InputDevice> allDevices = new List<InputDevice>();
+        InputDevices.GetDevices(allDevices);
+
+        foreach (var device in allDevices)
+        {
+            Debug.Log($"Device: {device.name}, Characteristics: {device.characteristics}");
+
+            foreach (InputDeviceCharacteristics flag in System.Enum.GetValues(typeof(InputDeviceCharacteristics)))
+            {
+                if ((device.characteristics & flag) != 0)
+                {
+                    Debug.Log($" - {flag}");
+                }
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         AnimateHand();
+
+        //print("trigger value: " + handTriggerValue.action.ReadValue)
     }
 
     InputDevice GetInputDevice()

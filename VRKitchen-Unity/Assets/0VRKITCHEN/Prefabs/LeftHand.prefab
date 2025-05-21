@@ -815,13 +815,37 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4441135774363951860}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e662eaffdf7e50a4aa66cb2662510bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   handType: 0
   thumbMoveSpeed: 0.1
+  handTriggerValue:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Hand Trigger Value
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: efe8a773-a8d1-4779-9285-fe2869f7913a
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  handGrapValue:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Hand Grap Value
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f4636c6c-848d-44f6-888b-20561ba9279f
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
 --- !u!1 &4644664685856577443
 GameObject:
   m_ObjectHideFlags: 0
