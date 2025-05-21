@@ -1,45 +1,115 @@
+﻿using UnityEngine;
 using TMPro;
-using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RecipeSelector : MonoBehaviour
 {
-    public TextMeshPro recipeListText; // <-- change this line to TextMeshPro (not TextMeshProUGUI)
+    public GameObject clipBoard; // Assign to ClipBoardVisual_2
+    public TextMeshPro recipeListText;
     public UnityToAPI unityToAPI;
 
-    private void Start()
+    [Header("Input Actions")]
+    public InputActionReference SelectUp;
+    public InputActionReference SelectDown;
+    public InputActionReference ToggleAndConfirm;
+
+    private string[] recipes = { "Steak and Potatoes", "Chicken and Potatoes", "Hamburger" };
+    private int currentIndex = 0;
+    private float inputCooldown = 0.3f;
+    private float lastInputTime = 0f;
+
+    private enum State { Welcome, Selecting, Hidden }
+    private State currentState = State.Welcome;
+
+    void OnEnable()
     {
-        recipeListText.text = "Please choose:\n\n[1] Steak and Potatoes\n[2] Chicken and Potatoes\n[3] Hamburger";
+        SelectUp.action.Enable();
+        SelectDown.action.Enable();
+        ToggleAndConfirm.action.Enable();
     }
 
-    private void Update()
+    void OnDisable()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        SelectUp.action.Disable();
+        SelectDown.action.Disable();
+        ToggleAndConfirm.action.Disable();
+    }
+
+    void Start()
+    {
+        ShowWelcomeMessage();
+    }
+
+    void Update()
+    {
+        if (ToggleAndConfirm.action.triggered || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            SelectRecipe("Steak and Potatoes");
+            if (currentState == State.Welcome)
+            {
+                StartSelection();
+            }
+            else if (currentState == State.Selecting)
+            {
+                ConfirmSelection();
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+
+        if (currentState != State.Selecting || Time.time - lastInputTime < inputCooldown)
+            return;
+
+        if (SelectUp.action.triggered || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            SelectRecipe("Chicken and Potatoes");
+            MoveSelection(-1);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        else if (SelectDown.action.triggered || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            SelectRecipe("Hamburger");
+            MoveSelection(1);
         }
     }
 
-    public void SelectRecipe(string recipeName)
+    private void ShowWelcomeMessage()
     {
-        Debug.Log($"Selected Recipe: {recipeName}");
-        string query = $"How to make {recipeName} in the game?";
+        clipBoard.SetActive(true);
+        recipeListText.text = "<b>Welcome to VR Kitchen!</b>\n\nPress the left controller joystick to choose a recipe.";
+        currentState = State.Welcome;
+    }
 
-        unityToAPI.queryText = query;
+    private void StartSelection()
+    {
+        currentIndex = 0;
+        currentState = State.Selecting;
+        UpdateRecipeDisplay();
+    }
+
+    private void ConfirmSelection()
+    {
+        string selected = recipes[currentIndex];
+        Debug.Log($"Selected Recipe: {selected}");
+
+        unityToAPI.queryText = $"How to make {selected} in the game?";
         unityToAPI.SubmitQuery();
 
-        recipeListText.text = "Loading steps for " + recipeName + "...";
+        recipeListText.text = "Loading steps for " + selected + "...";
+        currentState = State.Hidden;
+
+        // ❌ Do not deactivate clipboard — HandTextDisplay controls it
+        // clipBoard.SetActive(false);
     }
 
-    public void UpdateText(string newText)
+    private void MoveSelection(int direction)
     {
-        recipeListText.text = newText;
+        currentIndex = (currentIndex + direction + recipes.Length) % recipes.Length;
+        UpdateRecipeDisplay();
+        lastInputTime = Time.time;
+    }
+
+    private void UpdateRecipeDisplay()
+    {
+        string display = "Please choose:\n\n";
+        for (int i = 0; i < recipes.Length; i++)
+        {
+            display += (i == currentIndex) ? $"> {recipes[i]}\n" : $"  {recipes[i]}\n";
+        }
+        recipeListText.text = display;
     }
 }
