@@ -4,8 +4,6 @@ using System.Collections.Generic;
 public class Dish : MonoBehaviour
 {
     
-    //will be changed later. RAG AI System will provide optimal seasoning amounts for each dish.
-    
     private Dictionary<string, int> seasonings = new Dictionary<string, int>();
     
     [SerializeField] private int optimalSalt = 5;
