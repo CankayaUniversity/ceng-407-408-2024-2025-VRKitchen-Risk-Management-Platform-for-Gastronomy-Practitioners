@@ -8,22 +8,22 @@ public class RecipeSelector : MonoBehaviour
 
     private void Start()
     {
-        recipeListText.text = "Please choose:\n\n[1] Steak and Fries\n[2] Pasta with Tomato Sauce\n[3] Rice and Chicken";
+        recipeListText.text = "Please choose:\n\n[1] Steak and Potatoes\n[2] Chicken and Potatoes\n[3] Hamburger";
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SelectRecipe("Steak and Fries");
+            SelectRecipe("Steak and Potatoes");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SelectRecipe("Pasta with Tomato Sauce");
+            SelectRecipe("Chicken and Potatoes");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            SelectRecipe("Rice and Chicken");
+            SelectRecipe("Hamburger");
         }
     }
 
