@@ -130,10 +130,10 @@ public class FoodInstance : MonoBehaviour
         UpdateCookingState();
     }
 
-    public void Heat(float amount)
+    public void HeatFood(float amount)
     {
-        if (!foodData.isCookable) return;
-
+        Debug.Log("[HEAT] " + name + " → Temp: " + temperature);
+        //if (!foodData.isCookable) return;
         temperature += amount;
     }
 

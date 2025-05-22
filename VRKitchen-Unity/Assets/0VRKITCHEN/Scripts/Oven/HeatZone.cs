@@ -61,7 +61,7 @@ public class HeatZone : MonoBehaviour
         Pan pan = obj.GetComponent<Pan>();
         if (pan != null)
         {
-            pan.Heat(10f * Time.deltaTime); 
+            pan.HeatPan(10f * Time.deltaTime); 
         }
     }
 
