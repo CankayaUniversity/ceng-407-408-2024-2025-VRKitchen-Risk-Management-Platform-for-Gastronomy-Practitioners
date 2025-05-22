@@ -79,7 +79,7 @@ public class TimerPanel : MonoBehaviour
 
     void StartTimer()
     {
-        remainingTime = minutes * 60f;
+        remainingTime = minutes * 10f;
         isCountingDown = true;
         startButton.interactable = false;
     }
