@@ -19,7 +19,7 @@ public class UnityToAPI : MonoBehaviour
 
     void Start()
     {
-        sessionId = System.Guid.NewGuid().ToString(); // 💡 Reset session per launch
+        sessionId = System.Guid.NewGuid().ToString(); 
         Debug.Log("New session ID: " + sessionId);
     }
     private string sessionId;

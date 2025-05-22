@@ -126,7 +126,7 @@ public class WaterFillTrigger : MonoBehaviour
 
             if (fillTime >= fillDuration && !hasSentQuery && toAPI != null)
             {
-                toAPI.queryText = "The pot has been filled with water. What is the next step in the game? Provide only the next in-game step.";
+                toAPI.queryText = "The pot has been filled with water. What now?";
                 toAPI.SubmitQuery();
                 hasSentQuery = true;
             }
@@ -146,8 +146,8 @@ public class WaterFillTrigger : MonoBehaviour
         if (potWaterObject != null)
         {
             // Visually hide water if needed (based on animation type)
-            potWaterObject.transform.localScale = new Vector3(1f, 0f, 1f); // If scale-based
-            // potWaterObject.transform.localPosition = new Vector3(0f, 0f, 0f); // If position-based
+            //potWaterObject.transform.localScale = new Vector3(1f, 0f, 1f); // If scale-based
+             potWaterObject.transform.localPosition = new Vector3(0f, 0f, 0f); // If position-based
 
             potWaterObject.SetActive(false);
 
