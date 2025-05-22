@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Pan : MonoBehaviour
 {
-    public float heatingTemperature = 10f;
+    public float heatingTemperature = 0.05f;
 
     private List<FoodInstance> foodItems = new List<FoodInstance>();
 
