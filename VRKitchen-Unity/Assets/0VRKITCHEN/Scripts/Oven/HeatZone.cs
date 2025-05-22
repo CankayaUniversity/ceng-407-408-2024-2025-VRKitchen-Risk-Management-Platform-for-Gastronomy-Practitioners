@@ -42,6 +42,7 @@ public class HeatZone : MonoBehaviour
         if (collision.gameObject.CompareTag("Pan"))
         {
             currentPan = collision.gameObject;
+            Debug.Log("AAAAAAAAAAAAA");
         }
     }
 
