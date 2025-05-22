@@ -22,10 +22,11 @@ public class BoardCleanerController : MonoBehaviour
 
             if (scrubTimer >= scrubDuration)
             {
-                if (crossController != null && crossController.isContamination)
+                if (crossController != null)
                 {
+                                    Debug.Log("nulll.");
+
                     crossController.ResetContamination();
-                    visualFeedback?.HideExclamation();
                 }
 
                 scrubTimer = 0f;

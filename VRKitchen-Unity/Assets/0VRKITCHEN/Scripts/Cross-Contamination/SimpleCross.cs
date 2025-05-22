@@ -100,13 +100,19 @@ public class SimpleCross : MonoBehaviour
         toAPI.SubmitQuery();
         Debug.Log(toAPI.queryText);
     }
+    
+        public void ResetContamination()
+        {
+            isContamination = false;
+            hasSentContaminationQuery = false;
+            contaminationCoroutineRunning = false;
 
-    public void ResetContamination()
-    {
-        isContamination = false;
-        hasSentContaminationQuery = false;
-        contaminationCoroutineRunning = false;
+            if (visualFeedback != null)
+            {
+                visualFeedback.HideExclamation();
+            }
 
-        Debug.Log("Board contamination manually cleared.");
-    }
+            Debug.Log("Board contamination manually cleared.");
+        }
+
 }
