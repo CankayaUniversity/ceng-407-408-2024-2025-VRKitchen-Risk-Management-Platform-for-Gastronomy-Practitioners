@@ -16,6 +16,9 @@ public class PotSpillTrigger : MonoBehaviour
     private bool hasSpilled = false;
     private float animationActiveTime = 0f;
 
+    public UnityToAPI toAPI; // Drag your UnityToAPI object in the inspector
+
+
     void Start()
     {
         if (potWaterObject != null)
@@ -86,6 +89,11 @@ public class PotSpillTrigger : MonoBehaviour
             Debug.Log("[SpillTrigger] Spawning puddle at: " + floorPos);
             GameObject puddle = Instantiate(spillPrefab, floorPos, Quaternion.Euler(90f, 0f, 0f));
             puddle.transform.localScale = new Vector3(1f, 1f, 1f); // Adjust scale if needed
+
+            // Slightly offset second puddle
+            Vector3 offset = new Vector3(0.2f, 0f, 0.2f); // You can adjust the offset as needed
+            GameObject puddle2 = Instantiate(spillPrefab, floorPos + offset, Quaternion.Euler(90f, 0f, 0f));
+            puddle2.transform.localScale = new Vector3(1f, 1f, 1f);
         }
         else
         {
@@ -96,6 +104,17 @@ public class PotSpillTrigger : MonoBehaviour
         {
             potWaterObject.SetActive(false);
             Debug.Log("[SpillTrigger] 🚫 Water hidden (SetActive false).");
+        }
+
+        if (toAPI != null)
+        {
+            Debug.Log("[SpillTrigger] Sending RAG query: Water spill happened.");
+            toAPI.queryText = "Water spill happened. What should I do?";
+            toAPI.SubmitQuery();
+        }
+        else
+        {
+            Debug.LogWarning("[SpillTrigger] ⚠ UnityToAPI reference not set.");
         }
     }
 }
