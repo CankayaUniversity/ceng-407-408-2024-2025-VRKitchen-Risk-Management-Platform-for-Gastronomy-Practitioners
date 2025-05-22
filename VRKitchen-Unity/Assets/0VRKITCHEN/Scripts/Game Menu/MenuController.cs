@@ -5,27 +5,27 @@ public class MenuController : MonoBehaviour
 {
     public void LoadKitchenScene()
     {
-        SceneManager.LoadScene("Simal_Final_Scene");
+        SceneManager.LoadScene(1);
     }
 
     public void LoadSoundSettings()
     {
-        SceneManager.LoadScene("SoundSettings");
+        SceneManager.LoadScene(3);
     }
 
     public void LoadInstructionScene()
     {
-        SceneManager.LoadScene("Instructions");
+        SceneManager.LoadScene(4);
     }
 
     public void LoadCreditsScene()
     {
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene(5);
     }
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
