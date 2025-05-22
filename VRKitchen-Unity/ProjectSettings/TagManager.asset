@@ -18,6 +18,9 @@ TagManager:
   - WaterParticle
   - WaterSource
   - Oil
+  - Sponge
+  - Board
+  - Hand
   layers:
   - Default
   - TransparentFX
