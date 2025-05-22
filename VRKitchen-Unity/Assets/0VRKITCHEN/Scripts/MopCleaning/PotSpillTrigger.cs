@@ -18,7 +18,6 @@ public class PotSpillTrigger : MonoBehaviour
 
     public UnityToAPI toAPI; // Drag your UnityToAPI object in the inspector
 
-
     void Start()
     {
         if (potWaterObject != null)
@@ -120,7 +119,7 @@ public class PotSpillTrigger : MonoBehaviour
             Debug.LogWarning("[SpillTrigger] ⚠ UnityToAPI reference not set.");
         }
 
-        // Reset water fill trigger
+        // ✅ Reset the fill state by calling the WaterFillTrigger on a child (e.g., PanBottom)
         WaterFillTrigger fillTrigger = GetComponentInChildren<WaterFillTrigger>();
         if (fillTrigger != null)
         {

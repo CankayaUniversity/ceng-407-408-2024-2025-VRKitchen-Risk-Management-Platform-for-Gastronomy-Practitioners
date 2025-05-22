@@ -63,8 +63,7 @@ public class WaterFillTrigger : MonoBehaviour
             waterAnimation["water_rise"].speed = 1f;
             waterAnimation.Play("water_rise");
 
-            yield return new WaitForSecondsRealtime(0.05f); // Let Unity render at least 1 frame
-
+            yield return new WaitForSecondsRealtime(0.05f);
             waterAnimation["water_rise"].speed = 0f;
         }
         else
@@ -146,32 +145,20 @@ public class WaterFillTrigger : MonoBehaviour
 
         if (potWaterObject != null)
         {
-            potWaterObject.SetActive(true);
-            waterAnimation = potWaterObject.GetComponent<Animation>();
+            // Visually hide water if needed (based on animation type)
+            potWaterObject.transform.localScale = new Vector3(1f, 0f, 1f); // If scale-based
+            // potWaterObject.transform.localPosition = new Vector3(0f, 0f, 0f); // If position-based
 
+            potWaterObject.SetActive(false);
+
+            waterAnimation = potWaterObject.GetComponent<Animation>();
             if (waterAnimation != null && waterAnimation.GetClip("water_rise") != null)
             {
                 waterAnimation.Stop();
                 waterAnimation["water_rise"].normalizedTime = 0f;
-                waterAnimation["water_rise"].speed = 1f;
-                waterAnimation.Play("water_rise");
-
-                StartCoroutine(PauseAtZero());
+                waterAnimation["water_rise"].speed = 0f;
+                Debug.Log("[WaterFillTrigger] Animation reset, NOT playing until triggered.");
             }
-            else
-            {
-                Debug.LogWarning("ResetState: 'water_rise' clip not found.");
-            }
-        }
-    }
-
-    private IEnumerator PauseAtZero()
-    {
-        yield return new WaitForSecondsRealtime(0.05f);
-        if (waterAnimation != null)
-        {
-            waterAnimation["water_rise"].speed = 0f;
-            Debug.Log("[WaterFillTrigger] Animation paused at 0, ready to fill again.");
         }
     }
 }
