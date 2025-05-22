@@ -26,6 +26,8 @@ public class AudioController : SingletonBehaviour<AudioController>
     [SerializeField] private AudioClip fireExtinguisherSound;
     [SerializeField] private AudioClip exclamationSound;
     [SerializeField] private AudioClip kitchenTimer;
+    [SerializeField] private AudioClip waterSplashSound;
+
 
 
     [Header("Volume Settings")]
@@ -57,6 +59,11 @@ public class AudioController : SingletonBehaviour<AudioController>
     public void PlayExclamationSound()
     {
         PlaySound(exclamationSound);
+    }
+
+    public void PlayWaterSplashSound()
+    {
+        PlaySound(waterSplashSound);
     }
 
 
