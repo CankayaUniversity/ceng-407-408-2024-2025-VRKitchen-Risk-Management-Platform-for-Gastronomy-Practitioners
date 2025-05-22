@@ -15,14 +15,14 @@ public class Pan : MonoBehaviour
             if (food != null && !foodItems.Contains(food))
             {
                 foodItems.Add(food);
-                Debug.Log("Food placed in pan: " + food.name);
+                
 
                 // Send RAG query
                 var manager = FindObjectOfType<GameActionManager>();
                 if (manager != null && food.foodData != null)
                 {
                     string name = food.foodData.foodName.ToLower();
-                    manager.RegisterAction($"I placed the {name} in the pan");
+                    //manager.RegisterAction($"I placed the {name} in the pan. What now ?");
                 }
             }
         }
@@ -36,7 +36,6 @@ public class Pan : MonoBehaviour
             if (food != null && foodItems.Contains(food))
             {
                 foodItems.Remove(food);
-                Debug.Log("Food removed from pan: " + food.name);
             }
         }
     }

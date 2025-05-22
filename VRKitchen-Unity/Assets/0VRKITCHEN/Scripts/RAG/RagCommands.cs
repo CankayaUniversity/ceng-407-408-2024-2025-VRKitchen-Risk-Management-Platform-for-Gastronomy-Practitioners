@@ -9,7 +9,7 @@ public static class RagCommands
     // === Timer Wait ===
     public static string TimerSet(int minutes)
     {
-        return $"I have waited {minutes} minutes. What now?";
+        return $"I waited {minutes} minute. What now?";
     }
 
 
