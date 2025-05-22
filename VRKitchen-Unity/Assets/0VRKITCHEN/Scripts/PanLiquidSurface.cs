@@ -5,7 +5,7 @@ public class PanLiquidSurface : MonoBehaviour
     public GameObject liquidQuad;         // Su/yağ yüzeyi gösterecek quad
     public Material waterMaterial;
     public Material oilMaterial;
-
+    public UnityToAPI toAPI;
     private bool hasActivated = false;
 
     private void Start()
@@ -32,6 +32,8 @@ public class PanLiquidSurface : MonoBehaviour
 
         if (other.CompareTag("Oil")) // yağ objesine bu tag ver
         {
+            toAPI.queryText = "I have put oil in frying pan in game. What now?";
+            toAPI.SubmitQuery();
             ActivateLiquid(oilMaterial);
         }
     }
