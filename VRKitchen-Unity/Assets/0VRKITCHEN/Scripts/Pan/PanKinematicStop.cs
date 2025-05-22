@@ -48,7 +48,7 @@ public class PanFoodHolder : MonoBehaviour
             if (food != null)
             {
                 // Konumlandır
-                Vector3 basePos = transform.position + Vector3.up * (0.01f + i * verticalSpacing);
+                Vector3 basePos = transform.position + Vector3.up * (0.05f + i * verticalSpacing);
                 food.position = basePos;
 
                 // Sabit rotasyon: yatık (90, 0, 0)

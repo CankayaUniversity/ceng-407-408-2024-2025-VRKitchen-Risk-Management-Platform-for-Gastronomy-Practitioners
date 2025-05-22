@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 5684546653520137477}
   - component: {fileID: 4438201601138987333}
   - component: {fileID: 2831891062107707427}
+  - component: {fileID: 6947342143886863720}
   m_Layer: 0
-  m_Name: oil
-  m_TagString: Untagged
+  m_Name: Oil
+  m_TagString: Oil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5684546653520137477
 Transform:
   m_ObjectHideFlags: 0
@@ -26,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2667261623387497508}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000029802322, y: 0.7071068, z: 0.00000014901161, w: -0.7071068}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.00055, y: -0.0005, z: -0.00356}
-  m_LocalScale: {x: 0.578902, y: 0.5, z: 0.5184485}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.46960276, y: 0.32, z: 0.45}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &4438201601138987333
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -83,3 +84,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6947342143886863720
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2667261623387497508}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6255687079079774844, guid: 5b18e9a845085f94f9d6f761f13785a0, type: 3}
