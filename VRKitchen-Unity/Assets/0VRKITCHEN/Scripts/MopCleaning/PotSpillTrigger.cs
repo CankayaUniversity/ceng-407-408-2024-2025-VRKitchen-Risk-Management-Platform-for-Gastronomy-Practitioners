@@ -119,5 +119,15 @@ public class PotSpillTrigger : MonoBehaviour
         {
             Debug.LogWarning("[SpillTrigger] ⚠ UnityToAPI reference not set.");
         }
+
+        // Reset water fill trigger
+        WaterFillTrigger fillTrigger = GetComponentInChildren<WaterFillTrigger>();
+        if (fillTrigger != null)
+        {
+            fillTrigger.ResetState();
+            Debug.Log("[SpillTrigger] WaterFillTrigger reset after spill.");
+        }
+
+        hasSpilled = false;
     }
 }

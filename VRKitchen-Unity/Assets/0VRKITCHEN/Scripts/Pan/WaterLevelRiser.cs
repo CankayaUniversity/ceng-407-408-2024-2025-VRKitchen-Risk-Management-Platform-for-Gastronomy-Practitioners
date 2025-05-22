@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class WaterFillTrigger : MonoBehaviour
 {
@@ -39,7 +40,8 @@ public class WaterFillTrigger : MonoBehaviour
             StartCoroutine(HandleOilTrigger());
         }
     }
-    private System.Collections.IEnumerator HandleOilTrigger()
+
+    private IEnumerator HandleOilTrigger()
     {
         potWaterObject.SetActive(true);
         yield return null; // bir frame bekle ki Unity potWater'ı tam aktif etsin
@@ -56,9 +58,14 @@ public class WaterFillTrigger : MonoBehaviour
         waterAnimation = potWaterObject.GetComponent<Animation>();
         if (waterAnimation != null && waterAnimation.GetClip("water_rise") != null)
         {
-            waterAnimation.Play("water_rise");
-            waterAnimation["water_rise"].speed = 0f;
+            waterAnimation.Stop();
             waterAnimation["water_rise"].normalizedTime = 0f;
+            waterAnimation["water_rise"].speed = 1f;
+            waterAnimation.Play("water_rise");
+
+            yield return new WaitForSecondsRealtime(0.05f); // Let Unity render at least 1 frame
+
+            waterAnimation["water_rise"].speed = 0f;
         }
         else
         {
@@ -84,14 +91,26 @@ public class WaterFillTrigger : MonoBehaviour
             waterAnimation = potWaterObject.GetComponent<Animation>();
             if (waterAnimation != null && waterAnimation.GetClip("water_rise") != null)
             {
-                waterAnimation.Play("water_rise");
-                waterAnimation["water_rise"].speed = 0f;
+                waterAnimation.Stop();
                 waterAnimation["water_rise"].normalizedTime = 0f;
+                waterAnimation["water_rise"].speed = 1f;
+                waterAnimation.Play("water_rise");
+
+                StartCoroutine(DelayedPause());
             }
             else
             {
                 Debug.LogWarning("Potwater objesinde 'water_rise' animasyonu bulunamadı.");
             }
+        }
+    }
+
+    private IEnumerator DelayedPause()
+    {
+        yield return new WaitForSecondsRealtime(0.05f);
+        if (waterAnimation != null)
+        {
+            waterAnimation["water_rise"].speed = 0f;
         }
     }
 
@@ -115,5 +134,44 @@ public class WaterFillTrigger : MonoBehaviour
         }
 
         isFilling = false;
+    }
+
+    public void ResetState()
+    {
+        Debug.Log("ResetState called");
+        fillTime = 0f;
+        isFilling = false;
+        hasActivatedWater = false;
+        hasSentQuery = false;
+
+        if (potWaterObject != null)
+        {
+            potWaterObject.SetActive(true);
+            waterAnimation = potWaterObject.GetComponent<Animation>();
+
+            if (waterAnimation != null && waterAnimation.GetClip("water_rise") != null)
+            {
+                waterAnimation.Stop();
+                waterAnimation["water_rise"].normalizedTime = 0f;
+                waterAnimation["water_rise"].speed = 1f;
+                waterAnimation.Play("water_rise");
+
+                StartCoroutine(PauseAtZero());
+            }
+            else
+            {
+                Debug.LogWarning("ResetState: 'water_rise' clip not found.");
+            }
+        }
+    }
+
+    private IEnumerator PauseAtZero()
+    {
+        yield return new WaitForSecondsRealtime(0.05f);
+        if (waterAnimation != null)
+        {
+            waterAnimation["water_rise"].speed = 0f;
+            Debug.Log("[WaterFillTrigger] Animation paused at 0, ready to fill again.");
+        }
     }
 }
