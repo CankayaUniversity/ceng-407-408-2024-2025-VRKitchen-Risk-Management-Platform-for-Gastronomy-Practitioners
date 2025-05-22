@@ -11,12 +11,15 @@ public class CleanableSpill : MonoBehaviour
     public UnityToAPI toAPI; // 🔌 RAG connection
     private bool hasNotified = false; // Ensure message is sent only once
 
-    void Start()
-    {
-        // Create a copy of the material so each stain fades independently
-        mat = GetComponent<Renderer>().material;
-        originalColor = mat.color;
-    }
+void Start()
+{
+    if (toAPI == null)
+        toAPI = FindObjectOfType<UnityToAPI>();
+
+    mat = GetComponent<Renderer>().material;
+    originalColor = mat.color;
+}
+
 
     public void Clean(float amount)
     {
@@ -37,6 +40,8 @@ public class CleanableSpill : MonoBehaviour
 
         if (toAPI != null)
         {
+                    Debug.Log($"Sending Query");
+
             toAPI.queryText = "I cleaned the spill. What now?";
             toAPI.SubmitQuery();
         }
