@@ -4250,6 +4250,7 @@ MonoBehaviour:
   fireExtinguisherSound: {fileID: 8300000, guid: e816787a15aec754cb26f2112c5b4cf5, type: 3}
   exclamationSound: {fileID: 8300000, guid: ad639df58ff98284997a163c1ed3d3b5, type: 3}
   kitchenTimer: {fileID: 8300000, guid: bd58c425902ac914f8ecd027cd34f806, type: 3}
+  waterSplashSound: {fileID: 8300000, guid: 4150ca9b6a994f847bc7df3fb5235f0f, type: 3}
   fireSoundVolume: 0.003
 --- !u!4 &725335860
 Transform:

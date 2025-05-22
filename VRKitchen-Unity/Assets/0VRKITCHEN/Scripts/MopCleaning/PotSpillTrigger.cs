@@ -76,6 +76,9 @@ public class PotSpillTrigger : MonoBehaviour
             Debug.Log("[SpillTrigger] Spawning splash at: " + floorPos);
             GameObject splash = Instantiate(particleEffectPrefab, floorPos, Quaternion.identity);
             Destroy(splash, 2f);
+
+            // Play water splash sound
+            AudioController.Instance.PlayWaterSplashSound();
         }
         else
         {
