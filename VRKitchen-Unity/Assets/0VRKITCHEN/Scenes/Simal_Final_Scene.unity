@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2881,6 +2881,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.00022
       objectReference: {fileID: 0}
+    - target: {fileID: 2160403017129519784, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
+      propertyPath: m_Size.z
+      value: 0.0012874454
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160403017129519784, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0002968994
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160403017129519784, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
+      propertyPath: m_Center.z
+      value: 0.00034179373
+      objectReference: {fileID: 0}
     - target: {fileID: 5428691210995223473, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_Size.y
       value: 3.096403
@@ -2955,13 +2967,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8043188217423168759, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_TagString
-      value: Pan
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 3223039220711736338, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7837041105123913592, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1093363096}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8043188217423168759, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       insertIndex: -1
@@ -2973,6 +2988,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 670577319}
   m_SourcePrefab: {fileID: 100100000, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
+--- !u!4 &454537132 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7837041105123913592, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
+  m_PrefabInstance: {fileID: 454537131}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &475854536
 GameObject:
   m_ObjectHideFlags: 0
@@ -7604,6 +7624,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4015257368330464331, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
   m_PrefabInstance: {fileID: 1717732687}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1093363095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1093363096}
+  - component: {fileID: 1093363097}
+  m_Layer: 0
+  m_Name: Tag
+  m_TagString: Pan
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1093363096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093363095}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.00543, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 454537132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1093363097
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093363095}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0054176007, y: 0.006535763, z: 0.0003178117}
+  m_Center: {x: 0.00020879984, y: -0.00021019639, z: 0.00011859597}
 --- !u!198 &1102020515 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1367505501128698752, guid: 5d37fc83359acee499217c93f21db735, type: 3}
