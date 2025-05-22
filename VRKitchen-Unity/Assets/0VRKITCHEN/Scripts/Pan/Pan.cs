@@ -5,7 +5,7 @@ public class Pan : MonoBehaviour
 {
     public float heatingTemperature = 0.05f;
 
-    private List<FoodInstance> foodItems = new List<FoodInstance>();
+    public List<FoodInstance> foodItems = new List<FoodInstance>();
 
     private void OnTriggerEnter(Collider other)
     {
