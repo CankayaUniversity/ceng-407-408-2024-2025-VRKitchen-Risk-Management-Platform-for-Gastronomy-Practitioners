@@ -10257,6 +10257,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 288535931057059109, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2413700176183677798, guid: 17a614b84ef6fb343a2583ac80413164, type: 3}
+    - target: {fileID: 288535931057059109, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_IsTrackedAction.m_Action.m_Flags
       value: -1
       objectReference: {fileID: 0}
@@ -10269,9 +10273,17 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1537862773210423133, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2413700176183677798, guid: 17a614b84ef6fb343a2583ac80413164, type: 3}
+    - target: {fileID: 1537862773210423133, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_ActivateAction.m_Reference
       value: 
       objectReference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 1740186416804211471, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2413700176183677798, guid: 266ff732979f28446af3e96a95b7792c, type: 3}
     - target: {fileID: 2496287370795149443, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_TagString
       value: Hand
@@ -10364,6 +10376,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8164306826780099223, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2413700176183677798, guid: 266ff732979f28446af3e96a95b7792c, type: 3}
     - target: {fileID: 8202822525734557615, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -11783,7 +11799,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1964838095100366845, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5759023290510550228, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_Enabled
@@ -11966,6 +11982,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3786161285735841674, guid: 5d37fc83359acee499217c93f21db735, type: 3}
+      propertyPath: toAPI
+      value: 
+      objectReference: {fileID: 708674425}
+    - target: {fileID: 3786161285735841674, guid: 5d37fc83359acee499217c93f21db735, type: 3}
       propertyPath: button
       value: 
       objectReference: {fileID: 1972514453}
@@ -11973,6 +11993,10 @@ PrefabInstance:
       propertyPath: ovenController
       value: 
       objectReference: {fileID: 1466853081}
+    - target: {fileID: 3786161285735841674, guid: 5d37fc83359acee499217c93f21db735, type: 3}
+      propertyPath: extinguisherGrab
+      value: 
+      objectReference: {fileID: 1602068636}
     - target: {fileID: 4852628529829512370, guid: 5d37fc83359acee499217c93f21db735, type: 3}
       propertyPath: m_Name
       value: FireExtinguisher
@@ -12037,6 +12061,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2526440635715814355, guid: 5d37fc83359acee499217c93f21db735, type: 3}
   m_PrefabInstance: {fileID: 1602068633}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1602068636 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1157025194556611436, guid: 5d37fc83359acee499217c93f21db735, type: 3}
+  m_PrefabInstance: {fileID: 1602068633}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1611888632
 GameObject:
   m_ObjectHideFlags: 0
