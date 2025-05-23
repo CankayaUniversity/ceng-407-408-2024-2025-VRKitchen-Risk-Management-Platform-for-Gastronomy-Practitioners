@@ -45,61 +45,87 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toAPI: {fileID: 0}
+  fireAlertFeedback: {fileID: 0}
+  fireAlertMarkerTransform: {fileID: 0}
   fireSources:
   - spawnPoint: {fileID: 0}
     firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
     ovenController: {fileID: 0}
     heatZone: {fileID: 0}
+    firePool: {fileID: 0}
     heatingTime: 0
-    maxHeatingTime: 10
+    maxHeatingTime: 1000
     activeFire: {fileID: 0}
+    fireAudioSource: {fileID: 0}
   - spawnPoint: {fileID: 0}
     firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
     ovenController: {fileID: 0}
     heatZone: {fileID: 0}
+    firePool: {fileID: 0}
     heatingTime: 0
-    maxHeatingTime: 0
+    maxHeatingTime: 1000
     activeFire: {fileID: 0}
+    fireAudioSource: {fileID: 0}
   - spawnPoint: {fileID: 0}
     firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
     ovenController: {fileID: 0}
     heatZone: {fileID: 0}
+    firePool: {fileID: 0}
     heatingTime: 0
-    maxHeatingTime: 0
+    maxHeatingTime: 1000
     activeFire: {fileID: 0}
+    fireAudioSource: {fileID: 0}
   - spawnPoint: {fileID: 0}
     firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
     ovenController: {fileID: 0}
     heatZone: {fileID: 0}
+    firePool: {fileID: 0}
     heatingTime: 0
-    maxHeatingTime: 0
+    maxHeatingTime: 1000
     activeFire: {fileID: 0}
+    fireAudioSource: {fileID: 0}
   - spawnPoint: {fileID: 0}
     firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
     ovenController: {fileID: 0}
     heatZone: {fileID: 0}
+    firePool: {fileID: 0}
     heatingTime: 0
-    maxHeatingTime: 0
+    maxHeatingTime: 1000
     activeFire: {fileID: 0}
+    fireAudioSource: {fileID: 0}
   - spawnPoint: {fileID: 0}
     firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
     ovenController: {fileID: 0}
     heatZone: {fileID: 0}
+    firePool: {fileID: 0}
     heatingTime: 0
-    maxHeatingTime: 0
+    maxHeatingTime: 1000
     activeFire: {fileID: 0}
+    fireAudioSource: {fileID: 0}
   - spawnPoint: {fileID: 0}
     firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
     ovenController: {fileID: 0}
     heatZone: {fileID: 0}
+    firePool: {fileID: 0}
     heatingTime: 0
-    maxHeatingTime: 0
+    maxHeatingTime: 1000
     activeFire: {fileID: 0}
+    fireAudioSource: {fileID: 0}
   - spawnPoint: {fileID: 0}
     firePrefab: {fileID: 8357041032763676828, guid: eb107d8ff6d520241bf9f7943d71165a, type: 3}
     ovenController: {fileID: 0}
     heatZone: {fileID: 0}
+    firePool: {fileID: 0}
     heatingTime: 0
-    maxHeatingTime: 0
+    maxHeatingTime: 1000
     activeFire: {fileID: 0}
-  checkInterval: 5
+    fireAudioSource: {fileID: 0}
+  checkInterval: 1
+  maxSimultaneousFires: 3
+  enableRandomFires: 1
+  randomFireInterval: 60
+  randomFireChance: 0
+  chanceIncreaseRate: 0.01
+  intervalDecreaseRate: 1
+  minimumFireInterval: 10
+  maxRandomFireChance: 0.5
