@@ -12044,6 +12044,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 288535931057059109, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2413700176183677798, guid: 17a614b84ef6fb343a2583ac80413164, type: 3}
+    - target: {fileID: 288535931057059109, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_IsTrackedAction.m_Action.m_Flags
       value: -1
       objectReference: {fileID: 0}
@@ -12056,9 +12060,17 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1537862773210423133, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2413700176183677798, guid: 17a614b84ef6fb343a2583ac80413164, type: 3}
+    - target: {fileID: 1537862773210423133, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_ActivateAction.m_Reference
       value: 
       objectReference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 1740186416804211471, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2413700176183677798, guid: 266ff732979f28446af3e96a95b7792c, type: 3}
     - target: {fileID: 2496287370795149443, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_TagString
       value: Hand
@@ -12151,6 +12163,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8164306826780099223, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2413700176183677798, guid: 266ff732979f28446af3e96a95b7792c, type: 3}
     - target: {fileID: 8202822525734557615, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_Enabled
       value: 0
