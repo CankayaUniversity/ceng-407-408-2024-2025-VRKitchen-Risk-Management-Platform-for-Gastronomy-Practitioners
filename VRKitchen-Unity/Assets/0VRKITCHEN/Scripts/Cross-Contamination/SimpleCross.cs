@@ -7,6 +7,7 @@ public class SimpleCross : MonoBehaviour
     public List<GameObject> touchingItems = new List<GameObject>();
     public bool isContamination;
 
+
     public UnityToAPI toAPI;
 
     private bool hasSentContaminationQuery = false;
@@ -15,6 +16,12 @@ public class SimpleCross : MonoBehaviour
     public VisualFeedbackController visualFeedback;
     public Transform contaminationMarkerTransform;
 
+    private ChefMovement chefMovement; // ✅ Added reference
+
+    private void Start()
+    {
+        chefMovement = FindObjectOfType<ChefMovement>(); // ✅ Assign chef
+    }
     private void Update()
     {
         CleanDestroyedItems();
@@ -88,6 +95,12 @@ public class SimpleCross : MonoBehaviour
             hasSentContaminationQuery = true;
         }
 
+        if (chefMovement != null)
+        {
+            chefMovement.GoToHazard(); // ✅ Trigger chef movement
+        }
+
+
         isContamination = true;
         yield break;
     }
@@ -100,19 +113,25 @@ public class SimpleCross : MonoBehaviour
         toAPI.SubmitQuery();
         Debug.Log(toAPI.queryText);
     }
-    
-        public void ResetContamination()
+
+    public void ResetContamination()
+    {
+        isContamination = false;
+        hasSentContaminationQuery = false;
+        contaminationCoroutineRunning = false;
+
+        if (visualFeedback != null)
         {
-            isContamination = false;
-            hasSentContaminationQuery = false;
-            contaminationCoroutineRunning = false;
-
-            if (visualFeedback != null)
-            {
-                visualFeedback.HideExclamation();
-            }
-
-            Debug.Log("Board contamination manually cleared.");
+            visualFeedback.HideExclamation();
         }
+
+        if (chefMovement != null)
+        {
+            chefMovement.ReturnToStart(); // ✅ Return the chef
+        }
+
+
+        Debug.Log("Board contamination manually cleared.");
+    }
 
 }

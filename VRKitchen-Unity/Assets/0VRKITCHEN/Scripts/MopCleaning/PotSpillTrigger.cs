@@ -7,16 +7,16 @@ public class PotSpillTrigger : MonoBehaviour
     public GameObject spillPrefab;
     public GameObject particleEffectPrefab;
     public Transform spillPoint; // Centered under the pot
-    public float tiltDotThreshold = 0.4f; // Dot threshold instead of angle
+    public float tiltDotThreshold = 0.4f;
 
     [Header("Water Mesh Reference")]
-    public GameObject potWaterObject; // Assign your animated water mesh (e.g. potwater)
+    public GameObject potWaterObject;
 
     private Animation waterAnimation;
     private bool hasSpilled = false;
     private float animationActiveTime = 0f;
 
-    public UnityToAPI toAPI; // Drag your UnityToAPI object in the inspector
+    public UnityToAPI toAPI;
 
     void Start()
     {
@@ -75,27 +75,31 @@ public class PotSpillTrigger : MonoBehaviour
             Debug.Log("[SpillTrigger] Spawning splash at: " + floorPos);
             GameObject splash = Instantiate(particleEffectPrefab, floorPos, Quaternion.identity);
             Destroy(splash, 2f);
-
-            // Play water splash sound
             AudioController.Instance.PlayWaterSplashSound();
-        }
-        else
-        {
-            Debug.LogWarning("[SpillTrigger] No particle effect prefab assigned.");
         }
 
         yield return new WaitForSeconds(1f);
 
         if (spillPrefab != null)
         {
-            Debug.Log("[SpillTrigger] Spawning puddle at: " + floorPos);
-            GameObject puddle = Instantiate(spillPrefab, floorPos, Quaternion.Euler(90f, 0f, 0f));
-            puddle.transform.localScale = new Vector3(1f, 1f, 1f); // Adjust scale if needed
+            // Spawn puddles
+            GameObject puddle1 = Instantiate(spillPrefab, floorPos, Quaternion.Euler(90f, 0f, 0f));
+            puddle1.transform.localScale = new Vector3(1f, 1f, 1f);
 
-            // Slightly offset second puddle
-            Vector3 offset = new Vector3(0.2f, 0f, 0.2f); // You can adjust the offset as needed
-            GameObject puddle2 = Instantiate(spillPrefab, floorPos + offset, Quaternion.Euler(90f, 0f, 0f));
+            GameObject puddle2 = Instantiate(spillPrefab, floorPos + new Vector3(0.2f, 0f, 0.2f), Quaternion.Euler(90f, 0f, 0f));
             puddle2.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            // Assign chef to both puddles
+            ChefMovement chef = FindObjectOfType<ChefMovement>();
+            if (chef != null)
+            {
+                AssignChefToSpill(puddle1, chef);
+                AssignChefToSpill(puddle2, chef);
+
+                // Tell chef to approach spill
+                Vector3 approachPoint = floorPos + new Vector3(0.5f, 0f, 0.5f);
+                chef.GoToLocation(approachPoint);
+            }
         }
         else
         {
@@ -105,28 +109,32 @@ public class PotSpillTrigger : MonoBehaviour
         if (potWaterObject != null)
         {
             potWaterObject.SetActive(false);
-            Debug.Log("[SpillTrigger] 🚫 Water hidden (SetActive false).");
+            Debug.Log("[SpillTrigger] 🚫 Water hidden.");
         }
 
         if (toAPI != null)
         {
-            Debug.Log("[SpillTrigger] Sending RAG query: Water spill happened.");
             toAPI.queryText = "Water spill happened. What should I do?";
             toAPI.SubmitQuery();
-        }
-        else
-        {
-            Debug.LogWarning("[SpillTrigger] ⚠ UnityToAPI reference not set.");
+            Debug.Log("[SpillTrigger] RAG query sent for spill.");
         }
 
-        // ✅ Reset the fill state by calling the WaterFillTrigger on a child (e.g., PanBottom)
         WaterFillTrigger fillTrigger = GetComponentInChildren<WaterFillTrigger>();
         if (fillTrigger != null)
         {
             fillTrigger.ResetState();
-            Debug.Log("[SpillTrigger] WaterFillTrigger reset after spill.");
+            Debug.Log("[SpillTrigger] WaterFillTrigger reset.");
         }
 
         hasSpilled = false;
+    }
+
+    void AssignChefToSpill(GameObject puddle, ChefMovement chef)
+    {
+        CleanableSpill cs = puddle.GetComponent<CleanableSpill>();
+        if (cs != null)
+        {
+            cs.chefMovement = chef;
+        }
     }
 }
