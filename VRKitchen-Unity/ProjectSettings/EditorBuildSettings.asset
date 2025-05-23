@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/0VRKITCHEN/Scenes/Menu UI Scenes/MainMenu.unity
     guid: 1276a5347271c8645b4cf369544f2930
   - enabled: 1
-    path: Assets/0VRKITCHEN/Scenes/Simal_Final_Scene.unity
+    path: Assets/0VRKITCHEN/Scenes/SIMALBACKUP.unity
     guid: 247ef500512ceef4ca4477619f396def
   - enabled: 1
     path: Assets/0VRKITCHEN/Scenes/VRInteractions.unity
