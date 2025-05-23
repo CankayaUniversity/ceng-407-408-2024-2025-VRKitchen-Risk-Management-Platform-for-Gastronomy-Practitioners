@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657886, g: 0.49641275, b: 0.5748176, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -157,15 +157,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5644751037839146994, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.797
+      value: 1.44
       objectReference: {fileID: 0}
     - target: {fileID: 5644751037839146994, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.146
+      value: 2.15
       objectReference: {fileID: 0}
     - target: {fileID: 5644751037839146994, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.003
+      value: -1.11
       objectReference: {fileID: 0}
     - target: {fileID: 5644751037839146994, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
       propertyPath: m_LocalRotation.w
@@ -222,6 +222,10 @@ PrefabInstance:
     - target: {fileID: 5919004569475412048, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
       propertyPath: m_Center.z
       value: 0.0014300392
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919004569475412048, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5945316552283578447, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
       propertyPath: m_IsActive
@@ -286,6 +290,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4980417713887978824, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1997427991}
+    - targetCorrespondingSourceObject: {fileID: 4980417713887978824, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1997427999}
   m_SourcePrefab: {fileID: 100100000, guid: bcc219aafa3f639449309d71e2a24801, type: 3}
 --- !u!4 &11056748 stripped
 Transform:
@@ -1212,7 +1219,7 @@ Transform:
   m_GameObject: {fileID: 214566615}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.000231, y: -0.0001, z: 0.00111}
+  m_LocalPosition: {x: -0.000231, y: -0.0001, z: 0.000978}
   m_LocalScale: {x: 0.0006937381, y: 0.0034025335, z: 0.0043955827}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1289,7 +1296,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2851,19 +2858,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1069653495888776827, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0085
+      value: 0.0088
       objectReference: {fileID: 0}
     - target: {fileID: 1069653495888776827, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.00043
+      value: 0.00073
       objectReference: {fileID: 0}
     - target: {fileID: 1290759340001438882, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1585096858}
     - target: {fileID: 2160403017129519784, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
+      propertyPath: m_Size.y
+      value: 0.0075551663
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160403017129519784, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_Size.z
-      value: 0.001439678
+      value: 0.0014396781
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160403017129519784, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0002969037
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160403017129519784, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
+      propertyPath: m_Center.y
+      value: -0.0037109584
       objectReference: {fileID: 0}
     - target: {fileID: 2160403017129519784, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_Center.z
@@ -2875,23 +2894,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3360536127669747755, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00353
+      value: 0.00388
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360536127669747755, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00499
       objectReference: {fileID: 0}
     - target: {fileID: 3360536127669747755, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.00052
+      value: 0.00089
       objectReference: {fileID: 0}
     - target: {fileID: 4183686596184208908, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00323
+      value: -0.0037
       objectReference: {fileID: 0}
     - target: {fileID: 4183686596184208908, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00538
+      value: 0.00542
       objectReference: {fileID: 0}
     - target: {fileID: 4183686596184208908, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0004
+      value: 0.00088
       objectReference: {fileID: 0}
     - target: {fileID: 4274163352001745763, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2899,11 +2922,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4274163352001745763, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00192
+      value: 0.00162
       objectReference: {fileID: 0}
     - target: {fileID: 4274163352001745763, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.00055
+      value: 0.00092
       objectReference: {fileID: 0}
     - target: {fileID: 4841225912855204964, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_Layer
@@ -2925,17 +2948,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7703436010425328174, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
+      propertyPath: heatingTemperature
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 7837041105123913592, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.719
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 7837041105123913592, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.692
+      value: 2.15
       objectReference: {fileID: 0}
     - target: {fileID: 7837041105123913592, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.864
+      value: -0.57
       objectReference: {fileID: 0}
     - target: {fileID: 7837041105123913592, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7740,15 +7767,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6479117864872983157, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.498
+      value: 1.69
       objectReference: {fileID: 0}
     - target: {fileID: 6479117864872983157, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.572
+      value: 2.57
       objectReference: {fileID: 0}
     - target: {fileID: 6479117864872983157, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.449
+      value: -6.076
       objectReference: {fileID: 0}
     - target: {fileID: 6479117864872983157, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7785,6 +7812,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5954220443531763919, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1361934070}
+    - targetCorrespondingSourceObject: {fileID: 5954220443531763919, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1361934071}
   m_SourcePrefab: {fileID: 100100000, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
 --- !u!1 &1208348695
 GameObject:
@@ -8430,6 +8460,30 @@ CapsuleCollider:
   m_Height: 0.0021186206
   m_Direction: 1
   m_Center: {x: -0.00002178541, y: -5.820765e-11, z: 0.00044855723}
+--- !u!114 &1361934071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361934069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c58f5becc70944b58859309e1522780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodData: {fileID: 11400000, guid: a56b1fd022d8e4ef4b46f37f57dee566, type: 2}
+  currentState: 0
+  temperature: 0
+  rawMaterial: {fileID: 0}
+  cookedMaterial: {fileID: 0}
+  toAPI: {fileID: 0}
+  optimalSalt: 5
+  maxSalt: 8
+  optimalPepper: 3
+  maxPepper: 6
+  optimalOil: 2
+  maxOil: 4
 --- !u!1001 &1386266072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9182,6 +9236,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 71852576}
     m_Modifications:
+    - target: {fileID: 90288323707371101, guid: 5fa49122e308c204883ad1d271648008, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00447
+      objectReference: {fileID: 0}
+    - target: {fileID: 90288323707371101, guid: 5fa49122e308c204883ad1d271648008, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01816
+      objectReference: {fileID: 0}
     - target: {fileID: 2045779488552439779, guid: 5fa49122e308c204883ad1d271648008, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -9190,6 +9252,10 @@ PrefabInstance:
       propertyPath: toAPI
       value: 
       objectReference: {fileID: 708674425}
+    - target: {fileID: 7706073158208508811, guid: 5fa49122e308c204883ad1d271648008, type: 3}
+      propertyPath: isZoneOn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8373520284943420380, guid: 5fa49122e308c204883ad1d271648008, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.3650002
@@ -14471,6 +14537,20 @@ MonoBehaviour:
   tiltDotThreshold: 0.4
   potWaterObject: {fileID: 1349432711}
   toAPI: {fileID: 708674425}
+--- !u!114 &1997427999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997427980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3c360a1429b2f40871ea1ef810cafc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heatingTemperature: 0.05
+  foodItems: []
 --- !u!1 &2002169990
 GameObject:
   m_ObjectHideFlags: 0
@@ -15817,7 +15897,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853075}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[0].maxHeatingTime
-      value: 10000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[0].ovenController
@@ -15825,7 +15905,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[1].maxHeatingTime
-      value: 1000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[1].ovenController
@@ -15833,7 +15913,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[2].maxHeatingTime
-      value: 1000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[2].ovenController
@@ -15841,7 +15921,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[3].maxHeatingTime
-      value: 1000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[3].ovenController
@@ -15849,7 +15929,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[4].maxHeatingTime
-      value: 1000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[4].ovenController
@@ -15857,7 +15937,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[5].maxHeatingTime
-      value: 1000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[5].ovenController
@@ -15865,7 +15945,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[6].maxHeatingTime
-      value: 1000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[6].ovenController
@@ -15873,7 +15953,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[7].maxHeatingTime
-      value: 1000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[7].ovenController

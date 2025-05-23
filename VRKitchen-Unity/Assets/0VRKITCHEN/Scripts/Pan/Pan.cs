@@ -6,7 +6,7 @@ public class Pan : MonoBehaviour
     public float heatingTemperature = 0.05f;
     public List<FoodInstance> foodItems = new List<FoodInstance>();
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Food"))
         {
@@ -14,23 +14,11 @@ public class Pan : MonoBehaviour
             if (food != null && !foodItems.Contains(food))
             {
                 foodItems.Add(food);
-                //Debug.Log($"[Zone] {food.name} added via OnCollisionStay.");
+                
             }
         }
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Food"))
-        {
-            FoodInstance food = collision.gameObject.GetComponent<FoodInstance>();
-            if (food != null && foodItems.Contains(food))
-            {
-                foodItems.Remove(food);
-                //Debug.Log($"[Zone] {food.name} removed via OnCollisionExit.");
-            }
-        }
-    }
 
     public void HeatPan(float amount)
     {
