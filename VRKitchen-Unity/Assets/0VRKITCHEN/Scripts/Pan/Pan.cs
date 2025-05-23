@@ -24,7 +24,7 @@ public class Pan : MonoBehaviour
     {
         foreach (var food in foodItems)
         {
-            food.HeatFood(amount);
+            food.HeatFood(0.05f);
         }
     }
 }

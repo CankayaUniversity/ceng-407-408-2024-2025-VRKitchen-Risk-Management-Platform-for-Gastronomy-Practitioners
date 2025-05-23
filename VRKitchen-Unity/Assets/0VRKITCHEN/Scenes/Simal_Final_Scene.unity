@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2970,7 +2970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7837041105123913592, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.058
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 7837041105123913592, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2978,7 +2978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7837041105123913592, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.249
+      value: -1.52
       objectReference: {fileID: 0}
     - target: {fileID: 7837041105123913592, guid: 80d7f950afed747498b29f18f10dc471, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7215,7 +7215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3c360a1429b2f40871ea1ef810cafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heatingTemperature: 0.05
+  heatingTemperature: 0.0005
   foodItems: []
 --- !u!1 &1031916526
 GameObject:
@@ -7814,15 +7814,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6479117864872983157, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.869
+      value: 4.93
       objectReference: {fileID: 0}
     - target: {fileID: 6479117864872983157, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.007
+      value: 2.149
       objectReference: {fileID: 0}
     - target: {fileID: 6479117864872983157, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.71
+      value: -5.644
       objectReference: {fileID: 0}
     - target: {fileID: 6479117864872983157, guid: c4a2689971c55204cbb717083562ce0b, type: 3}
       propertyPath: m_LocalRotation.w
