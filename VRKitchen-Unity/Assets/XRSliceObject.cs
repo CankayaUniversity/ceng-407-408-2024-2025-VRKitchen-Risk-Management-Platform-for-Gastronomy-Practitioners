@@ -94,6 +94,7 @@ public class XRSliceObject : MonoBehaviour
             grab.throwAngularVelocityScale = originalGrab.throwAngularVelocityScale;
         }
 
+        slicedPart.tag = original.tag;
         slicedPart.layer = original.layer;
     }
 }
