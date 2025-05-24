@@ -1,18 +1,27 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class FoodPlacementZone : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        FoodInstance food = collision.gameObject.GetComponent<FoodInstance>();
-        if (food != null && food.foodData != null)
+        FoodInstance cookableFood = collision.gameObject.GetComponent<FoodInstance>();
+        NonCookableFoodInstance nonCookableFood = collision.gameObject.GetComponent<NonCookableFoodInstance>();
+
+        string zoneName = gameObject.name.ToLower().Replace("(clone)", "").Trim();
+        string action = "";
+
+        if (cookableFood != null && cookableFood.foodData != null)
         {
-            string zoneName = gameObject.name.ToLower().Replace("(clone)", "").Trim();
-            string action = $"I placed the {food.currentState} {food.foodData.foodName.ToLower()} on the {zoneName}.What now?";
-
+            action = $"I placed the {cookableFood.currentState.ToString().ToLower()} {cookableFood.foodData.foodName.ToLower()} on the {zoneName}. What now?";
+        }
+        else if (nonCookableFood != null && nonCookableFood.foodData != null)
+        {
+            action = $"I placed the {nonCookableFood.foodData.foodName.ToLower()} on the {zoneName}. What now?";
+        }
+        
+        if (!string.IsNullOrEmpty(action))
+        {
             Debug.Log(action);
-
             GameActionManager manager = FindObjectOfType<GameActionManager>();
             if (manager != null)
             {
@@ -20,4 +29,5 @@ public class FoodPlacementZone : MonoBehaviour
             }
         }
     }
+
 }
