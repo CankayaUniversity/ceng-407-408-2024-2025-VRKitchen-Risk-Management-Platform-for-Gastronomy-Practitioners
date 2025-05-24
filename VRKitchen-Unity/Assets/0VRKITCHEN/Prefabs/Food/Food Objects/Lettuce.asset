@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodName: Lettuce
   foodImage: {fileID: 0}
-  foodPrefab: {fileID: 438730324684949759, guid: a0d8f39709b504406aa79ec9fafd1d9c, type: 3}
+  foodPrefab: {fileID: 2804968350349622921, guid: a0d8f39709b504406aa79ec9fafd1d9c, type: 3}
   calories: 0
   isHazardous: 0
   foodCategory: 

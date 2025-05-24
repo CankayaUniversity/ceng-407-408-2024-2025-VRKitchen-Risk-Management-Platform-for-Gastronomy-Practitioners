@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodName: Hamburger Bread Bottom
   foodImage: {fileID: 0}
-  foodPrefab: {fileID: 1325716889873655095, guid: 9e127a527fc7c4c879b85b7c3be9217c, type: 3}
+  foodPrefab: {fileID: 3071491579220851691, guid: 4029b89b51b1c412dbb45af7eb5e8d17, type: 3}
   calories: 0
   isHazardous: 0
   foodCategory: 

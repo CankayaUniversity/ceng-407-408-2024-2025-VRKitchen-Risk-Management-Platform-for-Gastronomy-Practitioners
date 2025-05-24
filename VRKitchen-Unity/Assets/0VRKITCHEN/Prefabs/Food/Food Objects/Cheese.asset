@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodName: Cheese
   foodImage: {fileID: 0}
-  foodPrefab: {fileID: 8150334156787222130, guid: ee3e3b407000841259ce01b35503539f, type: 3}
+  foodPrefab: {fileID: 9102218477403144299, guid: ee3e3b407000841259ce01b35503539f, type: 3}
   calories: 0
   isHazardous: 0
   foodCategory: 

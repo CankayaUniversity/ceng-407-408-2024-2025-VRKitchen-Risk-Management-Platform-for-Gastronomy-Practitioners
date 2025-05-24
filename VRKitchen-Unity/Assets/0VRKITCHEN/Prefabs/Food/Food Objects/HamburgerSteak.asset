@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodName: Hamburger Patty
   foodImage: {fileID: 0}
-  foodPrefab: {fileID: 6360975216953774807, guid: da47f3500b67b45209f589a477f08172, type: 3}
+  foodPrefab: {fileID: 5466492385877023242, guid: 2751207c1053d440ebc3aa9fa6cf2ee2, type: 3}
   calories: 0
   isHazardous: 0
   foodCategory: 

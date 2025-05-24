@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodName: Tomato
   foodImage: {fileID: 0}
-  foodPrefab: {fileID: 5016149187090504973, guid: 55c0b05259c4440439d58dae2a0ce612, type: 3}
+  foodPrefab: {fileID: 2045710000299420417, guid: 55c0b05259c4440439d58dae2a0ce612, type: 3}
   calories: 0
   isHazardous: 0
   foodCategory: 

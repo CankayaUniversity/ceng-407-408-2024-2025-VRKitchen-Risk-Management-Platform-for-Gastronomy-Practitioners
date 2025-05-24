@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodName: Onion
   foodImage: {fileID: 0}
-  foodPrefab: {fileID: 173347079773417916, guid: b21225803b7df40ffb6da2534b009970, type: 3}
+  foodPrefab: {fileID: 1426114359773244148, guid: b21225803b7df40ffb6da2534b009970, type: 3}
   calories: 0
   isHazardous: 0
   foodCategory: 

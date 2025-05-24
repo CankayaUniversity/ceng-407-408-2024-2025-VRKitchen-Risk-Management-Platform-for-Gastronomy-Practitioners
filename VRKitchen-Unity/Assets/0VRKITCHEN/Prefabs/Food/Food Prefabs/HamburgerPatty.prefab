@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1325716889873655095
+--- !u!1 &1192857500851583490
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,52 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4409391055460353131}
-  - component: {fileID: 3279909280201966214}
-  - component: {fileID: 7069071210808127076}
-  - component: {fileID: -2765842755855862153}
-  - component: {fileID: 3702053348315230379}
-  - component: {fileID: -4179219701403562123}
-  - component: {fileID: -4623707676737639060}
-  - component: {fileID: -4993986639422345383}
-  - component: {fileID: -2160969339031400882}
+  - component: {fileID: 4175541017086980021}
+  - component: {fileID: 7202386989283482008}
+  - component: {fileID: 2521745184392457551}
   m_Layer: 0
-  m_Name: HamburgerBread_Bottom
+  m_Name: Hamburger Patty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4409391055460353131
+--- !u!4 &4175541017086980021
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325716889873655095}
+  m_GameObject: {fileID: 1192857500851583490}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.0027260475, y: 0.29724073, z: 2.69}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 27.1, y: 27.1, z: 27.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 8925845739728479680}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3279909280201966214
+--- !u!33 &7202386989283482008
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325716889873655095}
-  m_Mesh: {fileID: -3796887150266652070, guid: dd30fff45b34c45a5bcf48ea513c8943, type: 3}
---- !u!23 &7069071210808127076
+  m_GameObject: {fileID: 1192857500851583490}
+  m_Mesh: {fileID: 2319277249877315697, guid: dd30fff45b34c45a5bcf48ea513c8943, type: 3}
+--- !u!23 &2521745184392457551
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325716889873655095}
+  m_GameObject: {fileID: 1192857500851583490}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -89,53 +83,107 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-2765842755855862153
+--- !u!1 &5466492385877023242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8925845739728479680}
+  - component: {fileID: 7088969814698851987}
+  - component: {fileID: 335961211643768896}
+  - component: {fileID: -364682140280725496}
+  - component: {fileID: 9107686392053570063}
+  - component: {fileID: 1233686264037023110}
+  m_Layer: 0
+  m_Name: HamburgerPatty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8925845739728479680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466492385877023242}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2, y: 2.49, z: 1.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4175541017086980021}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7088969814698851987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325716889873655095}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce5333f120f03a24caa43f8903663606, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  temperature: 0
-  cookedThreshold: 50
-  overcookedThreshold: 100
---- !u!114 &3702053348315230379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325716889873655095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b3dd7bcba264436bedb50c2899d0eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foodData: {fileID: 11400000, guid: 87b1e4ff2555647ad828d147d1008d3d, type: 2}
---- !u!114 &-4179219701403562123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325716889873655095}
+  m_GameObject: {fileID: 5466492385877023242}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4e13dbe9838845d996cc15bcc569358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &-4623707676737639060
+--- !u!114 &335961211643768896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466492385877023242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c58f5becc70944b58859309e1522780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodData: {fileID: 11400000, guid: 63d24d94efeed4b3c8cb30f72aa85a58, type: 2}
+  currentState: 0
+  temperature: 0
+  rawMaterial: {fileID: 2100000, guid: f1ae0786d2ee54a09ab74079b7bf1afe, type: 2}
+  cookedMaterial: {fileID: 2100000, guid: f1ae0786d2ee54a09ab74079b7bf1afe, type: 2}
+  toAPI: {fileID: 315764526617685752, guid: 54b20fec541d4544e846bfbcd43dfe97, type: 3}
+  optimalSalt: 5
+  maxSalt: 8
+  optimalPepper: 3
+  maxPepper: 6
+  optimalOil: 2
+  maxOil: 4
+--- !u!65 &-364682140280725496
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466492385877023242}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.75500524, y: 0.13469267, z: 1}
+  m_Center: {x: -0.00015002489, y: -0.010719299, z: 0}
+--- !u!54 &9107686392053570063
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325716889873655095}
+  m_GameObject: {fileID: 5466492385877023242}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -156,34 +204,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &-4993986639422345383
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325716889873655095}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.031853523, y: 0.032254793, z: 0.0074626277}
-  m_Center: {x: 0.00003606826, y: -0.0000000149011585, z: -0.00096010504}
---- !u!114 &-2160969339031400882
+--- !u!114 &1233686264037023110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325716889873655095}
+  m_GameObject: {fileID: 5466492385877023242}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
