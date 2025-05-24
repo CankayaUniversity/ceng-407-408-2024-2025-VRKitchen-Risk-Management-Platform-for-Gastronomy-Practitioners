@@ -2673,11 +2673,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 426100863}
   m_SourcePrefab: {fileID: 100100000, guid: 3ed913aeb09c73448bcbf3f49314b3b0, type: 3}
---- !u!4 &426100857 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3ed913aeb09c73448bcbf3f49314b3b0, type: 3}
-  m_PrefabInstance: {fileID: 426100856}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &426100858 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ed913aeb09c73448bcbf3f49314b3b0, type: 3}
@@ -2835,7 +2830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hazardTarget: {fileID: 1897089831}
-  returnPoint: {fileID: 426100857}
+  returnPoint: {fileID: 1525323268}
   animator: {fileID: 426100859}
   firePoint: {fileID: 1539629210}
 --- !u!1001 &436782669

@@ -13,7 +13,7 @@ public class RecipeSelector : MonoBehaviour
     public InputActionReference SelectDown;
     public InputActionReference ToggleAndConfirm;
 
-    private string[] recipes = { "Steak and Potatoes", "Chicken and Potatoes", "Hamburger" };
+    private string[] recipes = {"Steak and Potatoes", "Chicken and Potatoes", "Hamburger" };
     private int currentIndex = 0;
     private float inputCooldown = 0.3f;
     private float lastInputTime = 0f;
