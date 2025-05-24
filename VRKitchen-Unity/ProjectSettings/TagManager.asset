@@ -39,7 +39,7 @@ TagManager:
   - CharacterOutline
   - Walkable
   - 
-  - 
+  - PostProcessing
   - 
   - 
   - ItemRendering
