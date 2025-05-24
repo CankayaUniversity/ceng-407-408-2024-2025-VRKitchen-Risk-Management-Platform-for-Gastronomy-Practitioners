@@ -15,6 +15,10 @@ public class TextToSpeech : MonoBehaviour
     [SerializeField] private AudioSource avatarAudioSource;
     [SerializeField] private Button stopButton;
     [SerializeField] private ChefPatrol chefPatrol; // Reference to character's animation controller
+    public System.Action onSpeechComplete;
+
+
+    //private readonly string welcomeMessage = "Welcome to VR: Kitchen Introduction In The Game. Hello. I am your virtual assistant, here to support you throughout your cooking experience. During your time in the kitchen, you may encounter certain risks such as fire hazards, burnt food, or sanitation issues. If you prefer, I can provide a brief overview of these potential hazards and explain how to address them effectively before we begin. This short tutorial may help you navigate the kitchen more confidently and efficiently. Alternatively, if you would rather proceed directly and learn through hands-on experience, we can begin right away. Please indicate whether you would like the risk management overview or wish to start cooking immediately. In the event of a fire, which may occur if the stove is left on without supervision, the player must quickly locate the fire extinguisher, aim at the flames, and spray using a sweeping motion to extinguish the fire safely. If food becomes burnt during the cooking process, it should be discarded immediately, and the player must clean the pan thoroughly with soap and a sponge, rinse and dry it, and then restart the cooking procedure with fresh ingredients. Cross-contamination happens when different raw meats are placed on the same cutting board. To resolve this, the contaminated food should be thrown away, the cutting board must be cleaned with a sponge and water, and the player should wash their hands before continuing. In the case of a water spill on the kitchen floor, the player needs to use a mop to clean the area to prevent slipping hazards and maintain a safe working environment.";
 
     private void Start()
     {
@@ -25,6 +29,9 @@ public class TextToSpeech : MonoBehaviour
         }
 
         stopButton.onClick.AddListener(StopSpeaking);
+
+        // 🔊 Speak the welcome message on start
+        //Speak(welcomeMessage);
     }
 
     public async void Speak(string text)
@@ -72,8 +79,17 @@ public class TextToSpeech : MonoBehaviour
 
             // 🕒 Stop talking after clip ends
             StartCoroutine(StopTalkingAfter(clip.length));
+            StartCoroutine(FireCallbackAfter(clip.length));
+
         }
     }
+
+    private IEnumerator FireCallbackAfter(float delay)
+{
+    yield return new WaitForSeconds(delay);
+    onSpeechComplete?.Invoke(); // Call back to whoever is listening
+}
+
 
     private IEnumerator StopTalkingAfter(float delay)
     {

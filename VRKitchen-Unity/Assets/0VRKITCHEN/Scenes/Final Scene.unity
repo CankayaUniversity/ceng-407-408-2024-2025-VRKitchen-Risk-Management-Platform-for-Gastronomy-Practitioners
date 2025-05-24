@@ -4951,11 +4951,11 @@ PrefabInstance:
     - target: {fileID: 3613230465055452165, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
       propertyPath: audioSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2026003504}
     - target: {fileID: 3613230465055452165, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
       propertyPath: avatarAudioSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2026003504}
     - target: {fileID: 4770666379794277523, guid: 13857ac154b655a479dde3012b1f4867, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -12520,7 +12520,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1964838095100366845, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5759023290510550228, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_Enabled
@@ -16206,6 +16206,7 @@ MonoBehaviour:
   clipBoard: {fileID: 953741451}
   recipeListText: {fileID: 1618794441}
   unityToAPI: {fileID: 708674425}
+  textToSpeech: {fileID: 708674429}
   SelectUp: {fileID: 2980315316864245202, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   SelectDown: {fileID: 2855161651175683556, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   ToggleAndConfirm: {fileID: -5186639160721769682, guid: c348712bda248c246b8c49b3db54643f, type: 3}
