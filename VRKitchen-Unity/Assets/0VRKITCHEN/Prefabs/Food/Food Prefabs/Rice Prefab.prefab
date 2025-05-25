@@ -85,12 +85,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodData: {fileID: 11400000, guid: 07874ebf90e2942ef93bf2065ff46ba7, type: 2}
-  currentState: 2
+  currentState: 0
   temperature: 0
   rawMaterial: {fileID: 0}
   cookedMaterial: {fileID: 5863650252929523565, guid: 9e683df2297d98a46937bd01f4f33ad5, type: 3}
-  overcookedMaterial: {fileID: 0}
-  burntMaterial: {fileID: 0}
   toAPI: {fileID: 315764526617685752, guid: 54b20fec541d4544e846bfbcd43dfe97, type: 3}
 --- !u!114 &-4176182188465941889
 MonoBehaviour:

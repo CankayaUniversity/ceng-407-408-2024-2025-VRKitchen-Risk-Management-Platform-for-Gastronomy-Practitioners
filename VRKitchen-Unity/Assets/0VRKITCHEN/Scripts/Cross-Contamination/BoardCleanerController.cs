@@ -22,10 +22,11 @@ public class BoardCleanerController : MonoBehaviour
 
             if (scrubTimer >= scrubDuration)
             {
-                if (crossController != null && crossController.isContamination)
+                if (crossController != null)
                 {
+                                    Debug.Log("nulll.");
+
                     crossController.ResetContamination();
-                    visualFeedback?.HideExclamation();
                 }
 
                 scrubTimer = 0f;
@@ -34,7 +35,7 @@ public class BoardCleanerController : MonoBehaviour
 
                 if (!hasSentQuery && toAPI != null)
                 {
-                    toAPI.queryText = "The contaminated board has been cleaned. What is the next step in the game to handle cross contamination? Provide only the next in-game step.";
+                    toAPI.queryText = RagCommands.CleanTheBoard; // bura
                     toAPI.SubmitQuery();
                     hasSentQuery = true;
                 }

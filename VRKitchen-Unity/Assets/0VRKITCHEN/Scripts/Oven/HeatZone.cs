@@ -10,9 +10,7 @@ public class HeatZone : MonoBehaviour
 
     public void ToggleZone()
     {
-        
-
-            isZoneOn = !isZoneOn;
+        isZoneOn = !isZoneOn;
         
         Debug.Log($"{gameObject.name} HeatZone is {(isZoneOn ? "ON" : "OFF")}");
 
@@ -27,12 +25,16 @@ public class HeatZone : MonoBehaviour
     {
         if (isZoneOn)
         {
-            burnerFireParticles.SetActive(true);
+            if (burnerFireParticles != null)
+                burnerFireParticles.SetActive(true);
+
             HeatObject(currentPan);
-            
         }
         else
-            burnerFireParticles.SetActive(false);
+        {
+            if (burnerFireParticles != null)
+                burnerFireParticles.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -40,6 +42,7 @@ public class HeatZone : MonoBehaviour
         if (collision.gameObject.CompareTag("Pan"))
         {
             currentPan = collision.gameObject;
+            Debug.Log("AAAAAAAAAAAAA");
         }
     }
 
@@ -53,10 +56,12 @@ public class HeatZone : MonoBehaviour
 
     public void HeatObject(GameObject obj)
     {
+        if (obj == null) return;
+
         Pan pan = obj.GetComponent<Pan>();
         if (pan != null)
         {
-            pan.Heat(10);
+            pan.HeatPan(10f * Time.deltaTime); 
         }
     }
 

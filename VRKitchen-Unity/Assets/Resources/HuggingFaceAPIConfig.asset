@@ -18,7 +18,7 @@ MonoBehaviour:
   _maxTimeout: 3
   _taskEndpoints:
   - taskName: AutomaticSpeechRecognition
-    endpoint: https://api-inference.huggingface.co/models/openai/whisper-tiny
+    endpoint: 'https://api-inference.huggingface.co/models/openai/whisper-large-v3 '
   - taskName: Conversation
     endpoint: https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill
   - taskName: QuestionAnswering

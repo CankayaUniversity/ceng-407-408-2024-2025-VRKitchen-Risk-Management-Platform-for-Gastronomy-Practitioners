@@ -8,7 +8,8 @@ public class GameActionManager : MonoBehaviour
     {
         if (unityToAPI != null)
         {
-            unityToAPI.SubmitDynamicAction(playerAction);
+            unityToAPI.queryText = playerAction;
+            unityToAPI.SubmitQuery();
         }
         else
         {

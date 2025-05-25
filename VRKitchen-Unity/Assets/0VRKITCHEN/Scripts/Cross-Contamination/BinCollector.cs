@@ -14,7 +14,7 @@ public class BinCollector : MonoBehaviour
 
             if (toAPI != null && !hasSentQuery)
             {
-                toAPI.queryText = GameQueries.ThowTheMeat;
+                toAPI.queryText = RagCommands.ThrowTheContaminatedFood; // bura
                 toAPI.SubmitQuery();
                 hasSentQuery = true;
             }

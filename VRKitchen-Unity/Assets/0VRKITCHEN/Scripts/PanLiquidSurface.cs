@@ -2,38 +2,51 @@ using UnityEngine;
 
 public class PanLiquidSurface : MonoBehaviour
 {
-    public GameObject liquidQuad;         // Ýçinde su/yað efekti olacak Quad
+    public GameObject liquidQuad;         // Su/yaÄŸ yÃ¼zeyi gÃ¶sterecek quad
     public Material waterMaterial;
     public Material oilMaterial;
-
+    public UnityToAPI toAPI;
     private bool hasActivated = false;
 
     private void Start()
     {
         if (liquidQuad != null)
         {
-            liquidQuad.SetActive(false); // Baþta görünmesin
+            liquidQuad.SetActive(false);
         }
     }
 
     private void OnParticleCollision(GameObject other)
     {
+        if (hasActivated || liquidQuad == null) return;
 
-        Debug.Log("aaaaa");
-        if (other.CompareTag("WaterParticle") || other.CompareTag("Oil"))
+        if (other.CompareTag("WaterParticle"))
         {
-            liquidQuad.SetActive(true);
-            Renderer renderer = liquidQuad.GetComponent<Renderer>();
-            if (renderer != null)
-            {
-                if (other.CompareTag("WaterParticle") && waterMaterial != null)
-                    renderer.material = waterMaterial;
-
-                else if (other.CompareTag("Oil") && oilMaterial != null)
-                    renderer.material = oilMaterial;
-            }
-
-            
+            ActivateLiquid(waterMaterial);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (hasActivated || liquidQuad == null) return;
+
+        if (other.CompareTag("Oil")) // yaÄŸ objesine bu tag ver
+        {
+            toAPI.queryText = "I have put oil in frying pan in game. What now?";
+            toAPI.SubmitQuery();
+            ActivateLiquid(oilMaterial);
+        }
+    }
+
+    private void ActivateLiquid(Material mat)
+    {
+        Renderer renderer = liquidQuad.GetComponent<Renderer>();
+        if (renderer != null && mat != null)
+        {
+            renderer.material = mat;
+        }
+
+        liquidQuad.SetActive(true);
+        hasActivated = true;
     }
 }

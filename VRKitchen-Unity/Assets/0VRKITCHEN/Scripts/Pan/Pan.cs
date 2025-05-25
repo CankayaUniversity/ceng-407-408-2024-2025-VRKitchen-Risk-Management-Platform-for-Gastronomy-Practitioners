@@ -1,51 +1,30 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Pan : MonoBehaviour
 {
-    public float heatingTemperature = 10f;
+    public float heatingTemperature = 0.05f;
+    public List<FoodInstance> foodItems = new List<FoodInstance>();
 
-    private List<FoodInstance> foodItems = new List<FoodInstance>();
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (other.CompareTag("Food"))
+        if (collision.gameObject.CompareTag("Food"))
         {
-            FoodInstance food = other.GetComponent<FoodInstance>();
+            FoodInstance food = collision.gameObject.GetComponent<FoodInstance>();
             if (food != null && !foodItems.Contains(food))
             {
                 foodItems.Add(food);
-                Debug.Log("Food placed in pan: " + food.name);
-
-                // ✅ Send RAG query
-                var manager = FindObjectOfType<GameActionManager>();
-                if (manager != null && food.foodData != null)
-                {
-                    string name = food.foodData.foodName.ToLower();
-                    manager.RegisterAction($"I placed the {name} in the pan");
-                }
+                
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Food"))
-        {
-            FoodInstance food = other.GetComponent<FoodInstance>();
-            if (food != null && foodItems.Contains(food))
-            {
-                foodItems.Remove(food);
-                Debug.Log("Food removed from pan: " + food.name);
-            }
-        }
-    }
 
-    public void Heat(float amount)
+    public void HeatPan(float amount)
     {
         foreach (var food in foodItems)
         {
-            food.Heat(amount); // Applies heat directly to each FoodInstance
+            food.HeatFood(0.05f);
         }
     }
 }

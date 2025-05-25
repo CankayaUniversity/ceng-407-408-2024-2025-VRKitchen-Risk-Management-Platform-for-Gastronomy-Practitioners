@@ -23,7 +23,7 @@ public class SpongeWetnessController : MonoBehaviour
             // Trigger query to RAG for next contamination cleanup step
             if (toAPI != null && !hasSentQuery)
             {
-                toAPI.queryText = GameQueries.SpongeWetness;
+                toAPI.queryText = RagCommands.SpongeWetness; // bura
                 toAPI.SubmitQuery();
                 Debug.Log(toAPI.queryText);
                 hasSentQuery = true;

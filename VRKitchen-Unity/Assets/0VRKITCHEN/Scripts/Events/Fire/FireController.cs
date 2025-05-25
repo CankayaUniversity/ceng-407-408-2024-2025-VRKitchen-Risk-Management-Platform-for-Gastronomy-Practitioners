@@ -14,6 +14,9 @@ public class FireController : SingletonBehaviour<FireController>
         public FirePool firePool; // Reference in inspector
         public float heatingTime = 0f;        // Time heating zone is active
         public float maxHeatingTime = 600f;   // 10 minutes before fire starts
+
+        //private ChefMovement chefMovement;
+
         [HideInInspector] public GameObject activeFire; // Stores fire object
         [HideInInspector] public AudioSource fireAudioSource; // Track the fire looping sound
         
@@ -43,6 +46,8 @@ public class FireController : SingletonBehaviour<FireController>
 
     private void Start()
     {
+        //chefMovement = FindObjectOfType<ChefMovement>(); // ✅ Find the chef script
+
         StartCoroutine(CheckForFireRisk());
 
         if (enableRandomFires)
@@ -161,7 +166,7 @@ public class FireController : SingletonBehaviour<FireController>
             //Debug.Log("Fire limit reached — skipping spawn.");
             return;
         }
-        
+
         if (source.firePool == null || source.spawnPoint == null) return;
 
         source.activeFire = source.firePool.GetFire(source.spawnPoint.position);
@@ -179,7 +184,7 @@ public class FireController : SingletonBehaviour<FireController>
         {
             //Debug.Log("Fire triggered - sending query to RAG");
             toAPI.queryText = "A general fire has started in the game. What are the steps to handle this situation?";
-            
+
             toAPI.SubmitQuery();
             Debug.Log(toAPI.queryText);
         }
@@ -189,6 +194,11 @@ public class FireController : SingletonBehaviour<FireController>
             fireAlertFeedback.ShowExclamation(fireAlertMarkerTransform.position);
             //Debug.Log("Fire alert icon displayed.");
         }
+        
+        /*if (chefMovement != null)
+        {
+            chefMovement.GoToFire(); // ✅ Send chef to fire
+        }*/
     }
 
 
@@ -207,7 +217,7 @@ public class FireController : SingletonBehaviour<FireController>
                 AudioController.Instance.StopLoopingSound(source.fireAudioSource);
                 source.fireAudioSource = null;
             }
-            
+
             if (toAPI != null)
             {
                 toAPI.queryText = "I squeezed the handle and spray in a sweeping motion at the fire in the game. What now?";
@@ -216,6 +226,12 @@ public class FireController : SingletonBehaviour<FireController>
             //Debug.Log("Fire extinguished.");
 
             fireAlertFeedback?.HideExclamation();
+            
+            /*if (chefMovement != null)
+            {
+                chefMovement.ReturnToStart(); // ✅ Send her back
+            }*/
+
         }
     }
 

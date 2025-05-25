@@ -18,6 +18,9 @@ TagManager:
   - WaterParticle
   - WaterSource
   - Oil
+  - Sponge
+  - Board
+  - Hand
   layers:
   - Default
   - TransparentFX
@@ -34,9 +37,9 @@ TagManager:
   - Sliceable
   - Character
   - CharacterOutline
+  - Walkable
   - 
-  - 
-  - 
+  - PostProcessing
   - 
   - 
   - ItemRendering

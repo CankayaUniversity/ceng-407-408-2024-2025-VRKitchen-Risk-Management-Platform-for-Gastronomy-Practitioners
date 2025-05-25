@@ -52,7 +52,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7492275243852492049, guid: 412ae6c56429a974e979c1348232bc2f, type: 3}
+  - {fileID: 2100000, guid: 16a1d60b5f1c0c14b94d66f96c0020d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -763,7 +763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2413700176183677798}
   - component: {fileID: 1812278002068731576}
-  - component: {fileID: 3954572264522003678}
+  - component: {fileID: 5030971569918630239}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -797,7 +797,7 @@ Animator:
   m_GameObject: {fileID: 4441135774363951860}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 57fb36cfbd8536f41b700d6cea265219, type: 2}
+  m_Controller: {fileID: 9100000, guid: af2ab212d25f3b44abcdcec962ba24a2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -808,20 +808,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3954572264522003678
+--- !u!114 &5030971569918630239
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4441135774363951860}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e662eaffdf7e50a4aa66cb2662510bb7, type: 3}
+  m_Script: {fileID: 11500000, guid: a34c1442eec043546957be310d200f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handType: 1
-  thumbMoveSpeed: 0.1
+  handType: 5
 --- !u!1 &4644664685856577443
 GameObject:
   m_ObjectHideFlags: 0

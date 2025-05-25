@@ -6,28 +6,20 @@ public class Seasoning : MonoBehaviour
 
     private void Start()
     {
-        seasoningType = gameObject.tag; 
+        seasoningType = gameObject.tag;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Dish"))
+        if (other.CompareTag("Food"))
         {
-            Dish dish = other.GetComponent<Dish>();
-            if (dish != null)
+            FoodInstance food = other.GetComponent<FoodInstance>();
+            if (food != null)
             {
-                dish.AddSeasoning(seasoningType, 1);
-
-                // Send RAG query
-                var manager = FindObjectOfType<GameActionManager>();
-                if (manager != null)
-                {
-                    string action = $"I added {seasoningType.ToLower()} to the dish";
-                    manager.RegisterAction(action);
-                }
+                food.AddSeasoning(seasoningType, 1); 
             }
 
-            gameObject.SetActive(false);
+            gameObject.SetActive(false); // Return to pool or disable
         }
     }
 }

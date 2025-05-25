@@ -1,12 +1,10 @@
 using System.Collections;
 using System.IO;
-using HuggingFace.API;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-
 
 public class SpeechRecognitionTest : MonoBehaviour
 {
@@ -15,9 +13,7 @@ public class SpeechRecognitionTest : MonoBehaviour
     [SerializeField] private TextMeshProUGUI recognizedText; // User's speech-to-text result
     [SerializeField] private TextMeshProUGUI apiResponseText; // API-generated answer
     [SerializeField] private TextToSpeech tts; // Reference to TextToSpeech script
-
     [SerializeField] private TextMeshPro planeText; // Reference to the TextMeshPro component on the textPlane
-
 
     private AudioClip clip;
     private byte[] bytes;
@@ -38,13 +34,9 @@ public class SpeechRecognitionTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) || RecordSpeech.action.triggered)
         {
             if (recording)
-            {
                 StopRecording();
-            }
             else
-            {
                 StartRecording();
-            }
         }
 
         if (recording && Microphone.GetPosition(null) >= clip.samples)
@@ -53,13 +45,13 @@ public class SpeechRecognitionTest : MonoBehaviour
         }
     }
 
-
     private void StartRecording()
     {
         recognizedText.color = Color.white;
         recognizedText.text = "Recording...";
         stopButton.interactable = true;
-        clip = Microphone.Start(null, false, 10, 44100);
+
+        clip = Microphone.Start(null, false, 10, 16000); // 16kHz mono
         recording = true;
     }
 
@@ -68,53 +60,57 @@ public class SpeechRecognitionTest : MonoBehaviour
         if (!recording) return;
 
         recording = false;
-        var position = Microphone.GetPosition(null);
+        int position = Microphone.GetPosition(null);
         Microphone.End(null);
-        var samples = new float[position * clip.channels];
+
+        float[] samples = new float[position * clip.channels];
         clip.GetData(samples, 0);
-        bytes = EncodeAsWAV(samples, clip.frequency, clip.channels);
-        StartCoroutine(AttemptSpeechRecognition(3)); // Retry up to 3 times
+
+        bytes = EncodeAsWAV(samples, 16000, 1);
+        StartCoroutine(AttemptSpeechRecognition(3));
     }
 
     private IEnumerator AttemptSpeechRecognition(int maxRetries)
     {
         int attempts = 0;
+
         while (attempts < maxRetries)
         {
             attempts++;
 
-            HuggingFaceAPI.AutomaticSpeechRecognition(bytes, response =>
-            {
-                recognizedText.color = Color.white;
-                recognizedText.text = response;
-                StartCoroutine(SendQueryToAPI(response));
-            }, error =>
-            {
-                Debug.LogWarning("Speech Recognition Error: " + error);
-                if (error.Contains("503"))
+            yield return WhisperAPI.Transcribe(
+                bytes,
+                response =>
                 {
-                    recognizedText.color = Color.yellow;
-                    recognizedText.text = $"Model loading... Retrying ({attempts}/{maxRetries})";
-                }
-                else
+                    recognizedText.color = Color.white;
+                    recognizedText.text = response;
+                    StartCoroutine(SendQueryToAPI(response));
+                },
+                error =>
                 {
-                    recognizedText.color = Color.red;
-                    recognizedText.text = "Speech recognition failed!";
+                    Debug.LogWarning("Speech Recognition Error: " + error);
+                    if (error.Contains("503"))
+                    {
+                        recognizedText.color = Color.yellow;
+                        recognizedText.text = $"Model loading... Retrying ({attempts}/{maxRetries})";
+                    }
+                    else
+                    {
+                        recognizedText.color = Color.red;
+                        recognizedText.text = "Speech recognition failed!";
+                    }
                 }
-            });
+            );
 
-            yield return new WaitForSeconds(5); // Wait before retrying
+            if (!recognizedText.text.Contains("Retrying") && recognizedText.text != "Recording...")
+                yield break;
 
-            if (recognizedText.text != "Recording..." && !recognizedText.text.Contains("Retrying"))
-            {
-                yield break; // Stop retrying if successful
-            }
+            yield return new WaitForSeconds(5);
         }
 
         recognizedText.color = Color.red;
         recognizedText.text = "Speech recognition unavailable!";
     }
-    //private string sessionId = "user_123"; // Default session ID, can be dynamically generated or user-specific
 
     private IEnumerator SendQueryToAPI(string transcribedText)
     {
@@ -123,11 +119,10 @@ public class SpeechRecognitionTest : MonoBehaviour
 
         string queryUrl = "https://lviubjhdkcolf6ihebsg3aohf40ocbxs.lambda-url.eu-central-1.on.aws/query_with_memory";
 
-        // Create an instance of QueryData
         QueryData data = new QueryData
         {
-            query_text = transcribedText + "without extra explanation. Just give me the answer.",
-            session_id = "user_123" // Optional: If your API uses session_id for memory
+            query_text = transcribedText + " without extra explanation. Just give me the answer.",
+            session_id = "default"
         };
 
         string jsonData = JsonUtility.ToJson(data);
@@ -143,20 +138,12 @@ public class SpeechRecognitionTest : MonoBehaviour
 
             if (request.result == UnityWebRequest.Result.Success)
             {
-                // Parse the response
                 var result = JsonUtility.FromJson<APIResponse>(request.downloadHandler.text);
 
-                // Display the response on the plane using TextMeshPro
                 if (planeText != null)
-                {
-                    planeText.text = result.response_text; // Update the text on the plane
-                }
+                    planeText.text = result.response_text;
 
-                // Display the response
                 apiResponseText.color = Color.green;
-                //apiResponseText.text = "Answer: " + result.response_text;
-
-                // Use Text-to-Speech to speak the response
                 tts.Speak(result.response_text);
             }
             else
@@ -167,31 +154,29 @@ public class SpeechRecognitionTest : MonoBehaviour
             }
         }
     }
+
     private byte[] EncodeAsWAV(float[] samples, int frequency, int channels)
     {
         using (var memoryStream = new MemoryStream(44 + samples.Length * 2))
+        using (var writer = new BinaryWriter(memoryStream))
         {
-            using (var writer = new BinaryWriter(memoryStream))
-            {
-                writer.Write("RIFF".ToCharArray());
-                writer.Write(36 + samples.Length * 2);
-                writer.Write("WAVE".ToCharArray());
-                writer.Write("fmt ".ToCharArray());
-                writer.Write(16);
-                writer.Write((ushort)1);
-                writer.Write((ushort)channels);
-                writer.Write(frequency);
-                writer.Write(frequency * channels * 2);
-                writer.Write((ushort)(channels * 2));
-                writer.Write((ushort)16);
-                writer.Write("data".ToCharArray());
-                writer.Write(samples.Length * 2);
+            writer.Write("RIFF".ToCharArray());
+            writer.Write(36 + samples.Length * 2);
+            writer.Write("WAVE".ToCharArray());
+            writer.Write("fmt ".ToCharArray());
+            writer.Write(16);
+            writer.Write((ushort)1); // PCM format
+            writer.Write((ushort)channels);
+            writer.Write(frequency);
+            writer.Write(frequency * channels * 2);
+            writer.Write((ushort)(channels * 2));
+            writer.Write((ushort)16); // 16 bits per sample
+            writer.Write("data".ToCharArray());
+            writer.Write(samples.Length * 2);
 
-                foreach (var sample in samples)
-                {
-                    writer.Write((short)(sample * short.MaxValue));
-                }
-            }
+            foreach (var sample in samples)
+                writer.Write((short)(sample * short.MaxValue));
+
             return memoryStream.ToArray();
         }
     }
@@ -199,9 +184,9 @@ public class SpeechRecognitionTest : MonoBehaviour
     [System.Serializable]
     private class APIResponse
     {
-        public string response_text; // The API's response
-        public string[] sources;     // Optional: If the API provides sources
-        public string session_id;    // Optional: If the API returns a session_id
+        public string response_text;
+        public string[] sources;
+        public string session_id;
     }
 
     [System.Serializable]
@@ -217,7 +202,6 @@ public class SpeechRecognitionTest : MonoBehaviour
     private class QueryData
     {
         public string query_text;
-        public string session_id; // Optional: Only if your API uses session_id
+        public string session_id;
     }
-
 }

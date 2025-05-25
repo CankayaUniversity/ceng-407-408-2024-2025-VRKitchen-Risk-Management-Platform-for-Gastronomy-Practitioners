@@ -37,6 +37,12 @@ public class FoodDispenser : MonoBehaviour
                 handTransform.position,
                 handTransform.rotation
             );
+            
+            FoodInstance foodInstance = spawnedFood.GetComponent<FoodInstance>();
+            if (foodInstance != null)
+            {
+                foodInstance.ResetCookingState(); 
+            }
 
             XRGrabInteractable spawnedInteractable = spawnedFood.GetComponent<XRGrabInteractable>();
 
@@ -49,13 +55,13 @@ public class FoodDispenser : MonoBehaviour
                 directInteractor.interactionManager.SelectEnter(directInteractor, spawnedInteractable);
             }
 
-            // 🔽 Send RAG query here
-            GameActionManager actionManager = FindObjectOfType<GameActionManager>();
-            if (actionManager != null)
-            {
-                string actionText = $"I picked up a {foodData.foodName}";
-                actionManager.RegisterAction(actionText);
-            }
+            // Send RAG query here
+            //GameActionManager actionManager = FindObjectOfType<GameActionManager>();
+            //if (actionManager != null)
+            //{
+                //string actionText = $"I picked up a {foodData.foodName}";
+                //actionManager.RegisterAction(actionText);
+            //}
         }
     }
 

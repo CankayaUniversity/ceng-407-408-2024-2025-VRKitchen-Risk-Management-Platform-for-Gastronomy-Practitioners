@@ -51,7 +51,8 @@ public class TimerPanel : MonoBehaviour
                 if (toAPI != null)
                 {
                     int waitedMinutes = Mathf.FloorToInt(minutes); // Store the selected time
-                    toAPI.queryText = $"I waited {waitedMinutes} minutes. What now?";
+                    toAPI.queryText = RagCommands.TimerSet(waitedMinutes);
+                    Debug.Log(toAPI.queryText);
                     toAPI.SubmitQuery();
                 }
 
@@ -78,7 +79,7 @@ public class TimerPanel : MonoBehaviour
 
     void StartTimer()
     {
-        remainingTime = minutes * 60f;
+        remainingTime = minutes * 10f;
         isCountingDown = true;
         startButton.interactable = false;
     }

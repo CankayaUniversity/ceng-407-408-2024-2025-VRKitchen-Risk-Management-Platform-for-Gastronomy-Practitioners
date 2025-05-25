@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+﻿using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -20,30 +20,51 @@ public class FireExtinguisher : MonoBehaviour
         {
             button.selectEntered.AddListener(OnButtonPressed);
             button.selectExited.AddListener(OnButtonReleased);
+            Debug.Log("✅ Button listeners registered.");
+        }
+        else
+        {
+            Debug.LogWarning("❌ Button is not assigned in the inspector.");
         }
 
         if (extinguisherGrab != null)
         {
             extinguisherGrab.selectEntered.AddListener(OnGrabbed);
+            Debug.Log("✅ Grab listener registered.");
         }
-
+        else
+        {
+            Debug.LogWarning("❌ Extinguisher grab is not assigned in the inspector.");
+        }
 
         if (sprayEffect != null)
         {
-            sprayEffect.Stop(); // Ensure the spray is off initially
+            sprayEffect.Stop();
         }
     }
 
+
     private void OnGrabbed(SelectEnterEventArgs args)
     {
+        Debug.Log("🔥 OnGrabbed() triggered.");
+
         if (!hasSentGrabQuery && toAPI != null)
         {
-            Debug.Log("Grabbed");
+            Debug.Log("📤 Sending fire extinguisher grab query to API.");
             toAPI.queryText = "I grabbed the fire extinguisher from the cupboard in the game. What now?";
             toAPI.SubmitQuery();
             hasSentGrabQuery = true;
         }
+        else if (hasSentGrabQuery)
+        {
+            Debug.Log("⚠️ Grab query already sent, skipping.");
+        }
+        else
+        {
+            Debug.LogWarning("❌ toAPI is null.");
+        }
     }
+
 
     private void OnButtonPressed(SelectEnterEventArgs args)
     {

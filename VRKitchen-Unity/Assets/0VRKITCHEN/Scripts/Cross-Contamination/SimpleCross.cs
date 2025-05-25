@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleCross : MonoBehaviour
@@ -6,14 +7,21 @@ public class SimpleCross : MonoBehaviour
     public List<GameObject> touchingItems = new List<GameObject>();
     public bool isContamination;
 
+
     public UnityToAPI toAPI;
 
     private bool hasSentContaminationQuery = false;
+    private bool contaminationCoroutineRunning = false;
 
     public VisualFeedbackController visualFeedback;
     public Transform contaminationMarkerTransform;
-    
 
+    private ChefMovement chefMovement; // ✅ Added reference
+
+    private void Start()
+    {
+        chefMovement = FindObjectOfType<ChefMovement>(); // ✅ Assign chef
+    }
     private void Update()
     {
         CleanDestroyedItems();
@@ -47,54 +55,83 @@ public class SimpleCross : MonoBehaviour
 
     private void CheckContamination()
     {
-        bool wasContaminated = isContamination;
-
         bool hasChicken = touchingItems.Exists(obj =>
             obj != null && obj.name.Contains("Chicken Prefab(Clone)"));
 
         bool hasSteak = touchingItems.Exists(obj =>
             obj != null && obj.name.Contains("Steak Prefab(Clone)"));
 
-        // Only set contamination if both chicken and steak are present
-        if (!isContamination && hasChicken && hasSteak)
+        if (!isContamination && hasChicken && hasSteak && !contaminationCoroutineRunning)
         {
-            isContamination = true;
-
-            foreach (var item in touchingItems)
-            {
-                item.tag = "Trash";
-            }
-
-            Debug.Log("Cross Contamination Detected!");
-
-            if (visualFeedback != null && contaminationMarkerTransform != null)
-            {
-                visualFeedback.ShowExclamation(contaminationMarkerTransform.position);
-            }
-
-            if (!hasSentContaminationQuery && toAPI != null)
-            {
-                toAPI.queryText = GameQueries.CrossContaminationQuery;
-                toAPI.SubmitQuery();
-                Debug.Log(toAPI.queryText);
-                hasSentContaminationQuery = true;
-            }
+            StartCoroutine(HandleContamination());
         }
         else if (isContamination && (!hasChicken || !hasSteak || touchingItems.Count == 0))
         {
             isContamination = false;
             hasSentContaminationQuery = false;
+            contaminationCoroutineRunning = false;
         }
     }
 
+    private IEnumerator HandleContamination()
+    {
+        contaminationCoroutineRunning = true;
 
+        Debug.Log("Cross Contamination Detected!");
+
+        foreach (var item in touchingItems)
+        {
+            item.tag = "Trash";
+        }
+
+        if (visualFeedback != null && contaminationMarkerTransform != null)
+        {
+            visualFeedback.ShowExclamation(contaminationMarkerTransform.position);
+        }
+
+        if (!hasSentContaminationQuery && toAPI != null)
+        {
+            StartCoroutine(DelayedContaminationQuery());
+            hasSentContaminationQuery = true;
+        }
+
+        if (chefMovement != null)
+        {
+            chefMovement.GoToHazard(); // ✅ Trigger chef movement
+        }
+
+
+        isContamination = true;
+        yield break;
+    }
+
+    private IEnumerator DelayedContaminationQuery()
+    {
+        yield return new WaitForSeconds(5f); // Delay to allow other queries to finish
+
+        toAPI.queryText = RagCommands.CrossContaminationQuery;
+        toAPI.SubmitQuery();
+        Debug.Log(toAPI.queryText);
+    }
 
     public void ResetContamination()
     {
         isContamination = false;
         hasSentContaminationQuery = false;
+        contaminationCoroutineRunning = false;
 
-        // Removed HideExclamation from here too
+        if (visualFeedback != null)
+        {
+            visualFeedback.HideExclamation();
+        }
+
+        if (chefMovement != null)
+        {
+            chefMovement.ReturnToStart(); // ✅ Return the chef
+        }
+
+
         Debug.Log("Board contamination manually cleared.");
     }
+
 }
