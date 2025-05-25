@@ -1081,6 +1081,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 288535931057059109, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2413700176183677798, guid: 17a614b84ef6fb343a2583ac80413164, type: 3}
+    - target: {fileID: 288535931057059109, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_IsTrackedAction.m_Action.m_Flags
       value: -1
       objectReference: {fileID: 0}
@@ -1092,6 +1096,10 @@ PrefabInstance:
       propertyPath: m_InteractionLayers.m_Bits
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1537862773210423133, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2413700176183677798, guid: 17a614b84ef6fb343a2583ac80413164, type: 3}
     - target: {fileID: 1537862773210423133, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_ActivateAction.m_Reference
       value: 
@@ -1188,6 +1196,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8164306826780099223, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2413700176183677798, guid: 266ff732979f28446af3e96a95b7792c, type: 3}
     - target: {fileID: 8202822525734557615, guid: e0d6171ff93df534cab5444c68536f46, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2028,7 +2040,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1964838095100366845, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5759023290510550228, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_Enabled
