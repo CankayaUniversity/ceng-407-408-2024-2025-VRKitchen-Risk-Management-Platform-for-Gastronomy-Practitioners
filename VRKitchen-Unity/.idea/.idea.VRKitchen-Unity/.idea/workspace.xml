@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5acc07fd-79b8-43d9-8167-53344560c475" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VRKitchen-Unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Objects/Cheese.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Objects/Cheese.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Hamburger Patty.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Hamburger Patty.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/HamburgerBread_Bottom.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/HamburgerBread_Bottom.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/HamburgerBread_Top.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/HamburgerBread_Top.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Lettuce.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Lettuce.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Tomato.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/Tomato.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/cheese.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/cheese.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/onion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Prefabs/Food/Food Prefabs/onion.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scenes/Final Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scenes/Final Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/BurgerStackDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0VRKITCHEN/Scripts/Food/BurgerStackDetector.cs" afterDir="false" />
-    </list>
+    <list default="true" id="5acc07fd-79b8-43d9-8167-53344560c475" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
