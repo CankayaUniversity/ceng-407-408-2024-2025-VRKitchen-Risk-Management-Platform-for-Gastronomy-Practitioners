@@ -12520,7 +12520,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1964838095100366845, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5759023290510550228, guid: c9046720ef9158445aaac5612ffc7e33, type: 3}
       propertyPath: m_Enabled
@@ -18444,7 +18444,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853075}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[0].maxHeatingTime
-      value: 10
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[0].ovenController
@@ -18452,7 +18452,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[1].maxHeatingTime
-      value: 10
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[1].ovenController
@@ -18460,7 +18460,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[2].maxHeatingTime
-      value: 10
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[2].ovenController
@@ -18468,7 +18468,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[3].maxHeatingTime
-      value: 10
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[3].ovenController
@@ -18476,7 +18476,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[4].maxHeatingTime
-      value: 10
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[4].ovenController
@@ -18484,7 +18484,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[5].maxHeatingTime
-      value: 10
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[5].ovenController
@@ -18492,7 +18492,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[6].maxHeatingTime
-      value: 10
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[6].ovenController
@@ -18500,7 +18500,7 @@ PrefabInstance:
       objectReference: {fileID: 1466853081}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[7].maxHeatingTime
-      value: 10
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8510504486263786844, guid: f82890441c52f426fbed713c45d5be89, type: 3}
       propertyPath: fireSources.Array.data[7].ovenController

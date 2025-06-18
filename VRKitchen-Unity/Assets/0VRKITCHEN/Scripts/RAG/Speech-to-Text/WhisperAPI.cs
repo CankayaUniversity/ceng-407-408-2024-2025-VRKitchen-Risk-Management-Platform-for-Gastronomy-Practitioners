@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public static class WhisperAPI
 {
     private const string endpoint = "https://api-inference.huggingface.co/models/openai/whisper-large-v3";
-    private const string token = ""; // 🔁 Replace with your actual token
+    private const string token = ""; //  Replace with your actual token
 
     public static IEnumerator Transcribe(byte[] wavData, Action<string> onSuccess, Action<string> onError)
     {
