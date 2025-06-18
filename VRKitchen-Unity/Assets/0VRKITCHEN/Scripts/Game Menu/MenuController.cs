@@ -10,17 +10,17 @@ public class MenuController : MonoBehaviour
 
     public void LoadSoundSettings()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
     }
 
     public void LoadInstructionScene()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(3);
     }
 
     public void LoadCreditsScene()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(4);
     }
 
     public void LoadMainMenu()

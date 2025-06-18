@@ -9,11 +9,8 @@ EditorBuildSettings:
     path: Assets/0VRKITCHEN/Scenes/Menu UI Scenes/MainMenu.unity
     guid: 1276a5347271c8645b4cf369544f2930
   - enabled: 1
-    path: Assets/0VRKITCHEN/Scenes/Simal_Final_Scene.unity
-    guid: 247ef500512ceef4ca4477619f396def
-  - enabled: 1
-    path: Assets/0VRKITCHEN/Scenes/VRInteractions.unity
-    guid: e199d753ff6c98b4ab728d3b54e53947
+    path: Assets/0VRKITCHEN/Scenes/Final Scene.unity
+    guid: dd5ee9ae974c9fa46a5cb4ac038587d1
   - enabled: 1
     path: Assets/0VRKITCHEN/Scenes/Menu UI Scenes/SoundSettings.unity
     guid: 7f51835cdd0e355428d3d4f952f5d169
@@ -27,4 +24,5 @@ EditorBuildSettings:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ebbea6fa362cea24c9cb9cff0153c4ce, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 2868365655f41114fb1a49ff03195476, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 18fef956098486c4ca273b1229f42390, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: c1f381a8702598c488676ee92914c7d2, type: 2}
     xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: c0053e711f2beb64db3d9b2dd512a32e, type: 2}
